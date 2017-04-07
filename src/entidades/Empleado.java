@@ -9,7 +9,14 @@ public class Empleado {
 	private String contraseña;
 	private String tipo;
 	private int tel;
+	private String patente;
 	
+	public String getPatente() {
+		return patente;
+	}
+	public void setPatente(String patente) {
+		this.patente = patente;
+	}
 	public int getId_empleado() {
 		return id_empleado;
 	}

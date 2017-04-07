@@ -1,9 +1,11 @@
 package negocio;
 
+import java.util.ArrayList;
+
 import appExceptions.ApplicationException;
 import data.DataEmpleado;
-
 import entidades.Empleado;
+import entidades.Producto;
 
 public class CtrlEmpleado {
 	
@@ -19,5 +21,7 @@ public class CtrlEmpleado {
 		
 		
 	}
-
+	public ArrayList<Empleado> listarEmpleados(){
+		return catalogo.listarEmpleados();
+	}
 }

@@ -3,6 +3,8 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import appExceptions.ApplicationException;
 import entidades.Camionero;
@@ -10,6 +12,7 @@ import entidades.Cliente;
 import entidades.Despachante;
 import entidades.Empleado;
 import entidades.EncargadoAdministracion;
+import entidades.Producto;
 import entidades.Vendedor;
 
 
@@ -115,6 +118,56 @@ public class DataEmpleado {
 			
 		
 		return e;
+	}
+
+	public ArrayList<Empleado> listarEmpleados() {
+		// TODO Auto-generated method stub
+
+		ResultSet rs=null;	
+		Statement stmt=null;	
+		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+		
+			
+	try {
+	     stmt = FactoryConexion.getInstancia().getConn().createStatement();
+	   
+	     rs = stmt.executeQuery(
+	    		 "select empleados.id_empleado, empleados.usuario, empleados.nombre, empleados.apellido, empleados.tel, empleados.tipo, empleados.patente "
+	     		+ " from empleados");
+	     		
+	        while (rs.next())
+	         {
+	            Empleado e = new Empleado();
+	            e.setId_empleado(rs.getInt("id_empleado"));
+	            e.setUsuario(rs.getString("usuario"));
+	            e.setNombre(rs.getString("nombre"));
+	            e.setApellido(rs.getString("apellido"));
+	            e.setTel(rs.getInt("tel"));
+	            e.setTipo(rs.getString("tipo"));
+	            e.setPatente(rs.getString("patente"));
+	            
+	 
+	        	empleados.add(e);
+	        	
+	            
+	         }
+	      
+	    }catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	    } finally
+		{
+			try {
+				if(rs!=null)rs.close();
+				if(stmt!=null) stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			FactoryConexion.getInstancia().releaseConn();
+		}
+		
+		return empleados;
 	}
 
 
