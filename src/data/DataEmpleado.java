@@ -170,5 +170,132 @@ public class DataEmpleado {
 		return empleados;
 	}
 
+	public void borrarEmpleado(int idemp) {
+		// TODO Auto-generated method stub
+		
+		PreparedStatement stmtPP=null;
+		PreparedStatement stmtP=null;
+	
+	try { // borro primero de la tabla precio_producto_venta
+		stmtPP=FactoryConexion.getInstancia().getConn().prepareStatement(
+				  "delete from precio_producto_venta where Id_Producto=?"
+				);
+		stmtPP.setInt(1, idemp);
+		stmtPP.execute();
+		
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally{
+		
+		try {
+			if(stmtPP != null) stmtPP.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	try { // luego borro el registro de la tabla productos
+		stmtP=FactoryConexion.getInstancia().getConn().prepareStatement(
+				  "delete from empleados where id_empleado=?"
+				);
+		stmtP.setInt(1, idemp);
+		stmtP.execute();
+		
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally{
+		
+		try {
+			
+			if(stmtP != null) stmtP.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		FactoryConexion.getInstancia().releaseConn();
+	}
+	
+		
+	}
 
-}
+	/*public Producto getById(int id) {
+		
+		ResultSet rsProd=null;
+		ResultSet rsPrecio=null;
+		ResultSet rsMat=null;
+		PreparedStatement stmtProd=null;
+		PreparedStatement stmtPrecio=null;
+		PreparedStatement stmtMat=null;
+		Producto p = new Producto();
+		
+		
+		try {
+			stmtProd = 	FactoryConexion.getInstancia().getConn().prepareStatement(
+					"select cod_servicio, nombre_servicio, descripcion_servicio from servicios where cod_servicio = ?"
+					);
+			stmt.setInt(1, codServicio);
+			rs = stmt.executeQuery();
+			if(rs !=null && rs.next()){
+	         
+	           
+	           
+	            s.setCod_servicio(rs.getInt("cod_servicio"));
+	            s.setNombre(rs.getString("nombre_servicio"));
+	            s.setDescripcion(rs.getString("descripcion_servicio"));
+	           
+	           
+	        		   
+	        	 stmtPrecio= FactoryConexion.getInstancia().getConn().prepareStatement("select precio from precios_servicios where cod_servicio = ?");
+	   			 stmtPrecio.setInt(1, rs.getInt("cod_servicio"));
+	   			 rsPrecio=stmtPrecio.executeQuery();
+	   			 if(rsPrecio.next()){
+
+	   				
+	   				 s.setPrecio(rsPrecio.getInt("precio"));
+	   				 
+	   				 
+	   			 	}
+	            	
+	           
+	        	
+	        	
+	            
+	         }
+	      
+	    }catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	    } finally
+		{
+			try {
+				if(rs!=null)rs.close();
+				if(stmt!=null) stmt.close();
+				
+				if(rsPrecio!=null)rsPrecio.close();
+				if(stmtPrecio!=null) stmtPrecio.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			FactoryConexion.getInstancia().releaseConn();
+		}
+		
+		return s;
+		
+	}
+
+	*/
+	}
+
+
+

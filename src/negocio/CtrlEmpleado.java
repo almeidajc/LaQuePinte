@@ -24,4 +24,10 @@ public class CtrlEmpleado {
 	public ArrayList<Empleado> listarEmpleados(){
 		return catalogo.listarEmpleados();
 	}
+
+	public void borrarEmpleado(int idemp) {
+		// TODO Auto-generated method stub
+		catalogo.borrarEmpleado(idemp);
+		
+	}
 }
