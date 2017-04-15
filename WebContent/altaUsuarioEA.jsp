@@ -25,7 +25,9 @@
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
           	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
 
-<!--Header-part-->
+<%@include file="includes/headerEA.jsp" %>
+
+<%-- <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
 </div>
@@ -119,7 +121,7 @@
 
   </ul>
 </div>
-<!-- sidebar-menu-->
+<!-- sidebar-menu--> --%>
 
 
 <!--main-container-part-->
