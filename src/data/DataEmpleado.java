@@ -134,7 +134,7 @@ public class DataEmpleado {
 	     rs = stmt.executeQuery(
 	    		 "select empleados.id_empleado, empleados.usuario, empleados.nombre, empleados.apellido, empleados.tel, empleados.tipo, empleados.patente "
 	     		+ " from empleados");
-	     		
+	    		
 	        while (rs.next())
 	         {
 	            Empleado e = new Empleado();

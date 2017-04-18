@@ -49,15 +49,15 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexAdmin.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
+    <li class="active"><a href="indexADM.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
      	
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="altaUsuario.jsp">Nuevo Empleado</a></li>
-        <li><a href="modificarUsuario.jsp">Modificar Empleado</a></li>
-        <li><a href="bajaUsuario.jsp">Eliminar Empleado</a></li>
-        <li><a href="consultaUsuario.jsp">Consultar Empleado</a></li>
+        <li><a href="altaUsuarioADM.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioADM.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioADM.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioADM.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
     
