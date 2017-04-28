@@ -1,0 +1,7 @@
+/test/*
+/build/*
+/dist/*
+/libraryencrypt/*
+/nbproject/*
+build.xml
+/src/java/data/Factoryconexion.java
