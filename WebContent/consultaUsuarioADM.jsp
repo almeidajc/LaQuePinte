@@ -1,5 +1,8 @@
-   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page import="entidades.Empleado"%>
+     <%@page import="negocio.CtrlEmpleado"%>
+     
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +19,49 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript"> // inicio tabla js1//
+(function(document) {
+  'use strict';
+
+  var LightTableFilter = (function(Arr) {
+
+    var _input;
+
+    function _onInputEvent(e) {
+      _input = e.target;
+      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+      Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+      });
+    }
+
+    function _filter(row) {
+      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+
+    return {
+      init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+      }
+    };
+  })(Array.prototype);
+
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+      LightTableFilter.init();
+    }
+  });
+
+})(document);
+</script>		
+
 </head>
 <body>
 
@@ -49,15 +95,15 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexAdmin.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
+    <li class="active"><a href="indexADM.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
      	
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="altaUsuario.jsp">Nuevo Empleado</a></li>
-        <li><a href="modificarUsuario.jsp">Modificar Empleado</a></li>
-        <li><a href="bajaUsuario.jsp">Eliminar Empleado</a></li>
-        <li><a href="consultaUsuario.jsp">Consultar Empleado</a></li>
+        <li><a href="altaUsuarioADM.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioADM.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioADM.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioADM.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
     
@@ -84,36 +130,73 @@
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
-
-    
   <div id="titulo">
- <h1>Consultar Empleado</h1>
+ <h1>Consultar Producto</h1><hr>
  </div>
-<div class="container-fluid"><hr>
-   
-  <div class="row-fluid"> 
-    <div class="span6">
-      <div class="widget-box">
-        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Buscar usuario</h5>
-        </div>
-        <div class="widget-content nopadding">
-          <form action="mostrarUsuario.jsp" method="get" class="form-horizontal">
-            <div class="control-group">
-              <label class="control-label">DNI:</label>
-              <div class="controls">
-                <input type="text" class="span11" placeholder="Numero de documento empleado" name="dni" id="dni"/>
-              </div>
-            </div>
-            <div class="form-actions">
-                  <input type="submit"  value="Buscar" class="btn btn-success">
-                  </div>
-              </form>
-              </div>
-            
+  <div class="container-fluid">
+     <div class="row-fluid">
+      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
+      
+  
+     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+
+        <div class="widget-box">
+        
+          
+          <div class="widget-content nopadding" id="tb_content">
+            <table class="order-table table" class="table table-hover">
+    <thead>
+      <tr >
+      	
+        <th><h5 style="text-align:left; ">ID</h5></th>
+        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:left; ">APELLIDO</h5></th>
+        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
+        <th><h5 style="text-align:left; ">ROL</h5></th>
+        <th><h5 style="text-align:left; ">USUARIO</h5></th> 
+        <th><h5 style="text-align:left; ">PATENTE</h5></th>
+             
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+<%
+    		CtrlEmpleado ctrl = new CtrlEmpleado();
+    		
+    		//PUEDO HACER TMB
+			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+			// habitacios = ctrl.Listar();
+
+	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
+	%>  
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTel() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
+	  
+	</tr>
+	<%
+	
+}
+
+
+      %>
+      
+     
+    </tbody>
+  </table>
+          </div>
         </div>
       </div>
     </div>
+    
+  </div>
+</div>
+
 <!--End-Action boxes-->    
    
   </div>

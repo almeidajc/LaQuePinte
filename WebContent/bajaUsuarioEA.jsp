@@ -1,15 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="entidades.EncargadoAdministracion"%>
-    <%@page import="entidades.Empleado"%>
+     <%@page import="entidades.Empleado"%>
+     <%@page import="negocio.CtrlEmpleado"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+
 <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="bootstrap/css/fullcalendar.css" />
 <link rel="stylesheet" href="bootstrap/css/matrix-style.css" />
@@ -17,18 +20,78 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript"> // inicio tabla js1//
+(function(document) {
+  'use strict';
+
+  var LightTableFilter = (function(Arr) {
+
+    var _input;
+
+    function _onInputEvent(e) {
+      _input = e.target;
+      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+      Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+      });
+    }
+
+    function _filter(row) {
+      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+
+    return {
+      init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+      }
+    };
+  })(Array.prototype);
+
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+      LightTableFilter.init();
+    }
+  });
+
+})(document);
+</script>		
+
+<style type="text/css">
+
+}
+tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+.input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
+
+	</style>	
 </head>
 <body>
-
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
-			String nombre="";
-           if(userSession == null || !(userSession.getTipo().equals("EA"))){
-          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
 
+	String tipo_em = userSession.getTipo();%>
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -45,10 +108,10 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
     <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
     <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
-     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+     <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -82,9 +145,8 @@
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-
-
-        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+    
+      <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
         <li><a href="modificarCliente.jsp">Modificar Cliente</a></li>
@@ -93,14 +155,14 @@
       </ul>
     </li>
 
+    
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
 
-
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci�n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci�n</a></li>
-        <li><a href="#">Modificar Ubicaci�n</a></li>
-        <li><a href="#">Eliminar Ubicaci�n</a></li>
-        <li><a href="#">Consultar Ubicaci�n</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaciï¿½n</a></li>
+        <li><a href="#">Modificar Ubicaciï¿½n</a></li>
+        <li><a href="#">Eliminar Ubicaciï¿½n</a></li>
+        <li><a href="#">Consultar Ubicaciï¿½n</a></li>
       </ul>
     </li>
 
@@ -121,9 +183,6 @@
 
   </ul>
 </div>
-<!--close-top-Header-menu-->
-
-
 <!-- sidebar-menu-->
 
 
@@ -132,7 +191,8 @@
     <div id="content">
     <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Empleado</a></div>
+
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Empleado</a></div>
 
   </div>
 <!--End-Action boxes-->
@@ -142,11 +202,85 @@
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
-<div id="titulo">
- <h1>Baja Empleado</h1>
+
+    <div id="titulo">
+ <h1>Baja Empleado</h1><hr>
  </div>
 
-<!--End-Action boxes-->
+  <div class="container-fluid">
+     <div class="row-fluid">
+      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
+      
+  
+     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+
+        <div class="widget-box">
+        
+          
+          <div class="widget-content nopadding" id="tb_content">
+            <table class="order-table table" class="table table-hover">
+    <thead>
+      <tr >
+      	
+        <th><h5 style="text-align:left; ">ID</h5></th>
+        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:left; ">APELLIDO</h5></th>
+        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
+        <th><h5 style="text-align:left; ">ROL</h5></th>
+        <th><h5 style="text-align:left; ">USUARIO</h5></th> 
+        <th><h5 style="text-align:left; ">PATENTE</h5></th>
+        <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
+             
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+<%
+    		CtrlEmpleado ctrl = new CtrlEmpleado();
+    		
+    		//PUEDO HACER TMB
+			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+			// habitacios = ctrl.Listar();
+
+	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
+		String tipo = ctrl.listarEmpleados().get(indice).getTipo();
+		if(!tipo.equalsIgnoreCase("EA") && !tipo.equalsIgnoreCase("ADM")){%>  
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTel() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
+	   <td><h5><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
+	    <td><form method="post" action="BajaEmpleado">
+           <input type="hidden" id="id_empleado" name="id_empleado" value="<%= ctrl.listarEmpleados().get(indice).getId_empleado()%>" >
+            <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
+           <button type="submit" class="btn2" name="bajaempleado" id="bajaempleado" onClick="return confirm('¿Esta Seguro que deseas dar de baja este empleado?')">
+           <span class="icon-trash" style="color: red; font-size:100%;"></span></a></form></td>
+	  
+	</tr>
+	  
+	</tr>
+	<%
+		}
+}
+
+
+      %>
+      
+     
+    </tbody>
+  </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!--End-Action boxes-->    
 
   </div>
 </div>

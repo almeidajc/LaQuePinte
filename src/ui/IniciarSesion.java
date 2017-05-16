@@ -63,8 +63,8 @@ public class IniciarSesion extends HttpServlet {
 		
 		    
 			request.getSession().setAttribute("userSession", E);
-			String tipo = E.getTipo();
-			switch (tipo) {
+			String t = E.getTipo();
+			switch (t) {
 			case "CA":			
 				response.sendRedirect("indexCA.jsp");
 				break;				
@@ -76,7 +76,10 @@ public class IniciarSesion extends HttpServlet {
 				break;				
 			case "DE":			
 				response.sendRedirect("indexDE.jsp");		
-				break;				
+				break;	
+			case "ADM":			
+				response.sendRedirect("indexADM.jsp");		
+				break;
 			default:
 				response.sendRedirect("login.jsp");
 				break;

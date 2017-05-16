@@ -54,10 +54,10 @@
 
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="altaUsuario.jsp">Nuevo Empleado</a></li>
-        <li><a href="modificarUsuario.jsp">Modificar Empleado</a></li>
-        <li><a href="bajaUsuario.jsp">Eliminar Empleado</a></li>
-        <li><a href="consultaUsuario.jsp">Consultar Empleado</a></li>
+        <li><a href="altaUsuarioADM.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioADM.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioADM.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioADM.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
 
