@@ -19,9 +19,7 @@
 </head>
 <body>
 
-<%@include file="includes/headerEA.jsp" %>
-
-<%-- <!--Header-part-->
+<!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
 </div>
@@ -113,7 +111,7 @@
 
   </ul>
 </div>
-<!-- sidebar-menu--> --%>
+<!-- sidebar-menu-->
 
 
 <!--main-container-part-->
