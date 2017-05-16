@@ -138,7 +138,7 @@
                  </select>
                </div>
                </div>
-             <div class="control-group patente" id="patente_di">
+             <div class="control-group" id="patente_di">
                <label class="control-label">Patente :</label>
                <div class="controls">
                  <input type="text" class="span11" name="patente" id="patente" placeholder="Patente" />
@@ -155,20 +155,21 @@
                 <div class="control-group">
                   <label class="control-label">Password</label>
                   <div class="controls">
-                    <input type="password" id="pass_1" name="contrasena" class="form-control" placeholder="Contraseï¿½a" required>
-            <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
+                    <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Contraseña" onchange="valida(this.value)" required>
+            		<label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Confirm password</label>
                   <div class="controls">
-                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseï¿½a" required>
-            <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
+                   <input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="Repita la contraseña" onchange="valida2(this.value)" required>
+            	   <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                 </div>
                 <div class="form-actions">
                   <input type="submit" value="Alta" class="btn btn-success">
                 </div>
+               </div>
               </form>
         </div>
       </div>
@@ -179,7 +180,7 @@
 </div>
 </div>
 <!--end-main-container-part-->
-</div>
+
 
 <!--Footer-part-->
 
@@ -213,6 +214,7 @@
 <script src="bootstrap/js/matrix.popover.js"></script>
 <script src="bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="bootstrap/js/matrix.tables.js"></script>
+<script src="bootstrap/js_original/validarRegistro.js"></script>
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
