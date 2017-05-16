@@ -1,4 +1,4 @@
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
      <%@page import="entidades.Empleado"%>
      <%@page import="negocio.CtrlEmpleado"%>
@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -87,9 +87,9 @@ input[type=text]:focus {
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 <!--top-Header-menu-->
@@ -123,7 +123,7 @@ input[type=text]:focus {
         <li><a href="#">Pagar Deuda</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
@@ -132,7 +132,7 @@ input[type=text]:focus {
         <li><a href="consulproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
         <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
@@ -141,7 +141,7 @@ input[type=text]:focus {
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
+
       <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
@@ -150,22 +150,22 @@ input[type=text]:focus {
         <li><a href="consultaCliente.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci�n</span> </a>
+
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaciï¿½n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci�n</a></li>
-        <li><a href="#">Modificar Ubicaci�n</a></li>
-        <li><a href="#">Eliminar Ubicaci�n</a></li>
-        <li><a href="#">Consultar Ubicaci�n</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaciï¿½n</a></li>
+        <li><a href="#">Modificar Ubicaciï¿½n</a></li>
+        <li><a href="#">Eliminar Ubicaciï¿½n</a></li>
+        <li><a href="#">Consultar Ubicaciï¿½n</a></li>
       </ul>
     </li>
-    
+
     <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
-    
+
     <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-    
-    
-    
+
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
       <ul>
         <li><a href="#">Crear Pedido</a></li>
@@ -174,7 +174,7 @@ input[type=text]:focus {
         <li><a href="#">Consultar Pedido</a></li>
       </ul>
     </li>
-    
+
   </ul>
 </div>
 <!-- sidebar-menu-->
@@ -186,22 +186,23 @@ input[type=text]:focus {
     <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Empleado</a></div>
-   
+
   </div>
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
 
 
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
 
+
     <div id="titulo">
  <h1>Consultar Producto</h1><hr>
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
-      <div class="span12"> <!-- TAMA�O FORMULARIOS -->
+      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
       
   
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
@@ -236,6 +237,7 @@ input[type=text]:focus {
 
 	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
 	%>  
+   
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
@@ -264,7 +266,7 @@ input[type=text]:focus {
 </div>
 
 <!--End-Action boxes-->    
-   
+
   </div>
 </div>
 
@@ -279,27 +281,27 @@ input[type=text]:focus {
 
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/excanvas.min.js"></script> 
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/jquery.ui.custom.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
-<script src="bootstrap/js/fullcalendar.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/matrix.dashboard.js"></script> 
-<script src="bootstrap/js/jquery.gritter.min.js"></script> 
-<script src="bootstrap/js/matrix.interface.js"></script> 
-<script src="bootstrap/js/matrix.chat.js"></script> 
-<script src="bootstrap/js/jquery.validate.js"></script> 
-<script src="bootstrap/js/matrix.form_validation.js"></script> 
-<script src="bootstrap/js/jquery.wizard.js"></script> 
-<script src="bootstrap/js/jquery.uniform.js"></script> 
-<script src="bootstrap/js/select2.min.js"></script> 
-<script src="bootstrap/js/matrix.popover.js"></script> 
-<script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script> 
+<script src="bootstrap/js/excanvas.min.js"></script>
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
+<script src="bootstrap/js/fullcalendar.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.dashboard.js"></script>
+<script src="bootstrap/js/jquery.gritter.min.js"></script>
+<script src="bootstrap/js/matrix.interface.js"></script>
+<script src="bootstrap/js/matrix.chat.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script src="bootstrap/js/jquery.wizard.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/matrix.popover.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="bootstrap/js/matrix.tables.js"></script>
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
@@ -308,12 +310,12 @@ input[type=text]:focus {
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-      
+
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-          } 
-          // else, send page to designated URL            
-          else {  
+          }
+          // else, send page to designated URL
+          else {
             document.location.href = newURL;
           }
       }
