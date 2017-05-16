@@ -9,6 +9,7 @@ public class Empleado {
 	private String contraseña;
 	private String tipo;
 	private int tel;
+	private String patente;
 	
 	public int getId_empleado() {
 		return id_empleado;
@@ -51,6 +52,13 @@ public class Empleado {
 	}
 	public void setTel(int tel) {
 		this.tel = tel;
+	}
+	public void setPatente(String paten) {
+		// TODO Auto-generated method stub
+		this.patente= paten;
+	}
+	public String getPatente() {
+		return patente;
 	}
 
 }
