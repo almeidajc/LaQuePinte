@@ -18,8 +18,73 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript"> // inicio tabla js1//
+(function(document) {
+  'use strict';
+
+  var LightTableFilter = (function(Arr) {
+
+    var _input;
+
+    function _onInputEvent(e) {
+      _input = e.target;
+      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+      Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+      });
+    }
+
+    function _filter(row) {
+      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+
+    return {
+      init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+      }
+    };
+  })(Array.prototype);
+
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+      LightTableFilter.init();
+    }
+  });
+
+})(document);
+</script>		
+
+<style type="text/css">
+
+}
+tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+.input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
+
+	</style>	
 </head>
 <body>
+<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+	String tipo_em = userSession.getTipo();
+	/* ESTO NO FUNCIONA PORQUE NO HICIMOS LA PARTE DE USUARIO DEL ADM */ %> 
 
 <!--Header-part-->
 <div id="header">
@@ -126,7 +191,8 @@
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
-	%>  
+		String tipo = ctrl.listarEmpleados().get(indice).getTipo();
+		if( !tipo.equalsIgnoreCase("ADM")){%>  
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
@@ -136,6 +202,7 @@
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
 	    <td><form method="post" action="BajaEmpleado">
            <input type="hidden" id="id_empleado" name="id_empleado" value="<%= ctrl.listarEmpleados().get(indice).getId_empleado()%>" >
+            <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
            <button type="submit" class="btn2" name="bajaempleado" id="bajaempleado" onClick="return confirm('¿Esta Seguro que deseas dar de baja este empleado?')">
            <span class="icon-trash" style="color: red; font-size:100%;"></span></a></form></td>
 	  
@@ -143,7 +210,7 @@
 	  
 	</tr>
 	<%
-	
+		}
 }
 
 
@@ -221,5 +288,8 @@ function resetMenu() {
    document.gomenu.selector.selectedIndex = 2;
 }
 </script>
+</body>
+</html>
+
 </body>
 </html>

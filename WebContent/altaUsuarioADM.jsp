@@ -49,7 +49,7 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexADM.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
+    <li class="active"><a href="indexAdmin.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
      	
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
@@ -96,7 +96,7 @@
           <h5>Alta usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="AltaUsuario" method="get" class="form-horizontal">
+          <form action="#" method="get" class="form-horizontal">
             <div class="control-group">
               <label class="control-label">Nombre :</label>
               <div class="controls">

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidades.Empleado;
 import negocio.CtrlEmpleado;
 import negocio.CtrlProducto;
 import appExceptions.ApplicationException;
@@ -41,10 +42,17 @@ public class BajaEmpleado extends HttpServlet {
 		// TODO Auto-generated method stub
 		int idemp = Integer.parseInt(request.getParameter("id_empleado"));
 		CtrlEmpleado ctrl = new CtrlEmpleado();
+		
+		String tipo = (String) request.getParameter("tipo_empleado");
 		ctrl.borrarEmpleado(idemp);
-				
+		
+		if(tipo.equalsIgnoreCase("EA")){
 		request.setAttribute("mensaje", "Empleado eliminado correctamente");
 		request.getRequestDispatcher("bajaUsuarioEA.jsp").forward(request, response);
 		}
+		else{
+			request.setAttribute("mensaje", "Empleado eliminado correctamente");
+			request.getRequestDispatcher("bajaUsuarioADM.jsp").forward(request, response);
+		}
+	}
 }
-	

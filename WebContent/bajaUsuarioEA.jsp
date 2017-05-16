@@ -84,7 +84,8 @@ input[type=text]:focus {
 	</style>	
 </head>
 <body>
-
+<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+	String tipo_em = userSession.getTipo();%>
 <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
@@ -236,7 +237,8 @@ input[type=text]:focus {
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
-	%>  
+		String tipo = ctrl.listarEmpleados().get(indice).getTipo();
+		if(!tipo.equalsIgnoreCase("EA") && !tipo.equalsIgnoreCase("ADM")){%>  
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
@@ -246,6 +248,7 @@ input[type=text]:focus {
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
 	    <td><form method="post" action="BajaEmpleado">
            <input type="hidden" id="id_empleado" name="id_empleado" value="<%= ctrl.listarEmpleados().get(indice).getId_empleado()%>" >
+            <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
            <button type="submit" class="btn2" name="bajaempleado" id="bajaempleado" onClick="return confirm('¿Esta Seguro que deseas dar de baja este empleado?')">
            <span class="icon-trash" style="color: red; font-size:100%;"></span></a></form></td>
 	  
@@ -253,7 +256,7 @@ input[type=text]:focus {
 	  
 	</tr>
 	<%
-	
+		}
 }
 
 

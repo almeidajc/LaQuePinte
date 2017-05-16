@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import appExceptions.ApplicationException;
+import entidades.Administrador;
 import entidades.Camionero;
 import entidades.Cliente;
 import entidades.Despachante;
@@ -63,7 +64,18 @@ public class DataEmpleado {
 					
 					e=V; 
 					break;
-				
+				case "ADM":
+					
+					Administrador Adm = new Administrador();
+					Adm.setId_empleado(rs.getInt("id_empleado"));
+					Adm.setNombre(rs.getString("nombre"));
+				 	Adm.setApellido(rs.getString("apellido"));	
+					Adm.setUsuario(rs.getString("usuario"));
+					Adm.setContraseña(rs.getString("contraseña"));
+					Adm.setTipo(rs.getString("tipo"));
+					
+					e=Adm; 
+					break;
 				case "EA":
 					
 					EncargadoAdministracion EA = new EncargadoAdministracion();

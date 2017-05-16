@@ -1,5 +1,7 @@
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page import="entidades.Administrador"%>
+      <%@page import="entidades.Empleado"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +20,10 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
+<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+			String nombre="";
+           if(userSession == null || !(userSession.getTipo().equals("ADM"))){
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
 <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
@@ -36,12 +41,12 @@
         <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
         <li class="divider"></li>
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
-      </ul>
+     </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
     <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
     <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
-     <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -49,7 +54,7 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexADM.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
+    <li class="active"><a href="indexAdmin.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
      	
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
@@ -90,7 +95,7 @@
          
       <ul class="quick-actions" >      
        
-       <li class="bg_ls span5"> <a href="altaUsuarioADM.jsp"> <i class="icon-user"></i> Empleado</a> </li>
+       <li class="bg_ls span5"> <a href="#"> <i class="icon-user"></i> Empleado</a> </li>
              
 
       </ul>
