@@ -20,17 +20,17 @@ import entidades.Vendedor;
 public class DataEmpleado {
 
 	
-	public Empleado getEmpleadoByUsuarioyContrase�a(String usuario,	String contrase�a) throws ApplicationException {
+	public Empleado getEmpleadoByUsuarioyContraseña(String usuario,	String contraseña) throws ApplicationException {
 		
 		ResultSet rs=null;
 		PreparedStatement stmt=null;
 		Empleado e = null;		
 		try {
 			stmt = 	FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select id_empleado, usuario, contrase�a, nombre, apellido, tel, tipo, patente from empleados where usuario=? and contrase�a=?"
+					"select id_empleado, usuario, contraseña, nombre, apellido, tel, tipo, patente from empleados where usuario=? and contraseña=?"
 					);
 			stmt.setString(1, usuario);
-			stmt.setString(2, contrase�a);
+			stmt.setString(2, contraseña);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
 				
@@ -44,7 +44,7 @@ public class DataEmpleado {
 					C.setNombre(rs.getString("nombre"));
 				 	C.setApellido(rs.getString("apellido"));	
 					C.setUsuario(rs.getString("usuario"));
-					C.setContrase�a(rs.getString("contrase�a"));
+					C.setContraseña(rs.getString("contraseña"));
 					C.setTipo(rs.getString("tipo"));
 					C.setPatente(rs.getString("patente"));
 					
@@ -59,7 +59,7 @@ public class DataEmpleado {
 					V.setNombre(rs.getString("nombre"));
 				 	V.setApellido(rs.getString("apellido"));	
 					V.setUsuario(rs.getString("usuario"));
-					V.setContrase�a(rs.getString("contrase�a"));
+					V.setContraseña(rs.getString("contraseña"));
 					V.setTipo(rs.getString("tipo"));
 					
 					e=V; 
@@ -71,7 +71,7 @@ public class DataEmpleado {
 					Adm.setNombre(rs.getString("nombre"));
 				 	Adm.setApellido(rs.getString("apellido"));	
 					Adm.setUsuario(rs.getString("usuario"));
-					Adm.setContrase�a(rs.getString("contrase�a"));
+					Adm.setContraseña(rs.getString("contraseña"));
 					Adm.setTipo(rs.getString("tipo"));
 					
 					e=Adm; 
@@ -83,7 +83,7 @@ public class DataEmpleado {
 				    EA.setNombre(rs.getString("nombre"));
 				 	EA.setApellido(rs.getString("apellido"));	
 					EA.setUsuario(rs.getString("usuario"));
-					EA.setContrase�a(rs.getString("contrase�a"));
+					EA.setContraseña(rs.getString("contraseña"));
 					EA.setTipo(rs.getString("tipo"));
 					
 					e=EA;
@@ -96,7 +96,7 @@ public class DataEmpleado {
 				    DE.setNombre(rs.getString("nombre"));
 				 	DE.setApellido(rs.getString("apellido"));	
 					DE.setUsuario(rs.getString("usuario"));
-					DE.setContrase�a(rs.getString("contrase�a"));
+					DE.setContraseña(rs.getString("contraseña"));
 					DE.setTipo(rs.getString("tipo"));
 					
 					e=DE;					
@@ -182,35 +182,14 @@ public class DataEmpleado {
 		return empleados;
 	}
 
+
 	public void borrarEmpleado(int idemp) {
 		// TODO Auto-generated method stub
 		
-		PreparedStatement stmtPP=null;
+		
 		PreparedStatement stmtP=null;
 	
-	try { // borro primero de la tabla precio_producto_venta
-		stmtPP=FactoryConexion.getInstancia().getConn().prepareStatement(
-				  "delete from precio_producto_venta where Id_Producto=?"
-				);
-		stmtPP.setInt(1, idemp);
-		stmtPP.execute();
-		
-		
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} finally{
-		
-		try {
-			if(stmtPP != null) stmtPP.close();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
+	
 	
 	try { // luego borro el registro de la tabla productos
 		stmtP=FactoryConexion.getInstancia().getConn().prepareStatement(
@@ -239,7 +218,9 @@ public class DataEmpleado {
 		
 	}
 
-	/*public void agregarEmpleado(Empleado emp) throws ApplicationException {
+	public void agregarEmpleado(Empleado emp) throws ApplicationException {
+		// TODO Auto-generated method stub
+	
 		PreparedStatement stmt=null;		
 		ResultSet rs=null;
 	    
@@ -247,13 +228,15 @@ public class DataEmpleado {
 		try {
 			
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"insert into empleados (nombre, apellido, usuario, contrase�a, tel, tipo) values (?,?,?,?,?,?,?)" );
-			stmt.setString(1, emp.getNombre());
-			stmt.setString(2, emp.getApellido());
-			stmt.setString(3, emp.getUsuario());
-			stmt.setString(4, emp.getContrase�a());
+					"insert into empleados (usuario, contraseña, nombre, apellido,  tel, tipo, patente,email) values (?,?,?,?,?,?,?,?)" );
+			stmt.setString(1, emp.getUsuario());
+			stmt.setString(2, emp.getContraseña());
+			stmt.setString(3, emp.getNombre());
+			stmt.setString(4, emp.getApellido());
 			stmt.setInt(5, emp.getTel());
 			stmt.setString(6, emp.getTipo());
+			stmt.setString(7, emp.getPatente());
+			stmt.setString(8, emp.getEmail());
 			stmt.execute();
 
 			
@@ -272,80 +255,99 @@ public class DataEmpleado {
 			}
 			
 		}
-		
 	}
-	}
-*/
 
-	/*public Producto getById(int id) {
+	public Empleado getEmpleadoById(int idEmp) {
+	
 		
-		ResultSet rsProd=null;
-		ResultSet rsPrecio=null;
-		ResultSet rsMat=null;
-		PreparedStatement stmtProd=null;
-		PreparedStatement stmtPrecio=null;
-		PreparedStatement stmtMat=null;
-		Producto p = new Producto();
+		ResultSet rs=null;
+		PreparedStatement stmt=null;
+		Empleado e = new Empleado();
 		
 		
 		try {
-			stmtProd = 	FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select cod_servicio, nombre_servicio, descripcion_servicio from servicios where cod_servicio = ?"
+			stmt = 	FactoryConexion.getInstancia().getConn().prepareStatement(
+					"select tel, email, contraseña from empleados where id_empleado = ?"
 					);
-			stmt.setInt(1, codServicio);
+			stmt.setInt(1, idEmp);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
 	         
 	           
 	           
-	            s.setCod_servicio(rs.getInt("cod_servicio"));
-	            s.setNombre(rs.getString("nombre_servicio"));
-	            s.setDescripcion(rs.getString("descripcion_servicio"));
-	           
-	           
-	        		   
-	        	 stmtPrecio= FactoryConexion.getInstancia().getConn().prepareStatement("select precio from precios_servicios where cod_servicio = ?");
-	   			 stmtPrecio.setInt(1, rs.getInt("cod_servicio"));
-	   			 rsPrecio=stmtPrecio.executeQuery();
-	   			 if(rsPrecio.next()){
-
-	   				
-	   				 s.setPrecio(rsPrecio.getInt("precio"));
-	   				 
-	   				 
-	   			 	}
-	            	
-	           
-	        	
-	        	
+	            e.setTel(rs.getInt("tel"));
+	            e.setEmail(rs.getString("emaiñ"));
+	            e.setContraseña(rs.getString("contraseña"));
+	          	        	
 	            
 	         }
 	      
-	    }catch (SQLException e) {
+	    }catch (SQLException d) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			d.printStackTrace();
 	    } finally
 		{
 			try {
 				if(rs!=null)rs.close();
 				if(stmt!=null) stmt.close();
 				
-				if(rsPrecio!=null)rsPrecio.close();
-				if(stmtPrecio!=null) stmtPrecio.close();
 				
-			} catch (SQLException e) {
+			} catch (SQLException d) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				d.printStackTrace();
 			}
 			FactoryConexion.getInstancia().releaseConn();
 		}
 		
-		return s;
+		return e;
 		
 	}
 
-	*/
-	
+	public void modificarEmpleado(Empleado e) throws ApplicationException {
+		// TODO Auto-generated method stub
+		
 
+		ResultSet rs=null;
+		PreparedStatement stmt=null;
+		
+		
+		try {
+			
+			
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"update empleados set contraseña=?, tel=?,email=? where id_empleado =?"
+					);
+			stmt.setString(1, e.getContraseña());
+			stmt.setInt(2, e.getTel());
+			stmt.setString(3, e.getEmail());
+			stmt.setInt(4, e.getId_empleado());
+			
+		
+			stmt.execute();
+			
+			
+			
+		} catch (SQLException d) {
+			try {
+				FactoryConexion.getInstancia().getConn().rollback();
+			} catch (SQLException e1) {
+				throw new ApplicationException("Error al recuperar habitacion en la base de datos", d);
+			}
+			throw new ApplicationException("Error al modificar habitacion en la base de datos", d);
+		} finally {
+			try {
+			if(stmt!=null) stmt.close();
+			
+					
+			if(rs!=null) rs.close();
+			FactoryConexion.getInstancia().getConn().close();
+			} catch (SQLException d) {
+				throw new ApplicationException("Error al cerrar conexiones con la base de datos", d);
+			}
+			
+		
+	}
 }
+}
+
 

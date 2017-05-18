@@ -1,9 +1,11 @@
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page import="entidades.Empleado"%>
+     <%@page import="negocio.CtrlEmpleado"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci髇</title>
+<title>Materiales::de::Construcci贸n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -18,10 +20,23 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
+ <% int idEmp = Integer.parseInt(request.getParameter("id_empleado"));  
+      CtrlEmpleado ctrl = new CtrlEmpleado();
+      Empleado e= ctrl.getEmpleadoById(idEmp);
+      String email= e.getEmail();
+      int tel= e.getTel();
+      String pass= e.getContrase帽a();
+      //String numeroStr = String.valueOf(h.getNumero());
+      
+      
+      
+       Empleado userSession = (Empleado)session.getAttribute("userSession");
+	String tipo_em = userSession.getTipo();
+	%>  
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci髇</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcci贸n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -87,12 +102,12 @@
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci髇</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci贸n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci髇</a></li>
-        <li><a href="#">Modificar Ubicaci髇</a></li>
-        <li><a href="#">Eliminar Ubicaci髇</a></li>
-        <li><a href="#">Consultar Ubicaci髇</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci贸n</a></li>
+        <li><a href="#">Modificar Ubicaci贸n</a></li>
+        <li><a href="#">Eliminar Ubicaci贸n</a></li>
+        <li><a href="#">Consultar Ubicaci贸n</a></li>
       </ul>
     </li>
     
@@ -143,21 +158,25 @@
           <h5>Modificar datos de usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="#" method="get" class="form-horizontal">
+          <form action="ModificarEmpleado" method="post" class="form-horizontal">
           
             
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
+
                 <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
                 <div id="telef"></div>
+
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
+
                 <input type="text" class="span11" name="apellido"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
                 <div id="emailText"></div>
+
               </div>
             </div>
            
@@ -166,17 +185,23 @@
                 <div class="control-group">
                   <label class="control-label">Password</label>
                   <div class="controls">
-                    <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contrase馻"  onchange="validaPass(this.value)" required >
+
+                    <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contrase帽a"  onchange="validaPass(this.value)" required >
 	                <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
+
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Confirm password</label>
                   <div class="controls">
-                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contrase馻" onchange="validaPass2(this.value)" required>
+                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contrase帽a" onchange="validaPass2(this.value)" required>
             		<label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
+                  <% int idem=Integer.parseInt(request.getParameter("id_empleado")); %>
+                   <input type="hidden" id="id_empleado" name="id_empleado" value="<%= idem %>" >
+                   <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
                 </div>
+                
                 <div class="form-actions">
                   <input type="submit" value="Modificar" class="btn btn-success">
                 </div>

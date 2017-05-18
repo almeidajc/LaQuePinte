@@ -5,7 +5,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+
+<title>Materiales::de::ConstrucciÃ¯Â¿Â½n</title>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -20,6 +22,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
 <!-- 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 	String tipo_em = userSession.getTipo();
@@ -29,7 +32,8 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
+
 </div>
 <!--close-Header-part--> 
 
@@ -57,9 +61,11 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
+
     <li class="active"><a href="indexADM.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
      	
     
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
         <li><a href="altaUsuarioADM.jsp">Nuevo Empleado</a></li>
@@ -121,9 +127,10 @@
         </div>
         <div class="widget-content nopadding">
           <form action="AltaEmpleado" method="post" class="form-horizontal">
-          
-		<input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >          
-        <div class="control-group">
+
+           <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
+            <div class="control-group">
+
               <label class="control-label">Nombre :</label>
               <div class="controls">
                 <input type="text" class="span11" placeholder="Nombre empleado" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
@@ -154,6 +161,7 @@
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
+
                 <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
               	<div id="emailText"></div>
               </div>
@@ -165,7 +173,7 @@
                   <option value="CA">Camionero</option>
                   <option value="VE">Vendedor</option>
                   <option value="DE">Despachante</option>
-                  <option value="EA">Encargado de administración</option>
+                  <option value="EA">Encargado de administraciï¿½n</option>
                  </select>
               </div>
                </div>
@@ -175,6 +183,7 @@
                  <input type="text" class="span11" name="patente" id="patente" placeholder="Patente" />
                </div>
              </div>
+
             <div class="control-group">
               <label class="control-label">Usuario</label>
               <div class="controls">
@@ -186,14 +195,18 @@
                 <div class="control-group">
                   <label class="control-label">Password</label>
                   <div class="controls">
-                    <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Contraseña" onchange="validaPass(this.value)" required>
+
+                    <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Contraseï¿½a" onchange="validaPass(this.value)" required>
+
             		<label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Confirm password</label>
                   <div class="controls">
-                   <input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="Repita la contraseña" onchange="validaPass2(this.value)" required>
+
+                   <input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="Repita la contraseï¿½a" onchange="validaPass2(this.value)" required>
+
             	   <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                 </div>

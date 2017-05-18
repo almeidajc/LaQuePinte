@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-     <%@page import="entidades.Empleado"%>
-     <%@page import="negocio.CtrlEmpleado"%>
+    pageEncoding="ISO-8859-1"%>   
+    <%@page import="entidades.EncargadoAdministracion"%>
+    <%@page import="entidades.Empleado"%>
+    <%@page import="entidades.Cliente"%>
+    <%@page import="negocio.CtrlCliente"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-
 <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="bootstrap/css/fullcalendar.css" />
 <link rel="stylesheet" href="bootstrap/css/matrix-style.css" />
@@ -60,38 +61,21 @@
 
 })(document);
 </script>		
-
-<style type="text/css">
-
-}
-tbody tr:nth-child(odd) {
-  background: #eee;
-}
-
-.input[type=text] {
-    width: 130px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-    width: 100%;
-}
-
-	</style>	
 </head>
 <body>
-<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
-	String tipo_em = userSession.getTipo();
-	/* ESTO NO FUNCIONA PORQUE NO HICIMOS LA PARTE DE USUARIO DEL ADM */ %> 
 
-
+<%   Empleado userSession = (Empleado)session.getAttribute("userSession");
+if(userSession == null || !(userSession.getTipo().equals("VE"))){
+	response.sendRedirect("error405.jsp"); }
+	 String tipo_em = userSession.getTipo();%>
+          	
+            	
 <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
 </div>
 <!--close-Header-part--> 
+
 
 
 <!--top-Header-menu-->
@@ -106,10 +90,10 @@ input[type=text]:focus {
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
     <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
     <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
-     <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -117,7 +101,7 @@ input[type=text]:focus {
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+  <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearpedido.jsp">Crear Pedido</a></li>
@@ -126,34 +110,14 @@ input[type=text]:focus {
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
-        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
-        <li><a href="consulproducto.jsp">Consultar Producto</a></li>
+        <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
-      <ul>
-        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
-        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
-        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
-        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
-      </ul>
-    </li>
-    
-     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
-      <ul>
-        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
-        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
-        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
-        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
-      </ul>
-    </li>
-    
-    
     
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>
@@ -164,50 +128,40 @@ input[type=text]:focus {
       </ul>
     </li>
     
-    <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
-    
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-    
-    
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-      <ul>
-        <li><a href="#">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Cambiar Estado Pedido</a></li>
-        <li><a href="#">Consultar Pedido</a></li>
-      </ul>
-    </li>
-    
   </ul>
 </div>
-<!-- sidebar-menu-->
-
+<!--sidebar-menu-->
 
 <!--main-container-part-->
-
-    <div id="content">
-    <!--breadcrumbs-->
+<div id="content">
+<!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Modificar Empleado</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Cliente</a></div>
    
   </div>
-<!--End-Action boxes-->    
-   
-
-
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
-
-    
-  <div id="titulo">
- <h1>Modificar Empleado</h1>
+<div id="titulo">
+<h1>Baja Cliente</h1><hr>
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
       <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
-      
+      <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
   
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
@@ -215,18 +169,18 @@ input[type=text]:focus {
         
           
           <div class="widget-content nopadding" id="tb_content">
-            <table class="order-table table" class="table table-hover">
+            <table class="order-table table" class="table table-hover" style="text-align:left; ">
     <thead>
       <tr >
       	
-        <th><h5 style="text-align:left; ">ID</h5></th>
+        <th><h5 style="text-align:left; ">DNI</h5></th>
         <th><h5 style="text-align:left; ">NOMBRE</h5></th>
         <th><h5 style="text-align:left; ">APELLIDO</h5></th>
         <th><h5 style="text-align:left; ">TELEFONO</h5></th>
-        <th><h5 style="text-align:left; ">ROL</h5></th>
-        <th><h5 style="text-align:left; ">USUARIO</h5></th> 
-        <th><h5 style="text-align:left; ">PATENTE</h5></th>
-        <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
+        <th><h5 style="text-align:left; ">DIRECCION</h5></th>
+        <th><h5 style="text-align:left; ">EMAIL</h5></th> 
+        <th><h5 style="text-align:left; ">ID ZONA</h5></th>
+        <th><h5 style="text-align:left; ">ELIMINAR</h5></th>
              
       </tr>
     </thead>
@@ -234,33 +188,30 @@ input[type=text]:focus {
     <tbody>
       <tr>
 <%
-    		CtrlEmpleado ctrl = new CtrlEmpleado();
+    		CtrlCliente ctrl = new CtrlCliente();
     		
     		//PUEDO HACER TMB
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 			// habitacios = ctrl.Listar();
 
-	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
-		String tipo = ctrl.listarEmpleados().get(indice).getTipo();
-		if(!tipo.equalsIgnoreCase("EA") && !tipo.equalsIgnoreCase("ADM")){%>  
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTel() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
-	    <td><form method="post" action="modUsuarioEA.jsp">
-           <input type="hidden" id="id_empleado" name="id_empleado" value="<%= ctrl.listarEmpleados().get(indice).getId_empleado()%>" >
+	for (int indice = 0; indice < ctrl.listarClientes().size(); indice++){
+	%>  
+	   <td><h5><%= ctrl.listarClientes().get(indice).getDni() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getNombre() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getApellido() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getTel() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
+	   <td><h5 ><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
+	   <td><form method="post" action="BajaCliente">
+           <input type="hidden" id="dni_cli" name="dni_cli" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button type="submit" class="btn2" name="modempleado" id="modempleado" onClick="">
-           <span class="icon-pencil" style="color: blue; font-size:100%;"></span></a></form></td>
-	  
-	</tr>
+           <button type="submit" class="btn2" name="bajacliente" id="bajacliente" onClick="return confirm('¿Esta Seguro que deseas dar de baja este cliente?')">
+           <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
 	  
 	</tr>
 	<%
-		}
+	
 }
 
 
@@ -276,11 +227,10 @@ input[type=text]:focus {
     
   </div>
 </div>
-  
 <!--End-Action boxes-->    
    
   </div>
-</div>
+
 
 <!--end-main-container-part-->
 
@@ -325,6 +275,7 @@ input[type=text]:focus {
       
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
+              resetMenu();            
           } 
           // else, send page to designated URL            
           else {  

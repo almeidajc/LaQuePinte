@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
+    <%@page import="entidades.Cliente"%>
+    <%@page import="negocio.CtrlCliente"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +19,58 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript"> // inicio tabla js1//
+(function(document) {
+  'use strict';
+
+  var LightTableFilter = (function(Arr) {
+
+    var _input;
+
+    function _onInputEvent(e) {
+      _input = e.target;
+      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+      Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+      });
+    }
+
+    function _filter(row) {
+      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+
+    return {
+      init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+      }
+    };
+  })(Array.prototype);
+
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+      LightTableFilter.init();
+    }
+  });
+
+})(document);
+</script>		
 </head>
 <body>
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
-          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} 
+          	
+           String tipo_em = userSession.getTipo();%>
+          	
 
 
 
@@ -86,18 +133,21 @@
       </ul>
     </li>
 
+    
+    
+     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
 
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="modificarCliente.jsp">Modificar Cliente</a></li>
-        <li><a href="bajaCliente.jsp">Eliminar Cliente</a></li>
-        <li><a href="consultaCliente.jsp">Consultar Cliente</a></li>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
 
-
+    
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci�n</span> </a>
+
       <ul>
         <li><a href="agregarubicacion.jsp">Agregar Ubicaci�n</a></li>
         <li><a href="#">Modificar Ubicaci�n</a></li>
@@ -136,9 +186,93 @@
 
 <!--Action boxes-->
 <div id="titulo">
- <h1>Baja Cliente</h1>
+<h1>Baja Cliente</h1><hr>
  </div>
-<!--End-Action boxes-->
+
+  <div class="container-fluid">
+     <div class="row-fluid">
+      <div class="span12"> <!-- TAMA�O FORMULARIOS -->
+      <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
+  
+     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+
+        <div class="widget-box">
+        
+          
+          <div class="widget-content nopadding" id="tb_content">
+            <table class="order-table table" class="table table-hover" style="text-align:left; ">
+    <thead>
+      <tr >
+      	
+        <th><h5 style="text-align:left; ">DNI</h5></th>
+        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:left; ">APELLIDO</h5></th>
+        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
+        <th><h5 style="text-align:left; ">DIRECCION</h5></th>
+        <th><h5 style="text-align:left; ">EMAIL</h5></th> 
+        <th><h5 style="text-align:left; ">ID ZONA</h5></th>
+        <th><h5 style="text-align:left; ">ELIMINAR</h5></th>
+             
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+<%
+    		CtrlCliente ctrl = new CtrlCliente();
+    		
+    		//PUEDO HACER TMB
+			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+			// habitacios = ctrl.Listar();
+
+	for (int indice = 0; indice < ctrl.listarClientes().size(); indice++){
+	%>  
+	   <td><h5><%= ctrl.listarClientes().get(indice).getDni() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getNombre() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getApellido() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getTel() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
+	   <td><h5><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
+	   <td><h5 ><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
+	   <td><form method="post" action="BajaCliente">
+           <input type="hidden" id="dni_cli" name="dni_cli" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
+            <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
+           <button type="submit" class="btn2" name="bajacliente" id="bajacliente" onClick="return confirm('�Esta Seguro que deseas dar de baja este cliente?')">
+           <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
+	  
+	</tr>
+	<%
+	
+}
+
+
+      %>
+      
+     
+    </tbody>
+  </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<!--End-Action boxes-->    
+   
 
   </div>
 
