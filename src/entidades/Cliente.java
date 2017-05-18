@@ -7,6 +7,15 @@ public class Cliente {
 	private String apellido;	
 	private String direccion;
 	private String email;
+	
+	private int id_zona;
+	
+	public int getId_zona() {
+		return id_zona;
+	}
+	public void setId_zona(int id_zona) {
+		this.id_zona = id_zona;
+	}
 	public int getDni() {
 		return dni;
 	}

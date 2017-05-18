@@ -131,7 +131,7 @@
 
 <!--Action boxes-->
   <div id="titulo">
- <h1>Consultar Producto</h1><hr>
+ <h1>Consultar Empleado</h1><hr>
  </div>
   <div class="container-fluid">
      <div class="row-fluid">

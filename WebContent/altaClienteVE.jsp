@@ -25,7 +25,8 @@
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
             if(userSession == null || !(userSession.getTipo().equals("VE"))){
-            	response.sendRedirect("error405.jsp"); }%> 
+            	response.sendRedirect("error405.jsp"); }
+            	 String tipo_em = userSession.getTipo();%> 
             	
 <!--Header-part-->
 <div id="header">
@@ -58,7 +59,7 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+  <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearpedido.jsp">Crear Pedido</a></li>
@@ -67,16 +68,14 @@
       </ul>
     </li>
     
-  
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="altaclienteVE.jsp">Nuevo Cliente</a></li>
+        <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
         <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
         <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
     
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>
@@ -84,20 +83,6 @@
         <li><a href="#">Modificar Ubicación</a></li>
         <li><a href="#">Eliminar Ubicación</a></li>
         <li><a href="#">Consultar Ubicación</a></li>
-      </ul>
-    </li>
-    
-   
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-    
-    
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-      <ul>
-        <li><a href="#">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Cambiar Estado Pedido</a></li>
-        <li><a href="#">Consultar Pedido</a></li>
       </ul>
     </li>
     
@@ -122,12 +107,27 @@
    
   <div class="row-fluid">
     <div class="span6">
+    <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
           <h5>Alta Cliente</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="#" method="get" class="form-horizontal">
+          <form action="AltaCliente" method="post" class="form-horizontal">
+          <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
             <div class="control-group">
               <label class="control-label">Nombre :</label>
               <div class="controls">

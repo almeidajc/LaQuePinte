@@ -142,14 +142,15 @@ input[type=text]:focus {
       </ul>
     </li>
     
-      <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="modificarCliente.jsp">Modificar Cliente</a></li>
-        <li><a href="bajaCliente.jsp">Eliminar Cliente</a></li>
-        <li><a href="consultaCliente.jsp">Consultar Cliente</a></li>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
+    
     
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>

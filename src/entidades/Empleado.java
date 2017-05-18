@@ -10,6 +10,11 @@ public class Empleado {
 	private String tipo;
 	private int tel;
 	private String patente;
+	private String email;
+	
+	public String getEmail() {
+		return email;
+	}
 	
 	public int getId_empleado() {
 		return id_empleado;
@@ -59,6 +64,10 @@ public class Empleado {
 	}
 	public String getPatente() {
 		return patente;
+	}
+	public void setEmail(String email) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
