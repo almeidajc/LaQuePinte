@@ -70,8 +70,8 @@
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
-        <li><a href="#">Modificar Cliente</a></li>
-        <li><a href="#">Eliminar Cliente</a></li>
+        <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
       </ul>
     </li>

@@ -23,7 +23,8 @@
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
-          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+           String tipo_em = userSession.getTipo();%>
 
 <!--Header-part-->
 <div id="header">
@@ -85,10 +86,10 @@
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="modificarCliente.jsp">Modificar Cliente</a></li>
-        <li><a href="bajaCliente.jsp">Eliminar Cliente</a></li>
-        <li><a href="consultaCliente.jsp">Consultar Cliente</a></li>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
     
@@ -138,12 +139,27 @@
    
   <div class="row-fluid">
     <div class="span6">
+   <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
           <h5>Alta Cliente</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="#" method="get" class="form-horizontal">
+          <form action="AltaCliente" method="post" class="form-horizontal">
+          <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
             <div class="control-group">
               <label class="control-label">Nombre :</label>
               <div class="controls">
@@ -171,7 +187,7 @@
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" />
+                <input type="text" class="span11" name="email" id="email" placeholder="Nombre de email" />
               </div>
             </div>
            

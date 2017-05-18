@@ -146,17 +146,21 @@ input[type=text]:focus {
       </ul>
     </li>
     
-      <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+
+        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="modificarCliente.jsp">Modificar Cliente</a></li>
-        <li><a href="bajaCliente.jsp">Eliminar Cliente</a></li>
-        <li><a href="consultaCliente.jsp">Consultar Cliente</a></li>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
 
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+
+    
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci�n</span> </a>
 
       <ul>
         <li><a href="agregarubicacion.jsp">Agregar Ubicaciï¿½n</a></li>
@@ -193,6 +197,7 @@ input[type=text]:focus {
   <div id="content-header">
 
     <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Empleado</a></div>
+   
 
   </div>
 <!--End-Action boxes-->
@@ -209,8 +214,22 @@ input[type=text]:focus {
 
   <div class="container-fluid">
      <div class="row-fluid">
-      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
-      
+      <div class="span12"> <!-- TAMA�O FORMULARIOS -->
+      <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
+
   
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
@@ -256,7 +275,9 @@ input[type=text]:focus {
 	    <td><form method="post" action="BajaEmpleado">
            <input type="hidden" id="id_empleado" name="id_empleado" value="<%= ctrl.listarEmpleados().get(indice).getId_empleado()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button type="submit" class="btn2" name="bajaempleado" id="bajaempleado" onClick="return confirm('¿Esta Seguro que deseas dar de baja este empleado?')">
+
+           <button type="submit" class="btn2" name="bajaempleado" id="bajaempleado" onClick="return confirm('�Esta Seguro que deseas dar de baja este empleado?')">
+
            <span class="icon-trash" style="color: red; font-size:100%;"></span></a></form></td>
 	  
 	</tr>

@@ -15,12 +15,21 @@ public class CtrlEmpleado {
 		catalogo = new DataEmpleado();
 	}
 
-	public Empleado getEmpleadoByUsuarioyContraseña(String usuario,	String contraseña) throws ApplicationException {
+	public Empleado getEmpleadoByUsuarioyContraseÃ±a(String usuario,	String contraseÃ±a) throws ApplicationException {
 		
-		return catalogo.getEmpleadoByUsuarioyContraseña(usuario, contraseña);
+		return catalogo.getEmpleadoByUsuarioyContraseÃ±a(usuario, contraseÃ±a);
 		
 		
 	}
+
+	
+public Empleado getEmpleadoById(int idEmp) throws ApplicationException {
+		
+		return catalogo.getEmpleadoById(idEmp);
+		
+		
+	}
+
 	public ArrayList<Empleado> listarEmpleados(){
 		return catalogo.listarEmpleados();
 	}
@@ -31,6 +40,20 @@ public class CtrlEmpleado {
 		catalogo.borrarEmpleado(idemp);
 		
 	}
+
+
+
+
+	public void agregarEmpleado(Empleado e) throws ApplicationException {
+		
+		catalogo.agregarEmpleado(e);
+	}
+
+	public void modificarEmpleado(Empleado e) throws ApplicationException {
+		// TODO Auto-generated method stub
+		catalogo.modificarEmpleado(e);
+	}
+
 
 /*	public void agregarEmpleado(Empleado emp) throws ApplicationException {
 		// TODO Auto-generated method stub

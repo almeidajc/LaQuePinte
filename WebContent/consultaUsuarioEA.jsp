@@ -142,16 +142,21 @@ input[type=text]:focus {
       </ul>
     </li>
 
-      <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+    
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="modificarCliente.jsp">Modificar Cliente</a></li>
-        <li><a href="bajaCliente.jsp">Eliminar Cliente</a></li>
-        <li><a href="consultaCliente.jsp">Consultar Cliente</a></li>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
 
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaciï¿½n</span> </a>
+    
+    
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci�n</span> </a>
+
       <ul>
         <li><a href="agregarubicacion.jsp">Agregar Ubicaciï¿½n</a></li>
         <li><a href="#">Modificar Ubicaciï¿½n</a></li>
@@ -202,7 +207,9 @@ input[type=text]:focus {
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
-      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
+
+      <div class="span12"> <!-- TAMA�O FORMULARIOS -->
+
       
   
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
@@ -237,7 +244,7 @@ input[type=text]:focus {
 
 	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
 	%>  
-   
+
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>

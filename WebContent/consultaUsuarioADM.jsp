@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::ConstrucciÃ³n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -67,7 +67,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de ConstrucciÃ³n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -131,11 +131,13 @@
 
 <!--Action boxes-->
   <div id="titulo">
- <h1>Consultar Producto</h1><hr>
+
+ <h1>Consultar Empleado</h1><hr>
+
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
-      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
+      <div class="span12"> <!-- TAMAÃ‘O FORMULARIOS -->
       
   
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
