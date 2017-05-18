@@ -20,17 +20,17 @@ import entidades.Vendedor;
 public class DataEmpleado {
 
 	
-	public Empleado getEmpleadoByUsuarioyContraseña(String usuario,	String contraseña) throws ApplicationException {
+	public Empleado getEmpleadoByUsuarioyContraseÃ±a(String usuario,	String contraseÃ±a) throws ApplicationException {
 		
 		ResultSet rs=null;
 		PreparedStatement stmt=null;
 		Empleado e = null;		
 		try {
 			stmt = 	FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select id_empleado, usuario, contraseña, nombre, apellido, tel, tipo, patente from empleados where usuario=? and contraseña=?"
+					"select id_empleado, usuario, contraseÃ±a, nombre, apellido, tel, tipo, patente from empleados where usuario=? and contraseÃ±a=?"
 					);
 			stmt.setString(1, usuario);
-			stmt.setString(2, contraseña);
+			stmt.setString(2, contraseÃ±a);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
 				
@@ -44,7 +44,7 @@ public class DataEmpleado {
 					C.setNombre(rs.getString("nombre"));
 				 	C.setApellido(rs.getString("apellido"));	
 					C.setUsuario(rs.getString("usuario"));
-					C.setContraseña(rs.getString("contraseña"));
+					C.setContraseÃ±a(rs.getString("contraseÃ±a"));
 					C.setTipo(rs.getString("tipo"));
 					C.setPatente(rs.getString("patente"));
 					
@@ -59,7 +59,7 @@ public class DataEmpleado {
 					V.setNombre(rs.getString("nombre"));
 				 	V.setApellido(rs.getString("apellido"));	
 					V.setUsuario(rs.getString("usuario"));
-					V.setContraseña(rs.getString("contraseña"));
+					V.setContraseÃ±a(rs.getString("contraseÃ±a"));
 					V.setTipo(rs.getString("tipo"));
 					
 					e=V; 
@@ -71,7 +71,7 @@ public class DataEmpleado {
 					Adm.setNombre(rs.getString("nombre"));
 				 	Adm.setApellido(rs.getString("apellido"));	
 					Adm.setUsuario(rs.getString("usuario"));
-					Adm.setContraseña(rs.getString("contraseña"));
+					Adm.setContraseÃ±a(rs.getString("contraseÃ±a"));
 					Adm.setTipo(rs.getString("tipo"));
 					
 					e=Adm; 
@@ -83,7 +83,7 @@ public class DataEmpleado {
 				    EA.setNombre(rs.getString("nombre"));
 				 	EA.setApellido(rs.getString("apellido"));	
 					EA.setUsuario(rs.getString("usuario"));
-					EA.setContraseña(rs.getString("contraseña"));
+					EA.setContraseÃ±a(rs.getString("contraseÃ±a"));
 					EA.setTipo(rs.getString("tipo"));
 					
 					e=EA;
@@ -96,7 +96,7 @@ public class DataEmpleado {
 				    DE.setNombre(rs.getString("nombre"));
 				 	DE.setApellido(rs.getString("apellido"));	
 					DE.setUsuario(rs.getString("usuario"));
-					DE.setContraseña(rs.getString("contraseña"));
+					DE.setContraseÃ±a(rs.getString("contraseÃ±a"));
 					DE.setTipo(rs.getString("tipo"));
 					
 					e=DE;					
@@ -182,6 +182,7 @@ public class DataEmpleado {
 		return empleados;
 	}
 
+
 	public void borrarEmpleado(int idemp) {
 		// TODO Auto-generated method stub
 		
@@ -227,9 +228,9 @@ public class DataEmpleado {
 		try {
 			
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"insert into empleados (usuario, contraseña, nombre, apellido,  tel, tipo, patente,email) values (?,?,?,?,?,?,?,?)" );
+					"insert into empleados (usuario, contraseÃ±a, nombre, apellido,  tel, tipo, patente,email) values (?,?,?,?,?,?,?,?)" );
 			stmt.setString(1, emp.getUsuario());
-			stmt.setString(2, emp.getContraseña());
+			stmt.setString(2, emp.getContraseÃ±a());
 			stmt.setString(3, emp.getNombre());
 			stmt.setString(4, emp.getApellido());
 			stmt.setInt(5, emp.getTel());
@@ -266,7 +267,7 @@ public class DataEmpleado {
 		
 		try {
 			stmt = 	FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select tel, email, contraseña from empleados where id_empleado = ?"
+					"select tel, email, contraseÃ±a from empleados where id_empleado = ?"
 					);
 			stmt.setInt(1, idEmp);
 			rs = stmt.executeQuery();
@@ -275,8 +276,8 @@ public class DataEmpleado {
 	           
 	           
 	            e.setTel(rs.getInt("tel"));
-	            e.setEmail(rs.getString("emaiñ"));
-	            e.setContraseña(rs.getString("contraseña"));
+	            e.setEmail(rs.getString("emaiÃ±"));
+	            e.setContraseÃ±a(rs.getString("contraseÃ±a"));
 	          	        	
 	            
 	         }
@@ -314,9 +315,9 @@ public class DataEmpleado {
 			
 			
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"update empleados set contraseña=?, tel=?,email=? where id_empleado =?"
+					"update empleados set contraseÃ±a=?, tel=?,email=? where id_empleado =?"
 					);
-			stmt.setString(1, e.getContraseña());
+			stmt.setString(1, e.getContraseÃ±a());
 			stmt.setInt(2, e.getTel());
 			stmt.setString(3, e.getEmail());
 			stmt.setInt(4, e.getId_empleado());
@@ -348,6 +349,5 @@ public class DataEmpleado {
 	}
 }
 }
-
 
 

@@ -6,16 +6,17 @@ public class Empleado {
 	private String nombre;	
 	private String apellido;	
 	private String usuario;
-	private String contraseña;
+	private String contraseÃ±a;
 	private String tipo;
 	private int tel;
 	private String patente;
+
 	private String email;
 	
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public int getId_empleado() {
 		return id_empleado;
 	}
@@ -40,11 +41,11 @@ public class Empleado {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getContraseÃ±a() {
+		return contraseÃ±a;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContraseÃ±a(String contraseÃ±a) {
+		this.contraseÃ±a = contraseÃ±a;
 	}
 	public String getTipo() {
 		return tipo;
@@ -65,9 +66,11 @@ public class Empleado {
 	public String getPatente() {
 		return patente;
 	}
+
 	public void setEmail(String email) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
