@@ -1,5 +1,5 @@
 /test/*
-/build/*
+build/*
 /dist/*
 /libraryencrypt/*
 /nbproject/*

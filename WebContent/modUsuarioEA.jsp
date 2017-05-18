@@ -149,13 +149,15 @@
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
+                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
+                <div id="telef"></div>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" />
+                <input type="text" class="span11" name="apellido"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="emailText"></div>
               </div>
             </div>
            
@@ -164,15 +166,15 @@
                 <div class="control-group">
                   <label class="control-label">Password</label>
                   <div class="controls">
-                    <input type="password" id="pass_1" name="contrasena" class="form-control" placeholder="Contraseña" required>
-            <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
+                    <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contraseña"  onchange="validaPass(this.value)" required >
+	                <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Confirm password</label>
                   <div class="controls">
-                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseña" required>
-            <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
+                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseña" onchange="validaPass2(this.value)" required>
+            		<label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                 </div>
                 <div class="form-actions">

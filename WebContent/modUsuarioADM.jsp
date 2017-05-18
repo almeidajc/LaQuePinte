@@ -1,5 +1,7 @@
-   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page import="entidades.Empleado"%>
+     <%@page import="negocio.CtrlEmpleado"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +20,19 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
+<%/* int idEmp = Integer.parseInt(request.getParameter("id_empleado"));  
+      CtrlEmpleado ctrl = new CtrlEmpleado();
+      Empleado e= ctrl.getEmpleadoById(idEmp);
+      String email= e.getEmail();
+      int tel= e.getTel();
+      String pass= e.getContraseña();
+      //String numeroStr = String.valueOf(h.getNumero());
+      
+      
+       Empleado userSession = (Empleado)session.getAttribute("userSession");
+	String tipo_em = userSession.getTipo();
+	/* ESTO NO FUNCIONA PORQUE NO HICIMOS LA PARTE DE USUARIO DEL ADM */ %> 
+	
 <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
@@ -96,19 +110,21 @@
           <h5>Modificar datos de usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="#" method="get" class="form-horizontal">
+          <form action="ModificarEmpleado" method="post" class="form-horizontal">
           
             
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
+                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
+                <div id="telef"></div>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" />
+                <input type="text" class="span11" name="apellido"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="emailText"></div>
               </div>
             </div>
            
@@ -117,17 +133,22 @@
                 <div class="control-group">
                   <label class="control-label">Password</label>
                   <div class="controls">
-                    <input type="password" id="pass_1" name="contrasena" class="form-control" placeholder="Contraseña" required>
-            <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
+	                  <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contraseña"  onchange="validaPass(this.value)" required >
+	                  <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Confirm password</label>
                   <div class="controls">
-                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseña" required>
-            <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
+                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseña" onchange="validaPass2(this.value)" required>
+           		   <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
+                  <% int idem=Integer.parseInt(request.getParameter("id_empleado")); %>
+                  <input type="hidden" id="id_empleado" name="id_empleado" value="<%= idem %>" >
+ 				  <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
+
                 </div>
+                
                 <div class="form-actions">
                   <input type="submit" value="Modificar" class="btn btn-success">
                 </div>
