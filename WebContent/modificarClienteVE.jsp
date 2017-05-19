@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="entidades.EncargadoAdministracion"%>
+    <%@page import="entidades.Vendedor"%>
     <%@page import="entidades.Empleado"%>
     <%@page import="entidades.Cliente"%>
     <%@page import="negocio.CtrlCliente"%>
@@ -64,22 +64,18 @@
 </head>
 <body>
 
-<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
-			String nombre="";
-           if(userSession == null || !(userSession.getTipo().equals("EA"))){
-          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} 
+<%   Empleado userSession = (Empleado)session.getAttribute("userSession");
+		if(userSession == null || !(userSession.getTipo().equals("VE"))){
+		response.sendRedirect("error405.jsp"); }
+	 String tipo_em = userSession.getTipo();%>
           	
-           String tipo_em = userSession.getTipo();%>
-          	
-
-
-
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
 </div>
-<!--close-Header-part-->
+<!--close-Header-part--> 
+
 
 
 <!--top-Header-menu-->
@@ -94,7 +90,7 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
     <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
     <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
@@ -102,11 +98,10 @@
 </div>
 <!--close-top-Header-menu-->
 
-
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+  <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearpedido.jsp">Crear Pedido</a></li>
@@ -114,63 +109,25 @@
         <li><a href="#">Pagar Deuda</a></li>
       </ul>
     </li>
-
-    <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
-      <ul>
-        <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
-        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
-        <li><a href="consulproducto.jsp">Consultar Producto</a></li>
-      </ul>
-    </li>
-
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
-      <ul>
-        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
-        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
-        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
-        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
-      </ul>
-    </li>
-
     
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+      <ul>
+        <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
+      </ul>
+    </li>
     
-     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
-
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>
-        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
-        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
-        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
-        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
+        <li><a href="#">Modificar Ubicación</a></li>
+        <li><a href="#">Eliminar Ubicación</a></li>
+        <li><a href="#">Consultar Ubicación</a></li>
       </ul>
     </li>
-
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaciï¿½n</span> </a>
-
-      <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaciï¿½n</a></li>
-        <li><a href="#">Modificar Ubicaciï¿½n</a></li>
-        <li><a href="#">Eliminar Ubicaciï¿½n</a></li>
-        <li><a href="#">Consultar Ubicaciï¿½n</a></li>
-      </ul>
-    </li>
-
-    <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
-
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-
-
-
-    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-      <ul>
-        <li><a href="#">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Cambiar Estado Pedido</a></li>
-        <li><a href="#">Consultar Pedido</a></li>
-      </ul>
-    </li>
-
   </ul>
 </div>
 <!--sidebar-menu-->
@@ -179,8 +136,8 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Cliente</a></div>
-
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Cliente</a></div>
+   
   </div>
 <!--End-breadcrumbs-->
 
@@ -249,7 +206,7 @@
 	   <td><h5 ><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
 	   
 	   
-	   <td><form method="post" action="modClienteEA.jsp">
+	   <td><form method="post" action="modClienteVE.jsp">
            <input type="hidden" id="dni_cli" name="dni_cli" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
            <button type="submit" class="btn2" name="bajacliente" id="bajacliente" onClick="">

@@ -15,9 +15,9 @@ public class CtrlEmpleado {
 		catalogo = new DataEmpleado();
 	}
 
-	public Empleado getEmpleadoByUsuarioyContraseÃ±a(String usuario,	String contraseÃ±a) throws ApplicationException {
+	public Empleado getEmpleadoByUsuarioycontraseña(String usuario,	String contraseña) throws ApplicationException {
 		
-		return catalogo.getEmpleadoByUsuarioyContraseÃ±a(usuario, contraseÃ±a);
+		return catalogo.getEmpleadoByUsuarioycontraseña(usuario, contraseña);
 		
 		
 	}

@@ -8,22 +8,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import negocio.CtrlCliente;
 import negocio.CtrlEmpleado;
 import appExceptions.ApplicationException;
+import entidades.Cliente;
 import entidades.Empleado;
 
 
 /**
- * Servlet implementation class ModificarEmpleado
+ * Servlet implementation class ModificarCliente
  */
-@WebServlet("/ModificarEmpleado")
-public class ModificarEmpleado extends HttpServlet {
+@WebServlet("/ModificarCliente")
+public class ModificarCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificarEmpleado() {
+    public ModificarCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,33 +43,34 @@ public class ModificarEmpleado extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		Empleado e = new Empleado();
+		Cliente c = new Cliente();
 		
-		String tipo_em = request.getParameter("tipo_empleado");
+		String tipo_em = request.getParameter("tipo_em");
 		
-		int idemp = Integer.parseInt(request.getParameter("id_empleado"));
-		e.setId_empleado(idemp);
+		int dnicli = Integer.parseInt(request.getParameter("dni_cli"));
+		c.setDni(dnicli);
+		c.setNombre((request.getParameter("nombre")));
+		c.setApellido((request.getParameter("apellido")));
+		c.setDireccion((request.getParameter("direccion")));
+		c.setTel(Integer.parseInt(request.getParameter("tel")));
+		c.setEmail((request.getParameter("email")));
 		
 		
-		e.setTel(Integer.parseInt(request.getParameter("tel")));
-		e.setEmail((request.getParameter("email")));
-		e.setContraseña((request.getParameter("contrasena")));
-		
-		CtrlEmpleado ctrl = new CtrlEmpleado();
+		CtrlCliente ctrl = new CtrlCliente();
 
 		
 	try {
-		ctrl.modificarEmpleado(e);
+		ctrl.modificarCliente(c);
 	} catch (ApplicationException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
 	if(tipo_em.equalsIgnoreCase("EA")){
-		request.setAttribute("mensaje", "Empleado agregado correctamente");
-		request.getRequestDispatcher("modificarUsuarioEA.jsp").forward(request, response);
+		request.setAttribute("mensaje", "Cliente agregado correctamente");
+		request.getRequestDispatcher("modificarClienteEA.jsp").forward(request, response);
 		}
 		else{
 			request.setAttribute("mensaje", "Empleado agregado correctamente");
-			request.getRequestDispatcher("modificarUsuarioADM.jsp").forward(request, response);
+			request.getRequestDispatcher("modificarClienteVE.jsp").forward(request, response);
 		}
 	}}

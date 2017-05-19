@@ -6,7 +6,7 @@ public class Empleado {
 	private String nombre;	
 	private String apellido;	
 	private String usuario;
-	private String contraseÃ±a;
+	private String contraseña;
 	private String tipo;
 	private int tel;
 	private String patente;
@@ -41,11 +41,11 @@ public class Empleado {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	public String getContraseÃ±a() {
-		return contraseÃ±a;
+	public String getContraseña() {
+		return contraseña;
 	}
-	public void setContraseÃ±a(String contraseÃ±a) {
-		this.contraseÃ±a = contraseÃ±a;
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 	public String getTipo() {
 		return tipo;

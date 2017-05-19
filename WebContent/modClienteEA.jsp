@@ -20,6 +20,24 @@
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
+<% int dniCli = Integer.parseInt(request.getParameter("dni_cli"));  
+      CtrlCliente ctrl = new CtrlCliente();
+      Cliente c =ctrl.getClienteByDni(dniCli);
+      String nombrecli= c.getNombre();
+      String apellido= c.getApellido();
+      String email= c.getEmail();
+      String direccion= c.getDireccion();
+      int tel= c.getTel();
+      
+     
+      //String numeroStr = String.valueOf(h.getNumero());
+      
+      
+      
+       Empleado userSession = (Empleado)session.getAttribute("userSession");
+	String tipo_em = userSession.getTipo();
+	%>  
+
 <script type="text/javascript"> // inicio tabla js1//
 (function(document) {
   'use strict';
@@ -64,12 +82,12 @@
 </head>
 <body>
 
-<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+<%  
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
           	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} 
           	
-           String tipo_em = userSession.getTipo();%>
+          %>
           	
 
 
@@ -186,101 +204,82 @@
 
 <!--Action boxes-->
 <div id="titulo">
-<h1>Modificar Cliente</h1><hr>
+ <h1>Modificar Empleado</h1>
  </div>
-
-  <div class="container-fluid">
-     <div class="row-fluid">
-      <div class="span12"> <!-- TAMA�O FORMULARIOS -->
-      <% 
-      			String mensaje=(String)request.getAttribute("mensaje");
-        		if(mensaje!=null){
-      		%>
-      		<div class="alert alert-success">
-   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> . 
-  			</div>
-      		
-      			
-      		<%
-        		}
-      			
-      		%>
-  
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
-        <div class="widget-box">
-        
+  <div class="container-fluid"><hr>
+   
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>Modificar datos de usuario</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form action="ModificarCliente" method="post" class="form-horizontal">
           
-          <div class="widget-content nopadding" id="tb_content">
-            <table class="order-table table" class="table table-hover" style="text-align:left; ">
-    <thead>
-      <tr >
-      	
-        <th><h5 style="text-align:left; ">DNI</h5></th>
-        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:left; ">APELLIDO</h5></th>
-        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
-        <th><h5 style="text-align:left; ">DIRECCION</h5></th>
-        <th><h5 style="text-align:left; ">EMAIL</h5></th> 
-        <th><h5 style="text-align:left; ">ID ZONA</h5></th>
-        <th><h5 style="text-align:left; ">MODIFICAR</h5></th>
-             
-      </tr>
-    </thead>
-    
-    <tbody>
-      <tr>
-<%
-    		CtrlCliente ctrl = new CtrlCliente();
-    		
-    		//PUEDO HACER TMB
-			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
-			// habitacios = ctrl.Listar();
+             <div class="control-group">
+              <label class="control-label">Nombre :</label>
+              <div class="controls">
 
-	for (int indice = 0; indice < ctrl.listarClientes().size(); indice++){
-	%>  
-	   <td><h5><%= ctrl.listarClientes().get(indice).getDni() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getNombre() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getApellido() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getTel() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
-	   <td><h5 ><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
-	   
-	   
-	   <td><form method="post" action="modClienteEA.jsp">
-           <input type="hidden" id="dni_cli" name="dni_cli" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
-            <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button type="submit" class="btn2" name="bajacliente" id="bajacliente" onClick="">
-           <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
-	  
-	</tr>
-	<%
-	
-}
+                <input type="text" class="span11" name="nombre"  value=" <%= nombrecli %>" id="nombre" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="emailText"></div>
+                   </div>
+            </div>
+                 <div class="control-group">
+              <label class="control-label">Apellido :</label>
+              <div class="controls">
 
+                <input type="text" class="span11" name="apellido"  value=" <%= apellido %>" id="apellido" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="emailText"></div>
+               </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Telefono</label>
+              <div class="controls">
 
-      %>
-      
-     
-    </tbody>
-  </table>
-          </div>
+                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
+                <div id="telef"></div>
+
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Email :</label>
+              <div class="controls">
+
+                <input type="text" class="span11" name="email"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="emailText"></div>
+
+              </div>
+            </div>
+           
+              <div class="control-group">
+              <label class="control-label">Direccion :</label>
+              <div class="controls">
+
+                <input type="text" class="span11" name="direccion"  value=" <%= direccion %>" id="direccion" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="direccionText"></div>
+
+                  
+                </div>
+                   <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
+                    <input type="hidden" id="dni_cli" name="dni_cli" value="<%= dniCli %>" >
+                </div>
+                
+                <div class="form-actions">
+                  <input type="submit" value="Modificar" class="btn btn-success">
+                </div>
+              </form>
         </div>
       </div>
     </div>
-    
-  </div>
-</div>
+    </div>
 <!--End-Action boxes-->    
    
-
   </div>
-
-
+</div>
+</div>
 <!--end-main-container-part-->
-
+</div>
 
 <!--Footer-part-->
 
@@ -290,27 +289,27 @@
 
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/excanvas.min.js"></script>
-<script src="bootstrap/js/jquery.min.js"></script>
-<script src="bootstrap/js/jquery.ui.custom.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap/js/jquery.flot.min.js"></script>
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
-<script src="bootstrap/js/jquery.peity.min.js"></script>
-<script src="bootstrap/js/fullcalendar.min.js"></script>
-<script src="bootstrap/js/matrix.js"></script>
-<script src="bootstrap/js/matrix.dashboard.js"></script>
-<script src="bootstrap/js/jquery.gritter.min.js"></script>
-<script src="bootstrap/js/matrix.interface.js"></script>
-<script src="bootstrap/js/matrix.chat.js"></script>
-<script src="bootstrap/js/jquery.validate.js"></script>
-<script src="bootstrap/js/matrix.form_validation.js"></script>
-<script src="bootstrap/js/jquery.wizard.js"></script>
-<script src="bootstrap/js/jquery.uniform.js"></script>
-<script src="bootstrap/js/select2.min.js"></script>
-<script src="bootstrap/js/matrix.popover.js"></script>
-<script src="bootstrap/js/jquery.dataTables.min.js"></script>
-<script src="bootstrap/js/matrix.tables.js"></script>
+<script src="bootstrap/js/excanvas.min.js"></script> 
+<script src="bootstrap/js/jquery.min.js"></script> 
+<script src="bootstrap/js/jquery.ui.custom.js"></script> 
+<script src="bootstrap/js/bootstrap.min.js"></script> 
+<script src="bootstrap/js/jquery.flot.min.js"></script> 
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
+<script src="bootstrap/js/jquery.peity.min.js"></script> 
+<script src="bootstrap/js/fullcalendar.min.js"></script> 
+<script src="bootstrap/js/matrix.js"></script> 
+<script src="bootstrap/js/matrix.dashboard.js"></script> 
+<script src="bootstrap/js/jquery.gritter.min.js"></script> 
+<script src="bootstrap/js/matrix.interface.js"></script> 
+<script src="bootstrap/js/matrix.chat.js"></script> 
+<script src="bootstrap/js/jquery.validate.js"></script> 
+<script src="bootstrap/js/matrix.form_validation.js"></script> 
+<script src="bootstrap/js/jquery.wizard.js"></script> 
+<script src="bootstrap/js/jquery.uniform.js"></script> 
+<script src="bootstrap/js/select2.min.js"></script> 
+<script src="bootstrap/js/matrix.popover.js"></script> 
+<script src="bootstrap/js/jquery.dataTables.min.js"></script> 
+<script src="bootstrap/js/matrix.tables.js"></script> 
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
@@ -319,13 +318,12 @@
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-
+      
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();
-          }
-          // else, send page to designated URL
-          else {
+          } 
+          // else, send page to designated URL            
+          else {  
             document.location.href = newURL;
           }
       }

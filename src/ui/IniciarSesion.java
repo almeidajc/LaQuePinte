@@ -50,7 +50,7 @@ public class IniciarSesion extends HttpServlet {
 		Empleado E = new Empleado();
 		
 		try {
-			E = ctrlE.getEmpleadoByUsuarioyContraseña (usuario, contraseña);
+			E = ctrlE.getEmpleadoByUsuarioycontraseña (usuario, contraseña);
 		} catch (ApplicationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

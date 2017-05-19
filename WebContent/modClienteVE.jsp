@@ -1,18 +1,17 @@
-
-  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@page import="entidades.Empleado"%>
-     <%@page import="negocio.CtrlEmpleado"%>
+    <%@page import="entidades.Vendedor"%>
+    <%@page import="entidades.Empleado"%>
+    <%@page import="entidades.Cliente"%>
+    <%@page import="negocio.CtrlCliente"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::ConstrucciÃ³n</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-
 <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="bootstrap/css/fullcalendar.css" />
 <link rel="stylesheet" href="bootstrap/css/matrix-style.css" />
@@ -20,28 +19,85 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-</head>
-<body>
 
-<% int idEmp = Integer.parseInt(request.getParameter("id_empleado"));  
-
-      CtrlEmpleado ctrl = new CtrlEmpleado();
-      Empleado e= ctrl.getEmpleadoById(idEmp);
-      String email= e.getEmail();
-      int tel= e.getTel();
-      String pass= e.getContraseña();
+<% int dniCli = Integer.parseInt(request.getParameter("dni_cli"));  
+      CtrlCliente ctrl = new CtrlCliente();
+      Cliente c =ctrl.getClienteByDni(dniCli);
+      String nombrecli= c.getNombre();
+      String apellido= c.getApellido();
+      String email= c.getEmail();
+      String direccion= c.getDireccion();
+      int tel= c.getTel();
+      
+     
       //String numeroStr = String.valueOf(h.getNumero());
+      
       
       
        Empleado userSession = (Empleado)session.getAttribute("userSession");
 	String tipo_em = userSession.getTipo();
-	/* ESTO NO FUNCIONA PORQUE NO HICIMOS LA PARTE DE USUARIO DEL ADM */ %> 
-	
+	%>  
+
+<script type="text/javascript"> // inicio tabla js1//
+(function(document) {
+  'use strict';
+
+  var LightTableFilter = (function(Arr) {
+
+    var _input;
+
+    function _onInputEvent(e) {
+      _input = e.target;
+      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+      Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+      });
+    }
+
+    function _filter(row) {
+      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+
+    return {
+      init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+      }
+    };
+  })(Array.prototype);
+
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+      LightTableFilter.init();
+    }
+  });
+
+})(document);
+</script>		
+</head>
+<body>
+
+<%  
+
+		if(userSession == null || !(userSession.getTipo().equals("VE"))){
+				response.sendRedirect("error405.jsp"); }
+		
+          %>
+          	
+
+
+
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de ConstrucciÃ³n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
 </div>
 <!--close-Header-part--> 
+
 
 
 <!--top-Header-menu-->
@@ -56,10 +112,10 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
     <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
     <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
-     <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -67,38 +123,44 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexAdmin.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
-     	
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
+  <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="altaUsuarioADM.jsp">Nuevo Empleado</a></li>
-        <li><a href="modificarUsuarioADM.jsp">Modificar Empleado</a></li>
-        <li><a href="bajaUsuarioADM.jsp">Eliminar Empleado</a></li>
-        <li><a href="consultaUsuarioADM.jsp">Consultar Empleado</a></li>
+        <li><a href="crearpedido.jsp">Crear Pedido</a></li>
+        <li><a href="#">Modificar Pedido</a></li>
+        <li><a href="#">Pagar Deuda</a></li>
       </ul>
     </li>
     
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+      <ul>
+        <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
+      </ul>
+    </li>
     
-  
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+      <ul>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
+        <li><a href="#">Modificar Ubicación</a></li>
+        <li><a href="#">Eliminar Ubicación</a></li>
+        <li><a href="#">Consultar Ubicación</a></li>
+      </ul>
+    </li>
     
   </ul>
 </div>
-<!-- sidebar-menu-->
-
+<!--sidebar-menu-->
 
 <!--main-container-part-->
-
-    <div id="content">
-    <!--breadcrumbs-->
+<div id="content">
+<!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Modificar Empleado</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Cliente</a></div>
    
   </div>
-<!--End-Action boxes-->    
-   
-
-
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
@@ -114,9 +176,24 @@
           <h5>Modificar datos de usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="ModificarEmpleado" method="post" class="form-horizontal">
+          <form action="ModificarCliente" method="post" class="form-horizontal">
           
-            
+             <div class="control-group">
+              <label class="control-label">Nombre :</label>
+              <div class="controls">
+
+                <input type="text" class="span11" name="nombre"  value=" <%= nombrecli %>" id="nombre" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="emailText"></div>
+                   </div>
+            </div>
+                 <div class="control-group">
+              <label class="control-label">Apellido :</label>
+              <div class="controls">
+
+                <input type="text" class="span11" name="apellido"  value=" <%= apellido %>" id="apellido" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="emailText"></div>
+               </div>
+            </div>
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
@@ -130,35 +207,23 @@
               <label class="control-label">Email :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="apellido"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="email"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
                 <div id="emailText"></div>
 
               </div>
             </div>
            
-              <div class="widget-content nopadding">
-              
-                <div class="control-group">
-                  <label class="control-label">Password</label>
-                  <div class="controls">
+              <div class="control-group">
+              <label class="control-label">Direccion :</label>
+              <div class="controls">
 
-	                  <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="ContraseÃ±a"  onchange="validaPass(this.value)" required >
-	                  <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
+                <input type="text" class="span11" name="direccion"  value=" <%= direccion %>" id="direccion" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="direccionText"></div>
 
-                  </div>
+                  
                 </div>
-                <div class="control-group">
-                  <label class="control-label">Confirm password</label>
-                  <div class="controls">
-                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseÃ±a" onchange="validaPass2(this.value)" required>
-           		   <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
-                  </div>
-                  <% int idem=Integer.parseInt(request.getParameter("id_empleado")); %>
-
-                  <input type="hidden" id="id_empleado" name="id_empleado" value="<%= idem %>" >
- 				          <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
-
-
+                   <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
+                    <input type="hidden" id="dni_cli" name="dni_cli" value="<%= dniCli %>" >
                 </div>
                 
                 <div class="form-actions">

@@ -130,4 +130,86 @@ public class DataCliente {
 	
 		
 	}
+
+	public Cliente getClienteByDni(int dnicli) {
+
+		ResultSet rs=null;
+		
+		PreparedStatement stmt=null;
+		
+		Cliente c = new Cliente();
+		
+		
+		try {
+			stmt = 	FactoryConexion.getInstancia().getConn().prepareStatement(
+					"select nombre, apellido, tel,direccion, email from clientes where dni = ?"
+					);
+			stmt.setInt(1, dnicli);
+			rs = stmt.executeQuery();
+			if(rs !=null && rs.next()){
+	         
+				c.setNombre(rs.getString("nombre"));
+				c.setApellido(rs.getString("apellido"));
+	            c.setTel(rs.getInt("tel"));
+	            c.setDireccion(rs.getString("direccion"));
+	            c.setEmail(rs.getString("email"));
+	           
+	         }
+	      
+	    }catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	   
+			FactoryConexion.getInstancia().releaseConn();
+		}
+		
+		return c;
+		
+	}
+
+	public void modificarCliente(Cliente c) throws ApplicationException {
+		// TODO Auto-generated method stub
+
+		ResultSet rs=null;
+		PreparedStatement stmt=null;
+		
+		
+		try {
+			
+			
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"update clientes set nombre=?, apellido=?, tel=?, direccion=?, email=? where dni=?"
+					);
+			stmt.setString(1, c.getNombre());
+			stmt.setString(2, c.getApellido());
+			stmt.setInt(3, c.getTel());
+			stmt.setString(4, c.getDireccion());
+			stmt.setString(5, c.getEmail());
+			stmt.setInt(6, c.getDni());
+			
+		
+			stmt.execute();
+			
+			
+			
+		} catch (SQLException d) {
+			try {
+				FactoryConexion.getInstancia().getConn().rollback();
+			} catch (SQLException d1) {
+				throw new ApplicationException("Error al recuperar habitacion en la base de datos", d1);
+			}
+			throw new ApplicationException("Error al modificar el cliente en la base de datos", d);
+		} finally {
+			try {
+			if(stmt!=null) stmt.close();
+			
+					
+			if(rs!=null) rs.close();
+			FactoryConexion.getInstancia().getConn().close();
+			} catch (SQLException d) {
+				throw new ApplicationException("Error al cerrar conexiones con la base de datos", d);
+			}
+			
+	}	
+}
 }

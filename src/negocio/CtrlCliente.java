@@ -29,4 +29,14 @@ public class CtrlCliente {
 		// TODO Auto-generated method stub
 		catalogo.borrarCliente(dnicli);
 	}
+	public Cliente getClienteByDni(int dnicli) {
+		// TODO Auto-generated method stub
+		return catalogo.getClienteByDni(dnicli);
+	}
+
+	public void modificarCliente(Cliente c) throws ApplicationException {
+		// TODO Auto-generated method stub
+		catalogo.modificarCliente(c);
+	}
+
 }
