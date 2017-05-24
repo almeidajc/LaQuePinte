@@ -31,7 +31,7 @@ public class DataProducto {
 			
 			
 			stmtPrecio = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"Insert into precio_producto_venta (Id_Producto, Fecha, Valor)"
+					"Insert into precio_producto_venta (id_producto, fecha, precio)"
 					+"values (?,?,?)");
 			stmtPrecio.setInt(1, p.getId_producto());						
 			stmtPrecio.setDate(2, new java.sql.Date(p.getFecha().getTime()));				
@@ -125,7 +125,7 @@ try {
 	
 	try { // borro primero de la tabla precio_producto_venta
 		stmtPP=FactoryConexion.getInstancia().getConn().prepareStatement(
-				  "delete from precio_producto_venta where Id_Producto=?"
+				  "delete from precio_producto_venta where id_producto=?"
 				);
 		stmtPP.setInt(1, codprod);
 		stmtPP.execute();

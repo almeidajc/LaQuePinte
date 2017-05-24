@@ -135,9 +135,9 @@ input[type=text]:focus {
     <li class="submenu active" > <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
-        <li><a href="#">Consultar Producto</a></li>
+        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
+        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
+        <li><a href="consultarproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
     

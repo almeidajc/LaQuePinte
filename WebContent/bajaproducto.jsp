@@ -145,8 +145,8 @@ input[type=text]:focus {
     <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
+        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
+        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
         <li><a href="consultarproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
@@ -273,8 +273,8 @@ input[type=text]:focus {
 	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
 	   <td><form method="post" action="BajaProducto">
            <input type="hidden" id="id_producto" name="id_producto" value="<%= ctrl.listarProductos().get(indice).getId_producto()%>" >
-           <button type="submit" class="btn2" name="bajaproducto" id="bajaproducto" onClick="return confirm('¿Esta Seguro que deseas eliminar este producto?')">
-           <span class="icon-trash" style="color: red; font-size:100%;"></span></a></form></td>
+           <button type="submit" class="btn2" name="bajaproducto" style="background-color:#F9F9F9;" id="bajaproducto" onClick="return confirm('¿Esta Seguro que deseas eliminar este producto?')">
+           <span class="icon-trash" style="color: red; font-size:100%; background-color:#F9F9F9"></span></a></form></td>
 	  
 	</tr>
 	<%

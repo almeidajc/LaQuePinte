@@ -121,7 +121,7 @@
     
     <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
     
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
     
     
     

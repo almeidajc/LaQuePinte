@@ -145,8 +145,8 @@ input[type=text]:focus {
     <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
+        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
+        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
         <li><a href="consultarproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
@@ -248,7 +248,7 @@ input[type=text]:focus {
         <th><h5 style="text-align:left; ">STOCK MIN</h5></th>
         <th><h5 style="text-align:left; ">STOCK MAX</h5></th>
         <th><h5 style="text-align:left; ">MATERIAL</h5></th>
-        <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
+        <th><h5 style="text-align:left; ">MODIFICAR</h5></th>
              
       </tr>
     </thead>
@@ -273,8 +273,8 @@ input[type=text]:focus {
 	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
 	   <td><form method="post" action="modprod.jsp">
            <input type="hidden" id="id_producto" name="id_producto" value="<%= ctrl.listarProductos().get(indice).getId_producto()%>" >
-           <button type="submit" class="btn2" name="modificarproducto" id="modificarproducto" >
-           <span class="icon-pencil" style="color: blue; font-size:100%;"></span></a></form></td>
+           <button type="submit" class="btn2" name="modificarproducto" style="background-color: #F9F9F9; text-align:center;"id="modificarproducto" >
+           <span class="icon-pencil" style="color: blue; font-size:120%; background-color: #F9F9F9;content-align:center"></span></a></form></td>
 	  
 	</tr>
 	<%
