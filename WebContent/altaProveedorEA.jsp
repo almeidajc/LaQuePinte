@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="UTF-8"%>
-     <%@page import="entidades.Producto"%>
-     <%@page import="negocio.CtrlProducto"%>
-     <%@page import="entidades.EncargadoAdministracion"%>
-      <%@page import="entidades.Empleado"%>
+    pageEncoding="ISO-8859-1"%>   
+    <%@page import="entidades.EncargadoAdministracion"%>
+    <%@page import="entidades.Empleado"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci贸n</title>
+<title>Materiales::de::Construcci髇</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -18,84 +16,19 @@
 <link rel="stylesheet" href="bootstrap/css/matrix-media.css" />
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
-
-
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-
-<script type="text/javascript">
-(function(document) {
-  'use strict';
-
-  var LightTableFilter = (function(Arr) {
-
-    var _input;
-
-    function _onInputEvent(e) {
-      _input = e.target;
-      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-      Arr.forEach.call(tables, function(table) {
-        Arr.forEach.call(table.tBodies, function(tbody) {
-          Arr.forEach.call(tbody.rows, _filter);
-        });
-      });
-    }
-
-    function _filter(row) {
-      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-    }
-
-    return {
-      init: function() {
-        var inputs = document.getElementsByClassName('light-table-filter');
-        Arr.forEach.call(inputs, function(input) {
-          input.oninput = _onInputEvent;
-        });
-      }
-    };
-  })(Array.prototype);
-
-  document.addEventListener('readystatechange', function() {
-    if (document.readyState === 'complete') {
-      LightTableFilter.init();
-    }
-  });
-
-})(document);
-</script>		
-
-<style type="text/css">
-
-}
-tbody tr:nth-child(odd) {
-  background: #eee;
-}
-
-.input[type=text] {
-    width: 130px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-    width: 100%;
-}
-
-	</style>	
-
-
-
 </head>
 <body>
+
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
-          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+           String tipo_em = userSession.getTipo();%>
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci贸n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcci髇</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -123,7 +56,7 @@ input[type=text]:focus {
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li ><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearpedido.jsp">Crear Pedido</a></li>
@@ -132,41 +65,51 @@ input[type=text]:focus {
       </ul>
     </li>
     
-    <li class="submenu active" > <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
-        <li><a href="#">Consultar Producto</a></li>
+        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
+        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
+        <li><a href="consulproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="#">Nuevo Empleado</a></li>
-        <li><a href="#">Modificar Empleado</a></li>
-        <li><a href="#">Eliminar Empleado</a></li>
-        <li><a href="#">Consultar Empleado</a></li>
+        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="#">Modificar Cliente</a></li>
-        <li><a href="#">Eliminar Cliente</a></li>
-        <li><a href="#">Consultar Cliente</a></li>
+        <li class="submenu active"><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci贸n</span> </a>
+    <li class="submenu "> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci贸n</a></li>
-        <li><a href="#">Modificar Ubicaci贸n</a></li>
-        <li><a href="#">Eliminar Ubicaci贸n</a></li>
-        <li><a href="#">Consultar Ubicaci贸n</a></li>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
+      </ul>
+    </li>
+    
+    
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci髇</span> </a>
+      <ul>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci髇</a></li>
+        <li><a href="#">Modificar Ubicaci髇</a></li>
+        <li><a href="#">Eliminar Ubicaci髇</a></li>
+        <li><a href="#">Consultar Ubicaci髇</a></li>
       </ul>
     </li>
     
@@ -187,83 +130,91 @@ input[type=text]:focus {
     
   </ul>
 </div>
-<!-- sidebar-menu-->
-
+<!--sidebar-menu-->
 
 <!--main-container-part-->
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Producto</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Cliente</a></div>
    
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
- <div id="titulo">
- <h1>Consultar Producto</h1><hr>
+  <div id="titulo">
+ <h1>Nuevo Proveedor</h1>
  </div>
-  <div class="container-fluid">
-     <div class="row-fluid">
-      <div class="span12"> <!-- TAMA脩O FORMULARIOS -->
-      
-  
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
-        <div class="widget-box">
-        
-          
-          <div class="widget-content nopadding" id="tb_content">
-            <table class="order-table table" class="table table-hover">
-    <thead>
-      <tr >
-      	
-        <th><h5 style="text-align:left; ">ID PRODUCTO</h5></th>
-        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:left; ">PRECIO</h5></th>
-        <th><h5 style="text-align:left; ">STOCK DISPONIBLE</h5></th>
-        <th><h5 style="text-align:left; ">STOCK MIN</h5></th>
-        <th><h5 style="text-align:left; ">STOCK MAX</h5></th>
-        <th><h5 style="text-align:left; ">MATERIAL</h5></th>
+  <div class="container-fluid"><hr>
+   
+  <div class="row-fluid">
+    <div class="span6">
+   <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>Alta Proveedor</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form action="AltaProveedor" method="post" class="form-horizontal">
+          <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
+            <div class="control-group">
+              <label class="control-label">Raz髇 social :</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Razon social proveedor" name="razon_soc" id="razon_soc"/>
+              </div>
+            
+            <div class="control-group">
+              <label class="control-label">CUIT :</label>
+              <div class="controls">
+               <input type="text" class="span11" placeholder="Cuit provedor" name="cuit" id="cuit"/>
+               </div>
+               </div>
+            <div class="control-group">
+              <label class="control-label">Telefono</label>
+              <div class="controls">
+                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Email :</label>
+              <div class="controls">
+                <input type="text" class="span11" name="email" id="email" placeholder="Nombre de email" />
+              </div>
+            </div>
+           
              
-      </tr>
-    </thead>
-    
-    <tbody>
-      <tr>
-<%
-    		CtrlProducto ctrl = new CtrlProducto();
-    		
-    		//PUEDO HACER TMB
-			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
-			// habitacios = ctrl.Listar();
-
-	for (int indice = 0; indice < ctrl.listarProductos().size(); indice++){
-	%>  
-	   <td><h5><%= ctrl.listarProductos().get(indice).getId_producto() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getPrecio() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
-	  
-	</tr>
-	<%
-	
-}
-
-
-      %>
-      
-     
-    </tbody>
-  </table>
-          </div>
+            <div class="control-group">
+              <label class="control-label">Direcci髇</label>
+              <div class="controls">
+                <input type="text"  class="span11" placeholder="Direccion proveedor" name="direccion" id="direccion" />
+              </div>
+              </div>
+              <div class="widget-content nopadding">
+              
+               </div>
+                <div class="form-actions">
+                  <input type="submit" value="Alta" class="btn btn-success">
+                </div>
+              </form>
         </div>
       </div>
-    </div>
-    
+      </div>
+      </div>
+<!--End-Action boxes-->    
+   
   </div>
 </div>
 
@@ -298,8 +249,7 @@ input[type=text]:focus {
 <script src="bootstrap/js/select2.min.js"></script> 
 <script src="bootstrap/js/matrix.popover.js"></script> 
 <script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script>
-
+<script src="bootstrap/js/matrix.tables.js"></script> 
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to

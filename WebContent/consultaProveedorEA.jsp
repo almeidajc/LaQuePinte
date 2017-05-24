@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="UTF-8"%>
-     <%@page import="entidades.Producto"%>
-     <%@page import="negocio.CtrlProducto"%>
-     <%@page import="entidades.EncargadoAdministracion"%>
-      <%@page import="entidades.Empleado"%>
+    pageEncoding="ISO-8859-1"%>   
+    <%@page import="entidades.EncargadoAdministracion"%>
+    <%@page import="entidades.Empleado"%>
+     <%@page import="entidades.Proveedor"%>
+    <%@page import="negocio.CtrlProveedor"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci贸n</title>
+<title>Materiales::de::Construcci髇</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -18,84 +18,19 @@
 <link rel="stylesheet" href="bootstrap/css/matrix-media.css" />
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
-
-
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-
-<script type="text/javascript">
-(function(document) {
-  'use strict';
-
-  var LightTableFilter = (function(Arr) {
-
-    var _input;
-
-    function _onInputEvent(e) {
-      _input = e.target;
-      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-      Arr.forEach.call(tables, function(table) {
-        Arr.forEach.call(table.tBodies, function(tbody) {
-          Arr.forEach.call(tbody.rows, _filter);
-        });
-      });
-    }
-
-    function _filter(row) {
-      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-    }
-
-    return {
-      init: function() {
-        var inputs = document.getElementsByClassName('light-table-filter');
-        Arr.forEach.call(inputs, function(input) {
-          input.oninput = _onInputEvent;
-        });
-      }
-    };
-  })(Array.prototype);
-
-  document.addEventListener('readystatechange', function() {
-    if (document.readyState === 'complete') {
-      LightTableFilter.init();
-    }
-  });
-
-})(document);
-</script>		
-
-<style type="text/css">
-
-}
-tbody tr:nth-child(odd) {
-  background: #eee;
-}
-
-.input[type=text] {
-    width: 130px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-    width: 100%;
-}
-
-	</style>	
-
-
-
 </head>
 <body>
+
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
-          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+           String tipo_em = userSession.getTipo();%>
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci贸n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcci髇</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -123,7 +58,7 @@ input[type=text]:focus {
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li ><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearpedido.jsp">Crear Pedido</a></li>
@@ -132,41 +67,51 @@ input[type=text]:focus {
       </ul>
     </li>
     
-    <li class="submenu active" > <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
-        <li><a href="#">Consultar Producto</a></li>
+        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
+        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
+        <li><a href="consulproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="#">Nuevo Empleado</a></li>
-        <li><a href="#">Modificar Empleado</a></li>
-        <li><a href="#">Eliminar Empleado</a></li>
-        <li><a href="#">Consultar Empleado</a></li>
+        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="#">Modificar Cliente</a></li>
-        <li><a href="#">Eliminar Cliente</a></li>
-        <li><a href="#">Consultar Cliente</a></li>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li ><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li  class="submenu active"><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci贸n</span> </a>
+    <li class="submenu "> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci贸n</a></li>
-        <li><a href="#">Modificar Ubicaci贸n</a></li>
-        <li><a href="#">Eliminar Ubicaci贸n</a></li>
-        <li><a href="#">Consultar Ubicaci贸n</a></li>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
+      </ul>
+    </li>
+    
+    
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci髇</span> </a>
+      <ul>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci髇</a></li>
+        <li><a href="#">Modificar Ubicaci髇</a></li>
+        <li><a href="#">Eliminar Ubicaci髇</a></li>
+        <li><a href="#">Consultar Ubicaci髇</a></li>
       </ul>
     </li>
     
@@ -187,25 +132,27 @@ input[type=text]:focus {
     
   </ul>
 </div>
-<!-- sidebar-menu-->
-
+<!--sidebar-menu-->
 
 <!--main-container-part-->
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Producto</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consulta Proveedor</a></div>
    
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
- <div id="titulo">
- <h1>Consultar Producto</h1><hr>
+
+  <div id="titulo">
+ <h1>Consultar Proveedor</h1><hr>
  </div>
+
   <div class="container-fluid">
      <div class="row-fluid">
-      <div class="span12"> <!-- TAMA脩O FORMULARIOS -->
+      <div class="span12"> <!-- TAMA锟絆 FORMULARIOS -->
+      
       
   
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
@@ -217,14 +164,14 @@ input[type=text]:focus {
             <table class="order-table table" class="table table-hover">
     <thead>
       <tr >
+      
       	
-        <th><h5 style="text-align:left; ">ID PRODUCTO</h5></th>
-        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:left; ">PRECIO</h5></th>
-        <th><h5 style="text-align:left; ">STOCK DISPONIBLE</h5></th>
-        <th><h5 style="text-align:left; ">STOCK MIN</h5></th>
-        <th><h5 style="text-align:left; ">STOCK MAX</h5></th>
-        <th><h5 style="text-align:left; ">MATERIAL</h5></th>
+        <th><h5 style="text-align:left; ">CUIT</h5></th>
+        <th><h5 style="text-align:left; ">RAZON SOCIAL</h5></th>
+        <th><h5 style="text-align:left; ">DIRECCION</h5></th>
+        <th><h5 style="text-align:left; ">EMAIL</h5></th> 
+        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
+        
              
       </tr>
     </thead>
@@ -232,21 +179,19 @@ input[type=text]:focus {
     <tbody>
       <tr>
 <%
-    		CtrlProducto ctrl = new CtrlProducto();
+    		CtrlProveedor ctrl = new CtrlProveedor();
     		
-    		//PUEDO HACER TMB
-			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
-			// habitacios = ctrl.Listar();
-
-	for (int indice = 0; indice < ctrl.listarProductos().size(); indice++){
+    		
+	for (int indice = 0; indice < ctrl.listarProveedores().size(); indice++){
 	%>  
-	   <td><h5><%= ctrl.listarProductos().get(indice).getId_producto() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getPrecio() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getCuit() %></h5></td>
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getRazon_social() %></h5></td>
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getDireccion() %></h5></td>
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getEmail() %></h5></td>
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getTel() %></h5></td>
+	   
+	   
+	   
 	  
 	</tr>
 	<%
@@ -264,6 +209,10 @@ input[type=text]:focus {
       </div>
     </div>
     
+  </div>
+</div>
+<!--End-Action boxes-->    
+   
   </div>
 </div>
 
@@ -298,8 +247,7 @@ input[type=text]:focus {
 <script src="bootstrap/js/select2.min.js"></script> 
 <script src="bootstrap/js/matrix.popover.js"></script> 
 <script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script>
-
+<script src="bootstrap/js/matrix.tables.js"></script> 
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to

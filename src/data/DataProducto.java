@@ -72,33 +72,33 @@ try {
      stmt = FactoryConexion.getInstancia().getConn().createStatement();
    
      rs = stmt.executeQuery(
-    		 "select productos.id_producto, productos.nombre_producto, productos.cantidad_stock, productos.cantidad_minima, productos.cantidad_maxima, precio_producto_venta.Valor, materiales.nombre"
-     		+ " from productos"
-     		+ " inner join materiales"
-     		+ " on productos.id_material=materiales.id_material"
-     		+ " inner join precio_producto_venta"
-     		+ " on productos.id_producto=precio_producto_venta.Id_Producto"
-     		+ " inner join (select precio_producto_venta.Id_Producto, max(precio_producto_venta.Fecha) 'ult_fec'"
-     		+ " from precio_producto_venta"
-     		+ " where precio_producto_venta.Fecha <= current_date()"
-     		+ " group by precio_producto_venta.Id_Producto)val_act"
-     		+ " on precio_producto_venta.Id_Producto=val_act.Id_Producto and precio_producto_venta.Fecha=val_act.ult_fec ");
-        
-        while (rs.next())
-         {
-            Producto p = new Producto();
-            p.setId_producto(rs.getInt("id_producto"));
-            p.setNombre_producto(rs.getString("nombre_producto"));
-            p.setCantidad_stock(rs.getInt("cantidad_stock"));
-            p.setCantidad_min_stock(rs.getInt("cantidad_minima"));
-            p.setCantidad_max_stock(rs.getInt("cantidad_maxima"));
-            p.setPrecio(rs.getFloat("Valor"));
-            p.setNombre_material(rs.getString("nombre"));
- 
-        	productos.add(p);
-        	
-            
-         }
+    		 "select productos.id_producto, productos.nombre_producto, productos.cantidad_stock, productos.cantidad_minima, productos.cantidad_maxima, precio_producto_venta.precio, materiales.nombre"
+    		     		+ " from productos"
+    		     		+ " inner join materiales"
+    		     		+ " on productos.id_material=materiales.id_material"
+    		     		+ " inner join precio_producto_venta"
+    		     		+ " on productos.id_producto=precio_producto_venta.id_producto"
+    		     		+ " inner join (select precio_producto_venta.id_producto, max(precio_producto_venta.fecha) 'ult_fec' "
+    		     		+ " 			from precio_producto_venta"
+    		     		+ " 			where precio_producto_venta.fecha <= current_date()"
+    		     		+ " 			group by precio_producto_venta.id_producto)val_act "
+    		     		+ " on precio_producto_venta.id_producto=val_act.id_producto and precio_producto_venta.fecha=val_act.ult_fec ");
+    		        
+    		        while (rs.next())
+    		         {
+    		            Producto p = new Producto();
+    		            p.setId_producto(rs.getInt("id_producto"));
+    		            p.setNombre_producto(rs.getString("nombre_producto"));
+    		            p.setCantidad_stock(rs.getInt("cantidad_stock"));
+    		            p.setCantidad_min_stock(rs.getInt("cantidad_minima"));
+    		            p.setCantidad_max_stock(rs.getInt("cantidad_maxima"));
+    		            p.setPrecio(rs.getFloat("precio"));
+    		            p.setNombre_material(rs.getString("nombre"));
+    		 
+    		        	productos.add(p);
+    		        	
+    		            
+    		         }
       
     }catch (SQLException e) {
 		// TODO Auto-generated catch block
