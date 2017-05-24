@@ -100,7 +100,7 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearpedido.jsp">Crear Pedido</a></li>
@@ -128,12 +128,22 @@
     </li>
 
 
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+	<li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+      <ul>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
+      </ul>
+    </li>
+    
+
+    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
         <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
-        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
+        <li class="active"><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
 
