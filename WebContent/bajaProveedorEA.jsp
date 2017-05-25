@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>   
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
+     <%@page import="entidades.Proveedor"%>
+    <%@page import="negocio.CtrlProveedor"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,9 +88,9 @@
     
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li class="submenu active"><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
         <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
-        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li class="submenu active"><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
@@ -136,20 +138,20 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Cliente</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Proveedor</a></div>
    
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
-  <div id="titulo">
- <h1>Nuevo Proveedor</h1>
+<div id="titulo">
+<h1>Baja Cliente</h1><hr>
  </div>
-  <div class="container-fluid"><hr>
-   
-  <div class="row-fluid">
-    <div class="span6">
-   <% 
+
+  <div class="container-fluid">
+     <div class="row-fluid">
+      <div class="span12"> <!-- TAMAï¿½O FORMULARIOS -->
+      <% 
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
       		%>
@@ -163,57 +165,65 @@
         		}
       			
       		%>
-      <div class="widget-box">
-        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Alta Proveedor</h5>
-        </div>
-        <div class="widget-content nopadding">
-          <form action="AltaProveedor" method="post" class="form-horizontal">
-          <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
-            <div class="control-group">
-              <label class="control-label">Razón social :</label>
-              <div class="controls">
-                <input type="text" class="span11" placeholder="Razon social proveedor" name="razon_soc" id="razon_soc"/>
-              </div>
-            
-            <div class="control-group">
-              <label class="control-label">CUIT :</label>
-              <div class="controls">
-               <input type="text" class="span11" placeholder="Cuit provedor" name="cuit" id="cuit"/>
-               </div>
-               </div>
-            <div class="control-group">
-              <label class="control-label">Telefono</label>
-              <div class="controls">
-                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">Email :</label>
-              <div class="controls">
-                <input type="text" class="span11" name="email" id="email" placeholder="Nombre de email" />
-              </div>
-            </div>
-           
+  
+     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+
+        <div class="widget-box">
+        
+          
+          <div class="widget-content nopadding" id="tb_content">
+            <table class="order-table table" class="table table-hover" style="text-align:left; ">
+    <thead>
+      <tr >
+      	
+        <th><h5 style="text-align:left; ">CUIT</h5></th>
+        <th><h5 style="text-align:left; ">RAZON SOCIAL</h5></th>
+        <th><h5 style="text-align:left; ">DIRECCION</h5></th>
+        <th><h5 style="text-align:left; ">EMAIL</h5></th> 
+        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
+        
              
-            <div class="control-group">
-              <label class="control-label">Dirección</label>
-              <div class="controls">
-                <input type="text"  class="span11" placeholder="Direccion proveedor" name="direccion" id="direccion" />
-              </div>
-              </div>
-              <div class="widget-content nopadding">
-              
-               </div>
-                <div class="form-actions">
-                 <p align="right"> <input type="submit" value="Alta" class="btn btn-success">
-                </div>
-              </form>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+<%
+    		CtrlProveedor ctrl = new CtrlProveedor();
+    		
+    		
+	for (int indice = 0; indice < ctrl.listarProveedores().size(); indice++){
+	%>  
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getCuit() %></h5></td>
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getRazon_social() %></h5></td>
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getDireccion() %></h5></td>
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getEmail() %></h5></td>
+	   <td><h5><%= ctrl.listarProveedores().get(indice).getTel() %></h5></td>
+	    <td><form method="post" action="BajaProveedor">
+           <input type="hidden" id="cuit" name="cuit" value="<%= ctrl.listarProveedores().get(indice).getCuit()%>" >
+            <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
+           <button type="submit" class="btn2" name="bajaproveedor" id="bajaproveedor" onClick="return confirm('ï¿½Esta Seguro que deseas dar de baja este proveedor?')">
+           <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
+	   
+	   
+	   </tr>
+	<%
+	
+}
+
+
+      %>
+      
+     
+    </tbody>
+  </table>
+          </div>
         </div>
       </div>
-      </div>
-      </div>
-      </div>
+    </div>
+    
+  </div>
+</div>
 <!--End-Action boxes-->    
    
   </div>

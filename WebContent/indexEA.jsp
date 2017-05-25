@@ -161,8 +161,9 @@
       <ul class="quick-actions" >      
        <li class="bg_ly span5"> <a href="crearpedido.jsp"> <i class="icon-shopping-cart"></i> Pedido</a> </li>
         <li class="bg_lo span5"> <a href="altaproducto.jsp"> <i class="icon-barcode"></i>Producto</a> </li>
-       <li class="bg_ls span5"> <a href="#"> <i class="icon-user"></i> Empleado</a> </li>
-       <li class="bg_lo span5"> <a href="altacliente.jsp"> <i class="icon-user"></i> Cliente</a> </li>
+       <li class="bg_ls span5"> <a href="altaUsuarioEA.jsp"> <i class="icon-user"></i> Empleado</a> </li>
+       <li class="bg_ls span5" > <a href="altaProveedorEA.jsp"> <i class="icon-user" ></i> Proveedor</a> </li>
+       <li class="bg_lo span5"> <a href="altaClienteEA.jsp"> <i class="icon-user"></i> Cliente</a> </li>
       
        <li class="bg_lb span5"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Ubicación</a> </li>
        <li class="bg_lg span5"> <a href="#"> <i class="icon-money"></i> Informe Deudas</a> </li>

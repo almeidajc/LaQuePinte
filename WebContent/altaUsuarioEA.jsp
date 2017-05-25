@@ -230,6 +230,18 @@
                 <input type="text" class="span11" name="apellido" id="patente" placeholder="Patente" />
               </div>
             </div>
+            
+            <div class="control-group">
+               <label class="control-label">Turno de trabajo</label>
+               <div class="controls">
+                <select id="id_turno" name="rol" required>
+                  <option value="1">Mañana</option>
+                  <option value="2">Tarde</option>
+                  <option value="3">Todo el dia</option>
+                  </select>
+              </div>
+               </div>
+               
             <div class="control-group">
               <label class="control-label">Usuario</label>
               <div class="controls">
@@ -253,7 +265,7 @@
                   </div>
                 </div>
                 <div class="form-actions">
-                  <input type="submit" value="Alta" class="btn btn-success">
+                  <p align="right"><input type="submit" value="Alta" class="btn btn-success">
                 </div>
               </form>
         </div>

@@ -259,9 +259,9 @@
 	   
 	   
 	   <td><form method="post" action="modClienteEA.jsp">
-           <input type="hidden" id="dni_cli" name="dni_cli" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
+           <input type="hidden" id="cuit" name="cuit" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button type="submit" class="btn2" name="bajacliente" id="bajacliente" onClick="">
+           <button type="submit" class="btn2" name="modificarcliente" id="modificarcliente" onClick="">
            <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
 	  
 	</tr>

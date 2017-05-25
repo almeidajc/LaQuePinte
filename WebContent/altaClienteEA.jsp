@@ -212,7 +212,7 @@
               
                </div>
                 <div class="form-actions">
-                  <input type="submit" value="Alta" class="btn btn-success">
+                 <p align="right"> <input type="submit" value="Alta" class="btn btn-success">
                 </div>
               </form>
         </div>

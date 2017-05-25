@@ -9,23 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import negocio.CtrlCliente;
-import negocio.CtrlEmpleado;
+import negocio.CtrlProveedor;
 import appExceptions.ApplicationException;
 import entidades.Cliente;
-import entidades.Empleado;
-
+import entidades.Proveedor;
 
 /**
- * Servlet implementation class ModificarCliente
+ * Servlet implementation class ModificarProveedor
  */
-@WebServlet("/ModificarCliente")
-public class ModificarCliente extends HttpServlet {
+@WebServlet("/ModificarProveedor")
+public class ModificarProveedor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificarCliente() {
+    public ModificarProveedor() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,36 +40,32 @@ public class ModificarCliente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		Cliente c = new Cliente();
+
+		Proveedor p = new Proveedor();
 		
 		String tipo_em = request.getParameter("tipo_em");
 		
-		int dnicli = Integer.parseInt(request.getParameter("dni_cli"));
-		c.setDni(dnicli);
-		c.setNombre((request.getParameter("nombre")));
-		c.setApellido((request.getParameter("apellido")));
-		c.setDireccion((request.getParameter("direccion")));
-		c.setTel(Integer.parseInt(request.getParameter("tel")));
-		c.setEmail((request.getParameter("email")));
+		int cuit = Integer.parseInt(request.getParameter("cuit"));
+		p.setCuit(cuit);
+		p.setRazon_social((request.getParameter("razon_soc")));
+		p.setDireccion((request.getParameter("direccion")));
+		p.setTel(Integer.parseInt(request.getParameter("tel")));
+		p.setEmail((request.getParameter("email")));
 		
 		
-		CtrlCliente ctrl = new CtrlCliente();
+		CtrlProveedor ctrl = new CtrlProveedor();
 
 		
 	try {
-		ctrl.modificarCliente(c);
+		ctrl.modificarProveedor(p);
 	} catch (ApplicationException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
-	if(tipo_em.equalsIgnoreCase("EA")){
-		request.setAttribute("mensaje", "Cliente modificado correctamente");
-		request.getRequestDispatcher("modificarClienteEA.jsp").forward(request, response);
-		}
-		else{
-			request.setAttribute("mensaje", "Cliente modificado correctamente");
-			request.getRequestDispatcher("modificarClienteVE.jsp").forward(request, response);
-		}
-	}}
+	
+		request.setAttribute("mensaje", "Proveedor modificado correctamente");
+		request.getRequestDispatcher("modificarProveedorEA.jsp").forward(request, response);
+	}
+		
+		
+}
