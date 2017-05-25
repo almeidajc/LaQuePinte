@@ -30,6 +30,7 @@
         	   if(tipo.equals("CA")){tipo_int=2;}
         	   if(tipo.equals("VE")){tipo_int=3;}
         	   if(tipo.equals("DE")){tipo_int=4;}
+        	   if(tipo.equals("ADM")){tipo_int=5;}
    			switch (tipo_int) {
    			case 2:			
    				response.sendRedirect("indexCA.jsp");
@@ -42,7 +43,10 @@
    				break;				
    			case 4:			
    				response.sendRedirect("indexDE.jsp");		
-   				break;				
+   				break;		
+   			case 5:			
+   				response.sendRedirect("indexADM.jsp");		
+   				break;
    			default:
    				response.sendRedirect("login.jsp");
    				break;

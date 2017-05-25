@@ -28,8 +28,9 @@ public class CtrlProducto {
 		
 	}
 	
-	/* public Producto getById(int id){
-		cat.getById(id);
-	}*/
+	public Producto getById(int id){
+		return cat.getById(id);
+	}
+	
 
 }

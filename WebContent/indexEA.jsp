@@ -31,7 +31,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="indexEA.jsp">Materiales de Construcción</a></h1>
 </div>
 <!--close-Header-part--> 
 
