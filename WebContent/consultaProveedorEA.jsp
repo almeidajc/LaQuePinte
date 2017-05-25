@@ -189,9 +189,7 @@
 	   <td><h5><%= ctrl.listarProveedores().get(indice).getDireccion() %></h5></td>
 	   <td><h5><%= ctrl.listarProveedores().get(indice).getEmail() %></h5></td>
 	   <td><h5><%= ctrl.listarProveedores().get(indice).getTel() %></h5></td>
-	   
-	   
-	   
+	  
 	  
 	</tr>
 	<%

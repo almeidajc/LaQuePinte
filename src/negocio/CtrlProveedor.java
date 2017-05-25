@@ -26,19 +26,23 @@ public class CtrlProveedor {
 	public ArrayList<Proveedor> listarProveedores(){
 		return catalogo.listarProveedores();
 	}
-/*
-	public void borrarProveedor(int cuit) {
-		// TODO Auto-generated method stub
-		catalogo.borrarProveedor(cuit);
-	}
-	public Cliente getProveedorByCuit(int cuit) {
+
+	
+	public Proveedor getProveedorByCuit(int cuit) {
 		// TODO Auto-generated method stub
 		return catalogo.getProveedorByCuit(cuit);
 	}
 
-	public void modificarCliente(Cliente c) throws ApplicationException {
+	
+
+
+	public void borrarProveedor(int cuit) {
 		// TODO Auto-generated method stub
-		catalogo.modificarCliente(c);
+		catalogo.borrarProveedor(cuit);
 	}
-*/
+
+	public void modificarProveedor(Proveedor p) throws ApplicationException {
+		// TODO Auto-generated method stub
+		catalogo.modificarProveedor(p);
+	}
 }

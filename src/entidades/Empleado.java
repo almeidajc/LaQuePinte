@@ -10,6 +10,14 @@ public class Empleado {
 	private String tipo;
 	private int tel;
 	private String patente;
+	private int id_turno;
+	public int getId_turno() {
+		return id_turno;
+	}
+
+	public void setId_turno(int id_turno) {
+		this.id_turno = id_turno;
+	}
 
 	private String email;
 	
@@ -69,7 +77,7 @@ public class Empleado {
 
 	public void setEmail(String email) {
 		// TODO Auto-generated method stub
-		
+		this.email = email;
 	}
 
 

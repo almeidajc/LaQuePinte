@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>   
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
+     <%@page import="entidades.Proveedor"%>
+    <%@page import="negocio.CtrlProveedor"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +19,15 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<% int cuit = Integer.parseInt(request.getParameter("cuit"));  
+      CtrlProveedor ctrl = new CtrlProveedor();
+      Proveedor p = ctrl.getProveedorByCuit(cuit);
+      String razon_soc= p.getRazon_social();
+      String email= p.getEmail();
+      String direccion= p.getDireccion();
+      int tel= p.getTel();
+      %>
 </head>
 <body>
 
@@ -86,8 +97,8 @@
     
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li class="submenu active"><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
-        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li  class="submenu active"><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
         <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
@@ -136,84 +147,75 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Cliente</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Modificar Proveedor</a></div>
    
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
-  <div id="titulo">
- <h1>Nuevo Proveedor</h1>
+<div id="titulo">
+ <h1>Modificar Empleado</h1>
  </div>
   <div class="container-fluid"><hr>
    
   <div class="row-fluid">
     <div class="span6">
-   <% 
-      			String mensaje=(String)request.getAttribute("mensaje");
-        		if(mensaje!=null){
-      		%>
-      		<div class="alert alert-success">
-   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> . 
-  			</div>
-      		
-      			
-      		<%
-        		}
-      			
-      		%>
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Alta Proveedor</h5>
+          <h5>Modificar datos de usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="AltaProveedor" method="post" class="form-horizontal">
-          <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
+          <form action="ModificarProveedor" method="post" class="form-horizontal">
+          
             <div class="control-group">
-              <label class="control-label">Razón social :</label>
+              <label class="control-label">Razon Social :</label>
               <div class="controls">
-                <input type="text" class="span11" placeholder="Razon social proveedor" name="razon_soc" id="razon_soc"/>
-              </div>
-            
-            <div class="control-group">
-              <label class="control-label">CUIT :</label>
-              <div class="controls">
-               <input type="text" class="span11" placeholder="Cuit provedor" name="cuit" id="cuit"/>
+
+                <input type="text" class="span11" name="razon_soc"  value=" <%= razon_soc %>" id="razon_soc" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="emailText"></div>
                </div>
-               </div>
+           
+            </div>
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
+
+                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
+                <div id="telef"></div>
+
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" class="span11" name="email" id="email" placeholder="Nombre de email" />
+
+                <input type="text" class="span11" name="email"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="emailText"></div>
+
               </div>
             </div>
            
-             
-            <div class="control-group">
-              <label class="control-label">Dirección</label>
+              <div class="control-group">
+              <label class="control-label">Direccion :</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Direccion proveedor" name="direccion" id="direccion" />
-              </div>
-              </div>
-              <div class="widget-content nopadding">
-              
-               </div>
+
+                <input type="text" class="span11" name="direccion"  value=" <%= direccion %>" id="direccion" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <div id="direccionText"></div>
+
+                  
+                </div>
+                   <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
+                    <input type="hidden" id="cuit" name="cuit" value="<%= cuit %>" >
+                </div>
+                
                 <div class="form-actions">
-                 <p align="right"> <input type="submit" value="Alta" class="btn btn-success">
+                  <input type="submit" value="Modificar" class="btn btn-success">
                 </div>
               </form>
         </div>
       </div>
-      </div>
-      </div>
-      </div>
+    </div>
+    </div>
 <!--End-Action boxes-->    
    
   </div>

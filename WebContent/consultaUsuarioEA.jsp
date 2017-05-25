@@ -237,7 +237,9 @@ input[type=text]:focus {
         <th><h5 style="text-align:left; ">TELEFONO</h5></th>
         <th><h5 style="text-align:left; ">ROL</h5></th>
         <th><h5 style="text-align:left; ">USUARIO</h5></th> 
+        <th><h5 style="text-align:left; ">EMAIL</h5></th>
         <th><h5 style="text-align:left; ">PATENTE</h5></th>
+        <th><h5 style="text-align:left; ">TURNO</h5></th>
              
       </tr>
     </thead>
@@ -252,6 +254,29 @@ input[type=text]:focus {
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
+		int turno;
+		String desc;
+		turno = ctrl.listarEmpleados().get(indice).getId_turno();
+		
+		switch(turno){
+		case 1: 
+			 desc = "Mañana";
+			break;
+		
+		case 2: 
+			 desc = "Tarde";
+			break;
+		
+		case 3:  desc = "Todo el dia";
+				break;
+		
+		default:
+			
+			desc = null;
+			
+			break;
+		}
+		
 	%>  
 
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
@@ -260,13 +285,15 @@ input[type=text]:focus {
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTel() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
+	    <td><h5><%= ctrl.listarEmpleados().get(indice).getEmail() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
+	    <td><h5><%= desc %></h5></td>
 	  
 	</tr>
-	<%
+	<% 
 	
-}
 
+	}
 
       %>
       

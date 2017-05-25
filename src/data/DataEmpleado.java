@@ -144,7 +144,7 @@ public class DataEmpleado {
 	     stmt = FactoryConexion.getInstancia().getConn().createStatement();
 	   
 	     rs = stmt.executeQuery(
-	    		 "select empleados.id_empleado, empleados.usuario, empleados.nombre, empleados.apellido, empleados.tel, empleados.tipo, empleados.patente "
+	    		 "select empleados.id_empleado, empleados.usuario, empleados.nombre, empleados.apellido, empleados.tel, empleados.tipo, empleados.patente, empleados.email, empleados.id_turno"
 	     		+ " from empleados");
 	    		
 	        while (rs.next())
@@ -157,6 +157,8 @@ public class DataEmpleado {
 	            e.setTel(rs.getInt("tel"));
 	            e.setTipo(rs.getString("tipo"));
 	            e.setPatente(rs.getString("patente"));
+	            e.setEmail(rs.getString("email"));
+	            e.setId_turno(rs.getInt("id_turno"));
 	            
 	 
 	        	empleados.add(e);
@@ -228,7 +230,7 @@ public class DataEmpleado {
 		try {
 			
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"insert into empleados (usuario, contraseña, nombre, apellido,  tel, tipo, patente,email) values (?,?,?,?,?,?,?,?)" );
+					"insert into empleados (usuario, contraseña, nombre, apellido,  tel, tipo, patente,email, id_turno) values (?,?,?,?,?,?,?,?,?)" );
 			stmt.setString(1, emp.getUsuario());
 			stmt.setString(2, emp.getContraseña());
 			stmt.setString(3, emp.getNombre());
@@ -237,6 +239,7 @@ public class DataEmpleado {
 			stmt.setString(6, emp.getTipo());
 			stmt.setString(7, emp.getPatente());
 			stmt.setString(8, emp.getEmail());
+			stmt.setInt(9, emp.getId_turno());
 			stmt.execute();
 
 			
@@ -276,7 +279,7 @@ public class DataEmpleado {
 	           
 	           
 	            e.setTel(rs.getInt("tel"));
-	            e.setEmail(rs.getString("emaiÃ±"));
+	            e.setEmail(rs.getString("email"));
 	            e.setContraseña(rs.getString("contraseña"));
 	          	        	
 	            

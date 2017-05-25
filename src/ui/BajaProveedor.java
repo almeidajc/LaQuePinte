@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import negocio.CtrlCliente;
-import negocio.CtrlEmpleado;
+import negocio.CtrlProveedor;
 
 /**
- * Servlet implementation class BajaCliente
+ * Servlet implementation class BajaProveedor
  */
-@WebServlet("/BajaCliente")
-public class BajaCliente extends HttpServlet {
+@WebServlet("/BajaProveedor")
+public class BajaProveedor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BajaCliente() {
+    public BajaProveedor() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,21 +37,16 @@ public class BajaCliente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int dnicli = Integer.parseInt(request.getParameter("dni_cli"));
-		CtrlCliente ctrl = new CtrlCliente();
+		int cuit = Integer.parseInt(request.getParameter("cuit"));
+		CtrlProveedor ctrl = new CtrlProveedor();
 		
 		String tipo = (String) request.getParameter("tipo_empleado");
-		ctrl.borrarCliente(dnicli);
+		ctrl.borrarProveedor(cuit);
 		
-		if(tipo.equalsIgnoreCase("EA")){
-		request.setAttribute("mensaje", "Cliente eliminado correctamente");
-		request.getRequestDispatcher("bajaClienteEA.jsp").forward(request, response);
-		}
-		else{
-			request.setAttribute("mensaje", "Cliente eliminado correctamente");
-			request.getRequestDispatcher("bajaClienteVE.jsp").forward(request, response);
-		}
+		
+		request.setAttribute("mensaje", "Proveedor eliminado correctamente");
+		request.getRequestDispatcher("bajaProveedorEA.jsp").forward(request, response);
+		
 	}
+
 }
-
-

@@ -174,7 +174,7 @@
               <label class="control-label">Email :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="apellido"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="email"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
                 <div id="emailText"></div>
 
               </div>
