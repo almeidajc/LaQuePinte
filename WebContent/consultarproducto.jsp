@@ -135,9 +135,9 @@ input[type=text]:focus {
     <li class="submenu active" > <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
-        <li><a href="#">Consultar Producto</a></li>
+        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
+        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
+        <li><a href="consultarproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
     
@@ -157,6 +157,15 @@ input[type=text]:focus {
         <li><a href="#">Modificar Cliente</a></li>
         <li><a href="#">Eliminar Cliente</a></li>
         <li><a href="#">Consultar Cliente</a></li>
+      </ul>
+    </li>
+    
+       <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+      <ul>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
     

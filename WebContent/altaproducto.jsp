@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>   
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
+    <%@page import="entidades.Material"%>
+    <%@page import="negocio.CtrlMaterial"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,8 +69,8 @@
     <li class="submenu active" > <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
+        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
+        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
         <li><a href="consultarproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
@@ -89,6 +91,15 @@
         <li><a href="#">Modificar Cliente</a></li>
         <li><a href="#">Eliminar Cliente</a></li>
         <li><a href="#">Consultar Cliente</a></li>
+      </ul>
+    </li>
+    
+       <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+      <ul>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
     
@@ -176,16 +187,28 @@
               </div>
               <div class="control-group">
               <label class="control-label">Tipo Material</label>
+              
+      
+              
               <div class="controls">
                 <select name="material" id="material">
                   <option selected >Seleccionar...</option>
-                  <option id="material" value="1">PVC</option>
-                  <option id="material" value="2">PP</option>
-                  <option id="material" value="3">Hierro</option>
-                  <option id="material" value="4">FF</option>
-                  <option id="material" value="5">Cemento</option>
                   
-                </select>
+                          <%
+    		CtrlMaterial ctrl = new CtrlMaterial();
+    		
+    		
+	for (int indice = 0; indice < ctrl.listarMateriales().size(); indice++){
+	%>  
+  <option id="material" value="<%= ctrl.listarMateriales().get(indice).getId()%>"><%= ctrl.listarMateriales().get(indice).getNombre()%></option>
+                  
+               
+              
+              	<%	
+}
+      %>
+      
+       </select>
               </div>
             </div>
                <div class="control-group">
