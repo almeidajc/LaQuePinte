@@ -273,6 +273,8 @@ input[type=text]:focus {
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
+		String tipo = ctrl.listarEmpleados().get(indice).getTipo();
+		if( !tipo.equalsIgnoreCase("ADM") && !tipo.equalsIgnoreCase("EA")){
 		int turno;
 		String desc;
 		turno = ctrl.listarEmpleados().get(indice).getId_turno();
@@ -320,7 +322,7 @@ input[type=text]:focus {
 	</tr>
 	<%
 		}
-
+	}
 
 
       %>

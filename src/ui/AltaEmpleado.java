@@ -69,6 +69,7 @@ public class AltaEmpleado extends HttpServlet {
 		e.setTipo(tipo);
 		e.setPatente(patente);
 		e.setEmail(email);
+		e.setId_turno(id_turno);
 		
 		CtrlEmpleado ctrl = new CtrlEmpleado();
 		
