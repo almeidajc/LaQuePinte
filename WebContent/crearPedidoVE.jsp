@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="entidades.Vendedor"%>
+    <%@page import="entidades.Despachante"%>
+    <%@page import="entidades.EncargadoAdministracion"%>
+    <%@page import="entidades.Empleado"%>
+    <%@page import="entidades.Camionero"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +22,10 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
+<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+            if(userSession == null || !(userSession.getTipo().equals("VE"))){
+            	response.sendRedirect("error405.jsp"); }
+            	 String tipo_em = userSession.getTipo();%> 
 <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
@@ -48,30 +56,20 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-  <li><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-check"></i> <span>Pedido</span> </a>
+  <li ><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
+    <li class="submenu active"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearpedido.jsp">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Pagar Deuda</a></li>
-      </ul>
-    </li>
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
-      <ul>
-        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
-        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
-        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
-        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
+        <li class="active"><a href="crearPedidoVE.jsp">Crear Pedido</a></li>
+        <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="#">Modificar Cliente</a></li>
-        <li><a href="#">Eliminar Cliente</a></li>
-        <li><a href="#">Consultar Cliente</a></li>
+        <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
     
@@ -99,11 +97,82 @@
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Pedido</h1>
+ <h1>Nuevo cliente</h1>
  </div>
   <div class="container-fluid"><hr>
-  
-    
+   
+  <div class="row-fluid">
+    <div class="span6">
+    <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>Crear Pedido</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form action="AltaCliente" method="post" class="form-horizontal">
+          <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
+            <div class="control-group">
+              <label class="control-label">Nombre :</label>
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Nombre cliente" name="nombre" id="nombre"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Apellido :</label>
+              <div class="controls">
+                <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido cliente" />
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">DNI :</label>
+              <div class="controls">
+               <input type="text" class="span11" placeholder="Numero de documento cliente" name="dni" id="dni"/>
+               </div>
+               </div>
+            <div class="control-group">
+              <label class="control-label">Telefono</label>
+              <div class="controls">
+                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">Email :</label>
+              <div class="controls">
+                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" />
+              </div>
+            </div>
+           
+             
+            <div class="control-group">
+              <label class="control-label">Dirección</label>
+              <div class="controls">
+                <input type="text"  class="span11" placeholder="Direccion cliente" name="direccion" id="direccion" />
+              </div>
+              </div>
+              <div class="widget-content nopadding">
+              
+               </div>
+                <div class="form-actions">
+                  <input type="submit" value="Alta" class="btn btn-success">
+                </div>
+              </form>
+        </div>
+      </div>
+      </div>
+      </div>
 <!--End-Action boxes-->    
    
   </div>
