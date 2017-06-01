@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="entidades.EncargadoAdministracion"%>
+    <%@page import="entidades.Empleado"%>
+     <%@page import="entidades.Producto"%>
+     <%@page import="negocio.CtrlProducto"%>
+
+    <%@page import="entidades.Material"%>
+    <%@page import="negocio.CtrlMaterial"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +21,9 @@
 <link rel="stylesheet" href="bootstrap/css/matrix-media.css" />
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
+<script src="bootstrap/js/bootstrap-select.js"></script> 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
@@ -23,6 +32,11 @@
   <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
 </div>
 <!--close-Header-part--> 
+
+<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+			String nombre="";
+           if(userSession == null || !(userSession.getTipo().equals("EA"))){
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
 
 
 <!--top-Header-menu-->
@@ -124,6 +138,14 @@
   </div>
 <!--End-breadcrumbs-->
 
+<% int idprod = Integer.parseInt(request.getParameter("id_producto"));  
+		CtrlProducto ctrl = new CtrlProducto();
+		Producto p = ctrl.getById(idprod);
+		
+           
+	%>  
+
+
 <!--Action boxes-->
  <div id="titulo">
  <h1>Modificar Producto</h1>
@@ -137,54 +159,81 @@
             <h5>Ingresar los valores: </h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="#" name="number_validate" id="number_validate" novalidate="novalidate">
+            <form class="form-horizontal" method="post" action="ModificarProducto" >
             <div class="control-group">
                 <label class="control-label">Código Producto</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
+                  <input type="text" name="codigo_producto" id="codigo_producto" required autofocus class="form-control" value="<%=idprod %>">
                 </div>
-              </div>
+            </div>
              
               <div class="control-group">
                 <label class="control-label">Nombre Producto</label>
                 <div class="controls">
-                  <input type="text" name="required" id="required">
+                  <input type="text" name="nombre_producto" id="nombre_producto" required autofocus class="form-control" value="<%=p.getNombre_producto() %>">
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Descripción Producto</label>
-                <div class="controls">
-                  <input type="text" name="required" id="required">
-                </div>
+              <label class="control-label">Tipo Material</label>
+              
+      
+              
+              <div class="controls">
+                <select name="material" id="material">
+                  <option selected class="selectpicker" data-live-search="true"><%=p.getNombre_material() %></option>
+                  
+                          <%
+    		CtrlMaterial ctrlM = new CtrlMaterial();
+    		
+    		
+	for (int indice = 0; indice < ctrlM.listarMateriales().size(); indice++){
+	%>  
+  <option id="material" value="<%= ctrlM.listarMateriales().get(indice).getId()%>"><%= ctrlM.listarMateriales().get(indice).getNombre()%></option>
+                  
+               
+              
+              	<%	
+}
+      %>
+      
+       </select>
               </div>
-                <div class="control-group">
+            </div>
+               <div class="control-group">
                 <label class="control-label">Precio</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
-                </div>
+                  <input type="text" name="precio_producto" id="precio_producto" required autofocus class="form-control" value="<%=p.getPrecio() %>">
+                </div>   
               </div>
+              
               <div class="control-group">
-                <label class="control-label">Stock</label>
+                <label class="control-label">Fecha</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
+                  <input type="date" name="fecha_producto" id="fecha_producto" required autofocus class="form-control" value="<%=p.getFecha() %>">
+                </div>
+              </div>   
+              
+              <div class="control-group">
+                <label class="control-label">Stock Ingresado</label>
+                <div class="controls">
+                  <input type="text" name="stock_producto" id="stock_producto" required autofocus class="form-control" value="<%=p.getCantidad_stock() %>"> 
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Stock Mínimo</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
+                  <input type="text" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control" value="<%=p.getCantidad_min_stock() %>">
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Stock Máximo</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
+                  <input type="text" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control" value="<%=p.getCantidad_max_stock()%>">
                 </div>
               </div>
-              <div class="form-actions">
-                <input type="submit" value="Modificar" class="btn btn-success">
-                <a class="btn btn-danger form-actions" href="indexEA.jsp">Cancelar</a>
-               
+              <div class="form-actions" >
+                <input type="submit" value="Registrar" class="btn btn-success btn-large">
+                
               </div>
             </form>
           </div>
@@ -215,6 +264,7 @@
 <script src="bootstrap/js/jquery.peity.min.js"></script> 
 <script src="bootstrap/js/fullcalendar.min.js"></script> 
 <script src="bootstrap/js/matrix.js"></script> 
+
 <script src="bootstrap/js/matrix.dashboard.js"></script> 
 <script src="bootstrap/js/jquery.gritter.min.js"></script> 
 <script src="bootstrap/js/matrix.interface.js"></script> 
@@ -227,6 +277,7 @@
 <script src="bootstrap/js/matrix.popover.js"></script> 
 <script src="bootstrap/js/jquery.dataTables.min.js"></script> 
 <script src="bootstrap/js/matrix.tables.js"></script> 
+<script src="bootstrap/js/bootstrap-select.js"></script> 
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to

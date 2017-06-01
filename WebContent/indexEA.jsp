@@ -31,7 +31,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="indexEA.jsp">Materiales de Construcción</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -121,7 +121,7 @@
     
     <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
     
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
     
     
     

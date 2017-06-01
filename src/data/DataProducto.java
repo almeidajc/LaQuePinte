@@ -31,7 +31,7 @@ public class DataProducto {
 			
 			
 			stmtPrecio = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"Insert into precio_producto_venta (Id_Producto, Fecha, Valor)"
+					"Insert into precio_producto_venta (id_producto, fecha, precio)"
 					+"values (?,?,?)");
 			stmtPrecio.setInt(1, p.getId_producto());						
 			stmtPrecio.setDate(2, new java.sql.Date(p.getFecha().getTime()));				
@@ -125,7 +125,7 @@ try {
 	
 	try { // borro primero de la tabla precio_producto_venta
 		stmtPP=FactoryConexion.getInstancia().getConn().prepareStatement(
-				  "delete from precio_producto_venta where Id_Producto=?"
+				  "delete from precio_producto_venta where id_producto=?"
 				);
 		stmtPP.setInt(1, codprod);
 		stmtPP.execute();
@@ -174,49 +174,43 @@ try {
 		
 	}
 
-	/*public Producto getById(int id) {
+	public Producto getById(int id) {
 		
 		ResultSet rsProd=null;
-		ResultSet rsPrecio=null;
-		ResultSet rsMat=null;
+		
 		PreparedStatement stmtProd=null;
-		PreparedStatement stmtPrecio=null;
-		PreparedStatement stmtMat=null;
+		
 		Producto p = new Producto();
 		
 		
 		try {
 			stmtProd = 	FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select cod_servicio, nombre_servicio, descripcion_servicio from servicios where cod_servicio = ?"
+					 "select productos.id_producto, productos.nombre_producto, productos.cantidad_stock, productos.cantidad_minima, productos.cantidad_maxima, precio_producto_venta.precio, materiales.nombre"
+		    		     		+ " from productos"
+		    		     		+ " inner join materiales"
+		    		     		+ " on productos.id_material=materiales.id_material"
+		    		     		+ " inner join precio_producto_venta"
+		    		     		+ " on productos.id_producto=precio_producto_venta.id_producto"
+		    		     		+ " inner join (select precio_producto_venta.id_producto, max(precio_producto_venta.fecha) 'ult_fec' "
+		    		     		+ " 			from precio_producto_venta"
+		    		     		+ " 			where precio_producto_venta.fecha <= current_date()"
+		    		     		+ " 			group by precio_producto_venta.id_producto)val_act "
+		    		     		+ " on precio_producto_venta.id_producto=val_act.id_producto and precio_producto_venta.fecha=val_act.ult_fec "
+		    		     		+ "where productos.id_producto = ?"
 					);
-			stmt.setInt(1, codServicio);
-			rs = stmt.executeQuery();
-			if(rs !=null && rs.next()){
-	         
-	           
-	           
-	            s.setCod_servicio(rs.getInt("cod_servicio"));
-	            s.setNombre(rs.getString("nombre_servicio"));
-	            s.setDescripcion(rs.getString("descripcion_servicio"));
-	           
-	           
+			stmtProd.setInt(1, id);
+			rsProd = stmtProd.executeQuery();
+			if(rsProd !=null && rsProd.next()){
+				
+				 p.setId_producto(rsProd.getInt("id_producto"));
+		            p.setNombre_producto(rsProd.getString("nombre_producto"));
+		            p.setCantidad_stock(rsProd.getInt("cantidad_stock"));
+		            p.setCantidad_min_stock(rsProd.getInt("cantidad_minima"));
+		            p.setCantidad_max_stock(rsProd.getInt("cantidad_maxima"));
+		            p.setPrecio(rsProd.getFloat("precio"));
+		            p.setNombre_material(rsProd.getString("nombre"));
 	        		   
-	        	 stmtPrecio= FactoryConexion.getInstancia().getConn().prepareStatement("select precio from precios_servicios where cod_servicio = ?");
-	   			 stmtPrecio.setInt(1, rs.getInt("cod_servicio"));
-	   			 rsPrecio=stmtPrecio.executeQuery();
-	   			 if(rsPrecio.next()){
-
-	   				
-	   				 s.setPrecio(rsPrecio.getInt("precio"));
-	   				 
-	   				 
-	   			 	}
-	            	
-	           
-	        	
-	        	
-	            
-	         }
+	        	      }
 	      
 	    }catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -224,11 +218,9 @@ try {
 	    } finally
 		{
 			try {
-				if(rs!=null)rs.close();
-				if(stmt!=null) stmt.close();
+				if(rsProd!=null)rsProd.close();
+				if(stmtProd!=null) stmtProd.close();
 				
-				if(rsPrecio!=null)rsPrecio.close();
-				if(stmtPrecio!=null) stmtPrecio.close();
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -237,9 +229,9 @@ try {
 			FactoryConexion.getInstancia().releaseConn();
 		}
 		
-		return s;
+		return p;
 		
 	}
 
-	*/
+	
 }

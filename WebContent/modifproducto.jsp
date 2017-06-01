@@ -145,28 +145,39 @@ input[type=text]:focus {
     <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
+        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
+        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
         <li><a href="consultarproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
+        
+  <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="#">Nuevo Empleado</a></li>
-        <li><a href="#">Modificar Empleado</a></li>
-        <li><a href="#">Eliminar Empleado</a></li>
-        <li><a href="#">Consultar Empleado</a></li>
+       <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="#">Modificar Cliente</a></li>
-        <li><a href="#">Eliminar Cliente</a></li>
-        <li><a href="#">Consultar Cliente</a></li>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
+      </ul>
+    </li>
+    
+    
+  <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+      <ul>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
     
@@ -248,7 +259,7 @@ input[type=text]:focus {
         <th><h5 style="text-align:left; ">STOCK MIN</h5></th>
         <th><h5 style="text-align:left; ">STOCK MAX</h5></th>
         <th><h5 style="text-align:left; ">MATERIAL</h5></th>
-        <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
+        <th><h5 style="text-align:left; ">MODIFICAR</h5></th>
              
       </tr>
     </thead>
@@ -273,8 +284,8 @@ input[type=text]:focus {
 	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
 	   <td><form method="post" action="modprod.jsp">
            <input type="hidden" id="id_producto" name="id_producto" value="<%= ctrl.listarProductos().get(indice).getId_producto()%>" >
-           <button type="submit" class="btn2" name="modificarproducto" id="modificarproducto" >
-           <span class="icon-pencil" style="color: blue; font-size:100%;"></span></a></form></td>
+           <button type="submit" class="btn2" name="modificarproducto" style="background-color: #F9F9F9; text-align:center;"id="modificarproducto" >
+           <span class="icon-pencil" style="color: blue; font-size:120%; background-color: #F9F9F9;content-align:center"></span></a></form></td>
 	  
 	</tr>
 	<%
