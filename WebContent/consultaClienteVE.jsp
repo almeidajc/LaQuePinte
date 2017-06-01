@@ -102,9 +102,8 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
   <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearpedido.jsp">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Pagar Deuda</a></li>
+        <li><a href="crearPedidoVE.jsp">Crear Pedido</a></li>
+        <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
     

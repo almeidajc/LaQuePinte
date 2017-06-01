@@ -4,9 +4,8 @@
     <%@page import="entidades.Empleado"%>
      <%@page import="entidades.Producto"%>
      <%@page import="negocio.CtrlProducto"%>
-
-    <%@page import="entidades.Material"%>
-    <%@page import="negocio.CtrlMaterial"%>
+	 <%@page import="entidades.Material"%>
+     <%@page import="negocio.CtrlMaterial"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

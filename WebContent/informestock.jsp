@@ -1,7 +1,7 @@
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
      <%@page import="entidades.Vendedor"%>
-    <%@page import="entidades.Despachante"%>
+    <%@page import="negocio.CtrlProducto"%>
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
     <%@page import="entidades.Camionero"%>
@@ -147,24 +147,76 @@
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
- <div id="titulo" style="padding-left: 38px">
- <h1>Informe Stock</h1>
+ <div id="titulo">
+ <h1>Informe de Productos con stock menor al minimo</h1><hr>
  </div>
-  <div class="container-fluid" ><hr>
+  <div class="container-fluid">
+     <div class="row-fluid">
+      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
+      
   
-   <div class="row-fluid">
-      <div class="span12">
+     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-signal"></i> </span>
-            <h5>Gráfica Stock</h5>
-          </div>
-          <div class="widget-content">
-            <div class="chart"></div>
+        
+          
+          <div class="widget-content nopadding" id="tb_content">
+            <table class="order-table table" class="table table-hover">
+    <thead>
+      <tr >
+      	
+        <th><h5 style="text-align:left; ">ID PRODUCTO</h5></th>
+        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:left; ">PRECIO</h5></th>
+        <th><h5 style="text-align:left; ">STOCK DISPONIBLE</h5></th>
+        <th><h5 style="text-align:left; ">STOCK MIN</h5></th>
+        <th><h5 style="text-align:left; ">STOCK MAX</h5></th>
+        <th><h5 style="text-align:left; ">MATERIAL</h5></th>
+             
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+<%
+    		CtrlProducto ctrl = new CtrlProducto();
+    		
+    		//PUEDO HACER TMB
+			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+			// habitacios = ctrl.Listar();
+
+	for (int indice = 0; indice < ctrl.listarProductos().size(); indice++){
+		 int disp = ctrl.listarProductos().get(indice).getCantidad_stock();
+		 int min = ctrl.listarProductos().get(indice).getCantidad_min_stock();
+		 if(disp<min){
+	%>  
+	   <td><h5><%= ctrl.listarProductos().get(indice).getId_producto() %></h5></td>
+	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
+	   <td><h5><%= ctrl.listarProductos().get(indice).getPrecio() %></h5></td>
+	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
+	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
+	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
+	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
+	  
+	</tr>
+	<%
+		 }
+
+	}
+
+      %>
+      
+     
+    </tbody>
+  </table>
           </div>
         </div>
       </div>
     </div>
-    </div>
+    
+  </div>
+</div>
+
 <!--End-Action boxes-->    
    
   </div>
@@ -174,8 +226,9 @@
 
 
 <!--Footer-part-->
+
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
 </div>
 <!--end-Footer-part-->
 <script src="bootstrap/js/jquery.min.js"></script> 
