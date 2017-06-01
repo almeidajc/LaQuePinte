@@ -22,7 +22,7 @@ function validaPass(x){
 
 function validaPass2(x){
 	y = document.getElementById('pwd').value;
-	
+
 	if (x != y){
 		document.getElementById('msjPass_2').style.visibility = "visible";
 		document.getElementById('msjPass_2').innerHTML = 'Las contraseñas tiene que ser iguales';
@@ -34,7 +34,7 @@ function validaPass2(x){
 
 
 function validaTel(x){
-	
+
 	if(x>999999 && x<999999999){
 		document.getElementById('telef').style.visibility = "hidden";
 	}
@@ -42,11 +42,11 @@ function validaTel(x){
 		document.getElementById('telef').style.visibility = "visible";
 		document.getElementById('telef').innerHTML = 'El telefono debe ser numerico y con al menos 7 numeros';
 	}
-	
+
 }
 
 function validaDNI(x){
-	
+
 	if(x>999999 && x<999999999){
 		document.getElementById('dniErro').style.visibility = "hidden";
 	}
@@ -54,7 +54,7 @@ function validaDNI(x){
 		document.getElementById('dniErro').style.visibility = "visible";
 		document.getElementById('dniErro').innerHTML = 'El no DNI es valido';
 	}
-	
+
 }
 
 function validaNombre(valor){
@@ -64,7 +64,7 @@ function validaNombre(valor){
 	  } else {
 		  document.getElementById('nombreError').style.visibility = "visible";
 		  document.getElementById('nombreError').innerHTML = 'Nombre no valido';
-	  }	
+	  }
 }
 
 function validaApellido(valor){
@@ -74,7 +74,7 @@ function validaApellido(valor){
 	  } else {
 		  document.getElementById('apError').style.visibility = "visible";
 		  document.getElementById('apError').innerHTML = 'Apellido no valido';
-	  }	
+	  }
 }
 
 function validarEmail(valor) {
@@ -93,7 +93,8 @@ function validaPrecio(valor){
 	let patronNombre = /([?1234567890][.][1234567890][1234567890])+$/;
 	valor = replacePunto(valor);
 	if (patronNombre.test(valor)){
-		document.getElementById('precioError').style.visibility = "hidden"
+		document.getElementById('precioError').style.visibility = "hidden";
+		document.getElementById('precio_producto').value = valor;
 	}
 	else{
 		document.getElementById('precioError').style.visibility = "visible";
@@ -101,6 +102,25 @@ function validaPrecio(valor){
 	}
 }
 
+function numeroLinea(){
+	valorLinea =0;
+}
+
+
+function agregarLinea(){
+    var newDiv = document.createElement("div");
+    newDiv.setAttribute("id",`detalle${valorLinea}`);
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", "text");
+    newDiv.appendChild(x)
+    lineanueva.appendChild(newDiv);
+  valorLinea++;
+}
+
+function quitarLinea(){
+  valorLinea--;
+  document.getElementById(`detalle${valorLinea}`).innerHTML = "";
+}
 
 
 function replacePunto(string){
