@@ -233,5 +233,10 @@ try {
 		
 	}
 
+	public boolean verificarProducto(Producto p) {
+		
+		return false;
+	}
+
 	
 }

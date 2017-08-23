@@ -65,7 +65,6 @@ public class AltaProducto extends HttpServlet {
 	/*	String fechaStr = ((String)request.getParameter("fecha"));
 		s.setFecha(fechaStr); // CONVERSION DE DATOS */
 		
-		
 		p.setId_producto(cod);
 		p.setNombre_producto(nombre);
 		p.setPrecio(precio);
@@ -77,14 +76,41 @@ public class AltaProducto extends HttpServlet {
 		
 		CtrlProducto ctrl = new CtrlProducto();
 		
-	try {
-		ctrl.agregarProducto(p);
-	} catch (ApplicationException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-		request.setAttribute("mensaje", "Producto agregado correctamente");
-		request.getRequestDispatcher("altaproducto.jsp").forward(request, response);
+		boolean existeProd = false;
+		int idp;
+		String nomp;
+		String mjs="";
+		
+		for (int indice = 0; indice < ctrl.listarProductos().size(); indice++){
+			
+			idp = ctrl.listarProductos().get(indice).getId_producto();
+			nomp= ctrl.listarProductos().get(indice).getNombre_producto();
+			
+					
+			if(cod == idp || nomp.equalsIgnoreCase(nombre)){
+				existeProd = true;
+			}
+			   
+		}
+		
+		if(existeProd){	
+			mjs = "El producto ya se encuentra registrado";
+			request.setAttribute("mensaje", mjs);
+			request.getRequestDispatcher("altaproducto.jsp").forward(request, response);
+			
+		}else{			
+			
+		try {
+			ctrl.agregarProducto(p);
+		} catch (ApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			mjs = "Producto agregado correctamente";
+			request.setAttribute("mensaje",mjs );
+			request.getRequestDispatcher("altaproducto.jsp").forward(request, response);
+			
+		}
 		
 	}
 
