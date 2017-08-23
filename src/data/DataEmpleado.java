@@ -64,6 +64,7 @@ public class DataEmpleado {
 					
 					e=V; 
 					break;
+					
 				case "ADM":
 					
 					Administrador Adm = new Administrador();

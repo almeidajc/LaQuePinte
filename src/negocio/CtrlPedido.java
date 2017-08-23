@@ -3,18 +3,19 @@ package negocio;
 import java.util.ArrayList;
 
 import appExceptions.ApplicationException;
+import data.DataPedido;
 import data.DataProducto;
 import entidades.Producto;
 
-public class CtrlProducto {
+public class CtrlPedido {
 	
-	DataProducto cat;
+	DataPedido cat;
 	
-	public CtrlProducto(){
-		cat=new DataProducto();
+	public CtrlPedido(){
+		cat=new DataPedido();
 	}
 
-	public void agregarProducto(Producto p) throws ApplicationException {
+	/* public void agregarProducto(Producto p) throws ApplicationException {
 		cat.agregarProducto(p);
 		
 	}
@@ -30,15 +31,7 @@ public class CtrlProducto {
 	
 	public Producto getById(int id){
 		return cat.getById(id);
-	}
-	
-//	public DisminuirStock(int )
+	} */
 	
 
-//}
-
-	public boolean verificarProducto(Producto p) {
-		return cat.verificarProducto(p);
-	}
-	
 }
