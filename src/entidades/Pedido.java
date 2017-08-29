@@ -6,9 +6,9 @@ import java.util.Date;
 public class Pedido {
 	
 	public Pedido(){
-		
+		setId_estado(1);    //1-pagado //2-reprogramado //3-en proceso de envio //4-entregado		
 	}
-	
+		
 	
 	private int id_pedido;
 	private Date fecha_emision;
@@ -23,7 +23,14 @@ public class Pedido {
 	private ArrayList<Producto> productos;
 	private Zona zona;
 	private Empleado empleado;
+	private int id_estado;
 	
+	public int getId_estado() {
+		return id_estado;
+	}
+	public void setId_estado(int id_estado) {
+		this.id_estado = id_estado;
+	}
 	public int getId_pedido() {
 		return id_pedido;
 	}
