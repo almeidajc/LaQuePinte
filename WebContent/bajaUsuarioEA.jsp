@@ -249,16 +249,15 @@ input[type=text]:focus {
     <thead>
       <tr >
       
-     	<th><h5 style="text-align:left; ">ID</h5></th>
-        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:left; ">APELLIDO</h5></th>
-        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
-        <th><h5 style="text-align:left; ">ROL</h5></th>
-        <th><h5 style="text-align:left; ">USUARIO</h5></th> 
-        <th><h5 style="text-align:left; ">EMAIL</h5></th>
-        <th><h5 style="text-align:left; ">PATENTE</h5></th>
-        <th><h5 style="text-align:left; ">TURNO</h5></th>
-        <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
+        <th><h5 style="text-align:center; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:center; ">APELLIDO</h5></th>
+        <th><h5 style="text-align:center; ">TELEFONO</h5></th>
+        <th><h5 style="text-align:center; ">ROL</h5></th>
+        <th><h5 style="text-align:center; ">USUARIO</h5></th> 
+        <th><h5 style="text-align:center; ">EMAIL</h5></th>
+        <th><h5 style="text-align:center; ">PATENTE</h5></th>
+        <th><h5 style="text-align:center; ">TURNO</h5></th>
+         <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
              
       </tr>
     </thead>
@@ -300,15 +299,14 @@ input[type=text]:focus {
 		
 	%>  
 
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTel() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
-	    <td><h5><%= ctrl.listarEmpleados().get(indice).getEmail() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
-	    <td><h5><%= desc %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getTel() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getEmail() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= desc %></h5></td>
 	    <td><form method="post" action="BajaEmpleado">
            <input type="hidden" id="id_empleado" name="id_empleado" value="<%= ctrl.listarEmpleados().get(indice).getId_empleado()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >

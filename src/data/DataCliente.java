@@ -73,6 +73,10 @@ public class DataCliente {
 				c.setApellido(rs.getString("apellido"));
 				c.setTel(rs.getInt("tel"));
 				c.setDireccion(rs.getString("direccion"));
+				if(rs.getString("email")==null){
+					c.setEmail("-");
+				}
+				else
 				c.setEmail(rs.getString("email"));
 				c.setId_zona(rs.getInt("id_zona"));
 

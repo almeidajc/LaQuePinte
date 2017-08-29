@@ -252,14 +252,13 @@ input[type=text]:focus {
     <thead>
       <tr >
       	
-        <th><h5 style="text-align:left; ">ID PRODUCTO</h5></th>
-        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:left; ">PRECIO</h5></th>
-        <th><h5 style="text-align:left; ">STOCK DISPONIBLE</h5></th>
-        <th><h5 style="text-align:left; ">STOCK MIN</h5></th>
-        <th><h5 style="text-align:left; ">STOCK MAX</h5></th>
-        <th><h5 style="text-align:left; ">MATERIAL</h5></th>
-        <th><h5 style="text-align:left; ">MODIFICAR</h5></th>
+        <th><h5 style="text-align:center; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:center; ">PRECIO</h5></th>
+        <th><h5 style="text-align:center; ">STOCK DISPONIBLE</h5></th>
+        <th><h5 style="text-align:center; ">STOCK MIN</h5></th>
+        <th><h5 style="text-align:center; ">STOCK MAX</h5></th>
+        <th><h5 style="text-align:center; ">MATERIAL</h5></th>
+        <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
              
       </tr>
     </thead>
@@ -274,18 +273,19 @@ input[type=text]:focus {
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarProductos().size(); indice++){
+		float a=ctrl.listarProductos().get(indice).getPrecio();
+		String precio = String.format ("%.2f", a);
 	%>  
-	   <td><h5><%= ctrl.listarProductos().get(indice).getId_producto() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getPrecio() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
+	   <td><h5 style="text-align:center; ">$<%= precio %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
 	   <td><form method="post" action="modprod.jsp">
            <input type="hidden" id="id_producto" name="id_producto" value="<%= ctrl.listarProductos().get(indice).getId_producto()%>" >
            <button type="submit" class="btn2" name="modificarproducto" style="background-color: #F9F9F9; text-align:center;"id="modificarproducto" >
-           <span class="icon-pencil" style="color: blue; font-size:120%; background-color: #F9F9F9;content-align:center"></span></a></form></td>
+           <span class="icon-pencil" style="color: blue; font-size:100%; background-color: #F9F9F9;content-align:center"></span></a></form></td>
 	  
 	</tr>
 	<%
