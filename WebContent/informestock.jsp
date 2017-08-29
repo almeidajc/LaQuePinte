@@ -5,6 +5,12 @@
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
     <%@page import="entidades.Camionero"%>
+     <%@page import="ui.Pdf"%> 
+     <%@page import="ui.Pdf"%>
+     
+	
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +24,71 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+(function(document) {
+  'use strict';
+
+  var LightTableFilter = (function(Arr) {
+
+    var _input;
+
+    function _onInputEvent(e) {
+      _input = e.target;
+      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+      Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+      });
+    }
+
+    function _filter(row) {
+      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+
+    return {
+      init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+      }
+    };
+  })(Array.prototype);
+
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+      LightTableFilter.init();
+    }
+  });
+
+})(document);
+</script>		
+
+<style type="text/css">
+
+}
+tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+.input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
+
+	</style>	
+
+
+
+
 </head>
 <body>
 
@@ -197,8 +268,9 @@
 	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
 	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
 	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
-	  
+	   
 	</tr>
+		
 	<%
 		 }
 
@@ -209,8 +281,16 @@
      
     </tbody>
   </table>
+  
           </div>
         </div>
+        
+       <p align="right"><input type="submit" value="Imprimir" class="btn btn-success btn-large" >
+       <form action="Imprimir" method="post" class="form-horizontal">
+
+       
+               
+              </form>
       </div>
     </div>
     

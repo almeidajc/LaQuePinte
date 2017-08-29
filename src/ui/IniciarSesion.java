@@ -16,6 +16,8 @@ import entidades.EncargadoAdministracion;
 import entidades.Vendedor;
 import negocio.CtrlEmpleado;
 
+
+
 /**
  * Servlet implementation class IniciarSesion
  */
@@ -45,6 +47,8 @@ public class IniciarSesion extends HttpServlet {
 		
 		String usuario = request.getParameter("usuario");
 		String contraseña = request.getParameter("contrasena");
+		
+		
 		
 		CtrlEmpleado ctrlE = new CtrlEmpleado();
 		Empleado E = new Empleado();

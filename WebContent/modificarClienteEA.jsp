@@ -226,14 +226,14 @@
     <thead>
       <tr >
       	
-        <th><h5 style="text-align:left; ">DNI</h5></th>
-        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:left; ">APELLIDO</h5></th>
-        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
-        <th><h5 style="text-align:left; ">DIRECCION</h5></th>
-        <th><h5 style="text-align:left; ">EMAIL</h5></th> 
-        <th><h5 style="text-align:left; ">ID ZONA</h5></th>
-        <th><h5 style="text-align:left; ">MODIFICAR</h5></th>
+        <th><h5 style="text-align:center; ">DNI</h5></th>
+        <th><h5 style="text-align:center; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:center; ">APELLIDO</h5></th>
+        <th><h5 style="text-align:center; ">TELEFONO</h5></th>
+        <th><h5 style="text-align:center; ">DIRECCION</h5></th>
+        <th><h5 style="text-align:center; ">EMAIL</h5></th> 
+        <th><h5 style="text-align:center; ">ID ZONA</h5></th>
+        <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
              
       </tr>
     </thead>
@@ -249,20 +249,20 @@
 
 	for (int indice = 0; indice < ctrl.listarClientes().size(); indice++){
 	%>  
-	   <td><h5><%= ctrl.listarClientes().get(indice).getDni() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getNombre() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getApellido() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getTel() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
-	   <td><h5><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
-	   <td><h5 ><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDni() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getNombre() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getApellido() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getTel() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
 	   
 	   
 	   <td><form method="post" action="modClienteEA.jsp">
-           <input type="hidden" id="cuit" name="cuit" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
+           <input type="hidden" id="dni_cli" name="dni_cli" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button type="submit" class="btn2" name="modificarcliente" id="modificarcliente" onClick="">
-           <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
+           <button type="submit" class="btn2" name="modificarcliente" id="modificarcliente" text-align:center;"id="modificarcliente" >
+           <span class="icon-pencil" style="color: blue; font-size:100%; position:relative; align-content:center"></span></a></form></td>
 	  
 	</tr>
 	<%
