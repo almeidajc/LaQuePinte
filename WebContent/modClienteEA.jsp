@@ -133,12 +133,12 @@
       </ul>
     </li>
 
-    <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+    <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
-        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
-        <li><a href="consulproducto.jsp">Consultar Producto</a></li>
+        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
+        <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
+        <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
 
@@ -173,8 +173,6 @@
         <li><a href="#">Consultar Ubicaci�n</a></li>
       </ul>
     </li>
-
-    <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
 
     <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
 

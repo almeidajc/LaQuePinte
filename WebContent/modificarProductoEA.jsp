@@ -1,14 +1,13 @@
-<%@page import="java.text.NumberFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="UTF-8"%>
+    pageEncoding="ISO-8859-1"%>
+     <%@page import="entidades.EncargadoAdministracion"%>
+    <%@page import="entidades.Empleado"%>
      <%@page import="entidades.Producto"%>
      <%@page import="negocio.CtrlProducto"%>
-     <%@page import="entidades.EncargadoAdministracion"%>
-      <%@page import="entidades.Empleado"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci贸n</title>
+<title>Materiales::de::Construcci髇</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -19,10 +18,7 @@
 <link rel="stylesheet" href="bootstrap/css/matrix-media.css" />
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
-
-
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-
 <script type="text/javascript">
 (function(document) {
   'use strict';
@@ -82,13 +78,26 @@ tbody tr:nth-child(odd) {
 input[type=text]:focus {
     width: 100%;
 }
+.btn2 {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  text-shadow: 2px 2px 4px #000000;
+  font-family: Arial;
+  color: #e80e20;
+  font-size: 25px;
+  background: #ffffff;
+  padding: 3px 3px 3px 3px;
+  border: solid #ffffff 0px;
+  text-decoration: none;
+  align-content: center;
+  text-align:center;
+}
 
 	</style>	
-
-
-
 </head>
 <body>
+
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
@@ -96,7 +105,7 @@ input[type=text]:focus {
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci贸n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcci髇</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -124,7 +133,7 @@ input[type=text]:focus {
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li ><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearpedido.jsp">Crear Pedido</a></li>
@@ -133,35 +142,27 @@ input[type=text]:focus {
       </ul>
     </li>
     
-    <li class="submenu active" > <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+    
+    <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
-        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
-        <li><a href="consultarproducto.jsp">Consultar Producto</a></li>
+        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li class="active"><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
+        <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
+        <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="#">Nuevo Empleado</a></li>
-        <li><a href="#">Modificar Empleado</a></li>
-        <li><a href="#">Eliminar Empleado</a></li>
-        <li><a href="#">Consultar Empleado</a></li>
+       <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
-      <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="#">Modificar Cliente</a></li>
-        <li><a href="#">Eliminar Cliente</a></li>
-        <li><a href="#">Consultar Cliente</a></li>
-      </ul>
-    </li>
-    
-       <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
         <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
@@ -171,18 +172,28 @@ input[type=text]:focus {
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci贸n</span> </a>
+  <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci贸n</a></li>
-        <li><a href="#">Modificar Ubicaci贸n</a></li>
-        <li><a href="#">Eliminar Ubicaci贸n</a></li>
-        <li><a href="#">Consultar Ubicaci贸n</a></li>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
     
-    <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
+
     
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci髇</span> </a>
+      <ul>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci髇</a></li>
+        <li><a href="#">Modificar Ubicaci髇</a></li>
+        <li><a href="#">Eliminar Ubicaci髇</a></li>
+        <li><a href="#">Consultar Ubicaci髇</a></li>
+      </ul>
+    </li>
+    
+        
+    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
     
     
     
@@ -204,21 +215,34 @@ input[type=text]:focus {
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Producto</a></div>
+    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Modificar Producto</a></div>
    
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Consultar Producto</h1><hr>
+ <h1>Modificar Producto</h1>
  </div>
-  <div class="container-fluid">
-     <div class="row-fluid">
-      <div class="span12"> <!-- TAMA脩O FORMULARIOS -->
-      
-  
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+  <div class="container-fluid"><hr>
+   <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
+    
+    <div class="row-fluid">
+      <div class="span12">
+       <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
         <div class="widget-box">
         
@@ -228,23 +252,21 @@ input[type=text]:focus {
     <thead>
       <tr >
       	
-        
         <th><h5 style="text-align:center; ">NOMBRE</h5></th>
         <th><h5 style="text-align:center; ">PRECIO</h5></th>
         <th><h5 style="text-align:center; ">STOCK DISPONIBLE</h5></th>
         <th><h5 style="text-align:center; ">STOCK MIN</h5></th>
         <th><h5 style="text-align:center; ">STOCK MAX</h5></th>
         <th><h5 style="text-align:center; ">MATERIAL</h5></th>
+        <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
              
       </tr>
     </thead>
     
     <tbody>
       <tr>
-<%		
-		
+<%
     		CtrlProducto ctrl = new CtrlProducto();
-			
     		
     		//PUEDO HACER TMB
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
@@ -254,13 +276,16 @@ input[type=text]:focus {
 		float a=ctrl.listarProductos().get(indice).getPrecio();
 		String precio = String.format ("%.2f", a);
 	%>  
-	   
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
 	   <td><h5 style="text-align:center; ">$<%= precio %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
+	   <td><form method="post" action="modProdEA.jsp">
+           <input type="hidden" id="id_producto" name="id_producto" value="<%= ctrl.listarProductos().get(indice).getId_producto()%>" >
+           <button type="submit" class="btn2" name="modificarproducto" style="background-color: #F9F9F9; text-align:center;"id="modificarproducto" >
+           <span class="icon-pencil" style="color: blue; font-size:100%; background-color: #F9F9F9;content-align:center"></span></a></form></td>
 	  
 	</tr>
 	<%
@@ -312,8 +337,7 @@ input[type=text]:focus {
 <script src="bootstrap/js/select2.min.js"></script> 
 <script src="bootstrap/js/matrix.popover.js"></script> 
 <script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script>
-
+<script src="bootstrap/js/matrix.tables.js"></script> 
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to

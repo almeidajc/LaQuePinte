@@ -70,34 +70,45 @@
       </ul>
     </li>
     
-    <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+      <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
-        <li><a href="#">Consultar Producto</a></li>
+        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li class="active"><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
+        <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
+        <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="#">Nuevo Empleado</a></li>
-        <li><a href="#">Modificar Empleado</a></li>
-        <li><a href="#">Eliminar Empleado</a></li>
-        <li><a href="#">Consultar Empleado</a></li>
+       <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="#">Modificar Cliente</a></li>
-        <li><a href="#">Eliminar Cliente</a></li>
-        <li><a href="#">Consultar Cliente</a></li>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
     
+    
+  <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+      <ul>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
+      </ul>
+    </li>
+    
+
     
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>
@@ -108,9 +119,8 @@
       </ul>
     </li>
     
-    <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
-    
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+        
+    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
     
     
     
