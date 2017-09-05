@@ -6,3 +6,5 @@ build/*
 build.xml
 /src/data/FactoryConexion.java
 .classpath
+.metadata
+.settings
