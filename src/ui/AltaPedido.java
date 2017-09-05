@@ -37,7 +37,7 @@ public class AltaPedido extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -61,7 +61,7 @@ public class AltaPedido extends HttpServlet {
 	/*	String fechaStr = ((String)request.getParameter("fecha"));
 		s.setFecha(fechaStr); // CONVERSION DE DATOS */
 		
-		CtrlCliente ctrl = new CtrlCliente();
+		/*CtrlCliente ctrl = new CtrlCliente();
 		Cliente c = ctrl.getClienteByDni(Dni);
 		
 		if(c.equals(null)){
@@ -98,6 +98,6 @@ public class AltaPedido extends HttpServlet {
 		
 		
 		
-	}
+	}*/
 
 }

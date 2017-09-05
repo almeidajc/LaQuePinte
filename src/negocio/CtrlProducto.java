@@ -19,6 +19,10 @@ public class CtrlProducto {
 		
 	}
 	
+	public ArrayList<Producto> getByDescripcion(String descripcion,int desde,int hasta) throws ApplicationException {
+		return cat.getByDescripcion(descripcion,desde,hasta);
+	}
+	
 	public ArrayList<Producto> listarProductos(){    
 		return cat.listarProductos();
 	}
@@ -39,6 +43,11 @@ public class CtrlProducto {
 
 	public boolean verificarProducto(Producto p) {
 		return cat.verificarProducto(p);
+	}
+
+	public int getStock(Producto producto) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

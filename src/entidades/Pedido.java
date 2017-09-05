@@ -1,12 +1,15 @@
 package entidades;
 
+import Linea_pedido;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Pedido {
 	
 	public Pedido(){
-		setId_estado(1);    //1-pagado //2-reprogramado //3-en proceso de envio //4-entregado		
+		this.setId_estado(1);    //1-pagado //2-reprogramado //3-en proceso de envio //4-entregado	
+		//this.setFecha_emision(today());
 	}
 		
 	
@@ -24,7 +27,15 @@ public class Pedido {
 	private Zona zona;
 	private Empleado empleado;
 	private int id_estado;
+	private ArrayList<LineaDetallePedido> lineasDetallePedido;
 	
+	public ArrayList<LineaDetallePedido> getLineasDetallePedido() {
+		return lineasDetallePedido;
+	}
+	public void setLineasDetallePedido(
+			ArrayList<LineaDetallePedido> lineasDetallePedido) {
+		this.lineasDetallePedido = lineasDetallePedido;
+	}
 	public int getId_estado() {
 		return id_estado;
 	}
@@ -109,7 +120,7 @@ public class Pedido {
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
-	
+	 
 	
 
 }
