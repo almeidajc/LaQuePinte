@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body body onload="init()">
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
@@ -156,6 +156,10 @@
   
     <div class="quick-actions_homepage">
     
+    <div id="map" class="map responsive" style="width: 950px; height: 700px;"></div>
+    <br>
+    <br>
+
     
          
       
@@ -176,6 +180,10 @@
 </div>
 
 <!--end-Footer-part-->
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD_1mkSBgMDYfy00Z6JGLq9zsTlmmlLuA" async defer ></script>
+<script src="maps.js"></script>
+
 
 <script src="bootstrap/js/jquery.min.js"></script> 
 <script src="bootstrap/js/jquery.ui.custom.js"></script> 
