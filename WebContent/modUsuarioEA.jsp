@@ -73,12 +73,12 @@
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+    <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
-        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
-        <li><a href="consulproducto.jsp">Consultar Producto</a></li>
+        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
+        <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
+        <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
     
@@ -102,17 +102,15 @@
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci贸n</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci髇</span> </a>
       <ul>
         <li><a href="agregarubicacion.jsp">Agregar Ubicaci贸n</a></li>
-        <li><a href="#">Modificar Ubicaci贸n</a></li>
-        <li><a href="#">Eliminar Ubicaci贸n</a></li>
-        <li><a href="#">Consultar Ubicaci贸n</a></li>
+        <li><a href="#">Modificar Ubicaci髇</a></li>
+        <li><a href="#">Eliminar Ubicaci髇</a></li>
+        <li><a href="#">Consultar Ubicaci髇</a></li>
       </ul>
     </li>
-    
-    <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
-    
+
     <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
     
     

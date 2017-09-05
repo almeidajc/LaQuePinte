@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>   
+    <%@page import="entidades.EncargadoAdministracion"%>
+    <%@page import="entidades.Empleado"%>
+    <%@page import="entidades.Material"%>
+    <%@page import="negocio.CtrlMaterial"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +21,11 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+			String nombre="";
+           if(userSession == null || !(userSession.getTipo().equals("EA"))){
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
 
 <!--Header-part-->
 <div id="header">
@@ -37,10 +46,10 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
     <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
     <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
-     <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -48,7 +57,7 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li ><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearpedido.jsp">Crear Pedido</a></li>
@@ -59,32 +68,43 @@
     
     <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="#">Modificar Producto</a></li>
-        <li><a href="#">Eliminar Producto</a></li>
-        <li><a href="#">Consultar Producto</a></li>
+        <li class="active"><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
+        <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
+        <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="#">Nuevo Empleado</a></li>
-        <li><a href="#">Modificar Empleado</a></li>
-        <li><a href="#">Eliminar Empleado</a></li>
-        <li><a href="#">Consultar Empleado</a></li>
+       <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="#">Modificar Cliente</a></li>
-        <li><a href="#">Eliminar Cliente</a></li>
-        <li><a href="#">Consultar Cliente</a></li>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
     
+    
+  <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+      <ul>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
+      </ul>
+    </li>
+    
+
     
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>
@@ -95,9 +115,8 @@
       </ul>
     </li>
     
-    <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
-    
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+        
+    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
     
     
     
@@ -119,79 +138,122 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Producto</a></div>
    
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Modificar Producto</h1>
+ <h1>Nuevo Producto</h1>
  </div>
   <div class="container-fluid"><hr>
-    
-    <div class="row-fluid">
-      <div class="span12">
+  
+   
+  
+     <div class="row-fluid">
+      <div class="span6"> <!-- TAMAÑO FORMULARIOS -->
+      <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
             <h5>Ingresar los valores: </h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="indexEA.jsp" name="number_validate" id="number_validate" novalidate="novalidate">
+            <form class="form-horizontal" method="post" action="AltaProducto" >
             <div class="control-group">
                 <label class="control-label">Código Producto</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
+                  <input type="text" name="codigo_producto" id="codigo_producto" required autofocus class="form-control">
                 </div>
-              </div>
+            </div>
              
               <div class="control-group">
                 <label class="control-label">Nombre Producto</label>
                 <div class="controls">
-                  <input type="text" name="required" id="required">
+                  <input type="text" name="nombre_producto" id="nombre_producto" required autofocus class="form-control">
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Descripción Producto</label>
-                <div class="controls">
-                  <input type="text" name="required" id="required">
-                </div>
+              <label class="control-label">Tipo Material</label>
+              
+      
+              
+              <div class="controls">
+                <select name="material" id="material">
+                  <option selected >Seleccionar...</option>
+                  
+                          <%
+    		CtrlMaterial ctrl = new CtrlMaterial();
+    		
+    		
+	for (int indice = 0; indice < ctrl.listarMateriales().size(); indice++){
+	%>  
+  <option id="material" value="<%= ctrl.listarMateriales().get(indice).getId()%>"><%= ctrl.listarMateriales().get(indice).getNombre()%></option>
+                  
+               
+              
+              	<%	
+}
+      %>
+      
+       </select>
               </div>
-                <div class="control-group">
+            </div>
+               <div class="control-group">
                 <label class="control-label">Precio</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
-                </div>
+                  <input type="text" name="precio_producto" id="precio_producto" required autofocus class="form-control">
+                </div>   
               </div>
+              
               <div class="control-group">
-                <label class="control-label">Stock</label>
+                <label class="control-label">Fecha</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
+                  <input type="date" name="fecha_producto" id="fecha_producto" required autofocus class="form-control">
+                </div>
+              </div>   
+              
+              <div class="control-group">
+                <label class="control-label">Stock Ingresado</label>
+                <div class="controls">
+                  <input type="text" name="stock_producto" id="stock_producto" required autofocus class="form-control">
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Stock Mínimo</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
+                  <input type="text" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control">
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Stock Máximo</label>
                 <div class="controls">
-                  <input type="text" name="number" id="number" />
+                  <input type="text" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control">
                 </div>
               </div>
-              <div class="form-actions">
-                <input type="submit" value="Regresar" class="btn btn-success">
+              <div class="form-actions" >
+                <input type="submit" value="Registrar" class="btn btn-success btn-large">
                 
-               
               </div>
             </form>
           </div>
         </div>
       </div>
-     
     </div>
+    
   </div>
 </div>
 
@@ -226,7 +288,8 @@
 <script src="bootstrap/js/select2.min.js"></script> 
 <script src="bootstrap/js/matrix.popover.js"></script> 
 <script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script> 
+<script src="bootstrap/js/matrix.tables.js"></script>
+
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to

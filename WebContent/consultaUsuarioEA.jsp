@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcciï¿½n</title>
+<title>Materiales::de::Construcci�n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -124,12 +124,12 @@ input[type=text]:focus {
       </ul>
     </li>
 
-    <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+    <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-        <li><a href="modifproducto.jsp">Modificar Producto</a></li>
-        <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
-        <li><a href="consulproducto.jsp">Consultar Producto</a></li>
+        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
+        <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
+        <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
 
@@ -164,17 +164,16 @@ input[type=text]:focus {
 
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci�n</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci�n</span> </a>
 
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaciï¿½n</a></li>
-        <li><a href="#">Modificar Ubicaciï¿½n</a></li>
-        <li><a href="#">Eliminar Ubicaciï¿½n</a></li>
-        <li><a href="#">Consultar Ubicaciï¿½n</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci�n</a></li>
+        <li><a href="#">Modificar Ubicaci�n</a></li>
+        <li><a href="#">Eliminar Ubicaci�n</a></li>
+        <li><a href="#">Consultar Ubicaci�n</a></li>
       </ul>
     </li>
 
-    <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
 
     <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
 
