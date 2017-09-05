@@ -238,5 +238,55 @@ try {
 		return false;
 	}
 
+	public ArrayList<Producto> getByDescripcion(String descripcion, int desde,int hasta) throws ApplicationException {
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		Producto prod;
+		ResultSet rs= null;
+		PreparedStatement stmt = null;
+		try{
+				 
+			stmt= FactoryConexion.getInstancia().getConn().prepareStatement(
+					"select productos.id_producto,productos.nombre_producto,productos.cantidad_stock,precio_producto_venta.precio"
+					+ " from productos"
+					+ " inner join precio_producto_venta "
+					+ " on precio_producto_venta.id_producto=productos.id_producto"
+					+ " inner join (select precio_producto_venta.id_producto, max(precio_producto_venta.fecha) 'fecha_desde'"
+					+ "	from precio_producto_venta"
+					+ "	where precio_producto_venta.fecha <= current_date()"
+					+ "	group by precio_producto_venta.id_producto)val_prod "
+					+ " on precio_producto_venta.id_producto=val_prod.id_producto and precio_producto_venta.fecha=val_prod.fecha_desde "
+					+ " where productos.nombre_producto like ?"
+					+ " group by productos.id_producto"
+					+ " order by productos.nombre_producto"
+					+ " limit ?,?");
+			stmt.setString(1, "%"+descripcion+"%");
+			stmt.setInt(2, desde);
+			stmt.setInt(3, hasta);
+			rs=stmt.executeQuery();
+			while(rs.next()){
+				prod = new Producto();
+				prod.setId_producto(rs.getInt("id_producto"));
+				prod.setNombre_producto(rs.getString("nombre_producto"));
+				prod.setPrecio(rs.getFloat("precio"));
+				productos.add(prod);
+				
+			}
+			
+		} catch (SQLException e){
+			e.printStackTrace();
+			throw new ApplicationException("Error al obtener la lista de productos desde la base de datos", null);			
+			
+		} finally{
+			try {
+				if(stmt!=null) stmt.close();
+				if(rs!=null) rs.close();
+				FactoryConexion.getInstancia().getConn().close();
+			} catch (SQLException e) {
+				throw new ApplicationException("Error al cerrar conexiones con la base de datos", e);
+			}
+		}
+		return productos;
+	}
+
 	
 }

@@ -17,6 +17,7 @@ public class Producto {
 	
 	public int getId_material() {
 		return id_material;
+		
 	}
 	public void setId_material(int id_material) {
 		this.id_material = id_material;
@@ -70,5 +71,7 @@ public class Producto {
 		this.fecha = fecha;
 	}
 	private Date fecha;
+	
+	
 
 }
