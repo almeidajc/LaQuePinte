@@ -167,10 +167,10 @@
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaciï¿½n</span> </a>
 
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaciï¿½n</a></li>
-        <li><a href="#">Modificar Ubicaciï¿½n</a></li>
-        <li><a href="#">Eliminar Ubicaciï¿½n</a></li>
-        <li><a href="#">Consultar Ubicaciï¿½n</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
+        <li><a href="#">Modificar Ubicación</a></li>
+        <li><a href="#">Eliminar Ubicación</a></li>
+        <li><a href="#">Consultar Ubicación</a></li>
       </ul>
     </li>
 

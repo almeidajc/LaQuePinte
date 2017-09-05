@@ -188,8 +188,6 @@ input[type=text]:focus {
       </ul>
     </li>
     
-    <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
-    
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
     
     
@@ -236,13 +234,13 @@ input[type=text]:focus {
     <thead>
       <tr >
       	
-        <th><h5 style="text-align:left; ">ID PRODUCTO</h5></th>
-        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:left; ">PRECIO</h5></th>
-        <th><h5 style="text-align:left; ">STOCK DISPONIBLE</h5></th>
-        <th><h5 style="text-align:left; ">STOCK MIN</h5></th>
-        <th><h5 style="text-align:left; ">STOCK MAX</h5></th>
-        <th><h5 style="text-align:left; ">MATERIAL</h5></th>
+        <th><h5 style="text-align:center; ">ID PRODUCTO</h5></th>
+        <th><h5 style="text-align:center; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:center; ">PRECIO</h5></th>
+        <th><h5 style="text-align:center; ">STOCK DISPONIBLE</h5></th>
+        <th><h5 style="text-align:center; ">STOCK MIN</h5></th>
+        <th><h5 style="text-align:center; ">STOCK MAX</h5></th>
+        <th><h5 style="text-align:center; ">MATERIAL</h5></th>
              
       </tr>
     </thead>
@@ -261,13 +259,13 @@ input[type=text]:focus {
 		 int min = ctrl.listarProductos().get(indice).getCantidad_min_stock();
 		 if(disp<min){
 	%>  
-	   <td><h5><%= ctrl.listarProductos().get(indice).getId_producto() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getPrecio() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
-	   <td><h5><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getId_producto() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getPrecio() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
 	   
 	</tr>
 		
