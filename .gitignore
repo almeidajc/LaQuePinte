@@ -6,5 +6,7 @@ build/*
 build.xml
 /src/data/FactoryConexion.java
 .classpath
-.metadata
-.settings
+.metadata/*
+.settings/*
+Servers/*
+RemoteSystemsTempFiles/*
