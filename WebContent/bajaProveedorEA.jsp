@@ -116,7 +116,7 @@
     </li>
     
     
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
     
     
     
@@ -175,11 +175,12 @@
     <thead>
       <tr >
       	
-        <th><h5 style="text-align:left; ">CUIT</h5></th>
-        <th><h5 style="text-align:left; ">RAZON SOCIAL</h5></th>
-        <th><h5 style="text-align:left; ">DIRECCION</h5></th>
-        <th><h5 style="text-align:left; ">EMAIL</h5></th> 
-        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
+        <th><h5 style="text-align:center; ">CUIT</h5></th>
+        <th><h5 style="text-align:center; ">RAZON SOCIAL</h5></th>
+        <th><h5 style="text-align:center; ">DIRECCION</h5></th>
+        <th><h5 style="text-align:center; ">EMAIL</h5></th> 
+        <th><h5 style="text-align:center; ">TELEFONO</h5></th>
+        <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
         
              
       </tr>
@@ -193,11 +194,11 @@
     		
 	for (int indice = 0; indice < ctrl.listarProveedores().size(); indice++){
 	%>  
-	   <td><h5><%= ctrl.listarProveedores().get(indice).getCuit() %></h5></td>
-	   <td><h5><%= ctrl.listarProveedores().get(indice).getRazon_social() %></h5></td>
-	   <td><h5><%= ctrl.listarProveedores().get(indice).getDireccion() %></h5></td>
-	   <td><h5><%= ctrl.listarProveedores().get(indice).getEmail() %></h5></td>
-	   <td><h5><%= ctrl.listarProveedores().get(indice).getTel() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getCuit() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getRazon_social() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getDireccion() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getEmail() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getTel() %></h5></td>
 	    <td><form method="post" action="BajaProveedor">
            <input type="hidden" id="cuit" name="cuit" value="<%= ctrl.listarProveedores().get(indice).getCuit()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
