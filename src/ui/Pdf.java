@@ -24,7 +24,7 @@ public class Pdf {
 		
 	}
 	public void imprimir() throws DocumentException {
-		// TODO Auto-generated method stub
+		/*// TODO Auto-generated method stub
 		Document documento = new Document(PageSize.LETTER, 80, 80, 75, 75);
 		
 		
@@ -121,15 +121,15 @@ public class Pdf {
 				*/
 		}
 		
-					documento.add(titulo);
-					documento.add(saltolinea1);
-				    documento.add(tabla); 
-				    documento.close();
+					//documento.add(titulo);
+					//documento.add(saltolinea1);
+				    //documento.add(tabla); 
+				    //documento.close();
 				    
 	}
 			
 		
-	
+	*/
 }
 	
 	
