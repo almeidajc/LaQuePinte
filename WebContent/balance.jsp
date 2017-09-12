@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -20,7 +20,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -30,8 +30,8 @@
   <ul class="nav">
     
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Joselo</span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    
+    
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -42,9 +42,9 @@
   <ul>
     <li><a href="indexCA.jsp"><i class="icon icon-home"></i> <span>Menu Camionero</span></a> </li>
     
-    <li><a href="registrarEnvio.jsp"><i class="icon icon-truck"></i> <span>Registrar Envío</span></a></li>
+    <li><a href="registrarEnvio.jsp"><i class="icon icon-truck"></i> <span>Registrar Envï¿½o</span></a></li>
    <!--  <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>Eelements</span></a></li> -->
-    <li><a href="resumenEnvios.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Envíos</span></a></li>
+    <li><a href="resumenEnvios.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Envï¿½os</span></a></li>
     <li class="active"><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
   </ul>
 </div>
@@ -65,7 +65,7 @@
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Ingrese período para calcular su balance</h5>
+            <h5>Ingrese perï¿½odo para calcular su balance</h5>
           </div>
           <div class="widget-content nopadding">
             <form class="form-horizontal" method="post" action="#" name="number_validate" id="number_validate" novalidate="novalidate">

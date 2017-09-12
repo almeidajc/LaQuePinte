@@ -22,12 +22,11 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
-<!-- 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
-	String tipo_em = userSession.getTipo();
-	/*ESTO NO FUNCIONA PORQUE NO HICIMOS LA PARTE DE USUARIO DEL ADM */  %>
- -->
+			String nombre="";
+           if(userSession == null || !(userSession.getTipo().equals("ADM"))){
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+           String tipo_em = userSession.getTipo();%>
 
 
 <!--Header-part-->
@@ -50,9 +49,9 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
+    
+    
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -121,110 +120,108 @@
       			
       		%>
       		
+      		
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
           <h5>Alta usuario</h5>
         </div>
         <div class="widget-content nopadding">
           <form action="AltaEmpleado" method="post" class="form-horizontal">
-
-           <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
+          <input type="hidden" id="tipo_empleado" name="tipo_em" value="<%=tipo_em%>" >
             <div class="control-group">
-
               <label class="control-label">Nombre :</label>
               <div class="controls">
-                <input type="text" class="span11" placeholder="Nombre empleado" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
-              	<div id="nombreError"></div>
-              </div>
+                <input type="text" class="span11" placeholder="Nombre empleado" name="nombre" id="nombre"/>
+                <a href="#" title="Ingrese el nombre del nuevo empleado" class="tip-right"><i class="icon-question-sign"></a></i></li>
+                </div>
             </div>
             <div class="control-group">
               <label class="control-label">Apellido :</label>
               <div class="controls">
-                <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido empleado" onchange="validaApellido(this.value)" required />
-              	<div id="apError"></div>
+                <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido empleado" />
+                <a href="#" title="Ingrese el apellido del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">DNI :</label>
               <div class="controls">
-            	   <input type="text" class="span11" placeholder="Numero de documento empleado" name="dni" id="dni" onchange="validaDNI(this.value)"/>
-              	   <div id="dniErro"></div>
-              </div>
-            </div>
+               <input type="text" class="span11" placeholder="Numero de documento empleado" name="dni" id="dni"/>
+               <a href="#" title="Ingrese el Numero de Identificacion Nacional del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+               </div>
+               </div>
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
-                <div id="telef"></div>
+                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
+                 <a href="#" title="Ingrese el nï¿½mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
-
-                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
-              	<div id="emailText"></div>
+                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" />
+                 <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               </div>
             </div>
-            <div class="control-group">
-               <label class="control-label">Rol del empleado</label>
-               <div class="controls">
-                <select id="rol" name="rol" required>
+           <div class="control-group">
+              <label class="control-label">Rol del empleado</label>
+              <div class="controls">
+
+                <select id="rol" name="rol" >
                   <option value="CA">Camionero</option>
                   <option value="VE">Vendedor</option>
                   <option value="DE">Despachante</option>
-                  <option value="EA">Encargado de administraciï¿½n</option>
-                 </select>
-              </div>
-               </div>
-             <div class="control-group" id="patente_di">
-               <label class="control-label">Patente :</label>
-               <div class="controls">
-                 <input type="text" class="span11" name="patente" id="patente" placeholder="Patente" />
-               </div>
-             </div>
+                  <option value="EA">Encargado de administraci&oacute;n</option>
 
-			<div class="control-group">
+                </select>
+              </div>
+              </div>
+            <div class="control-group patente" id="patente_di">
+              <label class="control-label">Patente :</label>
+              <div class="controls">
+                <input type="text" class="span11" name="apellido" id="patente" placeholder="Patente" />
+              </div>
+            </div>
+            
+            <div class="control-group">
                <label class="control-label">Turno de trabajo</label>
                <div class="controls">
                 <select id="id_turno" name="rol" required>
-                  <option value="1">Mañana</option>
+                  <option value="1">Ma&ntilde;ana</option>
                   <option value="2">Tarde</option>
                   <option value="3">Todo el dia</option>
                   </select>
               </div>
                </div>
-			
+               
             <div class="control-group">
               <label class="control-label">Usuario</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Nombre de usuario" name="usuario" id="usuario" required/>
+                <input type="text"  class="span11" placeholder="Nombre de usuario" name="usuario" id="usuario" />
+				 <a href="#" title="El usuario lo decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>              
               </div>
               </div>
               <div class="widget-content nopadding">
 
                 <div class="control-group">
-                  <label class="control-label">Password</label>
+                  <label class="control-label">Contrase&ntilde;a</label>
                   <div class="controls">
-
-                    <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Contraseï¿½a" onchange="validaPass(this.value)" required>
-
+                    <input type="password" id="pass_1" name="contrasena" class="form-control" placeholder="Contrase&ntilde;a" required>
+            		<a href="#" title="La contrase&ntilde;a la decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
             		<label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
+            
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label">Confirm password</label>
+                  <label class="control-label">Confirmar contrase&ntilde;a</label>
                   <div class="controls">
-
-                   <input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="Repita la contraseï¿½a" onchange="validaPass2(this.value)" required>
-
-            	   <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
+                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contrase&ntilde;a" required>
+            <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                 </div>
                 <div class="form-actions">
                   <p align="right"><input type="submit" value="Alta" class="btn btn-success">
                 </div>
-               </div>
               </form>
         </div>
       </div>

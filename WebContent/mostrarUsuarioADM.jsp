@@ -1,9 +1,11 @@
-   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page import="entidades.Empleado"%>
+     <%@page import="negocio.CtrlEmpleado"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -18,10 +20,14 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
+<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+			String nombre="";
+           if(userSession == null || !(userSession.getTipo().equals("ADM"))){
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+           String tipo_em = userSession.getTipo();%>
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -38,9 +44,9 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
+    
+    
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>

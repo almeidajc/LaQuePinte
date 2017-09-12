@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -72,7 +72,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
             	
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -91,8 +91,8 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    
+    
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -119,12 +119,12 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
     
@@ -147,7 +147,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
-      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
+      <div class="span12"> <!-- TAMAï¿½O FORMULARIOS -->
       <% 
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
@@ -206,7 +206,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 	   <td><form method="post" action="BajaCliente">
            <input type="hidden" id="dni_cli" name="dni_cli" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button type="submit" class="btn2" name="bajacliente" id="bajacliente" onClick="return confirm('¿Esta Seguro que deseas dar de baja este cliente?')">
+           <button type="submit" class="btn2" name="bajacliente" id="bajacliente" onClick="return confirm('ï¿½Esta Seguro que deseas dar de baja este cliente?')">
            <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
 	  
 	</tr>

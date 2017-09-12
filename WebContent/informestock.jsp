@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
@@ -100,11 +100,9 @@ input[type=text]:focus {
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
-
-
 
 
 <!--top-Header-menu-->
@@ -120,8 +118,8 @@ input[type=text]:focus {
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    
+    
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -130,7 +128,7 @@ input[type=text]:focus {
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearpedido.jsp">Crear Pedido</a></li>
@@ -139,7 +137,7 @@ input[type=text]:focus {
       </ul>
     </li>
     
-   <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+    <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
         <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
@@ -150,7 +148,7 @@ input[type=text]:focus {
     
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-       <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
         <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
@@ -158,7 +156,7 @@ input[type=text]:focus {
     </li>
     
     
-        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
         <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
@@ -168,7 +166,7 @@ input[type=text]:focus {
     </li>
     
     
-  <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+    <li> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
         <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
@@ -177,18 +175,19 @@ input[type=text]:focus {
       </ul>
     </li>
     
-
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
     
-    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+   
+    
+    <li  class="active"><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
     
     
     
@@ -203,14 +202,13 @@ input[type=text]:focus {
     
   </ul>
 </div>
-<!-- sidebar-menu-->
-
+<!--sidebar-menu-->
 
 <!--main-container-part-->
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Informe de Stock</a></div>
    
   </div>
 <!--End-breadcrumbs-->
@@ -221,7 +219,7 @@ input[type=text]:focus {
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
-      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
+      <div class="span12"> <!-- TAMAï¿½O FORMULARIOS -->
       
   
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />

@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -33,7 +33,7 @@
             	
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -52,8 +52,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    
+    
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -79,12 +79,12 @@
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
     
@@ -110,11 +110,11 @@
   <div class="col-sm-6">
    <form action="CrearPedido" method="post" id="formItem">
                 <label for="txtDescripcion" class="sr-only">Producto</label>
-                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripción" autofocus="autofocus">
+                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripciï¿½n" autofocus="autofocus">
                 <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
                 
-                <label for="txtCod" class="sr-only">Código</label>
-                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Código">
+                <label for="txtCod" class="sr-only">Cï¿½digo</label>
+                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Cï¿½digo">
                 <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
                                 
                 <label for="txtCantidad" class="sr-only">Producto</label>
@@ -140,7 +140,7 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Código</th>
+						<th>Cï¿½digo</th>
 						<th>Descripcion</th>
 						<th>Precio</th>
 					</tr>
@@ -162,8 +162,8 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Código</th>
-                <th>Descripción</th>
+                <th>Cï¿½digo</th>
+                <th>Descripciï¿½n</th>
                 <th>Precio Unitario</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>

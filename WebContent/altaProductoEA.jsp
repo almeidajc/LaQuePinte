@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -29,7 +29,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -47,8 +47,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    
+    
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -106,12 +106,12 @@
     
 
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
     
@@ -152,7 +152,7 @@
    
   
      <div class="row-fluid">
-      <div class="span6"> <!-- TAMAÑO FORMULARIOS -->
+      <div class="span6"> <!-- TAMAï¿½O FORMULARIOS -->
       <% 
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
@@ -173,17 +173,12 @@
           </div>
           <div class="widget-content nopadding">
             <form class="form-horizontal" method="post" action="AltaProducto" >
-            <div class="control-group">
-                <label class="control-label">Código Producto</label>
-                <div class="controls">
-                  <input type="text" name="codigo_producto" id="codigo_producto" required autofocus class="form-control">
-                </div>
-            </div>
-             
+            	             
               <div class="control-group">
                 <label class="control-label">Nombre Producto</label>
                 <div class="controls">
                   <input type="text" name="nombre_producto" id="nombre_producto" required autofocus class="form-control">
+                <a href="#" title="Ingrese los datos en el siguiente orden: Tipo de producto + [Material del producto] + [medida del producto] + [especificaciï¿½n extra] + [marca]. (Los items entre [] sï¿½lo ingresarlos cuando corresponda )" class="tip-top"><i class="icon-question-sign"> </a></i>
                 </div>
               </div>
               <div class="control-group">
@@ -213,35 +208,33 @@
               </div>
             </div>
                <div class="control-group">
-                <label class="control-label">Precio</label>
+                <label class="control-label">Precio de venta</label>
                 <div class="controls">
                   <input type="text" name="precio_producto" id="precio_producto" required autofocus class="form-control">
+                 <a href="#" title="Ingrese el precio de venta del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                 </div>   
               </div>
               
-              <div class="control-group">
-                <label class="control-label">Fecha</label>
-                <div class="controls">
-                  <input type="date" name="fecha_producto" id="fecha_producto" required autofocus class="form-control">
-                </div>
-              </div>   
-              
+             
               <div class="control-group">
                 <label class="control-label">Stock Ingresado</label>
                 <div class="controls">
                   <input type="text" name="stock_producto" id="stock_producto" required autofocus class="form-control">
+                  <a href="#" title="Ingrese el stock por el que ingresa el nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Stock Mínimo</label>
+                <label class="control-label">Stock Mï¿½nimo</label>
                 <div class="controls">
                   <input type="text" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control">
+                  <a href="#" title="Ingrese el nivel mï¿½nimo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Stock Máximo</label>
+                <label class="control-label">Stock Mï¿½ximo</label>
                 <div class="controls">
                   <input type="text" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control">
+               	 <a href="#" title="Ingrese el nivel mï¿½ximo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                 </div>
               </div>
               <div class="form-actions" >

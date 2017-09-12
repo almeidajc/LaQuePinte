@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -30,7 +30,7 @@
             	
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -49,9 +49,7 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
-     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+    <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -77,12 +75,12 @@
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
     
@@ -121,7 +119,7 @@
         		}
       			
       		%>
-      <div class="widget-box">
+        <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
           <h5>Alta Cliente</h5>
         </div>
@@ -132,45 +130,51 @@
               <label class="control-label">Nombre :</label>
               <div class="controls">
                 <input type="text" class="span11" placeholder="Nombre cliente" name="nombre" id="nombre"/>
+             	<a href="#" title="Ingrese el nombre del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Apellido :</label>
               <div class="controls">
                 <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido cliente" />
+              	<a href="#" title="Ingrese el apellido del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">DNI :</label>
               <div class="controls">
                <input type="text" class="span11" placeholder="Numero de documento cliente" name="dni" id="dni"/>
+               <a href="#" title="Ingrese el Numero de identificacion nacional del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i>
                </div>
                </div>
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
                 <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
+                <a href="#" title="Ingrese el telefono del nuevo cliente (ingrese tambien la caracteristica de la ciudad)" class="tip-right"><i class="icon-question-sign"> </a></i>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" />
+                <input type="text" class="span11" name="email" id="email" placeholder="Nombre de email" />
+                <a href="#" title="Ingrese la direcciï¿½n de email del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i>
               </div>
             </div>
            
              
             <div class="control-group">
-              <label class="control-label">Dirección</label>
+              <label class="control-label">Direcciï¿½n</label>
               <div class="controls">
                 <input type="text"  class="span11" placeholder="Direccion cliente" name="direccion" id="direccion" />
+                <a href="#" title="Ingrese la direcciï¿½n del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i>
               </div>
               </div>
               <div class="widget-content nopadding">
               
                </div>
                 <div class="form-actions">
-                  <input type="submit" value="Alta" class="btn btn-success">
+                 <p align="right"> <input type="submit" value="Alta" class="btn btn-success">
                 </div>
               </form>
         </div>
