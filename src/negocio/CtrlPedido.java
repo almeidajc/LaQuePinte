@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import appExceptions.ApplicationException;
 import data.DataPedido;
 import data.DataProducto;
+import entidades.LineaDetallePedido;
+import entidades.Pedido;
 import entidades.Producto;
 
 public class CtrlPedido {
@@ -13,6 +15,14 @@ public class CtrlPedido {
 	
 	public CtrlPedido(){
 		cat=new DataPedido();
+	}
+	
+	public ArrayList<Pedido> listarPedidos(){
+		return cat.listarPedidos();
+	}
+	
+	public ArrayList<LineaDetallePedido> getLineaDetallePedido (int id){
+		return cat.getLineaDetallePedido(id);
 	}
 
 	/* public void agregarProducto(Producto p) throws ApplicationException {

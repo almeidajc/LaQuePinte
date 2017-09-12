@@ -2,10 +2,16 @@
     pageEncoding="ISO-8859-1"%>   
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
+
+    <%@page import="negocio.CtrlPedido"%>
+    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+
+<title>Materiales::de::Construcción</title>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -28,7 +34,9 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
+
+  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+
 </div>
 <!--close-Header-part--> 
 
@@ -104,12 +112,14 @@
     </li>
     
     
+
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
         <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
         <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
         <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
         <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
+
       </ul>
     </li>
     
@@ -163,137 +173,66 @@
         		}
       			
       		%>
- 
+
+      		
+      		 
 
 
 <div class="accordion" id="collapse-group">
-          
-          <div class="accordion-group widget-box">
+  
+   
+   <% CtrlPedido ctrlP = new CtrlPedido(); 
+   		int id=0;
+	  for (int indice = 0; indice < ctrlP.listarPedidos().size(); indice++){
+	%>    
+   
+     <!-- ac3 inicio-->        
+         <div class="accordion-group widget-box">
+           
             <div class="accordion-heading">
-              <div class="widget-title"> <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
-                <h5>Accordion closed</h5>
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidos().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
+                <h5>FECHA: <%= ctrlP.listarPedidos().get(indice).getFecha_entrega() %>| NUM FACT: <%= ctrlP.listarPedidos().get(indice).getId_pedido() %>| TOTAL: <%= ctrlP.listarPedidos().get(indice).getTotal() %></h5>
+
                 </a> </div>
             </div>
-            <div class="collapse accordion-body" id="collapseGThree">
-              <div class="widget-content"> Another is open </div>
-            </div>
-          </div>
-          
-          <div class="accordion-group widget-box">
-            <div class="accordion-heading">
-              <div class="widget-title"> <a data-parent="#collapse-group" href="#collapseGFour" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
-                <h5>Accordion closed</h5>
-                </a> </div>
-            </div>
-            <div class="collapse accordion-body" id="collapseGFour">
-              <div class="widget-content"> Another is open </div>
-            </div>
-          </div>
-          
-          <div class="accordion-group widget-box">
-            <div class="accordion-heading">
-              <div class="widget-title"> <a data-parent="#collapse-group" href="#collapseGFive" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
-                <h5>NRO FACT: 001 | CLIENTE: JUANCE | DIREC: AAA</h5>
-                </a> </div>
-            </div>
-            <div class="collapse accordion-body" id="collapseGFive">
+            <div class="collapse accordion-body" id="<%= ctrlP.listarPedidos().get(indice).getId_pedido() %>">
               <div class="widget-content"> <table class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>CANTIDAD</th>
                   <th>PRODUCTO</th>
+                  <th>CANTIDAD</th>
                   <th>PRECIO UNITARIO(s)</th>
                   <th>SUB T</th>
-                 
                 </tr>
               </thead>
+              <%  
+              id= ctrlP.listarPedidos().get(indice).getId_pedido();
+              for (int indice2 = 0; indice2 < ctrlP.getLineaDetallePedido(id).size(); indice2++){
+	%>
               <tbody>
                 <tr class="odd gradeX">
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0</td>
-                  <td>Win 95+</td>
-                  <td class="center"> 4</td>
-                  <td class="center">X</td>
+                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getNombre_producto() %></td>
+                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getCantidad() %></td>
+                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getPrecioUnitario() %></td>
+                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getSubtotal() %></td>
+                 
                 </tr>
-                <tr class="even gradeC">
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0</td>
-                  <td>Win 95+</td>
-                  <td class="center">5</td>
-                  <td class="center">C</td>
-                </tr>
-                <tr class="odd gradeA">
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5</td>
-                  <td>Win 95+</td>
-                  <td class="center">5.5</td>
-                  <td class="center">A</td>
-                </tr>
-                <tr class="even gradeA">
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6</td>
-                  <td>Win 98+</td>
-                  <td class="center">6</td>
-                  <td class="center">A</td>
-                </tr>
+                
               </tbody>
+              <%}%>
+
             </table> </div>
             </div>
           </div>
           
-        </div>
-        <!-- INICIO TABLA -->
-        <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="odd gradeX">
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0</td>
-                  <td>Win 95+</td>
-                  <td class="center"> 4</td>
-                  <td class="center">X</td>
-                </tr>
-                <tr class="even gradeC">
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0</td>
-                  <td>Win 95+</td>
-                  <td class="center">5</td>
-                  <td class="center">C</td>
-                </tr>
-                <tr class="odd gradeA">
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5</td>
-                  <td>Win 95+</td>
-                  <td class="center">5.5</td>
-                  <td class="center">A</td>
-                </tr>
-                <tr class="even gradeA">
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6</td>
-                  <td>Win 98+</td>
-                  <td class="center">6</td>
-                  <td class="center">A</td>
-                </tr>
-              </tbody>
-            </table>
-<!-- FIN TABLA -->
 
+      <!-- ac3 fin-->   
+      
+      	<%}%>
+</div>
+        
+        	
+	
 
 
       </div>
