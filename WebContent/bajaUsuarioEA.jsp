@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -85,8 +85,10 @@ input[type=text]:focus {
 	</style>	
 </head>
 <body>
-<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
-
+<%    Empleado userSession = (Empleado)session.getAttribute("userSession");
+		String nombre="";
+		if(userSession == null || !(userSession.getTipo().equals("EA"))){
+	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} 
 	String tipo_em = userSession.getTipo();%>
 
 <!--Header-part-->
@@ -108,9 +110,9 @@ input[type=text]:focus {
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
+    
+    
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -168,13 +170,13 @@ input[type=text]:focus {
     
 
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
 
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
 
@@ -203,7 +205,7 @@ input[type=text]:focus {
     <!--breadcrumbs-->
   <div id="content-header">
 
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Empleado</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Empleado</a></div>
    
 
   </div>
@@ -279,7 +281,7 @@ input[type=text]:focus {
 		
 		switch(turno){
 		case 1: 
-			 desc = "Mañana";
+			 desc = "Maï¿½ana";
 			break;
 		
 		case 2: 

@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="ISO-8859-1"%>
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcciï¿½n</title>
+<title>Materiales::de::ConstrucciÃ¯Â¿Â½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -30,7 +30,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
+  <h1><a href="dashboard.html">Materiales de ConstrucciÃ¯Â¿Â½n</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -48,8 +48,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    
+    
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -107,13 +107,13 @@
     
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
 
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
 
@@ -185,30 +185,35 @@
               <label class="control-label">Nombre :</label>
               <div class="controls">
                 <input type="text" class="span11" placeholder="Nombre empleado" name="nombre" id="nombre"/>
-              </div>
+                <a href="#" title="Ingrese el nombre del nuevo empleado" class="tip-right"><i class="icon-question-sign"></a></i></li>
+                </div>
             </div>
             <div class="control-group">
               <label class="control-label">Apellido :</label>
               <div class="controls">
                 <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido empleado" />
+                <a href="#" title="Ingrese el apellido del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">DNI :</label>
               <div class="controls">
                <input type="text" class="span11" placeholder="Numero de documento empleado" name="dni" id="dni"/>
+               <a href="#" title="Ingrese el Numero de Identificacion Nacional del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
                </div>
                </div>
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
                 <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
+                 <a href="#" title="Ingrese el nÃºmero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
                 <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" />
+                 <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               </div>
             </div>
            <div class="control-group">
@@ -234,7 +239,7 @@
                <label class="control-label">Turno de trabajo</label>
                <div class="controls">
                 <select id="id_turno" name="rol" required>
-                  <option value="1">Mañana</option>
+                  <option value="1">Ma&ntilde;ana</option>
                   <option value="2">Tarde</option>
                   <option value="3">Todo el dia</option>
                   </select>
@@ -245,21 +250,24 @@
               <label class="control-label">Usuario</label>
               <div class="controls">
                 <input type="text"  class="span11" placeholder="Nombre de usuario" name="usuario" id="usuario" />
+				 <a href="#" title="El usuario lo decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>              
               </div>
               </div>
               <div class="widget-content nopadding">
 
                 <div class="control-group">
-                  <label class="control-label">Password</label>
+                  <label class="control-label">Contrase&ntilde;a</label>
                   <div class="controls">
-                    <input type="password" id="pass_1" name="contrasena" class="form-control" placeholder="Contraseï¿½a" required>
-            <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
+                    <input type="password" id="pass_1" name="contrasena" class="form-control" placeholder="Contrase&ntilde;a" required>
+            		<a href="#" title="La contrase&ntilde;a la decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+            		<label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
+            
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label">Confirm password</label>
+                  <label class="control-label">Confirmar contrase&ntilde;a</label>
                   <div class="controls">
-                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseï¿½a" required>
+                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contrase&ntilde;a" required>
             <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                 </div>

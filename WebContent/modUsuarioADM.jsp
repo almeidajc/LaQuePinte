@@ -1,4 +1,3 @@
-
   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 
     pageEncoding="ISO-8859-1"%>
@@ -34,8 +33,10 @@
       
       
        Empleado userSession = (Empleado)session.getAttribute("userSession");
-	String tipo_em = userSession.getTipo();
-	/* ESTO NO FUNCIONA PORQUE NO HICIMOS LA PARTE DE USUARIO DEL ADM */ %> 
+			String nombre="";
+           if(userSession == null || !(userSession.getTipo().equals("ADM"))){
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+           String tipo_em = userSession.getTipo();%>
 	
 <!--Header-part-->
 <div id="header">
@@ -56,9 +57,9 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
+    
+    
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>

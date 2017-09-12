@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -83,12 +83,13 @@ input[type=text]:focus {
 </head>
 <body>
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
-	String tipo_em = userSession.getTipo();
-	/* ESTO NO FUNCIONA PORQUE NO HICIMOS LA PARTE DE USUARIO DEL ADM */ %> 
-
+			String nombre="";
+           if(userSession == null || !(userSession.getTipo().equals("ADM"))){
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+           String tipo_em = userSession.getTipo();%>
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -105,9 +106,9 @@ input[type=text]:focus {
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Ryan</span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
+    
+    
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -156,7 +157,7 @@ input[type=text]:focus {
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
-      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
+      <div class="span12"> <!-- TAMAï¿½O FORMULARIOS -->
       
   
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
@@ -203,7 +204,7 @@ input[type=text]:focus {
 	    <td><form method="post" action="BajaEmpleado">
            <input type="hidden" id="id_empleado" name="id_empleado" value="<%= ctrl.listarEmpleados().get(indice).getId_empleado()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button type="submit" class="btn2" name="bajaempleado" id="bajaempleado" onClick="return confirm('¿Esta Seguro que deseas dar de baja este empleado?')">
+           <button type="submit" class="btn2" name="bajaempleado" id="bajaempleado" onClick="return confirm('ï¿½Esta Seguro que deseas dar de baja este empleado?')">
            <span class="icon-trash" style="color: red; font-size:100%;"></span></a></form></td>
 	  
 	</tr>

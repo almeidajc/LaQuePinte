@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -24,12 +24,13 @@
 <body>
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+		String nombre="";
             if(userSession == null || !(userSession.getTipo().equals("DE"))){
             	response.sendRedirect("error405.jsp"); }%> 
 
 <!--Header-part LOGO MATRIX-STYLE.CSS --> 
 <div id="header" >
-  <h1><a href="#">Materiales de Construcción</a></h1>
+  <h1><a href="#">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -49,8 +50,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    
+    
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -61,9 +62,9 @@
   <ul>
     <li class="active"><a href="indexCA.jsp"><i class="icon icon-home"></i> <span>Menu Camionero</span></a> </li>
     
-    <li><a href="registrarEnvio.jsp"><i class="icon icon-truck"></i> <span>Registrar Envío</span></a></li>
+    <li><a href="registrarEnvio.jsp"><i class="icon icon-truck"></i> <span>Registrar Envï¿½o</span></a></li>
    <!--  <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>Eelements</span></a></li> -->
-    <li><a href="resumenEnvios.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Envíos</span></a></li>
+    <li><a href="resumenEnvios.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Envï¿½os</span></a></li>
     <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
   </ul>
 </div>
@@ -87,9 +88,9 @@
       <ul class="quick-actions">
       
         
-        <li class="bg_ls span8"> <a href="registrarEnvio.jsp"> <i class="icon-truck"></i> Registrar Envío</a> </li>
+        <li class="bg_ls span8"> <a href="registrarEnvio.jsp"> <i class="icon-truck"></i> Registrar Envï¿½o</a> </li>
         
-        <li class="bg_lg span8"> <a href="resumenEnvios.jsp"> <i class="icon-list-ol"></i> Resumen de Envíos</a> </li>
+        <li class="bg_lg span8"> <a href="resumenEnvios.jsp"> <i class="icon-list-ol"></i> Resumen de Envï¿½os</a> </li>
         <li class="bg_lr span8"> <a href="balance.jsp"> <i class="icon-credit-card"></i> Balance</a> </li>
 
       </ul>

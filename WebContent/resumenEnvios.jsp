@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -20,7 +20,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -30,8 +30,8 @@
   <ul class="nav">
     
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Joselo</span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
+    
+    
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -42,9 +42,9 @@
   <ul>
     <li><a href="indexCA.jsp"><i class="icon icon-home"></i> <span>Menu Camionero</span></a> </li>
     
-    <li><a href="registrarEnvio.jsp"><i class="icon icon-truck"></i> <span>Registrar Envío</span></a></li>
+    <li><a href="registrarEnvio.jsp"><i class="icon icon-truck"></i> <span>Registrar Envï¿½o</span></a></li>
    <!--  <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>Eelements</span></a></li> -->
-    <li  class="active"><a href="resumenEnvios.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Envíos</span></a></li>
+    <li  class="active"><a href="resumenEnvios.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Envï¿½os</span></a></li>
     <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
   </ul>
 </div>
@@ -54,9 +54,9 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"><a href="indexCA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Resumen Envíos</a></div>
+    <div id="breadcrumb"><a href="indexCA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Resumen Envï¿½os</a></div>
     <!--End-breadcrumbs-->
-    <h1>Resumen Envíos</h1>
+    <h1>Resumen Envï¿½os</h1>
   </div>
 
 <div class="container-fluid"><hr>
@@ -65,7 +65,7 @@
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
-            <h5>Envíos realizados por ud.</h5>
+            <h5>Envï¿½os realizados por ud.</h5>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered table-striped">
@@ -73,8 +73,8 @@
                 <tr>
                   <th>Fecha</th>
                   <th>Cliente</th>
-                  <th>Dirección</th>
-                  <th>Valor Envío</th>                  
+                  <th>Direcciï¿½n</th>
+                  <th>Valor Envï¿½o</th>                  
                 </tr>
               </thead>
               <tbody>
@@ -87,7 +87,7 @@
                 </tr>
                 <tr class="even gradeC">
                   <td>08/07/2016</td>
-                  <td>María Hudson</td>
+                  <td>Marï¿½a Hudson</td>
                   <td>Lima 2010</td>
                   <td class="center">$ 110</td>
                   
