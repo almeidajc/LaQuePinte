@@ -2,12 +2,14 @@
     pageEncoding="ISO-8859-1"%>   
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
+
     <%@page import="negocio.CtrlPedido"%>
     
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci髇</title>
+<title>Materiales::de::Construcci贸n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -30,7 +32,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci髇</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcci贸n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -106,12 +108,12 @@
     </li>
     
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci髇</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci贸n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci髇</a></li>
-        <li><a href="#">Modificar Ubicaci髇</a></li>
-        <li><a href="#">Eliminar Ubicaci髇</a></li>
-        <li><a href="#">Consultar Ubicaci髇</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaci贸n</a></li>
+        <li><a href="#">Modificar Ubicaci贸n</a></li>
+        <li><a href="#">Eliminar Ubicaci贸n</a></li>
+        <li><a href="#">Consultar Ubicaci贸n</a></li>
       </ul>
     </li>
     
@@ -165,6 +167,7 @@
         		}
       			
       		%>
+
       		
       		 
 
@@ -211,10 +214,12 @@
                 
               </tbody>
               <%}%>
+
             </table> </div>
             </div>
           </div>
           
+
       <!-- ac3 fin-->   
       
       	<%}%>
@@ -222,6 +227,7 @@
         
         	
 	
+
 
       </div>
       </div>
