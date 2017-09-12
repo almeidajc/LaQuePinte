@@ -1,6 +1,6 @@
 package entidades;
 
-import Linea_pedido;
+
 
 import java.util.ArrayList;
 import java.util.Date;
