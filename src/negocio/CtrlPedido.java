@@ -44,10 +44,12 @@ public class CtrlPedido {
 		} else throw new ApplicationException(mensaje, null);
 	}
 
+
 	public void registrarEnvioPedido(int id_pedido) throws ApplicationException {
 		// TODO Auto-generated method stub
 		cat.registrarEnvioPedido(id_pedido);
 	}
+
 
 	/* public void agregarProducto(Producto p) throws ApplicationException {
 		cat.agregarProducto(p);

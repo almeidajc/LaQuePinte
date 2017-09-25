@@ -10,9 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<title>Materiales::de::Construcciï¿½n</title>
-
+<title>Materiales::de::Construcción</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -24,11 +22,8 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-
-<script src="js/jquery-1.12.3.min.js"></script>
-<script src="js/pedido.js"></script>
-<script src="js/cliente.js"></script>
-
+ <script src="js/jquery-1.12.3.min.js"></script>
+ <script src="js/pedido.js"></script>
 </head>
 <body>
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
@@ -37,9 +32,7 @@
 
 <!--Header-part-->
 <div id="header">
-
-  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
-
+  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -85,14 +78,12 @@
       </ul>
     </li>
     
-
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaciï¿½n</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaciï¿½n</a></li>
-        <li><a href="#">Modificar Ubicaciï¿½n</a></li>
-        <li><a href="#">Eliminar Ubicaciï¿½n</a></li>
-        <li><a href="#">Consultar Ubicaciï¿½n</a></li>
-
+        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
+        <li><a href="#">Modificar Ubicación</a></li>
+        <li><a href="#">Eliminar Ubicación</a></li>
+        <li><a href="#">Consultar Ubicación</a></li>
       </ul>
     </li>
     
@@ -116,177 +107,72 @@
  
  <!--Action boxes-->
 
- 
- <div class="row-fluid">
-      <div class="span3">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
-            <h5>BÃšSQUEDA CLIENTE</h5>
-          </div>
-          
-         <div class="widget-content nopadding"> 
-            <form action="#" method="post" id="formCliente" class="form-horizontal">
-            <div class="control-group">
-              <label for="txtDniCliente" class="control-label">DNI :</label>
-              <div class="controls">
-                <input type="text" id="txtDniCliente" name="txtDniCliente" class="span11" placeholder="DNI" />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="txtNombreCliente" class="control-label">Nombre :</label>
-              <div class="controls">
-                <input type="text" id="txtNombreCliente" name="txtNombreCliente" class="span11" placeholder="Nombre" />
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">Apellido :</label>
-              <div class="controls">
-                <input type="text"  class="span11" placeholder="Nombre"  />
-              </div>
-               </div>
-           
-          </form>
-          </div>
-        </div>
-      </div>
-      <div class="span6">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-list"></i> </span>
-            <h5>CLIENTES</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Dni</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Direccion</th>
-                </tr>
-              </thead>
-             <tbody id="cuerpoCliente" name="cuerpoCliente">
-               <tr>
-						<td colspan="4"><h4>Comience a escribir para obtener los clientes</h4></td>
-			   </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      
-      <div class="span3">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-user"></i> </span>
-            <h5>CLIENTE</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Dni</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Direccion</th>
-                </tr>
-              </thead>
-              <tbody id="lineaClienteActual" name="lineaClienteActual">
-                <tr id="linea">
-                  <td colspan="3"><h4></h4></td>
-                </tr>
-              </tbody>
-            </table>
-             
-          </div>
-         
-        </div>
-        
-      </div>
-      
-      
-      
-      </div>
-      
-      
-
-  <%Pedido pedido= (Pedido)session.getAttribute("pedido"); 
-	if(pedido!=null){	
-	%>
-
+  
   
     <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
-            <h5>NUEVO PEDIDO</h5>
-
+            <h5>TU PEDIDO</h5>
             <span class="label label-info">Featured</span> </div>
-
           <div class="widget-content nopadding">
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>ID PRODUCTO</th>
-                  <th>DESCRIPCION</th>                  
+                  <th>NOMBRE PROD</th>
+                  <th>DESCRIPCION PROD</th>
                   <th>PRECIO UNITARIO</th>
                   <th>CANTIDAD</th>
                   <th>SUBTOTAL</th>
                   <th>BORRAR</th>
                 </tr>
               </thead>
-
-             <tbody>
-            
-            <%int i=1;
-            float total=0;
-            for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
-            	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
-            %>            
-              <tr>
-                <td><%=i %></td>
-                <td><%=item.getProducto().getId_producto() %></td>
-                <td><%=item.getProducto().getNombre_producto() %></td>
-                <td><%=item.getProducto().getPrecio() %></td>
-                <td><%=item.getCantidad() %></td>
-                <td><%=subtotal %></td>
-                <td><a class="btn btn-danger" href="pedido/borrarLinea?nro=<%=i %>">X</a></td>
-              </tr>
-            <%	i++;
-            	total+=subtotal;
-            }%>
-            <tr>
-                <td style="text-align: right;" colspan="5"><h4>IMPORTE TOTAL DEL PEDIDO</h4></td>
-                <td><h4><%=total %></h4></td>
-              </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>CAÑO PVC</td>
+                  <td>ASDASD</td>
+                  <td>20</td>
+                  <td>10</td>
+                  <td>200</td>
+                  <td>BOTON</td>
+                </tr>
+                <tr>
+                <td>1</td>
+                  <td>4</td>
+                  <td>john</td>
+                  <td>deo</td>
+                  <td>@john</td>
+                  <td>marki</td>
+                  <td>@hahas</td>
+                  <td>@BOTON</td>
+                </tr>
+                <tr>
+                  
+                  <td colspan="6"><h5 style="text-align:right; ">SubTotal:</td>
+                  
+                  <td>@hahas</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="row" style="float: right;">
-		<a class="btn btn-danger" href="pedido/borrarPedido">BORRAR PEDIDO</a>
-		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
-	</div>
-	<%} %>
-
         </div>
         
   
 <!--End-Action boxes-->    	
  
  
-
-      
-      <div class="row-fluid">
-      <div class="span3">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
-            <h5>BÃšSQUEDA PRODUCTOS</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form action="PedidoActual" method="post" id="formItem" class="form-horizontal">
+  <div class="container-fluid"><hr>
+  
+  <div class="col-sm-6">
+   <form action="PedidoActual" method="post" id="formItem">
                 <label for="txtDescripcion" class="sr-only">Producto</label>
-                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="DescripciÃ³n" autofocus="autofocus">
+                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripción" autofocus="autofocus">
                 <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
                 
-                <label for="txtCod" class="sr-only">CÃ³digo</label>
-                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="CÃ³digo">
+                <label for="txtCod" class="sr-only">Código</label>
+                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Código">
                 <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
                                 
                 <label for="txtCantidad" class="sr-only">Producto</label>
@@ -295,7 +181,7 @@
                 
                 <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
    </form>
-
+   
    <% 
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
@@ -305,15 +191,14 @@
       			</div>
       		<%
         		}
-
       		%>      		
+    </div> 
     
-    
-    <div class="col-lg-6 col-xl-6">
+    <div class="col-sm-6">
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Cï¿½digo</th>
+						<th>Código</th>
 						<th>Descripcion</th>
 						<th>Precio</th>
 					</tr>
@@ -325,7 +210,7 @@
 				</tbody>
 			</table>      
 	</div>
-	</div>
+	
 	<%Pedido pedido= (Pedido)session.getAttribute("pedido"); 
 	if(pedido!=null){	
 	%>
@@ -335,8 +220,8 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Cï¿½digo</th>
-                <th>Descripciï¿½n</th>
+                <th>Código</th>
+                <th>Descripción</th>
                 <th>Precio Unitario</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>
@@ -375,10 +260,10 @@
 	</div>
 	<%} %>
 	
- 
+ <!--  	________________________________________________________________________-->
+	
 		       
 <!--End-Action boxes-->    
-
    
   </div>
 </div>
@@ -442,6 +327,4 @@ function resetMenu() {
 }
 </script>
 </body>
-
 </html>
-

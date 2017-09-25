@@ -101,7 +101,9 @@ public class DataPedido {
 	}
 
 	public void registrarPedido(Pedido pedido) throws ApplicationException {
+
 		PreparedStatement stmtPedido = null;
+
 		PreparedStatement stmtLineas = null;
 		PreparedStatement stmtStock = null;
 		DataProducto dprod = new DataProducto();
@@ -141,6 +143,7 @@ public class DataPedido {
 			} catch (SQLException e) {
 				throw new ApplicationException("Error al cerrar conexiones con la base de datos", e);
 			}
+
 		}
 	}
 
@@ -180,6 +183,7 @@ public class DataPedido {
 				throw new ApplicationException("Error al cerrar conexiones con la base de datos", d);
 			
 }}}
+
 
 
 	
