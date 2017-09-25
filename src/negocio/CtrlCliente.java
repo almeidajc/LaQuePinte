@@ -8,6 +8,7 @@ import data.DataCliente;
 import data.DataEmpleado;
 import entidades.Cliente;
 import entidades.Empleado;
+import entidades.Producto;
 
 public class CtrlCliente {
 	DataCliente catalogo;
@@ -37,6 +38,10 @@ public class CtrlCliente {
 	public void modificarCliente(Cliente c) throws ApplicationException {
 		// TODO Auto-generated method stub
 		catalogo.modificarCliente(c);
+	}
+
+	public ArrayList<Cliente> getClienteByNombreYApellido(String nombreYapellido,int inicio, int cant_por_pagina) throws ApplicationException {
+		return catalogo.getClienteByNombreYApellido(nombreYapellido,inicio,cant_por_pagina);
 	}
 
 }
