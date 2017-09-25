@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="entidades.EncargadoAdministracion"%>
-    <%@page import="entidades.Empleado"%>
-    <%@page import="entidades.Cliente"%>
-    <%@page import="negocio.CtrlCliente"%>
+     <%@page import="entidades.Empleado"%>
+     <%@page import="entidades.Zona"%>
+     <%@page import="negocio.CtrlEmpleado"%>
+     <%@page import="negocio.CtrlZona"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+
 <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="bootstrap/css/fullcalendar.css" />
 <link rel="stylesheet" href="bootstrap/css/matrix-style.css" />
@@ -19,6 +21,8 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+
 <script type="text/javascript"> // inicio tabla js1//
 (function(document) {
   'use strict';
@@ -60,18 +64,37 @@
 
 })(document);
 </script>		
+
+<style type="text/css">
+
+}
+tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+.input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
+
+	</style>	
 </head>
 <body>
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
-          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
-
-
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+           String tipo_em = userSession.getTipo();%>
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
+  <h1><a href="dashboard.html">Materiales de ConstrucciÃ¯Â¿Â½n</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -88,14 +111,13 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
     
     
-     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+     <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
-
 
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
@@ -104,7 +126,7 @@
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
-<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
+		<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
         <li><a href="#">Pagar Deuda</a></li>
       </ul>
@@ -124,12 +146,11 @@
         <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
         <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
-        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
+        <li class="active"><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-
-
-	<li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+    
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
         <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
@@ -137,24 +158,26 @@
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
-    
 
-    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+    
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+
       <ul>
         <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
         <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
-        <li class="active"><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
+        <li ><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
 
+    
+    
+    <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
 
-
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
         <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
         <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
+        <li class="active"><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
@@ -174,28 +197,49 @@
     </li>
 
   </ul>
-</div> 
-<!--sidebar-menu-->
+</div>
+<!-- sidebar-menu-->
+
 
 <!--main-container-part-->
-<div id="content">
-<!--breadcrumbs-->
+
+    <div id="content">
+    <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Cliente</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Ubicación</a></div>
 
   </div>
+<!--End-Action boxes-->
+
+
+
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
 
-  <div id="titulo">
- <h1>Consultar Cliente</h1><hr>
- </div>
 
+    <div id="titulo">
+ <h1>Baja Ubicación</h1><hr>
+ </div>
   <div class="container-fluid">
      <div class="row-fluid">
+
       <div class="span12"> <!-- TAMAï¿½O FORMULARIOS -->
-      
+	 <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
       
   
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
@@ -208,13 +252,12 @@
     <thead>
       <tr >
       	
-        <th><h5 style="text-align:center; ">DNI</h5></th>
-        <th><h5 style="text-align:center; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:center; ">APELLIDO</h5></th>
-        <th><h5 style="text-align:center; ">TELEFONO</h5></th>
-        <th><h5 style="text-align:center; ">DIRECCION</h5></th>
-        <th><h5 style="text-align:center; ">EMAIL</h5></th> 
+        
         <th><h5 style="text-align:center; ">ID ZONA</h5></th>
+        <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
+        <th><h5 style="text-align:center; ">COORDENADAS</h5></th>
+        <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
+        
              
       </tr>
     </thead>
@@ -222,27 +265,34 @@
     <tbody>
       <tr>
 <%
-    		CtrlCliente ctrl = new CtrlCliente();
+    		CtrlZona ctrl = new CtrlZona();
     		
     		//PUEDO HACER TMB
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 			// habitacios = ctrl.Listar();
 
-	for (int indice = 0; indice < ctrl.listarClientes().size(); indice++){
+	for (int indice = 0; indice < ctrl.listarZona().size(); indice++){
+		
+		
 	%>  
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDni() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getNombre() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getApellido() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getTel() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
+
+	  
+	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getId_zona() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getDescripcion() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getCoordenadas() %></h5></td>
+	   <td><form method="post" action="BajaUbicacion">
+           <input type="hidden" id="id_zona" name="id_zona" value="<%= ctrl.listarZona().get(indice).getId_zona()%>" >
+            <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
+           <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="bajaubicacion" id="bajaubicacion" onClick="return confirm('¿Esta Seguro que deseas dar de baja esta zona?')">
+           <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
+	   
+	   
 	  
 	</tr>
-	<%
+	<% 
 	
-}
-
+	
+	}
 
       %>
       
@@ -256,8 +306,8 @@
     
   </div>
 </div>
+
 <!--End-Action boxes-->    
-   
 
   </div>
 </div>
@@ -305,7 +355,6 @@
 
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();
           }
           // else, send page to designated URL
           else {

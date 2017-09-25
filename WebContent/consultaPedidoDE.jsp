@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-     <%@page import="entidades.Vendedor"%>
+    pageEncoding="ISO-8859-1"%>   
     <%@page import="entidades.Despachante"%>
-    <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
-    <%@page import="entidades.Camionero"%>
+
+    <%@page import="negocio.CtrlPedido"%>
+    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci&oacute;n</title>
+
+<title>Materiales::de::Construcci�n</title>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -24,17 +27,18 @@
 <body>
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
-		String nombre="";
-            if(userSession == null || !(userSession.getTipo().equals("DE"))){
-            	response.sendRedirect("error405.jsp"); }%> 
+			String nombre="";
+           if(userSession == null || !(userSession.getTipo().equals("DE"))){
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+           String tipo_em = userSession.getTipo();%>
 
-<!--Header-part LOGO MATRIX-STYLE.CSS --> 
-<div id="header" >
-  <h1><a href="#">Materiales de Construcci&oacute;n</a></h1>
+<!--Header-part-->
+<div id="header">
+
+  <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
+
 </div>
 <!--close-Header-part--> 
-
-
 
 
 <!--top-Header-menu-->
@@ -49,7 +53,7 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
     
     
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
@@ -60,14 +64,13 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu DESPACHANTE</a>
   <ul>
-    <li class="active"><a href="indexDE.jsp"><i class="icon icon-home"></i> <span>Menu Despachante</span></a> </li>
+    <li><a href="indexDE.jsp"><i class="icon icon-home"></i> <span>Menu Despachante</span></a> </li>
     
     <li><a href="registrarEnvioDE.jsp"><i class="icon icon-truck"></i> <span>Registrar Env&iacute;o</span></a></li>
     <li><a href="registrarEntregaDE.jsp"><i class="icon icon-group"></i> <span>Registrar Entrega Pedido</span></a></li>
-    <li><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos</span></a></li>
+    <li class="active"><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos</span></a></li>
     <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
   </ul>
-</div>
 </div>
 <!--sidebar-menu-->
 
@@ -75,39 +78,109 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consulta Pedidos Confirmados</a></div>
+   
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
-<div id="titulo">
- <h1>Menu Despachante</h1>
+  <div id="titulo">
+ <h1>Consulta de Pedidos Confirmados</h1>
  </div>
   <div class="container-fluid"><hr>
+   
+  <div class="row-fluid">
+    <div class="span6">
+   <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}
+      			
+      		%>
 
-    <div class="quick-actions_homepage">
-      <ul class="quick-actions">
+      		
+      		 
+
+
+<div class="accordion" id="collapse-group">
+  
+   
+   <% CtrlPedido ctrlP = new CtrlPedido(); 
+   		int id=0;
+	  for (int indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
+	%>    
+   
+     <!-- ac3 inicio-->        
+         <div class="accordion-group widget-box">
+           
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
+                <h5>FECHA: <%= ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega() %>| NUM FACT: <%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>| TOTAL: <%= ctrlP.listarPedidosConfirmados().get(indice).getTotal() %></h5>
+
+                </a> </div>
+            </div>
+            <div class="collapse accordion-body" id="<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>">
+              <div class="widget-content"> <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>PRODUCTO</th>
+                  <th>CANTIDAD</th>
+                  <th>PRECIO UNITARIO(s)</th>
+                  <th>SUB T</th>
+                </tr>
+              </thead>
+              <%  
+              id= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido();
+              for (int indice2 = 0; indice2 < ctrlP.getLineaDetallePedido(id).size(); indice2++){
+	%>
+              <tbody>
+                <tr class="odd gradeX">
+                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getNombre_producto() %></td>
+                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getCantidad() %></td>
+                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getPrecioUnitario() %></td>
+                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getSubtotal() %></td>
+                 
+                </tr>
+                
+              </tbody>
+              <%}%>
+
+            </table> </div>
+            </div>
+          </div>
+          
+
+      <!-- ac3 fin-->   
       
+      	<%}%>
+</div>
         
-        <li class="bg_ls span8"> <a href="registrarEnvioDE.jsp"> <i class="icon-truck"></i> Registrar Env&iacute;o</a> </li>
-        <li class="bg_ly span8"> <a href="registrarEntregaDE.jsp"> <i class="icon-user"></i> Registrar Entrega Pedido</a> </li>
-        
-        <li class="bg_lg span8"> <a href="consultaPedidoDE.jsp"> <i class="icon-list-ol"></i> Resumen de Pedidos confirmados</a> </li>
-        <li class="bg_lr span8"> <a href="balance.jsp"> <i class="icon-credit-card"></i> Balance</a> </li>
+        	
+	
 
-      </ul>
-    </div>
+
+      </div>
+      </div>
 <!--End-Action boxes-->    
-      
+   
   </div>
 </div>
 
 <!--end-main-container-part-->
 
+
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-weight:bold;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
 </div>
 
 <!--end-Footer-part-->

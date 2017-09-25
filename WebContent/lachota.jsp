@@ -2,12 +2,15 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="entidades.Vendedor"%>
     <%@page import="entidades.Empleado"%>
-    <%@page import="entidades.Cliente"%>
-    <%@page import="negocio.CtrlCliente"%>
+    <%@page import="entidades.Pedido"%>
+    <%@page import="entidades.Producto"%>
+    <%@page import="negocio.CtrlPedido"%>
+    <%@page import="java.util.ArrayList"%>
+    <%@page import="entidades.LineaDetallePedido"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcciï¿½n</title>
+<title>Materiales::de::Construcción</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -19,58 +22,17 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-</head>
-<script type="text/javascript"> // inicio tabla js1//
-(function(document) {
-  'use strict';
-
-  var LightTableFilter = (function(Arr) {
-
-    var _input;
-
-    function _onInputEvent(e) {
-      _input = e.target;
-      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-      Arr.forEach.call(tables, function(table) {
-        Arr.forEach.call(table.tBodies, function(tbody) {
-          Arr.forEach.call(tbody.rows, _filter);
-        });
-      });
-    }
-
-    function _filter(row) {
-      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-    }
-
-    return {
-      init: function() {
-        var inputs = document.getElementsByClassName('light-table-filter');
-        Arr.forEach.call(inputs, function(input) {
-          input.oninput = _onInputEvent;
-        });
-      }
-    };
-  })(Array.prototype);
-
-  document.addEventListener('readystatechange', function() {
-    if (document.readyState === 'complete') {
-      LightTableFilter.init();
-    }
-  });
-
-})(document);
-</script>		
+ <script src="js/jquery-1.12.3.min.js"></script>
+ <script src="js/pedido.js"></script>
 </head>
 <body>
+<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+            if(userSession == null || !(userSession.getTipo().equals("VE"))){
+            	response.sendRedirect("error405.jsp"); }%> 
 
-<%   Empleado userSession = (Empleado)session.getAttribute("userSession");
-if(userSession == null || !(userSession.getTipo().equals("VE"))){
-	response.sendRedirect("error405.jsp"); }
-	 String tipo_em = userSession.getTipo();%>
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -88,9 +50,9 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
-    
-    
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido hijo de puta</span></a></li>
+    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
+    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -116,12 +78,12 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
+        <li><a href="#">Modificar Ubicación</a></li>
+        <li><a href="#">Eliminar Ubicación</a></li>
+        <li><a href="#">Consultar Ubicación</a></li>
       </ul>
     </li>
     
@@ -133,81 +95,124 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Cliente</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
    
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
- 
-   <div id="titulo">
- <h1>Consultar Cliente</h1><hr>
+ <div id="titulo">
+ <h1>Nuevo Pedido</h1>
  </div>
+ 
+ <!--Action boxes-->
 
-  <div class="container-fluid">
-     <div class="row-fluid">
-      <div class="span12"> <!-- TAMAï¿½O FORMULARIOS -->
-      
-      
   
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
-        <div class="widget-box">
-        
-          
-          <div class="widget-content nopadding" id="tb_content">
-            <table class="order-table table" class="table table-hover">
-    <thead>
-      <tr >
-      	
-        <th><h5 style="text-align:center; ">DNI</h5></th>
-        <th><h5 style="text-align:center; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:center; ">APELLIDO</h5></th>
-        <th><h5 style="text-align:center; ">TELEFONO</h5></th>
-        <th><h5 style="text-align:center; ">DIRECCION</h5></th>
-        <th><h5 style="text-align:center; ">EMAIL</h5></th> 
-        <th><h5 style="text-align:center; ">ID ZONA</h5></th>
-             
-      </tr>
-    </thead>
+  
+   
+<!--End-Action boxes-->    	
+ 
+ 
+  <div class="container-fluid"><hr>
+  
+  <div class="col-sm-6">
+   <form action="PedidoActual" method="post" id="formItem">
+                <label for="txtDescripcion" class="sr-only">Producto</label>
+                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripción" autofocus="autofocus">
+                <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
+                
+                <label for="txtCod" class="sr-only">Código</label>
+                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Código">
+                <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
+                                
+                <label for="txtCantidad" class="sr-only">Producto</label>
+                <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" placeholder="Cantidad">
+                <label for="txtCantidad" id="errorCantidad" style="color:#FF0004"></label>
+                
+                <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
+   </form>
+   
+   <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      			<div class="alert alert-danger" role="alert">
+        			<strong>Error!</strong> <%=mensaje %>
+      			</div>
+      		<%
+        		}
+      		%>      		
+    </div> 
     
-    <tbody>
-      <tr>
-<%
-    		CtrlCliente ctrl = new CtrlCliente();
-    		
-    		//PUEDO HACER TMB
-			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
-			// habitacios = ctrl.Listar();
-
-	for (int indice = 0; indice < ctrl.listarClientes().size(); indice++){
-	%>  
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDni() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getNombre() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getApellido() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getTel() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
-	  
-	  
-	</tr>
-	<%
+    <div class="col-sm-6 col-lg-6 col-md-6">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Descripcion</th>
+						<th>Precio</th>
+					</tr>
+				</thead>
+				<tbody id="cuerpo">
+					<tr>
+						<td colspan="3"><h2>Comience a escribir para obtener los productos</h2></td>
+					</tr>
+				</tbody>
+			</table>      
+	</div>
 	
-}
-
-
-      %>
-          </tbody>
-  </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-</div>
-     
+	<%Pedido pedido= (Pedido)session.getAttribute("pedido"); 
+	if(pedido!=null){	
+	%>
+	<div class="row" style="text-align: center;">
+		<h1>SU PEDIDO</h1>
+		<table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Precio Unitario</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+            <%int i=1;
+            float total=0;
+            for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
+            	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
+            %>            
+              <tr>
+                <td><%=i %></td>
+                <td><%=item.getProducto().getId_producto() %></td>
+                <td><%=item.getProducto().getNombre_producto() %></td>
+                <td><%=item.getProducto().getPrecio() %></td>
+                <td><%=item.getCantidad() %></td>
+                <td><%=subtotal %></td>
+                <td><a class="btn btn-danger" href="pedido/borrarLinea?nro=<%=i %>">X</a></td>
+              </tr>
+            <%	i++;
+            	total+=subtotal;
+            }%>
+            <tr>
+                <td style="text-align: right;" colspan="5"><h4>IMPORTE TOTAL DEL PEDIDO</h4></td>
+                <td><h4><%=total %></h4></td>
+              </tr>
+            </tbody>
+          </table>
+	</div>
+	<div class="row" style="float: right;">
+		<a class="btn btn-danger" href="pedido/borrarPedido">BORRAR PEDIDO</a>
+		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
+	</div>
+	<%} %>
+	
+ <!--  	________________________________________________________________________-->
+	
+		       
 <!--End-Action boxes-->    
    
   </div>
@@ -245,7 +250,8 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 <script src="bootstrap/js/matrix.popover.js"></script> 
 <script src="bootstrap/js/jquery.dataTables.min.js"></script> 
 <script src="bootstrap/js/matrix.tables.js"></script> 
-
+<script src="js/pedido.js"></script>
+ 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
   // a different page. Ignore if the value returned is a null string:
