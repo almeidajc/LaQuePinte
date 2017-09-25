@@ -27,6 +27,36 @@ public class Pedido {
 	private Zona zona;
 	private Empleado empleado;
 	private int id_estado;
+	private String estado;
+	private String nombre;
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+
+	private String apellido;
+	
+	public String getEstado() {
+		String descripcion;
+		if (this.getId_estado()==1) {	descripcion="Confirmado";}
+		else{descripcion="Entregado";
+		}
+		return descripcion;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
 	private ArrayList<LineaDetallePedido> lineasDetallePedido;
 	
 	public ArrayList<LineaDetallePedido> getLineasDetallePedido() {

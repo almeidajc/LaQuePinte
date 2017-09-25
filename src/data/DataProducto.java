@@ -287,6 +287,41 @@ try {
 		}
 		return productos;
 	}
+	
+	
+	public int getStock(int id) throws ApplicationException {
+		int stock=0;
+		ResultSet rs= null;
+		PreparedStatement stmt = null;
+		try{
+			stock = this.getStock(stmt, rs, id);
+			
+		} catch (SQLException e){
+			throw new ApplicationException("Error al obtener el stock del producto desde la base de datos", null);			
+			
+		} finally{
+			try {
+				if(stmt!=null) stmt.close();
+				if(rs!=null) rs.close();
+				FactoryConexion.getInstancia().getConn().close();
+			} catch (SQLException e) {
+				throw new ApplicationException("Error al cerrar conexiones con la base de datos", e);
+			}
+		}
+		return stock;	
+	}
+	
+	protected int getStock(PreparedStatement stmt, ResultSet rs, int id) throws SQLException, ApplicationException {
+		int stock=0;
+		stmt= FactoryConexion.getInstancia().getConn().prepareStatement("select cantidad_stock from productos where id_producto=?");
+		stmt.setInt(1, id);
+		rs=stmt.executeQuery();
+		if(rs.next()){
+			stock=rs.getInt("cantidad_stock");
+		}
+		return stock;
+	}
+	
 
 	
 }

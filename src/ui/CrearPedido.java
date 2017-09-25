@@ -77,7 +77,7 @@ public class CrearPedido extends HttpServlet {
 							throw new ApplicationException("El producto ingresado ya existe en su pedido. Eliminelo y vuelva a intentarlo", null);
 						}
 					}
-					int cantidad=Integer.valueOf(request.getParameter("txtCantidad"));
+					/*int cantidad=Integer.valueOf(request.getParameter("txtCantidad"));
 					int stock = ctrlProducto.getStock(producto); // OBTENER STOCK
 					if(stock>cantidad){
 						items.add(new LineaDetallePedido(producto,cantidad));
@@ -86,7 +86,7 @@ public class CrearPedido extends HttpServlet {
 						response.sendRedirect("nuevoPedidoVE.jsp");
 					} else{
 						throw new ApplicationException("No hay stock suficiente para esa cantidad", null);
-					}
+					}*/
 				}
 			}
 			else {

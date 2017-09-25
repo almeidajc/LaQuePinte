@@ -45,9 +45,8 @@ public class CtrlProducto {
 		return cat.verificarProducto(p);
 	}
 
-	public int getStock(Producto producto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getStock(int id) throws ApplicationException {
+		return cat.getStock(id);		
 	}
 	
 }
