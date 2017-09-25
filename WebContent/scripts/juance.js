@@ -106,23 +106,6 @@ function numeroLinea(){
 	valorLinea =0;
 }
 
-
-function agregarLinea(){
-    var newDiv = document.createElement("div");
-    newDiv.setAttribute("id",`detalle${valorLinea}`);
-    var x = document.createElement("INPUT");
-    x.setAttribute("type", "text");
-    newDiv.appendChild(x)
-    lineanueva.appendChild(newDiv);
-  valorLinea++;
-}
-
-function quitarLinea(){
-  valorLinea--;
-  document.getElementById(`detalle${valorLinea}`).innerHTML = "";
-}
-
-
 function replacePunto(string){
 	  return string.replace(",",".");
 	}
