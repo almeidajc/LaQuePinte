@@ -10,7 +10,7 @@ import appExceptions.ApplicationException;
 import entidades.Cliente;
 import entidades.Empleado;
 import entidades.Pedido;
-import entidades.LineaDetallePedido;;
+import entidades.LineaDetallePedido;
 
 
 public class DataPedido {
@@ -95,6 +95,50 @@ public class DataPedido {
 		}
 			
 		return Lineas;
+	}
+
+	public void registrarPedido(Pedido pedido) throws ApplicationException {
+		/*PreparedStatement stmtPedido = null;
+		PreparedStatement stmtLineas = null;
+		PreparedStatement stmtStock = null;
+		DataProducto dprod = new DataProducto();
+		ResultSet rs = null;
+		try {
+			FactoryConexion.getInstancia().getConn().setAutoCommit(false);
+			//fecha_pedido id_estado_pedido dni
+			stmtPedido = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"Insert into pedidos(fecha_emision) values (current_date())",
+					PreparedStatement.RETURN_GENERATED_KEYS
+					);
+			stmtPedido.execute();
+			rs = stmtPedido.getGeneratedKeys();
+			if(rs!=null && rs.next()){
+				pedido.setId_pedido(rs.getInt(1));
+				}
+			for (LineaDetallePedido lp : pedido.getLineasDetallePedido()) {
+				dprod.descontarStock(stmtStock, lp.getCantidad(), lp.getProducto().getId_producto());
+				this.insertLinea(stmtLineas, pedido.getId_pedido(), lp.getProducto().getId_producto(), lp.getCantidad());
+			}			
+			FactoryConexion.getInstancia().getConn().commit();
+			
+		} catch (SQLException e) {
+			try {
+				FactoryConexion.getInstancia().getConn().rollback();
+			} catch (SQLException e1) {
+				throw new ApplicationException("Error al recuperar estado en la base de datos", e);
+			}
+			throw new ApplicationException("Error al registrar nuevo pedido en la base de datos", e);
+		}
+		finally {
+			try {
+				if(stmtPedido!=null) stmtPedido.close();
+				if(stmtLineas!=null) stmtLineas.close();
+				if(rs!=null) rs.close();
+				FactoryConexion.getInstancia().getConn().setAutoCommit(true);
+			} catch (SQLException e) {
+				throw new ApplicationException("Error al cerrar conexiones con la base de datos", e);
+			}
+		}*/
 	}
 	
 	
