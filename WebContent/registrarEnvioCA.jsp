@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@page import="entidades.Vendedor"%>
-    <%@page import="entidades.Despachante"%>
-    <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
+    <%@page import="negocio.CtrlPedido"%>    
     <%@page import="entidades.Camionero"%>
   
 <!DOCTYPE html>
@@ -60,9 +58,9 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu CAMIONERO</a>
   <ul>
-    <li class="active"><a href="indexCA.jsp"><i class="icon icon-home"></i> <span>Menu Camionero</span></a> </li>
+    <li><a href="indexCA.jsp"><i class="icon icon-home"></i> <span>Menu Camionero</span></a> </li>
     
-    <li><a href="registrarEnvioCA.jsp"><i class="icon icon-truck"></i> <span>Registrar Env&iacute;o</span></a></li>
+    <li class="active"><a href="registrarEnvioCA.jsp"><i class="icon icon-truck"></i> <span>Registrar Env&iacute;o</span></a></li>
    <!--  <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>Eelements</span></a></li> -->
     <li><a href="resumenEnviosCA.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Env&iacute;os</span></a></li>
     <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
@@ -74,38 +72,114 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
-  </div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Registrar Env&iacute;os</a></div>
 <!--End-breadcrumbs-->
-
 <!--Action boxes-->
-<div id="titulo">
- <h1>Menu Camionero</h1>
+ <div id="titulo">
+ <h1>Consulta Pedidos</h1>
  </div>
   <div class="container-fluid"><hr>
-
-    <div class="quick-actions_homepage">
-      <ul class="quick-actions">
+   
+  <div class="container-fluid">
+     <div class="row-fluid">
+      <div class="span12"> <!-- TAMAï¿½O FORMULARIOS -->
       
-        
-        <li class="bg_ls span8"> <a href="registrarEnvioCA.jsp"> <i class="icon-truck"></i> Registrar Env&iacute;o</a> </li>
-        
-        <li class="bg_lg span8"> <a href="resumenEnviosCA.jsp"> <i class="icon-list-ol"></i> Resumen de Env&iacute;os</a> </li>
-        <li class="bg_lr span8"> <a href="balance.jsp"> <i class="icon-credit-card"></i> Balance</a> </li>
+      
+  
+     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
-      </ul>
+        <div class="widget-box">
+        
+          
+          <div class="widget-content nopadding" id="tb_content">
+            <table class="order-table table" class="table table-hover">
+    <thead>
+      <tr >
+      	
+        <th><h5 style="text-align:center; ">ID</h5></th>
+        <th><h5 style="text-align:center; ">FECHA ENTREGA</h5></th>
+        <th><h5 style="text-align:center; ">DIRECCION ENVIO</h5></th>
+        <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
+        <th><h5 style="text-align:center; ">APELLIDO CLIENTE</h5></th>
+        <th><h5 style="text-align:center; ">NOMBRE</h5></th>
+       
+        <th><h5 style="text-align:center; ">REGISTRAR</h5></th>
+             
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+      <div></div>
+<%
+    		CtrlPedido ctrl = new CtrlPedido();
+    		
+    		//PUEDO HACER TMB
+			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+			// habitacios = ctrl.Listar();
+
+	for (int indice = 0; indice < ctrl.listarPedidosConfirmados().size(); indice++){
+		if(ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() != null ){
+		
+	%>  
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getEstado() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getApellido() %></h5></td>	
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getNombre() %></h5></td>		   
+	  
+	  <td><form method="post" action="RegistrarEnvioPedido">
+        <input type="hidden" id="id_pedido" name="id_pedido" value="<%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido()%>" >
+        
+	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('¿Está Seguro que deseas dar registrar el envío de este pedido?')">
+           <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
+	  
+	  
+	</tr>
+	<%
+		}
+		}
+
+
+      %></div>
+          </tbody>
+  </table>
+          </div>
+        </div>
+      </div>
     </div>
-<!--End-Action boxes-->    
+    
+  </div>
+</div> 
+   
+   
+   
+          
+
+      <!-- ac3 fin-->   
       
+      
+</div>
+        
+        	
+	
+
+
+      </div>
+      </div>
+<!--End-Action boxes-->    
+   
   </div>
 </div>
 
 <!--end-main-container-part-->
 
+
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-weight:bold;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
 </div>
 
 <!--end-Footer-part-->

@@ -61,6 +61,7 @@
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearPedidoVE.jsp">Crear Pedido</a></li>
+        <li><a href="crearPedidoRetiroVE.jsp">Crear Pedido para retirar</a></li>
         <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
@@ -74,14 +75,7 @@
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
-      <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
-      </ul>
-    </li>
+    
     
   </ul>
 </div>

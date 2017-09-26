@@ -24,7 +24,8 @@ public class Pedido {
 	private String direccion_envio;
 	private Cliente cliente;
 	private ArrayList<Producto> productos;
-	private Zona zona;
+	private String coordenadas;
+	private int id_zona;
 	private Empleado empleado;
 	private int id_estado;
 	private String estado;
@@ -138,17 +139,24 @@ public class Pedido {
 	public void setProductos(ArrayList<Producto> productos) {
 		this.productos = productos;
 	}
-	public Zona getZona() {
-		return zona;
-	}
-	public void setZona(Zona zona) {
-		this.zona = zona;
-	}
+	
 	public Empleado getEmpleado() {
 		return empleado;
 	}
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
+	}
+	public String getCoordenadas() {
+		return coordenadas;
+	}
+	public void setCoordenadas(String coordenadas) {
+		this.coordenadas = coordenadas;
+	}
+	public int getId_zona() {
+		return id_zona;
+	}
+	public void setId_zona(int id_zona) {
+		this.id_zona = id_zona;
 	}
 	 
 	

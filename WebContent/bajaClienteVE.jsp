@@ -122,7 +122,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
     
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
         <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
         <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
