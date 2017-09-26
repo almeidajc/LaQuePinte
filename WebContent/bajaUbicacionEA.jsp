@@ -172,13 +172,13 @@ input[type=text]:focus {
 
     
     
-    <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
+    <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
 
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li class="active"><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        <li class="active"><a href="bajaUbicacionEA.jsp">Eliminar Zona Peligrosa</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
 
@@ -206,7 +206,7 @@ input[type=text]:focus {
     <div id="content">
     <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Ubicación</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Zona Peligrosa</a></div>
 
   </div>
 <!--End-Action boxes-->
@@ -219,7 +219,7 @@ input[type=text]:focus {
 
 
     <div id="titulo">
- <h1>Baja Ubicación</h1><hr>
+ <h1>Baja Zona Peligrosa</h1><hr>
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
@@ -283,7 +283,7 @@ input[type=text]:focus {
 	   <td><form method="post" action="BajaUbicacion">
            <input type="hidden" id="id_zona" name="id_zona" value="<%= ctrl.listarZona().get(indice).getId_zona()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="bajaubicacion" id="bajaubicacion" onClick="return confirm('¿Esta Seguro que deseas dar de baja esta zona?')">
+           <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="bajaubicacion" id="bajaubicacion" onClick="return confirm('ï¿½Esta Seguro que deseas dar de baja esta zona?')">
            <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
 	   
 	   

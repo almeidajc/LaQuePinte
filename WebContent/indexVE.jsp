@@ -74,12 +74,12 @@
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        <li><a href="bajaUbicacionEA.jsp">Eliminar Zona Peligrosa</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
     
@@ -111,7 +111,7 @@
         
         <li class="bg_lo span8"> <a href="altacliente.jsp"> <i class="icon-user"></i> Cliente</a> </li>
       
-        <li class="bg_lb span8"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Ubicaci&oacute;n</a> </li>
+        <li class="bg_lb span8"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Zona Peligrosa</a> </li>
         
 
       </ul>

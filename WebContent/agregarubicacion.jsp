@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="entidades.EncargadoAdministracion"%>
+    <%@page import="entidades.Empleado"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +18,19 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/jquery.gritter.css" />
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">google.load('jquery', '1.7.1');</script>
+<script type="text/javascript" src="js/jquery.gritter.js"></script>
 </head>
-<body>
+<body onload="initMap()">
+
+  <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+  			String nombre="";
+             if(userSession == null || !(userSession.getTipo().equals("EA"))){
+            	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+
+             String tipo_em = userSession.getTipo();%>
 
 <!--Header-part-->
 <div id="header">
@@ -37,7 +51,7 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Cris</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
     <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
     <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
@@ -48,8 +62,8 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-  <li><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-check"></i> <span>Pedido</span> </a>
+    <li><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
 <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
@@ -58,21 +72,67 @@
       </ul>
     </li>
 
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+
+    <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-        <li><a href="#">Modificar Cliente</a></li>
-        <li><a href="#">Eliminar Cliente</a></li>
-        <li><a href="#">Consultar Cliente</a></li>
+        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
+        <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
+        <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
 
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci�n</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci�n</a></li>
-        <li><a href="#">Modificar Ubicaci�n</a></li>
-        <li><a href="#">Eliminar Ubicaci�n</a></li>
-        <li><a href="#">Consultar Ubicaci�n</a></li>
+       <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
+        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
+        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
+      </ul>
+    </li>
+
+
+        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+      <ul>
+        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
+      </ul>
+    </li>
+
+
+  <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+      <ul>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
+      </ul>
+    </li>
+
+
+
+    <li class="submenu  active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
+      <ul>
+        <li class="submenu active"><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        <li><a href="bajaUbicacionEA.jsp">Eliminar Zona Peligrosa</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
+      </ul>
+    </li>
+
+
+    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+
+
+
+    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
+      <ul>
+        <li><a href="#">Crear Pedido</a></li>
+        <li><a href="#">Modificar Pedido</a></li>
+        <li><a href="#">Cambiar Estado Pedido</a></li>
+        <li><a href="#">Consultar Pedido</a></li>
       </ul>
     </li>
 
@@ -84,17 +144,36 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Agregar Ubicaci�n</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Agregar Zona Peligrosa</a></div>
 
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Agregar Ubicaci�n</h1>
+ <h1>Agregar Zona Peligrosa</h1>
  </div>
   <div class="container-fluid"><hr>
-
+    <div class="span3">
+    </div>
+    <div class="span6">
+      <label for="">Nombre de la zona peligrosa</label><input type="text" id="nombreZona" value="Nombre de la zona peligrosa">
+    </div>
+    <div class="span12">
+      <div id="map" style="height: 650px;"></div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2"></div>
+      <div class="span4">
+      </div>
+      <div class="span3">
+        <input type="button" class="btn btn-danger" value="Resetear la zona peligrosa" onclick="resetearZona()">
+      </div>
+      <div class="span4">
+        <input type="button" class="btn btn-success" value="Guardar la zona peligrosa" onclick="guardarZona()">
+      </div>
+    </div>
+    <input type="hidden" id="coordZona" name="" value="">
 
 <!--End-Action boxes-->
 
@@ -111,6 +190,9 @@
 </div>
 
 <!--end-Footer-part-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOGGk2FljDX6W8xJ31whaP9caBq1k4D_M&libraries=visualization,places,geometry"> </script>
+<script src="scripts/altaZona.js"></script>
+
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>

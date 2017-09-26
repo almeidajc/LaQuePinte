@@ -142,12 +142,12 @@
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        <li><a href="bajaUbicacionEA.jsp">Eliminar Zona Peligrosa</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
     

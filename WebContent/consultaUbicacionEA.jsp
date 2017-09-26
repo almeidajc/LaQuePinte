@@ -172,13 +172,13 @@ input[type=text]:focus {
 
     
     
-    <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
+    <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
 
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
-        <li class="active"><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        <li><a href="bajaUbicacionEA.jsp">Eliminar Zona Peligrosa</a></li>
+        <li class="active"><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
 
@@ -206,7 +206,7 @@ input[type=text]:focus {
     <div id="content">
     <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Ubicaci�n</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Zona Peligrosa</a></div>
 
   </div>
 <!--End-Action boxes-->
@@ -219,7 +219,7 @@ input[type=text]:focus {
 
 
     <div id="titulo">
- <h1>Consultar Ubicaci�n</h1><hr>
+ <h1>Consultar Zona Peligrosa</h1><hr>
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
