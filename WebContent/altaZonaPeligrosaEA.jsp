@@ -121,7 +121,7 @@ pageEncoding="ISO-8859-1"%>
 
 <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
   <ul>
-    <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+    <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
     <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
     <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
     <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
@@ -163,7 +163,7 @@ pageEncoding="ISO-8859-1"%>
 <div class="container-fluid" ><hr>
 
 <div class="quick-actions_homepage">
-	
+
     <div class="Span12">
     	<div>
     		<label for="">Nombre de la zona peligrosa</label><input type="text" id="nombreZona" placeholder="Nombre de la zona peligrosa">
