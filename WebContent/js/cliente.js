@@ -30,6 +30,7 @@ function llenarTablaCliente(datos){
 					"<td id='nombre"+i+"'>"+clientes[i-1].nombre+"</td>"+
 					"<td id='apellido"+i+"'>"+clientes[i-1].apellido+"</td>"+
 					"<td id='direccion"+i+"'>"+clientes[i-1].direccion+"</td>"+
+					
 				"</tr>"
 			);
 		}
@@ -38,6 +39,21 @@ function llenarTablaCliente(datos){
 	}
 }
 
+
+function fila_clickCliente(){
+	var filaCliente = $(this).attr("id");
+	var linea = "linea";   
+	var dniCliente = $("#dni"+filaCliente).html();
+	var nombreCliente = $("#nombre"+filaCliente).html();
+	var apellidoCliente = $("#apellido"+filaCliente).html();
+	var direccionCliente = $("#direccion"+filaCliente).html();		
+	$("#guardarDni").val(dniCliente);
+	$("#guardarNombre").val(nombreCliente);
+	$("#guardarApellido").val(apellidoCliente);
+	$("#guardarDireccion").val(direccionCliente);
+}
+
+/*
 function fila_clickCliente(){
 	var filaCliente = $(this).attr("id");
 	var linea = "linea";   
@@ -46,7 +62,6 @@ function fila_clickCliente(){
 	var apellidoCliente = $("#apellido"+filaCliente).html();
 	var direccionCliente = $("#direccion"+filaCliente).html();		
 	$("#lineaClienteActual tr").remove(); 
-	// AGREGAR AÑADIDO CLIENTE A VAR SESSION
 	$("#lineaClienteActual").append(	
 		"<tr id='"+linea+"'>"+	
 			"<td>"+dniCliente+"</td>"+
@@ -55,4 +70,4 @@ function fila_clickCliente(){
 			"<td>"+direccionCliente+"</td>"+
 		"</tr>"
 	);	
-}
+}*/

@@ -4,13 +4,14 @@
     <%@page import="entidades.Empleado"%>
     <%@page import="entidades.Pedido"%>
     <%@page import="entidades.Producto"%>
+    <%@page import="entidades.Cliente"%>
     <%@page import="negocio.CtrlPedido"%>
     <%@page import="java.util.ArrayList"%>
     <%@page import="entidades.LineaDetallePedido"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construccion</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -34,7 +35,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construccion</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -80,12 +81,12 @@
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicacion</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicacion</a></li>
+        <li><a href="#">Modificar Ubicacion</a></li>
+        <li><a href="#">Eliminar Ubicacion</a></li>
+        <li><a href="#">Consultar Ubicacion</a></li>
       </ul>
     </li>
     
@@ -113,7 +114,7 @@
       <div class="span3">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
-            <h5>BÚSQUEDA CLIENTE</h5>
+            <h5>BUSQUEDA CLIENTE</h5>
           </div>
           
          <div class="widget-content nopadding"> 
@@ -141,6 +142,8 @@
           </div>
         </div>
       </div>
+      
+       <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual"); %>
       <div class="span6">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-list"></i> </span>
@@ -154,6 +157,8 @@
                   <th>Nombre</th>
                   <th>Apellido</th>
                   <th>Direccion</th>
+                 
+                  
                 </tr>
               </thead>
              <tbody id="cuerpoCliente" name="cuerpoCliente">
@@ -166,10 +171,63 @@
         </div>
       </div>
       
+  <!--    ___-->  
+  
+        
+       <div class="span3">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
+            <h5>CLIENTE ACTUAL</h5>
+          </div>
+          
+         <div class="widget-content nopadding"> 
+            <form action="GuardarClientePedido" method="post" id="formguardarClientePedido" class="form-horizontal">
+            <div class="control-group">
+              <label for="guardarDni" class="control-label">DNI :</label>
+              <div class="controls">
+                <input type="text" id="guardarDni" name="guardarDni"  <%if(cliente!=null){%>value="<%=cliente.getDni()%>"<%}%> class="span11" placeholder="DNI" />
+              </div>
+            </div>
+            
+            
+            <div class="control-group">
+              <label for="guardarNombre" class="control-label">Nombre :</label>
+              <div class="controls">
+                <input type="text" id="guardarNombre" name="guardarNombre"  <%if(cliente!=null){%>value="<%=cliente.getNombre() %>"<%}%> class="span11" placeholder="Nombre" />
+              </div>
+            </div>
+           <div class="control-group">
+              <label for="guardarApellido" class="control-label">Apellido :</label>
+              <div class="controls">
+                <input type="text" id="guardarApellido" name="guardarApellido" <%if(cliente!=null){%>value="<%=cliente.getApellido()%>"<%}%> class="span11" placeholder="Nombre" />
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label for="guardarDireccion" class="control-label" >Direccion :</label>
+              <div class="controls">
+                <input type="text" id="guardarDireccion" name="guardarDireccion" <%if(cliente!=null){%>value="<%=cliente.getDireccion() %>"<%}%> class="span11" placeholder="Nombre" />
+              </div>
+            </div>
+           
+     
+	 <button class="btn btn-lg btn-primary " type="submit">Guardar</button>
+             
+             <a class="btn btn-danger" href="BorrarClientePedido">Borrar</a>
+		
+          </form>
+          </div>
+        </div>
+      </div>
+            <% 
+	if(cliente!=null){	
+	%><h5>se gaurdo</h5>
+      <%} %>
+    <!--    ___    
       <div class="span3">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-user"></i> </span>
-            <h5>CLIENTE</h5>
+            <h5>CLIENTE ACTUAL</h5>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered">
@@ -193,11 +251,50 @@
         </div>
         
       </div>
+      -->
       
-      
-      
+       <!-- 
+  
+        <div class="span3">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
+            <h5>CLIENTE PEDIDO ACTUAL</h5>
+          </div>
+          
+         <div class="widget-content nopadding"> 
+            <form action="#" method="post" id="formCliente1" class="form-horizontal">
+            <div class="control-group">
+              <label for="txtDniCliente" class="control-label">DNI :</label>
+              <div class="controls">
+                <input type="text" id="txtDniCliente" name="txtDniCliente1" class="span11" placeholder="DNI" />
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="txtNombreCliente" class="control-label">Nombre :</label>
+              <div class="controls">
+                <input type="text" id="txtNombreCliente" name="txtNombreCliente1" class="span11" placeholder="Nombre" />
+              </div>
+            </div>
+             <div class="control-group">
+              <label for="txtNombreCliente" class="control-label">Apellido :</label>
+              <div class="controls">
+                <input type="text" id="txtApellidoCliente" name="txtApellidoCliente1" class="span11" placeholder="Nombre" />
+              </div>
+            </div>
+            
+             <div class="control-group">
+              <label for="txtNombreCliente" class="control-label">Direccion :</label>
+              <div class="controls">
+                <input type="text" id="txtDireccionCliente" name="txtDireccionCliente1" class="span11" placeholder="Nombre" />
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
       </div>
       
+      </div>
+       -->
       
 
   <%Pedido pedido= (Pedido)session.getAttribute("pedido"); 
@@ -264,16 +361,16 @@
       <div class="span3">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
-            <h5>BÚSQUEDA PRODUCTOS</h5>
+            <h5>BUSQUEDA PRODUCTOS</h5>
           </div>
           <div class="widget-content nopadding">
             <form action="PedidoActual" method="post" id="formItem" class="form-horizontal">
                 <label for="txtDescripcion" class="sr-only">Producto</label>
-                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripción" autofocus="autofocus">
+                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion" autofocus="autofocus">
                 <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
                 
-                <label for="txtCod" class="sr-only">Código</label>
-                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Código">
+                <label for="txtCod" class="sr-only">Codigo</label>
+                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Codigo">
                 <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
                                 
                 <label for="txtCantidad" class="sr-only">Producto</label>
@@ -304,7 +401,7 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                 		<th>Código</th>
+                 		<th>Codigo</th>
 						<th>Descripcion</th>
 						<th>Precio</th>
                 </tr>
