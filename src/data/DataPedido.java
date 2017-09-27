@@ -33,6 +33,7 @@ public class DataPedido {
 				p.setId_pedido(rs.getInt("id_pedido"));
 				p.setFecha_entrega(rs.getDate("fecha_entrega"));
 				p.setTotal(rs.getDouble("total"));	
+
 				
 				p.setDireccion_envio(rs.getString("direccion_envio"));
 				p.setNombre(rs.getString("nombre"));
