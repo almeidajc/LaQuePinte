@@ -4,7 +4,7 @@
      <%@page import="entidades.Zona"%>
      <%@page import="negocio.CtrlEmpleado"%>
      <%@page import="negocio.CtrlZona"%>
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +63,7 @@
   });
 
 })(document);
-</script>		
+</script>
 
 <style type="text/css">
 
@@ -83,9 +83,9 @@ input[type=text]:focus {
     width: 100%;
 }
 
-	</style>	
+	</style>
 </head>
-<body>
+<body onload="initMap()">
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
@@ -112,8 +112,8 @@ input[type=text]:focus {
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -128,7 +128,7 @@ input[type=text]:focus {
         <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
 		<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Pagar Deuda</a></li>
+
       </ul>
     </li>
 
@@ -149,7 +149,7 @@ input[type=text]:focus {
         <li class="active"><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
@@ -159,7 +159,7 @@ input[type=text]:focus {
       </ul>
     </li>
 
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
 
       <ul>
@@ -170,15 +170,15 @@ input[type=text]:focus {
       </ul>
     </li>
 
-    
-    
-    <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
+
+
+    <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
 
       <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
-        <li class="active"><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        <li ><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
+        <li class="active"><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
 
@@ -206,7 +206,7 @@ input[type=text]:focus {
     <div id="content">
     <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Ubicaci�n</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Zona Peligrosa</a></div>
 
   </div>
 <!--End-Action boxes-->
@@ -219,75 +219,42 @@ input[type=text]:focus {
 
 
     <div id="titulo">
- <h1>Consultar Ubicaci�n</h1><hr>
+ <h1>Consultar Zona Peligrosa</h1><hr>
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
 
-      <div class="span12"> <!-- TAMA�O FORMULARIOS -->
+       <div class="span6">
+         <div id="map" class="map responsive" style="height: 600px;"></div>
+       </div>
+       <div class="span6">
+         <%
+         	CtrlZona ctrlZ = new CtrlZona();
+        	Zona zona = new Zona();       	
+       	%>	
+       	<input type="hidden" id="cantidadMaxima" value="<%=ctrlZ.listarZona().size() %>">
+       	<%
+         	int indice;
+   	  		for ( indice = 0; indice < ctrlZ.listarZona().size(); indice++){
+   	  		zona = ctrlZ.listarZona().get(indice);
+   	  		
+         %>
 
-      
-  
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
-        <div class="widget-box">
-        
-          
-          <div class="widget-content nopadding" id="tb_content">
-            <table class="order-table table" class="table table-hover">
-    <thead>
-      <tr >
-      	
-        
-        <th><h5 style="text-align:center; ">ID ZONA</h5></th>
-        <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
-        <th><h5 style="text-align:center; ">COORDENADAS</h5></th>
-        
-             
-      </tr>
-    </thead>
-    
-    <tbody>
-      <tr>
-<%
-    		CtrlZona ctrl = new CtrlZona();
-    		
-    		//PUEDO HACER TMB
-			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
-			// habitacios = ctrl.Listar();
-
-	for (int indice = 0; indice < ctrl.listarZona().size(); indice++){
-		
-		
-	%>  
-
-	  
-	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getId_zona() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getDescripcion() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getCoordenadas() %></h5></td>
-	   
-	   
-	  
-	</tr>
-	<% 
-	
-
-	}
-
-      %>
-      
-     
-    </tbody>
-  </table>
-          </div>
-        </div>
-      </div>
+         <div class="zona<%=zona.getId_zona() %>">
+           <label><%=zona.getDescripcion() %></label>
+           <input type="hidden" id="zonaPelig<%=indice %>" name="" value="<%=zona.getId_zona() %>">
+           <input type="checkbox" id="checZ<%=indice %>" name="" value="" onchange="initMap()" checked>
+           <input type="hidden" id="coordZ<%=indice %>" name="" value='<%=zona.getCoordenadas() %>'>
+         </div>
+           <%
+   	  		}
+           %>
+       </div>
     </div>
-    
   </div>
 </div>
 
-<!--End-Action boxes-->    
+<!--End-Action boxes-->
 
   </div>
 </div>
@@ -302,6 +269,9 @@ input[type=text]:focus {
 </div>
 
 <!--end-Footer-part-->
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOGGk2FljDX6W8xJ31whaP9caBq1k4D_M&libraries=visualization,places,geometry">  </script>
+<script src="bajaZonaPeligrosa.js"></script>
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>

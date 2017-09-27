@@ -147,12 +147,12 @@ public class DataCliente {
 		
 		try {
 			stmt = 	FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select nombre, apellido, tel,direccion, email from clientes where dni = ?"
+					"select dni, nombre, apellido, tel,direccion, email from clientes where dni = ?"
 					);
 			stmt.setInt(1, dnicli);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
-	         
+				c.setDni(rs.getInt("dni"));
 				c.setNombre(rs.getString("nombre"));
 				c.setApellido(rs.getString("apellido"));
 	            c.setTel(rs.getInt("tel"));

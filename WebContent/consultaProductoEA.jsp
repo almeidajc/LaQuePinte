@@ -130,7 +130,7 @@ input[type=text]:focus {
         <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
 <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Pagar Deuda</a></li>
+        
       </ul>
     </li>
     

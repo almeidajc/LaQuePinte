@@ -59,7 +59,14 @@ public class Pedido {
 
 
 	private ArrayList<LineaDetallePedido> lineasDetallePedido;
+	private String juance;
 	
+	public String getJuance() {
+		return juance;
+	}
+	public void setJuance(String juance) {
+		this.juance = juance;
+	}
 	public ArrayList<LineaDetallePedido> getLineasDetallePedido() {
 		return lineasDetallePedido;
 	}

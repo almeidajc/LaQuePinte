@@ -26,7 +26,7 @@ public class DataPedido {
 		try {
 			stmt = FactoryConexion.getInstancia().getConn().createStatement();
 
-			rs = stmt.executeQuery("select pedidos.id_pedido, pedidos.fecha_entrega, pedidos.total, pedidos.direccion_envio, pedidos.nombre, pedidos.apellido "
+			rs = stmt.executeQuery("select pedidos.id_pedido, pedidos.fecha_entrega, pedidos.total, pedidos.direccion_envio, pedidos.nombre, pedidos.apellido, pedidos.coordenadas "
 							+ " from pedidos");
 
 			while (rs.next()) {
@@ -35,11 +35,13 @@ public class DataPedido {
 				p.setId_pedido(rs.getInt("id_pedido"));
 				p.setFecha_entrega(rs.getDate("fecha_entrega"));
 				p.setTotal(rs.getDouble("total"));	
+
 				
 				p.setDireccion_envio(rs.getString("direccion_envio"));
 				p.setNombre(rs.getString("nombre"));
 				p.setApellido(rs.getString("apellido"));
-				
+
+				p.setCoordenadas(rs.getString("coordenadas"));
 				pedidos.add(p);
 
 			}
@@ -199,8 +201,10 @@ public ArrayList<Pedido> listarPedidosConfirmados() {
 	ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
 
 	try {
+
 		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("select pedidos.id_pedido, pedidos.fecha_entrega, pedidos.id_estado ,pedidos.total, pedidos.direccion_envio, pedidos.nombre, pedidos.apellido, pedidos.id_empleado "
 						+ " from pedidos where id_estado = ? and fecha_entrega <= current_date()");
+
 		stmt.setInt(1, 1);
 		rs = stmt.executeQuery();
 		
@@ -270,7 +274,9 @@ ResultSet rs=null;
 			p.setDireccion_envio(rs.getString("direccion_envio"));
 			p.setNombre(rs.getString("nombre"));
 			p.setApellido(rs.getString("apellido"));
+
 			p.setEmpleado(e);
+
 			pedidos.add(p);
 
 		}

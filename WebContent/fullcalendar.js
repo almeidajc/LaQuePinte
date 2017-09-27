@@ -1,33 +1,3 @@
-function show(){
-  if(document.getElementById("juanceChe").checked != true){
-    var parent = document.getElementById("fechaLugares");
-    var child = document.getElementById("fechaInsert");
-    parent.removeChild(child);
-    var child = document.getElementById("lugarInsert");
-    parent.removeChild(child);
-    var child = document.getElementById("coordsInsert");
-    parent.removeChild(child);
-  }
-
-  else{
-    var newDiv = document.createElement("div");
-    newDiv.setAttribute("id",`fechaLugares`);
-    var x = document.createElement("INPUT");
-    x.setAttribute("id",`fechaInsert`);
-    x.setAttribute("type", "hidden");
-    newDiv.appendChild(x);
-    // lineanueva.appendChild(newDiv);
-    var x = document.createElement("INPUT");
-    x.setAttribute("id",`lugarInsert`);
-    x.setAttribute("type", "hidden");
-    newDiv.appendChild(x);
-    // lineanueva.appendChild(newDiv);
-
-    document.getElementById("lugares").appendChild(newDiv);
-    // lineanueva.appendChild(newDiv);
-  }
-}
-
 (function($, undefined) {
 
 
@@ -715,24 +685,24 @@ function Calendar(element, options, eventSources) {
 	------------------------------------------------------------------------*/
 
 	if (options.droppable) {
-		$(document)
-			.bind('dragstart', function(ev, ui) {
-				var _e = ev.target;
-				var e = $(_e);
-				if (!e.parents('.fc').length) { // not already inside a calendar
-					var accept = options.dropAccept;
-					if ($.isFunction(accept) ? accept.call(_e, e) : e.is(accept)) {
-						_dragElement = _e;
-						currentView.dragStart(_dragElement, ev, ui);
-					}
-				}
-			})
-			.bind('dragstop', function(ev, ui) {
-				if (_dragElement) {
-					currentView.dragStop(_dragElement, ev, ui);
-					_dragElement = null;
-				}
-			});
+		// $(document)
+		// 	.bind('dragstart', function(ev, ui) {
+		// 		var _e = ev.target;
+		// 		var e = $(_e);
+		// 		if (!e.parents('.fc').length) { // not already inside a calendar
+		// 			var accept = options.dropAccept;
+		// 			if ($.isFunction(accept) ? accept.call(_e, e) : e.is(accept)) {
+		// 				_dragElement = _e;
+		// 				currentView.dragStart(_dragElement, ev, ui);
+		// 			}
+		// 		}
+		// 	})
+		// 	.bind('dragstop', function(ev, ui) {
+		// 		if (_dragElement) {
+		// 			currentView.dragStop(_dragElement, ev, ui);
+		// 			_dragElement = null;
+		// 		}
+		// 	});
 	}
 
 
@@ -1119,14 +1089,14 @@ function EventManager(options, _sources) {
 
 
 	function removeEventSource(source) {
-		sources = $.grep(sources, function(src) {
-			return !isSourcesEqual(src, source);
-		});
-		// remove all client events from that source
-		cache = $.grep(cache, function(e) {
-			return !isSourcesEqual(e.source, source);
-		});
-		reportEvents(cache);
+		// sources = $.grep(sources, function(src) {
+		// 	return !isSourcesEqual(src, source);
+		// });
+		// // remove all client events from that source
+		// cache = $.grep(cache, function(e) {
+		// 	return !isSourcesEqual(e.source, source);
+		// });
+		// reportEvents(cache);
 	}
 
 
@@ -1186,30 +1156,30 @@ function EventManager(options, _sources) {
 
 
 	function removeEvents(filter) {
-		if (!filter) { // remove all
-			cache = [];
-			// clear all array sources
-			for (var i=0; i<sources.length; i++) {
-				if ($.isArray(sources[i].events)) {
-					sources[i].events = [];
-				}
-			}
-		}else{
-			if (!$.isFunction(filter)) { // an event ID
-				var id = filter + '';
-				filter = function(e) {
-					return e._id == id;
-				};
-			}
-			cache = $.grep(cache, filter, true);
-			// remove events from array sources
-			for (var i=0; i<sources.length; i++) {
-				if ($.isArray(sources[i].events)) {
-					sources[i].events = $.grep(sources[i].events, filter, true);
-				}
-			}
-		}
-		reportEvents(cache);
+		// if (!filter) { // remove all
+		// 	cache = [];
+		// 	// clear all array sources
+		// 	for (var i=0; i<sources.length; i++) {
+		// 		if ($.isArray(sources[i].events)) {
+		// 			sources[i].events = [];
+		// 		}
+		// 	}
+		// }else{
+		// 	if (!$.isFunction(filter)) { // an event ID
+		// 		var id = filter + '';
+		// 		filter = function(e) {
+		// 			return e._id == id;
+		// 		};
+		// 	}
+		// 	cache = $.grep(cache, filter, true);
+		// 	// remove events from array sources
+		// 	for (var i=0; i<sources.length; i++) {
+		// 		if ($.isArray(sources[i].events)) {
+		// 			sources[i].events = $.grep(sources[i].events, filter, true);
+		// 		}
+		// 	}
+		// }
+		// reportEvents(cache);
 	}
 
 
@@ -2551,12 +2521,12 @@ function BasicView(element, calendar, viewName) {
 
 
 	function dragStart(_dragElement, ev, ui) {
-		hoverListener.start(function(cell) {
-			clearOverlays();
-			if (cell) {
-				renderCellOverlay(cell.row, cell.col, cell.row, cell.col);
-			}
-		}, ev);
+		// hoverListener.start(function(cell) {
+		// 	clearOverlays();
+		// 	if (cell) {
+		// 		renderCellOverlay(cell.row, cell.col, cell.row, cell.col);
+		// 	}
+		// }, ev);
 	}
 
 
@@ -4754,25 +4724,25 @@ function View(element, calendar, viewName) {
 
 
 	function eventDrop(e, event, dayDelta, minuteDelta, allDay, ev, ui) {
-		var oldAllDay = event.allDay;
-		var eventId = event._id;
-		// moveEvents(eventsByID[eventId], dayDelta, minuteDelta, allDay);
-		trigger(
-			'eventDrop',
-			e,
-			event,
-			dayDelta,
-			minuteDelta,
-			allDay,
-			function() {
-				// TODO: investigate cases where this inverse technique might not work
-				moveEvents(eventsByID[eventId], -dayDelta, -minuteDelta, oldAllDay);
-				reportEventChange(eventId);
-			},
-			ev,
-			ui
-		);
-		reportEventChange(eventId);
+		// var oldAllDay = event.allDay;
+		// var eventId = event._id;
+		// // moveEvents(eventsByID[eventId], dayDelta, minuteDelta, allDay);
+		// trigger(
+		// 	'eventDrop',
+		// 	e,
+		// 	event,
+		// 	dayDelta,
+		// 	minuteDelta,
+		// 	allDay,
+		// 	function() {
+		// 		// TODO: investigate cases where this inverse technique might not work
+		// 		moveEvents(eventsByID[eventId], -dayDelta, -minuteDelta, oldAllDay);
+		// 		reportEventChange(eventId);
+		// 	},
+		// 	ev,
+		// 	ui
+		// );
+		// reportEventChange(eventId);
 	}
 
 
@@ -4803,18 +4773,18 @@ function View(element, calendar, viewName) {
 
 
 	function moveEvents(events, dayDelta, minuteDelta, allDay) {
-		minuteDelta = minuteDelta || 0;
-		for (var e, len=events.length, i=0; i<len; i++) {
-			e = events[i];
-			if (allDay !== undefined) {
-				e.allDay = allDay;
-			}
-			addMinutes(addDays(e.start, dayDelta, true), minuteDelta);
-			if (e.end) {
-				e.end = addMinutes(addDays(e.end, dayDelta, true), minuteDelta);
-			}
-			normalizeEvent(e, options);
-		}
+		// minuteDelta = minuteDelta || 0;
+		// for (var e, len=events.length, i=0; i<len; i++) {
+		// 	e = events[i];
+		// 	if (allDay !== undefined) {
+		// 		e.allDay = allDay;
+		// 	}
+		// 	addMinutes(addDays(e.start, dayDelta, true), minuteDelta);
+		// 	if (e.end) {
+		// 		e.end = addMinutes(addDays(e.end, dayDelta, true), minuteDelta);
+		// 	}
+		// 	normalizeEvent(e, options);
+		// }
 	}
 
 
@@ -5668,43 +5638,43 @@ function DayEventRenderer() {
 
 
 	function draggableDayEvent(event, eventElement) {
-		var hoverListener = getHoverListener();
-		var dayDelta;
-		eventElement.draggable({
-			delay: 50,
-			opacity: opt('dragOpacity'),
-			revertDuration: opt('dragRevertDuration'),
-			start: function(ev, ui) {
-				trigger('eventDragStart', eventElement, event, ev, ui);
-				hideEvents(event, eventElement);
-				hoverListener.start(function(cell, origCell, rowDelta, colDelta) {
-					eventElement.draggable('option', 'revert', !cell || !rowDelta && !colDelta);
-					clearOverlays();
-					if (cell) {
-						var origDate = cellToDate(origCell);
-						var date = cellToDate(cell);
-						dayDelta = dayDiff(date, origDate);
-						renderDayOverlay(
-							addDays(cloneDate(event.start), dayDelta),
-							addDays(exclEndDay(event), dayDelta)
-						);
-					}else{
-						dayDelta = 0;
-					}
-				}, ev, 'drag');
-			},
-			stop: function(ev, ui) {
-				hoverListener.stop();
-				clearOverlays();
-				trigger('eventDragStop', eventElement, event, ev, ui);
-				if (dayDelta) {
-					eventDrop(this, event, dayDelta, 0, event.allDay, ev, ui);
-				}else{
-					eventElement.css('filter', ''); // clear IE opacity side-effects
-					showEvents(event, eventElement);
-				}
-			}
-		});
+		// var hoverListener = getHoverListener();
+		// var dayDelta;
+		// eventElement.draggable({
+		// 	delay: 50,
+		// 	opacity: opt('dragOpacity'),
+		// 	revertDuration: opt('dragRevertDuration'),
+		// 	start: function(ev, ui) {
+		// 		trigger('eventDragStart', eventElement, event, ev, ui);
+		// 		hideEvents(event, eventElement);
+		// 		hoverListener.start(function(cell, origCell, rowDelta, colDelta) {
+		// 			eventElement.draggable('option', 'revert', !cell || !rowDelta && !colDelta);
+		// 			clearOverlays();
+		// 			if (cell) {
+		// 				var origDate = cellToDate(origCell);
+		// 				var date = cellToDate(cell);
+		// 				dayDelta = dayDiff(date, origDate);
+		// 				renderDayOverlay(
+		// 					addDays(cloneDate(event.start), dayDelta),
+		// 					addDays(exclEndDay(event), dayDelta)
+		// 				);
+		// 			}else{
+		// 				dayDelta = 0;
+		// 			}
+		// 		}, ev, 'drag');
+		// 	},
+		// 	stop: function(ev, ui) {
+		// 		hoverListener.stop();
+		// 		clearOverlays();
+		// 		trigger('eventDragStop', eventElement, event, ev, ui);
+		// 		if (dayDelta) {
+		// 			eventDrop(this, event, dayDelta, 0, event.allDay, ev, ui);
+		// 		}else{
+		// 			eventElement.css('filter', ''); // clear IE opacity side-effects
+		// 			showEvents(event, eventElement);
+		// 		}
+		// 	}
+		// });
 	}
 
 
