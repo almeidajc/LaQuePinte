@@ -43,6 +43,7 @@ public class RegistrarEnvioPedido extends HttpServlet {
 	
 		
 		int id_pedido = Integer.parseInt(request.getParameter("id_pedido"));
+		int entrega = Integer.parseInt(request.getParameter("entrega"));
 		
 		CtrlPedido ctrl = new CtrlPedido();
 		
@@ -56,10 +57,13 @@ public class RegistrarEnvioPedido extends HttpServlet {
 		}
 		
 		
-	
+		if(entrega!=1){
+			request.setAttribute("mensaje", "Entrega del pedido registrada correctamente");
+			request.getRequestDispatcher("registrarEntregaDE.jsp").forward(request, response);
+		}else{
 		request.setAttribute("mensaje", "Entrega del pedido registrada correctamente");
 		request.getRequestDispatcher("registrarEnvioDE.jsp").forward(request, response);
-		
+		}
 		
 	}
 }

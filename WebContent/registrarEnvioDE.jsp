@@ -123,7 +123,10 @@
 	  <td><form method="post" action="RegistrarEnvioPedido">
         <input type="hidden" id="id_pedido" name="id_pedido" value="<%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido()%>" >
 
+         <input type="hidden" id="entrega" name="entrega" value="1" >
+        
 	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('�Est� Seguro que deseas dar registrar el env�o de este pedido?')">
+
            <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
 
 
