@@ -18,7 +18,11 @@ public class CtrlZona {
 		catalogo = new DataZona();
 	}
 
-
+	public void agregarZona(Zona z) throws ApplicationException {
+		
+		catalogo.agregarZona(z);
+	}
+	
 	public ArrayList<Zona> listarZona(){
 		return catalogo.listarZona();
 	}

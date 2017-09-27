@@ -1,15 +1,6 @@
 var map,marker,centro2;
 var arregloPedidos = new Array();
 
-function animarPedido() {
-  if (marker.getAnimation() !== null) {
-    marker.setAnimation(null);
- }
- else {
-   marker.setAnimation(google.maps.Animation.BOUNCE);
- }
-}
-
 function animarPedido(idPed) {
 	for(let ind = 0; ind < arregloPedidos.length; ind++){
       if (arregloPedidos[ind].title == idPed) {
@@ -25,7 +16,6 @@ function animarPedido(idPed) {
 
 
 function init(){
-document.getElementById("map").style.visibility = "visible";
 let cantidadPedidos = document.getElementById('cantidadPedidos').value;
 var ima = new google.maps.MarkerImage(
   'http://subirimagen.me/uploads/20161107181116.png',
@@ -69,30 +59,4 @@ map = new google.maps.Map(document.getElementById('map'), {
 		  arregloPedidos.push(marker);
 		  }
 		}
-
-
-
-    // usa latitud y longitud
-		/*
-    ubi.response.pedidos.map(function (ped){
-      infowindow = new google.maps.InfoWindow({ content: "maps" });
-      lat = ped.pos.lat;
-      lng = ped.pos.lng;
-      id = ped.id;
-      var place = new google.maps.LatLng(lat, lng);
-      // el icono y el titulo es lo que muestra cuando esta el mouse arriba
-      marker = new google.maps.Marker({
-        position: place,
-        title: id,
-        map: map,
-        icon: ima
-      });
-
-      // aca van las etiquetas cuando clickeas
-      google.maps.event.addListener(marker, 'onclick', function () {
-        infowindow.setContent("Pedido "+this.title);
-        infowindow.open(map, this);
-      });
-    })*/
-
 }

@@ -26,6 +26,11 @@ public class CtrlPedido {
 	public ArrayList<Pedido> listarPedidosConfirmados(){
 		return cat.listarPedidosConfirmados();
 	}
+	
+	public ArrayList<Pedido> listarPedidosRealizados(){
+		return cat.listarPedidosRealizados();
+	}
+	
 	public ArrayList<LineaDetallePedido> getLineaDetallePedido (int id){
 		return cat.getLineaDetallePedido(id);
 	}

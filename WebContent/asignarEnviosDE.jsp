@@ -90,6 +90,7 @@
         <div class="span6">
           <% CtrlPedido ctrlP = new CtrlPedido();
           Pedido pedido = new Pedido();
+
           int indice,sum=0;
 		  Date today = new Date();
     	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
@@ -102,6 +103,7 @@
      %>
           <%-- los pedidos solo los de hoy!!!!!!!!!!!!!!!! sino hacer un for y sumar la cantidad que son hoy --%>
           <input type="hidden" id="cantidadPedidos" value="<%= ctrlP.listarPedidosConfirmados().size() %>">
+
           <table>
             <tbody>
               <%
@@ -119,6 +121,7 @@
                 <td><input type="hidden" id="coord<%=indice %>" value="<%=pedido.getCoordenadas() %>"></td>
                 <td><h5 onclick="animarPedido(<%= pedido.getId_pedido() %>)">Pedido numero <%= pedido.getId_pedido() %></h5></td>
                 <td>
+
                   <select id="<%= pedido.getId_pedido() %>">
                     <%
                     CtrlEmpleado ctrl = new CtrlEmpleado();
@@ -132,6 +135,7 @@
                     }
                     %>
                   </select>
+
                 </td>
               </tr>
               <%

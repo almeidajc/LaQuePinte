@@ -15,6 +15,8 @@ import entidades.LineaDetallePedido;
 
 public class DataPedido {
 	
+	DataEmpleado dataempleado = new DataEmpleado();
+	
 	public ArrayList<Pedido> listarPedidos() {
 		ResultSet rs = null;
 		ResultSet rs2 = null;
@@ -38,6 +40,7 @@ public class DataPedido {
 				p.setDireccion_envio(rs.getString("direccion_envio"));
 				p.setNombre(rs.getString("nombre"));
 				p.setApellido(rs.getString("apellido"));
+
 				p.setCoordenadas(rs.getString("coordenadas"));
 				pedidos.add(p);
 
@@ -159,9 +162,10 @@ public class DataPedido {
 			
 			
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"update pedidos set id_estado=? where id_pedido=?"
+					"update pedidos set id_estado=?, fecha_efectiva=current_date() where id_pedido=?"
 					);
 			stmt.setInt(1, 2);
+			
 			stmt.setInt(2, id_pedido);
 			
 		
@@ -197,13 +201,19 @@ public ArrayList<Pedido> listarPedidosConfirmados() {
 	ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
 
 	try {
-		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("select pedidos.id_pedido, pedidos.fecha_entrega, pedidos.id_estado ,pedidos.total, pedidos.direccion_envio, pedidos.nombre, pedidos.apellido, pedidos.coordenadas  "
-						+ " from pedidos where id_estado = ?");
+
+		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("select pedidos.id_pedido, pedidos.fecha_entrega, pedidos.id_estado ,pedidos.total, pedidos.direccion_envio, pedidos.nombre, pedidos.apellido, pedidos.id_empleado "
+						+ " from pedidos where id_estado = ? and fecha_entrega <= current_date()");
+
 		stmt.setInt(1, 1);
 		rs = stmt.executeQuery();
 		
 		while (rs.next()) {
 			Pedido p = new Pedido();
+			Empleado e = new Empleado();
+			int idempleado = rs.getInt("id_empleado");
+			e.setId_empleado(idempleado);
+			//e=dataempleado.getEmpleadoById(idempleado);
 							
 			p.setId_pedido(rs.getInt("id_pedido"));
 			p.setFecha_entrega(rs.getDate("fecha_entrega"));
@@ -212,7 +222,61 @@ public ArrayList<Pedido> listarPedidosConfirmados() {
 			p.setDireccion_envio(rs.getString("direccion_envio"));
 			p.setNombre(rs.getString("nombre"));
 			p.setApellido(rs.getString("apellido"));
-			p.setCoordenadas(rs.getString("coordenadas"));
+			p.setEmpleado(e);
+			pedidos.add(p);
+
+		}
+
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		try {
+			if (rs != null)
+				rs.close();				
+			if (stmt != null)
+				stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoryConexion.getInstancia().releaseConn();
+	}
+
+	return pedidos;
+}
+
+public ArrayList<Pedido> listarPedidosRealizados() {
+ResultSet rs=null;
+	
+	PreparedStatement stmt=null;
+	
+	ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+
+	try {
+		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("select pedidos.id_pedido, pedidos.fecha_entrega, pedidos.id_estado ,pedidos.total, pedidos.direccion_envio, pedidos.nombre, pedidos.apellido, pedidos.id_empleado, pedidos.fecha_efectiva "
+						+ " from pedidos where id_estado = ? and fecha_efectiva = current_date()");
+		stmt.setInt(1, 2);
+		rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			Pedido p = new Pedido();
+			Empleado e = new Empleado();
+			int idempleado = rs.getInt("id_empleado");
+			e.setId_empleado(idempleado);
+			//e=dataempleado.getEmpleadoById(idempleado);
+							
+			p.setId_pedido(rs.getInt("id_pedido"));
+			p.setFecha_entrega(rs.getDate("fecha_entrega"));
+			p.setTotal(rs.getDouble("total"));	
+			p.setFecha_efectiva(rs.getDate("fecha_efectiva"));
+			p.setId_estado(rs.getInt("id_estado"));
+			p.setDireccion_envio(rs.getString("direccion_envio"));
+			p.setNombre(rs.getString("nombre"));
+			p.setApellido(rs.getString("apellido"));
+
+			p.setEmpleado(e);
+
 			pedidos.add(p);
 
 		}
