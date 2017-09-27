@@ -101,7 +101,7 @@
             	  for ( indice = 0; indice < ctrlP.listarPedidos().size(); indice++){
             		  pedido = ctrlP.listarPedidos().get(indice);
                   // if dia=igual hoy
-                if(today.after(pedido.getFecha_entrega()) && pedido.getFecha_efectiva() == null){
+                if(today.after(pedido.getFecha_entrega())){
                 	//&& pedido.getFecha_efectiva() != null
             	%>
 
@@ -110,20 +110,20 @@
                 <td><input type="hidden" id="coord<%=indice %>" value="<%=pedido.getCoordenadas() %>"></td>
                 <td><h5 onclick="animarPedido(<%= pedido.getId_pedido() %>)">Pedido numero <%= pedido.getId_pedido() %></h5></td>
                 <td>
-                  <select id="<%= pedido.getId_pedido() %>">
-                    <%
-                    CtrlEmpleado ctrl = new CtrlEmpleado();
-                    for (int indiceEmpleados = 0; indiceEmpleados < ctrl.listarEmpleados().size(); indiceEmpleados++){
-                      String tipo = ctrl.listarEmpleados().get(indiceEmpleados).getTipo();
-                      if(tipo.equalsIgnoreCase("CA")){
-                        %>
-                        <option value="<%= ctrl.listarEmpleados().get(indiceEmpleados).getId_empleado() %>"><%= ctrl.listarEmpleados().get(indiceEmpleados).getNombre() %> <%= ctrl.listarEmpleados().get(indiceEmpleados).getApellido() %></option>
-                        <option> asada</option>
-                        <%
-                      }
-                    }
-                    %>
-                  </select>
+	                  <select id="<%= pedido.getId_pedido() %>">
+	                    <%
+	                    CtrlEmpleado ctrl = new CtrlEmpleado();
+	                    for (int indiceEmpleados = 0; indiceEmpleados < ctrl.listarEmpleados().size(); indiceEmpleados++){
+	                      String tipo = ctrl.listarEmpleados().get(indiceEmpleados).getTipo();
+	                      if(tipo.equalsIgnoreCase("CA")){
+	                        %>
+	                        <option value="<%= ctrl.listarEmpleados().get(indiceEmpleados).getId_empleado() %>"><%= ctrl.listarEmpleados().get(indiceEmpleados).getNombre() %> <%= ctrl.listarEmpleados().get(indiceEmpleados).getApellido() %></option>
+	                        <%
+	                      }
+	                    }
+	                    %>
+	                  </select>
+
                 </td>
               </tr>
               <%
@@ -146,14 +146,14 @@
 </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD_1mkSBgMDYfy00Z6JGLq9zsTlmmlLuA" async defer ></script>
-    <script src="bootstrap/js/jquery.min.js"></script>
+    <%-- <script src="bootstrap/js/jquery.min.js"></script>
     <script src="bootstrap/js/jquery.ui.custom.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/jquery.uniform.js"></script>
     <script src="bootstrap/js/select2.min.js"></script>
-    <script src="bootstrap/js/jquery.validate.js"></script>
+    <script src="bootstrap/js/jquery.validate.js"></script> --%>
     <script src="bootstrap/js/matrix.js"></script>
-    <script src="bootstrap/js/matrix.form_validation.js"></script>
+    <%-- <script src="bootstrap/js/matrix.form_validation.js"></script> --%>
     <script type="text/javascript">
     // This function is called from the pop-up menus to transfer to
     // a different page. Ignore if the value returned is a null string:
