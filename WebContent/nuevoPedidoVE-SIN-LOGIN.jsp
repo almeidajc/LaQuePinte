@@ -11,7 +11,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <title>Materiales::de::Construccion</title>
+
+
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -23,6 +27,7 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
 <script src="js/jquery-1.12.3.min.js"></script>
 <script src="js/pedido.js"></script>
 <script src="js/cliente.js"></script>
@@ -35,7 +40,9 @@
 
 <!--Header-part-->
 <div id="header">
+
   <h1><a href="dashboard.html">Materiales de Construccion</a></h1>
+
 </div>
 <!--close-Header-part--> 
 
@@ -81,12 +88,14 @@
       </ul>
     </li>
     
+
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicacion</span> </a>
       <ul>
         <li><a href="agregarubicacion.jsp">Agregar Ubicacion</a></li>
         <li><a href="#">Modificar Ubicacion</a></li>
         <li><a href="#">Eliminar Ubicacion</a></li>
         <li><a href="#">Consultar Ubicacion</a></li>
+
       </ul>
     </li>
     
@@ -109,6 +118,7 @@
  </div>
  
  <!--Action boxes-->
+
  
  <div class="row-fluid">
       <div class="span3">
@@ -300,11 +310,14 @@
   <%Pedido pedido= (Pedido)session.getAttribute("pedido"); 
 	if(pedido!=null){	
 	%>
+
   
     <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>NUEVO PEDIDO</h5>
-           </div>
+
+            <span class="label label-info">Featured</span> </div>
+
           <div class="widget-content nopadding">
             <table class="table table-bordered table-striped">
               <thead>
@@ -318,6 +331,7 @@
                   <th>BORRAR</th>
                 </tr>
               </thead>
+
              <tbody>
             
             <%int i=1;
@@ -349,13 +363,14 @@
 		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
 	</div>
 	<%} %>
+
         </div>
         
   
 <!--End-Action boxes-->    	
  
  
- 
+
       
       <div class="row-fluid">
       <div class="span3">
@@ -379,6 +394,7 @@
                 
                 <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
    </form>
+
    <% 
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
@@ -388,6 +404,7 @@
       			</div>
       		<%
         		}
+
       		%>      
           </div>
         </div>
@@ -402,35 +419,72 @@
               <thead>
                 <tr>
                  		<th>Codigo</th>
+
 						<th>Descripcion</th>
 						<th>Precio</th>
-                </tr>
-              </thead>
-              <tbody id="cuerpo" name="cuerpo">
+					</tr>
+				</thead>
+				<tbody id="cuerpo">
 					<tr>
-						<td colspan="4"><h4>Comience a escribir para obtener los productos</h4></td>
+						<td colspan="3"><h2>Comience a escribir para obtener los productos</h2></td>
 					</tr>
 				</tbody>
-            </table>
-          </div>  
-        </div>
-      </div>
-      
-      </div>
-      
-   
-    
-    
-    	
+			</table>      
 	</div>
-	
+	</div>
+	<%Pedido pedido= (Pedido)session.getAttribute("pedido"); 
+	if(pedido!=null){	
+	%>
+	<div class="row" style="text-align: center;">
+		<h1>SU PEDIDO</h1>
+		<table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>C�digo</th>
+                <th>Descripci�n</th>
+                <th>Precio Unitario</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+            <%int i=1;
+            float total=0;
+            for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
+            	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
+            %>            
+              <tr>
+                <td><%=i %></td>
+                <td><%=item.getProducto().getId_producto() %></td>
+                <td><%=item.getProducto().getNombre_producto() %></td>
+                <td><%=item.getProducto().getPrecio() %></td>
+                <td><%=item.getCantidad() %></td>
+                <td><%=subtotal %></td>
+                <td><a class="btn btn-danger" href="pedido/borrarLinea?nro=<%=i %>">X</a></td>
+              </tr>
+            <%	i++;
+            	total+=subtotal;
+            }%>
+            <tr>
+                <td style="text-align: right;" colspan="5"><h4>IMPORTE TOTAL DEL PEDIDO</h4></td>
+                <td><h4><%=total %></h4></td>
+              </tr>
+            </tbody>
+          </table>
+	</div>
+	<div class="row" style="float: right;">
+		<a class="btn btn-danger" href="pedido/borrarPedido">BORRAR PEDIDO</a>
+		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
+	</div>
+	<%} %>
 	
  
 		       
-<!--End-Action boxes-->  
+<!--End-Action boxes-->    
 
-
- 
    
   </div>
 </div>
@@ -494,4 +548,6 @@ function resetMenu() {
 }
 </script>
 </body>
+
 </html>
+

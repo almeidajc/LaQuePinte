@@ -23,6 +23,9 @@ public class CtrlPedido {
 		return cat.listarPedidos();
 	}
 	
+	public ArrayList<Pedido> listarPedidosConfirmados(){
+		return cat.listarPedidosConfirmados();
+	}
 	public ArrayList<LineaDetallePedido> getLineaDetallePedido (int id){
 		return cat.getLineaDetallePedido(id);
 	}
@@ -40,6 +43,13 @@ public class CtrlPedido {
 			cat.registrarPedido(pedido);
 		} else throw new ApplicationException(mensaje, null);
 	}
+
+
+	public void registrarEnvioPedido(int id_pedido) throws ApplicationException {
+		// TODO Auto-generated method stub
+		cat.registrarEnvioPedido(id_pedido);
+	}
+
 
 	/* public void agregarProducto(Producto p) throws ApplicationException {
 		cat.agregarProducto(p);

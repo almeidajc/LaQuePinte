@@ -23,9 +23,9 @@
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
-          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} 
-          	
-          	
+          	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
+
+
       		String tipo_em = userSession.getTipo();%>
 
 <!--Header-part-->
@@ -48,8 +48,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -61,7 +61,8 @@
     <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearpedido.jsp">Crear Pedido</a></li>
+        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
+<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
         <li><a href="#">Pagar Deuda</a></li>
       </ul>
@@ -84,7 +85,7 @@
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
@@ -104,16 +105,16 @@
       </ul>
     </li>
 
-    
-    
-    
+
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
 
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
         <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
 
@@ -133,7 +134,7 @@
 
   </ul>
 </div>
-<!-- sidebar-menu--> 
+<!-- sidebar-menu-->
 
 
 <!--main-container-part-->
@@ -158,22 +159,22 @@
 
   <div class="row-fluid">
     <div class="span6">
-    
-     <% 
+
+     <%
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
       		%>
       		<div class="alert alert-success">
    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> . 
+    		<strong><%=mensaje %></strong> .
   			</div>
-      		
-      			
+
+
       		<%
         		}
-      			
+
       		%>
-      		
+
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
           <h5>Alta usuario</h5>
@@ -234,7 +235,7 @@
                 <input type="text" class="span11" name="apellido" id="patente" placeholder="Patente" />
               </div>
             </div>
-            
+
             <div class="control-group">
                <label class="control-label">Turno de trabajo</label>
                <div class="controls">
@@ -245,12 +246,12 @@
                   </select>
               </div>
                </div>
-               
+
             <div class="control-group">
               <label class="control-label">Usuario</label>
               <div class="controls">
                 <input type="text"  class="span11" placeholder="Nombre de usuario" name="usuario" id="usuario" />
-				 <a href="#" title="El usuario lo decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>              
+				 <a href="#" title="El usuario lo decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               </div>
               </div>
               <div class="widget-content nopadding">
@@ -261,7 +262,7 @@
                     <input type="password" id="pass_1" name="contrasena" class="form-control" placeholder="Contrase&ntilde;a" required>
             		<a href="#" title="La contrase&ntilde;a la decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
             		<label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
-            
+
                   </div>
                 </div>
                 <div class="control-group">

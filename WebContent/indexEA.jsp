@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -31,9 +31,9 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="indexEA.jsp">Materiales de Construcci�n</a></h1>
+  <h1><a href="indexEA.jsp">Materiales de Construcci&oacute;n</a></h1>
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 
@@ -62,13 +62,14 @@
     <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearpedido.jsp">Crear Pedido</a></li>
+        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
+		<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
         <li><a href="#">Pagar Deuda</a></li>
       </ul>
     </li>
-    
-    
+
+
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
@@ -77,7 +78,7 @@
         <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
@@ -86,8 +87,8 @@
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
-    
+
+
         <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
@@ -96,8 +97,8 @@
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
-    
-    
+
+
   <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
@@ -106,23 +107,23 @@
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
 
-    
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
         <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
-    
-        
+
+
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-    
-    
-    
+
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
       <ul>
         <li><a href="#">Crear Pedido</a></li>
@@ -131,7 +132,7 @@
         <li><a href="#">Consultar Pedido</a></li>
       </ul>
     </li>
-    
+
   </ul>
 </div>
 <!-- sidebar-menu-->
@@ -142,21 +143,21 @@
 <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
-   
+
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
  <div id="titulo" style="padding-left: 38px">
- <h1>Menu Encargado Administraci�n</h1>
+ <h1>Menu Encargado Administraci&oacute;n</h1>
  </div>
   <div class="container-fluid" ><hr>
-  
+
     <div class="quick-actions_homepage">
-    
-    
-         
-      <ul class="quick-actions" >      
+
+
+
+      <ul class="quick-actions" >
        <li class="bg_ly span5"> <a href="crearpedido.jsp"> <i class="icon-shopping-cart"></i> Pedido</a> </li>
        <li class="bg_lo span5"> <a href="altaproducto.jsp"> <i class="icon-barcode"></i>Producto</a> </li>
        <li class="bg_ls span5"> <a href="altaUsuarioEA.jsp"> <i class="icon-user"></i> Empleado</a> </li>
@@ -165,13 +166,13 @@
        <li class="bg_lb span5"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Ubicaci&oacute;n</a> </li>
        <li class="bg_lr span5"> <a href="#"> <i class="icon-bar-chart"></i> Informe Stock</a> </li>
        <li class="bg_lb span5"> <a href="#"> <i class="icon-briefcase"></i> Pedido a Proveedores</a> </li>
-        
+
 
       </ul>
-      
+
     </div>
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
   </div>
 </div>
 
@@ -186,13 +187,13 @@
 
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/jquery.ui.custom.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.uniform.js"></script> 
-<script src="bootstrap/js/select2.min.js"></script> 
-<script src="bootstrap/js/jquery.validate.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
 <script src="bootstrap/js/matrix.form_validation.js"></script>
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
@@ -201,13 +202,13 @@
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-      
+
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
+              resetMenu();
+          }
+          // else, send page to designated URL
+          else {
             document.location.href = newURL;
           }
       }

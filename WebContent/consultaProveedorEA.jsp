@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -30,7 +30,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -61,7 +61,8 @@
     <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearpedido.jsp">Crear Pedido</a></li>
+        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
+<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
         <li><a href="#">Pagar Deuda</a></li>
       </ul>
@@ -108,10 +109,10 @@
     
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
         <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
     

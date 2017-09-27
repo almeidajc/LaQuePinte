@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -30,7 +30,7 @@
 
 <!--Header-part LOGO MATRIX-STYLE.CSS --> 
 <div id="header" >
-  <h1><a href="#">Materiales de Construcci�n</a></h1>
+  <h1><a href="#">Materiales de Construcci&oacute;n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -60,13 +60,14 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu DESPACHANTE</a>
   <ul>
-    <li class="active"><a href="indexCA.jsp"><i class="icon icon-home"></i> <span>Menu Camionero</span></a> </li>
+    <li class="active"><a href="indexDE.jsp"><i class="icon icon-home"></i> <span>Menu Despachante</span></a> </li>
     
-    <li><a href="registrarEnvio.jsp"><i class="icon icon-truck"></i> <span>Registrar Env�o</span></a></li>
-   <!--  <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>Eelements</span></a></li> -->
-    <li><a href="resumenEnvios.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Env�os</span></a></li>
+    <li><a href="registrarEnvioDE.jsp"><i class="icon icon-truck"></i> <span>Registrar Env&iacute;o</span></a></li>
+    <li><a href="registrarEntregaDE.jsp"><i class="icon icon-group"></i> <span>Registrar Entrega Pedido</span></a></li>
+    <li><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos</span></a></li>
     <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
   </ul>
+</div>
 </div>
 <!--sidebar-menu-->
 
@@ -80,7 +81,7 @@
 
 <!--Action boxes-->
 <div id="titulo">
- <h1>Menu Camionero</h1>
+ <h1>Menu Despachante</h1>
  </div>
   <div class="container-fluid"><hr>
 
@@ -88,9 +89,10 @@
       <ul class="quick-actions">
       
         
-        <li class="bg_ls span8"> <a href="registrarEnvio.jsp"> <i class="icon-truck"></i> Registrar Env�o</a> </li>
+        <li class="bg_ls span8"> <a href="registrarEnvioDE.jsp"> <i class="icon-truck"></i> Registrar Env&iacute;o</a> </li>
+        <li class="bg_ly span8"> <a href="registrarEntregaDE.jsp"> <i class="icon-user"></i> Registrar Entrega Pedido</a> </li>
         
-        <li class="bg_lg span8"> <a href="resumenEnvios.jsp"> <i class="icon-list-ol"></i> Resumen de Env�os</a> </li>
+        <li class="bg_lg span8"> <a href="consultaPedidoDE.jsp"> <i class="icon-list-ol"></i> Resumen de Pedidos confirmados</a> </li>
         <li class="bg_lr span8"> <a href="balance.jsp"> <i class="icon-credit-card"></i> Balance</a> </li>
 
       </ul>

@@ -860,7 +860,7 @@ rangy.createModule("DomUtil", function(api, module) {
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
-    // RangeIterator code partially borrows from IERange by Tim  <%=nombre %> (http://github.com/timcameron <%=nombre %>/IERange)
+    // RangeIterator code partially borrows from IERange by Tim Ryan (http://github.com/timcameronryan/IERange)
 
     /**
      * @constructor
@@ -1935,7 +1935,7 @@ rangy.createModule("DomUtil", function(api, module) {
     }
 
     // Gets the boundary of a TextRange expressed as a node and an offset within that node. This function started out as
-    // an improved version of code found in Tim Cameron  <%=nombre %>'s IERange (http://code.google.com/p/ierange/) but has
+    // an improved version of code found in Tim Cameron Ryan's IERange (http://code.google.com/p/ierange/) but has
     // grown, fixing problems with line breaks in preformatted text, adding workaround for IE TextRange bugs, handling
     // for inputs and images, plus optimizations.
     function getTextRangeBoundaryPosition(textRange, wholeRangeContainerElement, isStart, isCollapsed) {
@@ -2053,7 +2053,7 @@ rangy.createModule("DomUtil", function(api, module) {
     }
 
     // Returns a TextRange representing the boundary of a TextRange expressed as a node and an offset within that node.
-    // This function started out as an optimized version of code found in Tim Cameron  <%=nombre %>'s IERange
+    // This function started out as an optimized version of code found in Tim Cameron Ryan's IERange
     // (http://code.google.com/p/ierange/)
     function createBoundaryTextRange(boundaryPosition, isStart) {
         var boundaryNode, boundaryParent, boundaryOffset = boundaryPosition.offset;

@@ -14,15 +14,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="bootstrap/img/logo-fav.png" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+
 <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="bootstrap/css/fullcalendar.css" />
 <link rel="stylesheet" href="bootstrap/css/matrix-style.css" />
 <link rel="stylesheet" href="bootstrap/css/matrix-media.css" />
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
+<link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
 (function(document) {
@@ -100,7 +103,7 @@ input[type=text]:focus {
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -128,15 +131,17 @@ input[type=text]:focus {
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearpedido.jsp">Crear Pedido</a></li>
+        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
+		<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
         <li><a href="#">Pagar Deuda</a></li>
       </ul>
     </li>
-    
+
+
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
@@ -145,18 +150,18 @@ input[type=text]:focus {
         <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+       <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
         <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+
+
+        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
         <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
@@ -164,9 +169,9 @@ input[type=text]:focus {
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
-    
-    
-    <li> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+
+
+  <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
         <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
@@ -174,23 +179,23 @@ input[type=text]:focus {
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
-    
+
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
         <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
-    
-   
-    
-    <li  class="active"><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-    
-    
-    
+
+
+    <li class="active"><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
       <ul>
         <li><a href="#">Crear Pedido</a></li>
@@ -199,7 +204,7 @@ input[type=text]:focus {
         <li><a href="#">Consultar Pedido</a></li>
       </ul>
     </li>
-    
+
   </ul>
 </div>
 <!--sidebar-menu-->
@@ -307,14 +312,38 @@ input[type=text]:focus {
   <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
 </div>
 <!--end-Footer-part-->
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.pie.min.js"></script> 
-<script src="bootstrap/js/matrix.charts.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script type="text/javascript">
+  // This function is called from the pop-up menus to transfer to
+  // a different page. Ignore if the value returned is a null string:
+  function goPage (newURL) {
+
+      // if url is empty, skip the menu dividers and reset the menu selection to default
+      if (newURL != "") {
+
+          // if url is "-", it is this page -- reset the menu:
+          if (newURL == "-" ) {
+              resetMenu();
+          }
+          // else, send page to designated URL
+          else {
+            document.location.href = newURL;
+          }
+      }
+  }
+
+// resets the menu selection upon entry to this page:
+function resetMenu() {
+   document.gomenu.selector.selectedIndex = 2;
+}
+</script>
 <!--Real-time-chart-js-->
 <script type="text/javascript">
 $(function () {

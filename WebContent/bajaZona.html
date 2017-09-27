@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Maps</title>
+</head>
+<body onload="cargaInicio()">
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6">
+      <div id="map" class="map responsive" style="width: 600px; height: 600px;"></div>
+    </div>
+
+    <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6">
+      <div class="row">
+        <div class="zonasPel">
+          <div class="zona1">
+            <label><%= ctrl.listarZona().get(indice).getDescripcion() %></label>
+            <input type="hidden" id="zonaPelig<%= ctrl.listarZona().get(indice).getId_zona() %>" value="zonaPelig<%= ctrl.listarZona().get(indice).getId_zona()%>">
+            <input type="checkbox" id="checZ<%= ctrl.listarZona().get(indice).getId_zona() %>" value="" onchange="initMap()" checked>
+            <input type="hidden" id="coordZ<%= ctrl.listarZona().get(indice).getId_zona() %>" value="<%= ctrl.listarZona().get(indice).getCoordenadas() %>">
+          </div>
+          <div class="zona2">
+            <label><%= ctrl.listarZona().get(indice).getDescripcion() %></label>
+            <input type="hidden" id="zonaPelig<%= ctrl.listarZona().get(indice).getId_zona() %>" value="zonaPelig<%= ctrl.listarZona().get(indice).getId_zona()%>">
+            <input type="checkbox" id="checZ<%= ctrl.listarZona().get(indice).getId_zona() %>" value="" onchange="initMap()" checked>
+            <input type="hidden" id="coordZ<%= ctrl.listarZona().get(indice).getId_zona() %>" value="<%= ctrl.listarZona().get(indice).getCoordenadas() %>">
+          </div>
+          <div class="zona3">
+            <label><%= ctrl.listarZona().get(indice).getDescripcion() %></label>
+            <input type="hidden" id="zonaPelig<%= ctrl.listarZona().get(indice).getId_zona() %>" value="zonaPelig<%= ctrl.listarZona().get(indice).getId_zona()%>">
+            <input type="checkbox" id="checZ<%= ctrl.listarZona().get(indice).getId_zona() %>" value="" onchange="initMap()" checked>
+            <input type="hidden" id="coordZ<%= ctrl.listarZona().get(indice).getId_zona() %>" value="<%= ctrl.listarZona().get(indice).getCoordenadas() %>">
+          </div>
+          <div class="zona4">
+            <label><%= ctrl.listarZona().get(indice).getDescripcion() %></label>
+            <input type="hidden" id="zonaPelig<%= ctrl.listarZona().get(indice).getId_zona() %>" value="zonaPelig<%= ctrl.listarZona().get(indice).getId_zona()%>">
+            <input type="checkbox" id="checZ<%= ctrl.listarZona().get(indice).getId_zona() %>" value="" onchange="initMap()" checked>
+            <input type="hidden" id="coordZ<%= ctrl.listarZona().get(indice).getId_zona() %>" value="<%= ctrl.listarZona().get(indice).getCoordenadas() %>">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="zonaBorrar">
+            <form class="" action="" method="post">
+
+              <button type="submit" class="btn btn-danger">Borrar las zonas peligrosas</button>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOGGk2FljDX6W8xJ31whaP9caBq1k4D_M&libraries=visualization,places,geometry">  </script>
+  <script src="bajaZona.js"></script>
+</body>
+</html>

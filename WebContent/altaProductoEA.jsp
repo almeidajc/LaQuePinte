@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>   
+    pageEncoding="ISO-8859-1"%>
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
     <%@page import="entidades.Material"%>
@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -29,9 +29,9 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 <!--top-Header-menu-->
@@ -47,8 +47,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -60,12 +60,13 @@
     <li ><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearpedido.jsp">Crear Pedido</a></li>
+        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
+<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
         <li><a href="#">Pagar Deuda</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li class="active"><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
@@ -74,7 +75,7 @@
         <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
@@ -83,8 +84,8 @@
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
-    
+
+
         <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
@@ -93,8 +94,8 @@
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
-    
-    
+
+
   <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
@@ -103,23 +104,23 @@
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
 
-    
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicaci&oacute;n</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
         <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
       </ul>
     </li>
-    
-        
+
+
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-    
-    
-    
+
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
       <ul>
         <li><a href="#">Crear Pedido</a></li>
@@ -128,7 +129,7 @@
         <li><a href="#">Consultar Pedido</a></li>
       </ul>
     </li>
-    
+
   </ul>
 </div>
 <!-- sidebar-menu-->
@@ -139,7 +140,7 @@
 <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Producto</a></div>
-   
+
   </div>
 <!--End-breadcrumbs-->
 
@@ -148,24 +149,24 @@
  <h1>Nuevo Producto</h1>
  </div>
   <div class="container-fluid"><hr>
-  
-   
-  
+
+
+
      <div class="row-fluid">
       <div class="span6"> <!-- TAMA�O FORMULARIOS -->
-      <% 
+      <%
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
       		%>
       		<div class="alert alert-success">
    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> . 
+    		<strong><%=mensaje %></strong> .
   			</div>
-      		
-      			
+
+
       		<%
         		}
-      			
+
       		%>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
@@ -173,7 +174,7 @@
           </div>
           <div class="widget-content nopadding">
             <form class="form-horizontal" method="post" action="AltaProducto" >
-            	             
+
               <div class="control-group">
                 <label class="control-label">Nombre Producto</label>
                 <div class="controls">
@@ -183,27 +184,27 @@
               </div>
               <div class="control-group">
               <label class="control-label">Tipo Material</label>
-              
-      
-              
+
+
+
               <div class="controls">
                 <select name="material" id="material">
                   <option selected >Seleccionar...</option>
-                  
+
                           <%
     		CtrlMaterial ctrl = new CtrlMaterial();
-    		
-    		
+
+
 	for (int indice = 0; indice < ctrl.listarMateriales().size(); indice++){
-	%>  
+	%>
   <option id="material" value="<%= ctrl.listarMateriales().get(indice).getId()%>"><%= ctrl.listarMateriales().get(indice).getNombre()%></option>
-                  
-               
-              
-              	<%	
+
+
+
+              	<%
 }
       %>
-      
+
        </select>
               </div>
             </div>
@@ -212,10 +213,10 @@
                 <div class="controls">
                   <input type="text" name="precio_producto" id="precio_producto" required autofocus class="form-control">
                  <a href="#" title="Ingrese el precio de venta del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                </div>   
+                </div>
               </div>
-              
-             
+
+
               <div class="control-group">
                 <label class="control-label">Stock Ingresado</label>
                 <div class="controls">
@@ -239,14 +240,14 @@
               </div>
               <div class="form-actions" >
                 <input type="submit" value="Registrar" class="btn btn-success btn-large">
-                
+
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
 
@@ -261,26 +262,26 @@
 
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/excanvas.min.js"></script> 
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/jquery.ui.custom.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
-<script src="bootstrap/js/fullcalendar.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/matrix.dashboard.js"></script> 
-<script src="bootstrap/js/jquery.gritter.min.js"></script> 
-<script src="bootstrap/js/matrix.interface.js"></script> 
-<script src="bootstrap/js/matrix.chat.js"></script> 
-<script src="bootstrap/js/jquery.validate.js"></script> 
-<script src="bootstrap/js/matrix.form_validation.js"></script> 
-<script src="bootstrap/js/jquery.wizard.js"></script> 
-<script src="bootstrap/js/jquery.uniform.js"></script> 
-<script src="bootstrap/js/select2.min.js"></script> 
-<script src="bootstrap/js/matrix.popover.js"></script> 
-<script src="bootstrap/js/jquery.dataTables.min.js"></script> 
+<script src="bootstrap/js/excanvas.min.js"></script>
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
+<script src="bootstrap/js/fullcalendar.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.dashboard.js"></script>
+<script src="bootstrap/js/jquery.gritter.min.js"></script>
+<script src="bootstrap/js/matrix.interface.js"></script>
+<script src="bootstrap/js/matrix.chat.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script src="bootstrap/js/jquery.wizard.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/matrix.popover.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="bootstrap/js/matrix.tables.js"></script>
 
 
@@ -291,13 +292,13 @@
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-      
+
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
+              resetMenu();
+          }
+          // else, send page to designated URL
+          else {
             document.location.href = newURL;
           }
       }

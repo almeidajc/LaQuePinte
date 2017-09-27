@@ -24,9 +24,40 @@ public class Pedido {
 	private String direccion_envio;
 	private Cliente cliente;
 	private ArrayList<Producto> productos;
-	private Zona zona;
+	private String coordenadas;
+	private int id_zona;
 	private Empleado empleado;
 	private int id_estado;
+	private String estado;
+	private String nombre;
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+
+	private String apellido;
+	
+	public String getEstado() {
+		String descripcion;
+		if (this.getId_estado()==1) {	descripcion="Confirmado";}
+		else{descripcion="Entregado";
+		}
+		return descripcion;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
 	private ArrayList<LineaDetallePedido> lineasDetallePedido;
 	private String juance;
 	
@@ -115,17 +146,24 @@ public class Pedido {
 	public void setProductos(ArrayList<Producto> productos) {
 		this.productos = productos;
 	}
-	public Zona getZona() {
-		return zona;
-	}
-	public void setZona(Zona zona) {
-		this.zona = zona;
-	}
+	
 	public Empleado getEmpleado() {
 		return empleado;
 	}
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
+	}
+	public String getCoordenadas() {
+		return coordenadas;
+	}
+	public void setCoordenadas(String coordenadas) {
+		this.coordenadas = coordenadas;
+	}
+	public int getId_zona() {
+		return id_zona;
+	}
+	public void setId_zona(int id_zona) {
+		this.id_zona = id_zona;
 	}
 	 
 	
