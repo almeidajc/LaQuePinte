@@ -106,20 +106,20 @@
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 			// habitacios = ctrl.Listar();
 
-	for (int indice = 0; indice < ctrl.listarPedidos().size(); indice++){
-		if(ctrl.listarPedidos().get(indice).getDireccion_envio() == null ){
+	for (int indice = 0; indice < ctrl.listarPedidosConfirmados().size(); indice++){
+		if(ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() == null ){
 			
 		
 	%>  
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidos().get(indice).getId_pedido() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidos().get(indice).getFecha_entrega() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega() %></h5></td>
 	   
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidos().get(indice).getEstado() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getEstado() %></h5></td>
 	   <td><h5 style="text-align:center; ">Consumidor Final</h5></td>	
 	   		   
 	  
 	  <td><form method="post" action="RegistrarEnvioPedido">
-        <input type="hidden" id="id_pedido" name="id_pedido" value="<%= ctrl.listarPedidos().get(indice).getId_pedido()%>" >
+        <input type="hidden" id="id_pedido" name="id_pedido" value="<%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido()%>" >
         
 	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('¿Está Seguro que deseas dar registrar el envío de este pedido?')">
            <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>

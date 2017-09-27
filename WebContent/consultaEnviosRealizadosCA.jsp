@@ -25,7 +25,8 @@
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
             if(userSession == null || !(userSession.getTipo().equals("CA"))){
-            	response.sendRedirect("error405.jsp"); } %> 
+            	response.sendRedirect("error405.jsp"); }
+           %> 
 
 <!--Header-part LOGO MATRIX-STYLE.CSS --> 
 <div id="header" >
@@ -60,9 +61,9 @@
   <ul>
     <li><a href="indexCA.jsp"><i class="icon icon-home"></i> <span>Menu Camionero</span></a> </li>
     
-    <li class="active"><a href="registrarEnvioCA.jsp"><i class="icon icon-truck"></i> <span>Registrar Env&iacute;o</span></a></li>
+    <li><a href="consultaEnviosPendientesCA.jsp"><i class="icon icon-truck"></i> <span>Env&iacute;os Pendientes</span></a></li>
    <!--  <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>Eelements</span></a></li> -->
-    <li><a href="resumenEnviosCA.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Env&iacute;os</span></a></li>
+    <li class="active"><a href="consultaEnviosRealizadosCA.jsp"><i class="icon icon-list-ol"></i> <span>Env&iacute;os Realizados</span></a></li>
     <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
   </ul>
 </div>
@@ -72,12 +73,12 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Registrar Env&iacute;os</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consulta Env&iacute;os Realizados</a></div>
 <!--End-breadcrumbs-->
 <!--Action boxes-->
- <div id="titulo">
- <h1>Consulta Pedidos</h1>
- </div>
+<div id="titulo">
+ <h1>Consulta de Pedidos Realizados</h1>
+  </div>
   <div class="container-fluid"><hr>
    
   <div class="container-fluid">
@@ -98,12 +99,13 @@
       	
         <th><h5 style="text-align:center; ">ID</h5></th>
         <th><h5 style="text-align:center; ">FECHA ENTREGA</h5></th>
+        <th><h5 style="text-align:center; ">FECHA EFECTIVA</h5></th>
         <th><h5 style="text-align:center; ">DIRECCION ENVIO</h5></th>
         <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
         <th><h5 style="text-align:center; ">APELLIDO CLIENTE</h5></th>
         <th><h5 style="text-align:center; ">NOMBRE</h5></th>
        
-        <th><h5 style="text-align:center; ">REGISTRAR</h5></th>
+      
              
       </tr>
     </thead>
@@ -112,32 +114,32 @@
       <tr>
       <div></div>
 <%
-    		CtrlPedido ctrl = new CtrlPedido();
+    		CtrlPedido ctrlP = new CtrlPedido();
     		
     		//PUEDO HACER TMB
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 			// habitacios = ctrl.Listar();
 
-	for (int indice = 0; indice < ctrl.listarPedidosConfirmados().size(); indice++){
-		if(ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() != null ){
+	int id;
+	  for (int indice = 0; indice < ctrlP.listarPedidosRealizados().size(); indice++){
+		   id = ctrlP.listarPedidosRealizados().get(indice).getEmpleado().getId_empleado();
+		  if(userSession.getId_empleado() == id ){
+		if(ctrlP.listarPedidosRealizados().get(indice).getDireccion_envio() != null ){
 		
 	%>  
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getEstado() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getApellido() %></h5></td>	
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getNombre() %></h5></td>		   
+	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getId_pedido() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getFecha_entrega() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getFecha_efectiva() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getDireccion_envio() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getEstado() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getApellido() %></h5></td>	
+	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getNombre() %></h5></td>		   
 	  
-	  <td><form method="post" action="RegistrarEnvioPedido">
-        <input type="hidden" id="id_pedido" name="id_pedido" value="<%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido()%>" >
-        
-	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('¿Está Seguro que deseas dar registrar el envío de este pedido?')">
-           <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
+	  
 	  
 	  
 	</tr>
-	<%
+	<%}
 		}
 		}
 

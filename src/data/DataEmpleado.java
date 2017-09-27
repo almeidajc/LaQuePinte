@@ -285,7 +285,7 @@ public class DataEmpleado {
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
 	         
-	           
+	           e.setId_empleado(idEmp);
 	           
 	            e.setTel(rs.getInt("tel"));
 	            e.setEmail(rs.getString("email"));
