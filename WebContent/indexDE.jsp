@@ -63,6 +63,7 @@
     <li class="active"><a href="indexDE.jsp"><i class="icon icon-home"></i> <span>Menu Despachante</span></a> </li>
     
     <li><a href="registrarEnvioDE.jsp"><i class="icon icon-truck"></i> <span>Registrar Env&iacute;o</span></a></li>
+<li><a href="asignarEnviosDE.jsp"><i class="icon icon-group"></i> <span>Asignar Pedidos a Camioneros</span></a></li>
     <li><a href="registrarEntregaDE.jsp"><i class="icon icon-group"></i> <span>Registrar Entrega Pedido</span></a></li>
     <li><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos</span></a></li>
     <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>

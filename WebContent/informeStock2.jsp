@@ -65,7 +65,7 @@
         <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
 <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Pagar Deuda</a></li>
+        
       </ul>
     </li>
     
@@ -109,12 +109,12 @@
     
 
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
     

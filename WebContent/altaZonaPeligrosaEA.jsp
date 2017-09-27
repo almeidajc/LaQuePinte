@@ -74,7 +74,7 @@ pageEncoding="ISO-8859-1"%>
   <ul>
     <li><a href="crearpedido.jsp">Crear Pedido</a></li>
     <li><a href="#">Modificar Pedido</a></li>
-    <li><a href="#">Pagar Deuda</a></li>
+    
   </ul>
 </li>
 
@@ -119,12 +119,12 @@ pageEncoding="ISO-8859-1"%>
 
 
 
-<li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
+<li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
   <ul>
-    <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
-    <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-    <li><a href="#">Eliminar Ubicaci&oacute;n</a></li>
-    <li><a href="#">Consultar Ubicaci&oacute;n</a></li>
+    <li><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
+    <li><a href="#">Modificar Zona Peligrosa</a></li>
+    <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
+    <li><a href="#">Consultar Zona Peligrosa</a></li>
   </ul>
 </li>
 
@@ -151,19 +151,19 @@ pageEncoding="ISO-8859-1"%>
 <div id="content">
 <!--breadcrumbs-->
 <div id="content-header">
-<div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+<div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Agregar Zona Peligrosa</a></div>
 
 </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
 <div id="titulo" style="padding-left: 38px">
-<h1>Consultar Env�os</h1>
+<h1>Agregar Zona Peligrosa</h1>
 </div>
 <div class="container-fluid" ><hr>
 
 <div class="quick-actions_homepage">
-
+	
     <div class="Span12">
     	<div>
     		<label for="">Nombre de la zona peligrosa</label><input type="text" id="nombreZona" placeholder="Nombre de la zona peligrosa">

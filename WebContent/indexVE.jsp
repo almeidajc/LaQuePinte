@@ -105,7 +105,7 @@
         
         <li class="bg_lo span8"> <a href="altacliente.jsp"> <i class="icon-user"></i> Cliente</a> </li>
       
-        <li class="bg_lb span8"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Ubicaci&oacute;n</a> </li>
+        <li class="bg_lb span8"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Zona Peligrosa</a> </li>
         
 
       </ul>
