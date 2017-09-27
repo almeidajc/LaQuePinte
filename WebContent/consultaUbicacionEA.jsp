@@ -178,7 +178,7 @@ input[type=text]:focus {
         <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
         <li><a href="#">Modificar Zona Peligrosa</a></li>
         <li ><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
-        <liclass="active"><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
+        <li class="active"><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
 
@@ -206,7 +206,7 @@ input[type=text]:focus {
     <div id="content">
     <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Ubicaci�n</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Zona Peligrosa</a></div>
 
   </div>
 <!--End-Action boxes-->
@@ -219,7 +219,7 @@ input[type=text]:focus {
 
 
     <div id="titulo">
- <h1>Baja Ubicaci�n</h1><hr>
+ <h1>Consultar Zona Peligrosa</h1><hr>
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
@@ -230,16 +230,9 @@ input[type=text]:focus {
        <div class="span6">
          <%
          	CtrlZona ctrlZ = new CtrlZona();
-        	Zona zona = new Zona();
-        	int index,max=0;
-        	for ( index = 0; index < ctrlZ.listarZona().size(); index++){
-       	  		zona = ctrlZ.listarZona().get(index);
-       	  		if(zona.getId_zona()>max){
-       	  			max=zona.getId_zona();
-       	  		}
-        	}        	
+        	Zona zona = new Zona();       	
        	%>	
-       	<input type="hidden" id="cantidadMaxima" value="<%=max %>">
+       	<input type="hidden" id="cantidadMaxima" value="<%=ctrlZ.listarZona().size() %>">
        	<%
          	int indice;
    	  		for ( indice = 0; indice < ctrlZ.listarZona().size(); indice++){
@@ -249,9 +242,9 @@ input[type=text]:focus {
 
          <div class="zona<%=zona.getId_zona() %>">
            <label><%=zona.getDescripcion() %></label>
-           <input type="hidden" id="zonaPelig<%=zona.getId_zona() %>" name="" value="<%=zona.getId_zona() %>">
-           <input type="checkbox" id="checZ<%=zona.getId_zona() %>" name="" value="" onchange="initMap()" checked>
-           <input type="hidden" id="coordZ<%=zona.getId_zona() %>" name="" value='<%=zona.getCoordenadas() %>'>
+           <input type="hidden" id="zonaPelig<%=indice %>" name="" value="<%=zona.getId_zona() %>">
+           <input type="checkbox" id="checZ<%=indice %>" name="" value="" onchange="initMap()" checked>
+           <input type="hidden" id="coordZ<%=indice %>" name="" value='<%=zona.getCoordenadas() %>'>
          </div>
            <%
    	  		}

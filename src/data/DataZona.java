@@ -7,11 +7,47 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import appExceptions.ApplicationException;
+import entidades.Empleado;
 import entidades.Zona;
 
 
 public class DataZona {
 
+	
+	public void agregarZona(Zona zona) throws ApplicationException {
+		// TODO Auto-generated method stub
+	
+		PreparedStatement stmt=null;		
+		ResultSet rs=null;
+	    
+	    	
+		try {
+			
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"insert into zona (id_zona, descripcion,coordenadas) values (?,?,?)" );
+			stmt.setInt(1, zona.getId_zona());
+			stmt.setString(2, zona.getDescripcion());
+			stmt.setString(3, zona.getCoordenadas());
+			stmt.execute();
+
+			
+		} catch (SQLException e) {
+			throw new ApplicationException("Error agregar un cliente en la base de datos", e);
+			
+		}
+		finally{
+			
+			try {
+				if(rs!=null ) rs.close();
+				if(stmt != null) stmt.close();
+				FactoryConexion.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				throw new ApplicationException("Error al cerrar conexiones con la base de datos", e);
+			}
+			
+		}
+	}
+	
 	public ArrayList<Zona> listarZona() {
 		
 		ResultSet rs = null;

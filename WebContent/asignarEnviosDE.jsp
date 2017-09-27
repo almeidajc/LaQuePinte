@@ -90,15 +90,9 @@
         <div class="span6">
           <% CtrlPedido ctrlP = new CtrlPedido();
           Pedido pedido = new Pedido();
-          int indMax,max=0;
-            	  for ( indMax = 0; indMax < ctrlP.listarPedidos().size(); indMax++){
-            		  pedido = ctrlP.listarPedidos().get(indMax);
-            	  	if(pedido.getId_pedido()> max){
-            	  		max=pedido.getId_pedido();
-            	  	}
-            	  }%>
+		  %>
           <%-- los pedidos solo los de hoy!!!!!!!!!!!!!!!! sino hacer un for y sumar la cantidad que son hoy --%>
-          <input type="hidden" id="cantidadPedidos" value="<%= max %>">
+          <input type="hidden" id="cantidadPedidos" value="<%= ctrlP.listarPedidos().size() %>">
           <table>
             <tbody>
               <%
@@ -107,7 +101,7 @@
             	  for ( indice = 0; indice < ctrlP.listarPedidos().size(); indice++){
             		  pedido = ctrlP.listarPedidos().get(indice);
                   // if dia=igual hoy
-                if(today.after(pedido.getFecha_entrega())){
+                if(today.after(pedido.getFecha_entrega()) && pedido.getFecha_efectiva() == null){
                 	//&& pedido.getFecha_efectiva() != null
             	%>
 
@@ -124,6 +118,7 @@
                       if(tipo.equalsIgnoreCase("CA")){
                         %>
                         <option value="<%= ctrl.listarEmpleados().get(indiceEmpleados).getId_empleado() %>"><%= ctrl.listarEmpleados().get(indiceEmpleados).getNombre() %> <%= ctrl.listarEmpleados().get(indiceEmpleados).getApellido() %></option>
+                        <option> asada</option>
                         <%
                       }
                     }
