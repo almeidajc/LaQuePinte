@@ -90,24 +90,27 @@
         <div class="span6">
           <% CtrlPedido ctrlP = new CtrlPedido();
           Pedido pedido = new Pedido();
-          int indMax,max=0;
-            	  for ( indMax = 0; indMax < ctrlP.listarPedidos().size(); indMax++){
-            		  pedido = ctrlP.listarPedidos().get(indMax);
-            	  	if(pedido.getId_pedido()> max){
-            	  		max=pedido.getId_pedido();
-            	  	}
-            	  }%>
+          int indice,sum=0;
+		  Date today = new Date();
+    	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
+    		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
+          // if dia=igual hoy
+        	if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null){
+        		sum++;
+        	}
+        }
+     %>
           <%-- los pedidos solo los de hoy!!!!!!!!!!!!!!!! sino hacer un for y sumar la cantidad que son hoy --%>
-          <input type="hidden" id="cantidadPedidos" value="<%= max %>">
+          <input type="hidden" id="cantidadPedidos" value="<%= ctrlP.listarPedidosConfirmados().size() %>">
           <table>
             <tbody>
               <%
-                int indice,idCoord;
-        		  Date today = new Date();
-            	  for ( indice = 0; indice < ctrlP.listarPedidos().size(); indice++){
-            		  pedido = ctrlP.listarPedidos().get(indice);
+
+  
+            	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
+            		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
                   // if dia=igual hoy
-                if(today.after(pedido.getFecha_entrega())){
+                if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null){
                 	//&& pedido.getFecha_efectiva() != null
             	%>
 
@@ -119,7 +122,7 @@
                   <select id="<%= pedido.getId_pedido() %>">
                     <%
                     CtrlEmpleado ctrl = new CtrlEmpleado();
-                    for (int indiceEmpleados = 0; indiceEmpleados < ctrl.listarEmpleados().size(); indiceEmpleados++){
+                    for ( int indiceEmpleados = 0; indiceEmpleados < ctrl.listarEmpleados().size(); indiceEmpleados++){
                       String tipo = ctrl.listarEmpleados().get(indiceEmpleados).getTipo();
                       if(tipo.equalsIgnoreCase("CA")){
                         %>
@@ -138,6 +141,20 @@
 
             </table>
           </div>
+                <%
+
+  
+            	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
+            		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
+                  // if dia=igual hoy
+                if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null){
+                	//&& pedido.getFecha_efectiva() != null
+            	%>
+            		<td><input type="hidden" id="retrasando<%=indice %>" value=""></td>
+            	 <%
+                }
+            	  }
+            	%>
 		<div class="zonaBorrar">
             <input type="hidden" id="zonasElim"name="" value="">
          </div>
@@ -151,15 +168,7 @@
 </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD_1mkSBgMDYfy00Z6JGLq9zsTlmmlLuA" async defer ></script>
-    <script src="bootstrap/js/jquery.min.js"></script>
-    <script src="bootstrap/js/jquery.ui.custom.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="bootstrap/js/jquery.uniform.js"></script>
-    <script src="bootstrap/js/select2.min.js"></script>
-    <script src="bootstrap/js/jquery.validate.js"></script>
-    <script src="bootstrap/js/matrix.js"></script>
-    <script src="bootstrap/js/matrix.form_validation.js"></script>
-    <script type="text/javascript">
+
     // This function is called from the pop-up menus to transfer to
     // a different page. Ignore if the value returned is a null string:
     function goPage (newURL) {

@@ -48,9 +48,10 @@ map = new google.maps.Map(document.getElementById('map'), {
 		let coordeandasPedido,comaSeparacion;
 		for (var indicePedidos = 0; indicePedidos < cantidadPedidos; indicePedidos++) {
 		  infowindow = new google.maps.InfoWindow({ content: "maps" });
+		  
+		  console.log();
+		  if (document.getElementById(`coord${indicePedidos}`)){
 		  coordeandasPedido = document.getElementById(`coord${indicePedidos}`).value;
-		  if (coordeandasPedido != "null"){
-
 		  comaSeparacion = coordeandasPedido.indexOf(",")
 		  lat = coordeandasPedido.substring(0 , comaSeparacion-1);;
 		  lng = coordeandasPedido.substring(comaSeparacion+1,coordeandasPedido.length-1);
