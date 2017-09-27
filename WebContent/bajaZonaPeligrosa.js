@@ -9,17 +9,12 @@ let bajaZonas = new Array();
 
 function zonasEliminadas() {
   bajaZonas = [];
-  for ( i = 1; i <= maxId; i++) {
-    if (!document.getElementById(`checZ${i}`).checked) {
-      bajaZonas.push(document.getElementById(`zonaPelig${i}`).value);
+  for (var ind = 0; ind < maxId; ind++) {
+    if (!document.getElementById(`checZ${ind}`).checked) {
+      bajaZonas.push(document.getElementById(`zonaPelig${ind}`).value);
+
     }
   }
-  if(bajaZonas.length >0){
-    console.log(bajaZonas);
-    // document.getElementById("zonasElim").value = bajaZonas;
-
-  }
-
 }
 
 function initMap() {
@@ -41,35 +36,30 @@ function initMap() {
   });
 
   let i,coordZona,zonaPel;
-  for ( i = 1; i <= maxId; i++) {
-    if (document.getElementById(`checZ${i}`).checked) {
-      coordZona = JSON.parse(document.getElementById(`coordZ${i}`).value);
-      zonaPel = new google.maps.Polygon({
-        paths: coordZona,
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 1,
-        fillColor: '#000000',
-        fillOpacity: 0.5
-      });
-      zonaPel.setMap(map);
-    }
-    else{
-      coordZona = JSON.parse(document.getElementById(`coordZ${i}`).value);
-      zonaPel = new google.maps.Polygon({
-        paths: coordZona,
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 1,
-        fillColor: '#000000',
-        fillOpacity: 0.5
-      });
-      zonaPel.setMap(null);
-    }
+  for (i = 0; i < maxId; i++) {
+      if (document.getElementById(`checZ${i}`).checked) {
+        coordZona = JSON.parse(document.getElementById(`coordZ${i}`).value);
+        zonaPel = new google.maps.Polygon({
+          paths: coordZona,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 1,
+          fillColor: '#000000',
+          fillOpacity: 0.5
+        });
+        zonaPel.setMap(map);
+      }
+      else{
+        coordZona = JSON.parse(document.getElementById(`coordZ${i}`).value);
+        zonaPel = new google.maps.Polygon({
+          paths: coordZona,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 1,
+          fillColor: '#000000',
+          fillOpacity: 0.5
+        });
+        zonaPel.setMap(null);
+      }
   }
-  var heatmap = new google.maps.visualization.HeatmapLayer({
-    data: [],
-    map: map,
-    radius: 16
-  });
 }
