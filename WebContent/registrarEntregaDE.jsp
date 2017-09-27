@@ -51,6 +51,7 @@
     <li><a href="indexDE.jsp"><i class="icon icon-home"></i> <span>Menu Despachante</span></a> </li>
     
     <li><a href="registrarEnvioDE.jsp"><i class="icon icon-truck"></i> <span>Registrar Env&iacute;o</span></a></li>
+<li><a href="asignarEnviosDE.jsp"><i class="icon icon-group"></i> <span>Asignar Pedidos a Camioneros</span></a></li>
    <li class="active"> <a href="registrarEntregaDE.jsp"> <i class="icon-user"></i> Registrar Entrega Pedido</a> </li>
     <li><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos </span></a></li>
     <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
@@ -121,7 +122,7 @@
 	  <td><form method="post" action="RegistrarEnvioPedido">
         <input type="hidden" id="id_pedido" name="id_pedido" value="<%= ctrl.listarPedidos().get(indice).getId_pedido()%>" >
         
-	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('¿Está Seguro que deseas dar registrar el envío de este pedido?')">
+	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('ï¿½Estï¿½ Seguro que deseas dar registrar el envï¿½o de este pedido?')">
            <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
 	  
 	  

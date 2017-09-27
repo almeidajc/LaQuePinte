@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>   
+    pageEncoding="ISO-8859-1"%>
     <%@page import="entidades.Despachante"%>
     <%@page import="entidades.Empleado"%>
     <%@page import="negocio.CtrlPedido"%>
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,16 +31,16 @@
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
-    
+
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -50,8 +50,9 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu DESPACHANTE</a>
   <ul>
     <li><a href="indexDE.jsp"><i class="icon icon-home"></i> <span>Menu Despachante</span></a> </li>
-    
+
     <li class="active"><a href="registrarEnvioDE.jsp"><i class="icon icon-truck"></i> <span>Registrar Env&iacute;o</span></a></li>
+<li><a href="asignarEnviosDE.jsp"><i class="icon icon-group"></i> <span>Asignar Pedidos a Camioneros</span></a></li>
     <li><a href="registrarEntregaDE.jsp"><i class="icon icon-group"></i> <span>Registrar Entrega Pedido</span></a></li>
     <li><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos </span></a></li>
     <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
@@ -69,63 +70,63 @@
  <h1>Consulta Pedidos</h1>
  </div>
   <div class="container-fluid"><hr>
-   
+
   <div class="container-fluid">
      <div class="row-fluid">
       <div class="span12"> <!-- TAMAï¿½O FORMULARIOS -->
-      
-      
-  
+
+
+
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
         <div class="widget-box">
-        
-          
+
+
           <div class="widget-content nopadding" id="tb_content">
             <table class="order-table table" class="table table-hover">
     <thead>
       <tr >
-      	
+
         <th><h5 style="text-align:center; ">ID</h5></th>
         <th><h5 style="text-align:center; ">FECHA ENTREGA</h5></th>
         <th><h5 style="text-align:center; ">DIRECCION ENVIO</h5></th>
         <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
         <th><h5 style="text-align:center; ">APELLIDO CLIENTE</h5></th>
         <th><h5 style="text-align:center; ">NOMBRE</h5></th>
-       
+
         <th><h5 style="text-align:center; ">REGISTRAR</h5></th>
-             
+
       </tr>
     </thead>
-    
+
     <tbody>
       <tr>
       <div></div>
 <%
     		CtrlPedido ctrl = new CtrlPedido();
-    		
+
     		//PUEDO HACER TMB
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarPedidosConfirmados().size(); indice++){
 		if(ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() != null ){
-		
-	%>  
+
+	%>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getEstado() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getApellido() %></h5></td>	
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getNombre() %></h5></td>		   
-	  
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getApellido() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getNombre() %></h5></td>
+
 	  <td><form method="post" action="RegistrarEnvioPedido">
         <input type="hidden" id="id_pedido" name="id_pedido" value="<%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido()%>" >
-        
-	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('¿Está Seguro que deseas dar registrar el envío de este pedido?')">
+
+	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('ï¿½Estï¿½ Seguro que deseas dar registrar el envï¿½o de este pedido?')">
            <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
-	  
-	  
+
+
 	</tr>
 	<%
 		}
@@ -139,27 +140,27 @@
         </div>
       </div>
     </div>
-    
+
   </div>
-</div> 
-   
-   
-   
-          
-
-      <!-- ac3 fin-->   
-      
-      
 </div>
-        
-        	
-	
+
+
+
+
+
+      <!-- ac3 fin-->
+
+
+</div>
+
+
+
 
 
       </div>
       </div>
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
   </div>
 </div>
 
@@ -174,27 +175,27 @@
 </div>
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/excanvas.min.js"></script> 
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/jquery.ui.custom.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
-<script src="bootstrap/js/fullcalendar.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/matrix.dashboard.js"></script> 
-<script src="bootstrap/js/jquery.gritter.min.js"></script> 
-<script src="bootstrap/js/matrix.interface.js"></script> 
-<script src="bootstrap/js/matrix.chat.js"></script> 
-<script src="bootstrap/js/jquery.validate.js"></script> 
-<script src="bootstrap/js/matrix.form_validation.js"></script> 
-<script src="bootstrap/js/jquery.wizard.js"></script> 
-<script src="bootstrap/js/jquery.uniform.js"></script> 
-<script src="bootstrap/js/select2.min.js"></script> 
-<script src="bootstrap/js/matrix.popover.js"></script> 
-<script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script> 
+<script src="bootstrap/js/excanvas.min.js"></script>
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
+<script src="bootstrap/js/fullcalendar.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.dashboard.js"></script>
+<script src="bootstrap/js/jquery.gritter.min.js"></script>
+<script src="bootstrap/js/matrix.interface.js"></script>
+<script src="bootstrap/js/matrix.chat.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script src="bootstrap/js/jquery.wizard.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/matrix.popover.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="bootstrap/js/matrix.tables.js"></script>
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
@@ -203,13 +204,13 @@
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-      
+
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
+              resetMenu();
+          }
+          // else, send page to designated URL
+          else {
             document.location.href = newURL;
           }
       }

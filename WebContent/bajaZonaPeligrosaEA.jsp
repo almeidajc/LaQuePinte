@@ -4,7 +4,7 @@
      <%@page import="entidades.Zona"%>
      <%@page import="negocio.CtrlEmpleado"%>
      <%@page import="negocio.CtrlZona"%>
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +63,7 @@
   });
 
 })(document);
-</script>		
+</script>
 
 <style type="text/css">
 
@@ -83,7 +83,7 @@ input[type=text]:focus {
     width: 100%;
 }
 
-	</style>	
+	</style>
 </head>
 <body>
 
@@ -112,8 +112,8 @@ input[type=text]:focus {
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -128,7 +128,7 @@ input[type=text]:focus {
         <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
 		<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Pagar Deuda</a></li>
+
       </ul>
     </li>
 
@@ -149,7 +149,7 @@ input[type=text]:focus {
         <li class="active"><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
@@ -159,7 +159,7 @@ input[type=text]:focus {
       </ul>
     </li>
 
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
 
       <ul>
@@ -170,15 +170,15 @@ input[type=text]:focus {
       </ul>
     </li>
 
-    
-    
-    <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaci&oacute;n</span> </a>
+
+
+    <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
 
       <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicaci&oacute;n</a></li>
-        <li><a href="#">Modificar Ubicaci&oacute;n</a></li>
-        <li class="active"><a href="bajaUbicacionEA.jsp">Eliminar Ubicaci&oacute;n</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Ubicaci&oacute;n</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        <li class="active"><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
+        <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
 
@@ -225,58 +225,58 @@ input[type=text]:focus {
      <div class="row-fluid">
 
       <div class="span12"> <!-- TAMA�O FORMULARIOS -->
-	 <% 
+	 <%
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
       		%>
-      		
+
       		<div class="alert alert-success">
    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> . 
+    		<strong><%=mensaje %></strong> .
   			</div>
-      		
-      			
+
+
       		<%
         		}
-      			
+
       		%>
-      
-  
+
+
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
         <div class="widget-box">
-        
-          
+
+
           <div class="widget-content nopadding" id="tb_content">
             <table class="order-table table" class="table table-hover">
     <thead>
       <tr >
-      	
-        
+
+
         <th><h5 style="text-align:center; ">ID ZONA</h5></th>
         <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
         <th><h5 style="text-align:center; ">COORDENADAS</h5></th>
         <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
-        
-             
+
+
       </tr>
     </thead>
-    
+
     <tbody>
       <tr>
 <%
     		CtrlZona ctrl = new CtrlZona();
-    		
+
     		//PUEDO HACER TMB
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarZona().size(); indice++){
-		
-		
-	%>  
 
-	  
+
+	%>
+
+
 	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getId_zona() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getDescripcion() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getCoordenadas() %></h5></td>
@@ -285,29 +285,29 @@ input[type=text]:focus {
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
            <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="bajaubicacion" id="bajaubicacion" onClick="return confirm('�Esta Seguro que deseas dar de baja esta zona?')">
            <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
-	   
-	   
-	  
+
+
+
 	</tr>
-	<% 
-	
-	
+	<%
+
+
 	}
 
       %>
-      
-     
+
+
     </tbody>
   </table>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
 
-<!--End-Action boxes-->    
+<!--End-Action boxes-->
 
   </div>
 </div>
