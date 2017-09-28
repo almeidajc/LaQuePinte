@@ -63,7 +63,7 @@
      <li class="active"><a href="consultaEnviosPendientesCA.jsp"><i class="icon icon-truck"></i> <span>Env&iacute;os Pendientes</span></a></li>
    <!--  <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>Eelements</span></a></li> -->
     <li><a href="consultaEnviosRealizadosCA.jsp"><i class="icon icon-list-ol"></i> <span>Env&iacute;os Realizados</span></a></li>
-    <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
+    
   </ul>
 </div>
 <!--sidebar-menu-->
@@ -110,13 +110,17 @@
 		   id = ctrlP.listarPedidosConfirmados().get(indice).getEmpleado().getId_empleado();
 		  if(userSession.getId_empleado() == id ){
 			  if(ctrlP.listarPedidosConfirmados().get(indice).getDireccion_envio() != null ){
+				 
+				 double a=ctrlP.listarPedidosConfirmados().get(indice).getTotal();
+	          		String total = String.format ("%.2f", a);
+				  
 	%> 
 	    <!-- ac3 inicio-->        
          <div class="accordion-group widget-box">
            
             <div class="accordion-heading">
               <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
-                <h5>FECHA: <%= ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega() %>| NUM FACT: <%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>| TOTAL: <%= ctrlP.listarPedidosConfirmados().get(indice).getTotal() %></h5>
+                <h5>FECHA: <%= ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega() %>| N&deg; FACTURA: <%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>| TOTAL: $<%= total %></h5>
 
                 </a> </div>
             </div>
@@ -133,13 +137,17 @@
               <%  
               id= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido();
               for (int indice2 = 0; indice2 < ctrlP.getLineaDetallePedido(id).size(); indice2++){
+            	  float b=ctrlP.getLineaDetallePedido(id).get(indice2).getPrecioUnitario();
+          		String preciou = String.format ("%.2f", b);
+          		float c=ctrlP.getLineaDetallePedido(id).get(indice2).getSubtotal();
+          		String subt = String.format ("%.2f", c);
 	%>
               <tbody>
                 <tr class="odd gradeX">
                   <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getNombre_producto() %></td>
-                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getCantidad() %></td>
-                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getPrecioUnitario() %></td>
-                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getSubtotal() %></td>
+                  <td class="center" style="text-align: right"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getCantidad() %></td>
+                  <td class="center" style="text-align: right">$<%= preciou %></td>
+                  <td class="center" style="text-align: right">$<%= subt %></td>
                  
                 </tr>
                 

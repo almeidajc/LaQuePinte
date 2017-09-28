@@ -52,7 +52,7 @@
     <li><a href="registrarEnvio.jsp"><i class="icon icon-truck"></i> <span>Registrar Env�o</span></a></li>
    <!--  <li><a href="interface.html"><i class="icon icon-pencil"></i> <span>Eelements</span></a></li> -->
     <li><a href="resumenEnvios.jsp"><i class="icon icon-list-ol"></i> <span>Resumen Env�os</span></a></li>
-    <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
+    
   </ul>
 </div>
 <!--sidebar-menu-->

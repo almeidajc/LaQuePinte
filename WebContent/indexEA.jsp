@@ -104,7 +104,7 @@
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
         <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
-        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
@@ -112,18 +112,11 @@
 
 
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+    <li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
 
 
 
-    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-      <ul>
-        <li><a href="#">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Cambiar Estado Pedido</a></li>
-        <li><a href="#">Consultar Pedido</a></li>
-      </ul>
-    </li>
-
+  
   </ul>
 </div>
 <!-- sidebar-menu-->
@@ -152,11 +145,11 @@
        <li class="bg_ly span5"> <a href="crearpedido.jsp"> <i class="icon-shopping-cart"></i> Pedido</a> </li>
        <li class="bg_lo span5"> <a href="altaproducto.jsp"> <i class="icon-barcode"></i>Producto</a> </li>
        <li class="bg_ls span5"> <a href="altaUsuarioEA.jsp"> <i class="icon-user"></i> Empleado</a> </li>
-       <li class="bg_ls span5" > <a href="altaProveedorEA.jsp"> <i class="icon-user" ></i> Proveedor</a> </li>
+       <li class="bg_lg span5" > <a href="altaProveedorEA.jsp"> <i class="icon-user" ></i> Proveedor</a> </li>
        <li class="bg_lo span5"> <a href="altaClienteEA.jsp"> <i class="icon-user"></i> Cliente</a> </li>
        <li class="bg_lb span5"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Zona Peligrosa</a> </li>
-       <li class="bg_lr span5"> <a href="#"> <i class="icon-bar-chart"></i> Informe Stock</a> </li>
-       <li class="bg_lb span5"> <a href="#"> <i class="icon-briefcase"></i> Pedido a Proveedores</a> </li>
+       <li class="bg_lr span5"> <a href="informestock.jsp"> <i class="icon-bar-chart"></i> Informe Stock</a> </li>
+       <li class="bg_ly span5"> <a href="modificarCostosEnvioEA.jsp"> <i class="icon-briefcase"></i>Actualizar costos envio  </a> </li>
 
 
       </ul>

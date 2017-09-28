@@ -85,7 +85,7 @@ input[type=text]:focus {
 <body>
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
-           if(userSession == null || !(userSession.getTipo().equals("EA"))){
+           if(userSession == null || !(userSession.getTipo().equals("ADM"))){
           	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
            String tipo_em = userSession.getTipo();%>
 <!--Header-part-->
@@ -110,7 +110,7 @@ input[type=text]:focus {
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
     
     
-     <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -118,13 +118,13 @@ input[type=text]:focus {
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="indexADM.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
+    <li><a href="indexADM.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
      	
     
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
+    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
         <li><a href="altaUsuarioADM.jsp">Nuevo Empleado</a></li>
-        <li><a href="modificarUsuarioADM.jsp">Modificar Empleado</a></li>
+        <li class="active"><a href="modificarUsuarioADM.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioADM.jsp">Eliminar Empleado</a></li>
         <li><a href="consultaUsuarioADM.jsp">Consultar Empleado</a></li>
       </ul>

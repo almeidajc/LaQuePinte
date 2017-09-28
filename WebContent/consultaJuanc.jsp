@@ -192,7 +192,7 @@
            
             <div class="accordion-heading">
               <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidos().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
-                <h5>FECHA: <%= ctrlP.listarPedidos().get(indice).getFecha_entrega() %>| NUM FACT: <%= ctrlP.listarPedidos().get(indice).getId_pedido() %>| TOTAL: <%= ctrlP.listarPedidos().get(indice).getTotal() %></h5>
+                <h5>FECHA: <%= ctrlP.listarPedidos().get(indice).getFecha_entrega() %>| N&deg; FACTURA: <%= ctrlP.listarPedidos().get(indice).getId_pedido() %>| TOTAL: $<%= ctrlP.listarPedidos().get(indice).getTotal() %></h5>
 
                 </a> </div>
             </div>
