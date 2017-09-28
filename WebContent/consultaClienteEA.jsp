@@ -59,7 +59,7 @@
   });
 
 })(document);
-</script>		
+</script>
 </head>
 <body>
 
@@ -89,8 +89,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -101,14 +101,6 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
     <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
-      <ul>
-        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
-<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        
-      </ul>
-    </li>
 
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
@@ -137,7 +129,7 @@
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
-    
+
 
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
@@ -174,7 +166,7 @@
     </li>
 
   </ul>
-</div> 
+</div>
 <!--sidebar-menu-->
 
 <!--main-container-part-->
@@ -195,41 +187,41 @@
   <div class="container-fluid">
      <div class="row-fluid">
       <div class="span12"> <!-- TAMA�O FORMULARIOS -->
-      
-      
-  
+
+
+
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
         <div class="widget-box">
-        
-          
+
+
           <div class="widget-content nopadding" id="tb_content">
             <table class="order-table table" class="table table-hover">
     <thead>
       <tr >
-      	
+
         <th><h5 style="text-align:center; ">DNI</h5></th>
         <th><h5 style="text-align:center; ">NOMBRE</h5></th>
         <th><h5 style="text-align:center; ">APELLIDO</h5></th>
         <th><h5 style="text-align:center; ">TELEFONO</h5></th>
         <th><h5 style="text-align:center; ">DIRECCION</h5></th>
-        <th><h5 style="text-align:center; ">EMAIL</h5></th> 
+        <th><h5 style="text-align:center; ">EMAIL</h5></th>
         <th><h5 style="text-align:center; ">ID ZONA</h5></th>
-             
+
       </tr>
     </thead>
-    
+
     <tbody>
       <tr>
 <%
     		CtrlCliente ctrl = new CtrlCliente();
-    		
+
     		//PUEDO HACER TMB
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarClientes().size(); indice++){
-	%>  
+	%>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDni() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getNombre() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getApellido() %></h5></td>
@@ -237,27 +229,27 @@
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
-	  
+
 	</tr>
 	<%
-	
+
 }
 
 
       %>
-      
-     
+
+
     </tbody>
   </table>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
 
   </div>
 </div>

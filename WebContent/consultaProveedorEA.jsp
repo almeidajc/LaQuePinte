@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>   
+    pageEncoding="ISO-8859-1"%>
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
      <%@page import="entidades.Proveedor"%>
@@ -32,7 +32,7 @@
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 <!--top-Header-menu-->
@@ -48,8 +48,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -59,15 +59,7 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
     <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
-      <ul>
-        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
-<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        
-      </ul>
-    </li>
-    
+
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
@@ -76,7 +68,7 @@
         <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
         <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
@@ -85,8 +77,8 @@
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
-    
+
+
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
@@ -95,8 +87,8 @@
         <li  class="submenu active"><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
-    
-    
+
+
     <li class="submenu "> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
@@ -105,8 +97,8 @@
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
-    
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
         <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
@@ -115,12 +107,12 @@
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
-    
-    
+
+
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-    
-    
-    
+
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
       <ul>
         <li><a href="#">Crear Pedido</a></li>
@@ -129,7 +121,7 @@
         <li><a href="#">Consultar Pedido</a></li>
       </ul>
     </li>
-    
+
   </ul>
 </div>
 <!--sidebar-menu-->
@@ -139,7 +131,7 @@
 <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consulta Proveedor</a></div>
-   
+
   </div>
 <!--End-breadcrumbs-->
 
@@ -152,65 +144,65 @@
   <div class="container-fluid">
      <div class="row-fluid">
       <div class="span12"> <!-- TAMA�O FORMULARIOS -->
-      
-      
-  
+
+
+
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
         <div class="widget-box">
-        
-          
+
+
           <div class="widget-content nopadding" id="tb_content">
             <table class="order-table table" class="table table-hover">
     <thead>
       <tr >
-      
-      	
+
+
         <th><h5 style="text-align:center; ">CUIT</h5></th>
         <th><h5 style="text-align:center; ">RAZON SOCIAL</h5></th>
         <th><h5 style="text-align:center; ">DIRECCION</h5></th>
-        <th><h5 style="text-align:center; ">EMAIL</h5></th> 
+        <th><h5 style="text-align:center; ">EMAIL</h5></th>
         <th><h5 style="text-align:center; ">TELEFONO</h5></th>
-        
-             
+
+
       </tr>
     </thead>
-    
+
     <tbody>
       <tr>
 <%
     		CtrlProveedor ctrl = new CtrlProveedor();
-    		
-    		
+
+
 	for (int indice = 0; indice < ctrl.listarProveedores().size(); indice++){
-	%>  
+	%>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getCuit() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getRazon_social() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getDireccion() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getEmail() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getTel() %></h5></td>
-	  
-	  
+
+
 	</tr>
 	<%
-	
+
 }
 
 
       %>
-      
-     
+
+
     </tbody>
   </table>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
   </div>
 </div>
 
@@ -225,27 +217,27 @@
 
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/excanvas.min.js"></script> 
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/jquery.ui.custom.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
-<script src="bootstrap/js/fullcalendar.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/matrix.dashboard.js"></script> 
-<script src="bootstrap/js/jquery.gritter.min.js"></script> 
-<script src="bootstrap/js/matrix.interface.js"></script> 
-<script src="bootstrap/js/matrix.chat.js"></script> 
-<script src="bootstrap/js/jquery.validate.js"></script> 
-<script src="bootstrap/js/matrix.form_validation.js"></script> 
-<script src="bootstrap/js/jquery.wizard.js"></script> 
-<script src="bootstrap/js/jquery.uniform.js"></script> 
-<script src="bootstrap/js/select2.min.js"></script> 
-<script src="bootstrap/js/matrix.popover.js"></script> 
-<script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script> 
+<script src="bootstrap/js/excanvas.min.js"></script>
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
+<script src="bootstrap/js/fullcalendar.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.dashboard.js"></script>
+<script src="bootstrap/js/jquery.gritter.min.js"></script>
+<script src="bootstrap/js/matrix.interface.js"></script>
+<script src="bootstrap/js/matrix.chat.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script src="bootstrap/js/jquery.wizard.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/matrix.popover.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="bootstrap/js/matrix.tables.js"></script>
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
@@ -254,13 +246,13 @@
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-      
+
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
+              resetMenu();
+          }
+          // else, send page to designated URL
+          else {
             document.location.href = newURL;
           }
       }

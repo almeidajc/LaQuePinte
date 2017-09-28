@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcciï¿½n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -32,7 +32,7 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
 </div>
 <!--close-Header-part--> 
 
@@ -64,7 +64,7 @@
   <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearPedidoVE.jsp">Crear Pedido</a></li>
+        <li><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
         <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
@@ -78,12 +78,12 @@
       </ul>
     </li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicaciï¿½n</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicaciï¿½n</a></li>
+        <li><a href="#">Modificar Ubicaciï¿½n</a></li>
+        <li><a href="#">Eliminar Ubicaciï¿½n</a></li>
+        <li><a href="#">Consultar Ubicaciï¿½n</a></li>
       </ul>
     </li>
     
@@ -118,11 +118,11 @@
   <div class="col-sm-6">
    <form action="PedidoActual" method="post" id="formItem">
                 <label for="txtDescripcion" class="sr-only">Producto</label>
-                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripción" autofocus="autofocus">
+                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripciï¿½n" autofocus="autofocus">
                 <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
                 
-                <label for="txtCod" class="sr-only">Código</label>
-                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Código">
+                <label for="txtCod" class="sr-only">Cï¿½digo</label>
+                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Cï¿½digo">
                 <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
                                 
                 <label for="txtCantidad" class="sr-only">Producto</label>
@@ -148,7 +148,7 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Código</th>
+						<th>Cï¿½digo</th>
 						<th>Descripcion</th>
 						<th>Precio</th>
 					</tr>
@@ -170,8 +170,8 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Código</th>
-                <th>Descripción</th>
+                <th>Cï¿½digo</th>
+                <th>Descripciï¿½n</th>
                 <th>Precio Unitario</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>
