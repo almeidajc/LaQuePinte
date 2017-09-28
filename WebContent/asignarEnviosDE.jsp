@@ -103,12 +103,11 @@
      %>
           <%-- los pedidos solo los de hoy!!!!!!!!!!!!!!!! sino hacer un for y sumar la cantidad que son hoy --%>
           <input type="hidden" id="cantidadPedidos" value="<%= ctrlP.listarPedidosConfirmados().size() %>">
-
+		<form>
           <table>
             <tbody>
-              <%
-
-  
+            
+              <%  
             	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
             		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
                   // if dia=igual hoy
@@ -144,6 +143,9 @@
               %>
 
             </table>
+            <input type="submit" class="btn btn-success" value="Confirmar">
+            
+           </form>
           </div>
                 <%
 
