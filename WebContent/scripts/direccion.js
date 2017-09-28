@@ -1,5 +1,6 @@
   var placeSearch, autocomplete;
-  var destinoLat,destinoLng, peligrosa;
+  var destinoLat,destinoLng, peligrosa,distanciaLugar,esZonaPeligrosa;
+  var dir,coordenadas,fecha;
   var componentForm = {
     street_number: 'short_name',
     route: 'long_name',
@@ -9,6 +10,18 @@
     postal_code: 'short_name'
   };
 
+  
+  function asignarLocal(){
+	  fecha = document.getElementById("fechaInsert").value;
+	  esZonaPeligrosa = document.getElementById("zonaPeligrosa").value;
+	  localStorage.setItem("direccion", dir);
+	  localStorage.setItem("coordenadas", coordenadas);
+	  localStorage.setItem("fecha", fecha);
+	  localStorage.setItem("distanciaInsert", distanciaLugar);
+	  localStorage.setItem("zonaPeligrosa", esZonaPeligrosa);
+	  location.href ="indexVE.jsp";
+  }
+  
   function initAutocomplete() {
     autocomplete = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */(document.getElementById('inputlg')),
@@ -38,7 +51,8 @@
       lugarmap = `${place.address_components[0].long_name}+${place.address_components[2].long_name}+${place.address_components[3].long_name}`
     }
 
-    lugarmap = replaceLugar(lugarmap)
+    lugarmap = replaceLugar(lugarmap);
+    dir = lugar;
     document.getElementById('direc').value = lugar;
     obtenCoords(lugarmap);
 
@@ -60,6 +74,7 @@
              lat = response.results[0].geometry.location.lat;
              lng = response.results[0].geometry.location.lng;
              document.getElementById('coordsInsert').value = `${lat},${lng}`;
+             coordenadas = `${lat},${lng}`;
              destinoLat = lat;
              destinoLng = lng;
           }
@@ -100,32 +115,47 @@ function mostrarMapa(){
 }
 
   function zonaPeligrosa(map) {
-    var coords2 = [
-      {lat: -32.971987, lng: -60.687835},
-      {lat: -32.971515, lng: -60.700575},
-      {lat: -32.980985, lng: -60.700431},
-      {lat: -32.981896, lng: -60.683640},
-    ];
-    var poligono2 = new google.maps.Polygon({
-      paths: coords2,
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#000000',
-      fillOpacity: 0.5
-    });
-    poligono2.setMap(map);
+	  let maxId = document.getElementById("cantidadMaxima").value;
+	  let i,coordZona,zonaPel,destino;
+	  
+	  for (i = 0; i < maxId; i++) {
+		  coordZona = JSON.parse(document.getElementById(`coordZ${i}`).value);
+	        zonaPel = new google.maps.Polygon({
+	            paths: coordZona,
+	            strokeColor: '#FF0000',
+	            strokeOpacity: 0.8,
+	            strokeWeight: 1,
+	            fillColor: '#000000',
+	            fillOpacity: 0.5
+	          });
+	          zonaPel.setMap(map);		 
+	          destino = new google.maps.LatLng(destinoLat,destinoLng);
+	          peligrosa = google.maps.geometry.poly.containsLocation(destino, zonaPel);
+
+	        	  if(peligrosa){
+	    	          document.getElementById('zonaPeligrosa').value = peligrosa;
+	        	  }
+
+
+	  }
+	  if (document.getElementById('zonaPeligrosa').value == ""){
+		  document.getElementById('zonaPeligrosa').value = false;
+	  }
 
     //para esto traigo el el json y armo el array y voy comparando cada zona con el punto. si es true que corte el while
-    let destino = new google.maps.LatLng(destinoLat,destinoLng);
-    peligrosa = google.maps.geometry.poly.containsLocation(destino, poligono2);
-    document.getElementById('zonaPeligrosa').value = peligrosa;
+
   }
 
   function coord() {
     var geocoder = new google.maps.Geocoder();
     document.getElementById('submit').addEventListener('click', function() {
       geocodeAddress(geocoder, map);
+      
+      document.getElementById('direc').value = "";
+	  document.getElementById('coordsInsert').value = "";
+	  document.getElementById('distanciaInsert').value = "";
+	  document.getElementById('zonaPeligrosa').value = "";
+	  
     });
   }
   //
@@ -192,6 +222,7 @@ function mostrarMapa(){
             geocoder.geocode({'address': destinationList[j]},
                 showGeocodedAddressOnMap(true));
             document.getElementById('distanciaInsert').value = results[j].distance.value;
+            distanciaLugar = results[j].distance.value;
 
           }
         }

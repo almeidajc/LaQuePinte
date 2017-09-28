@@ -17,9 +17,14 @@ function animarPedido(idPed) {
 
 function init(){
 let cantidadPedidos = document.getElementById('cantidadPedidos').value;
-var ima = new google.maps.MarkerImage(
-  'http://subirimagen.me/uploads/20161107181116.png',
-  new google.maps.Size(26,26));
+
+var pinColor = "00ff03";
+var ima = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+    new google.maps.Size(21, 34),
+    new google.maps.Point(0,0),
+    new google.maps.Point(10, 34));
+
+
 
 map = new google.maps.Map(document.getElementById('map'), {
   zoom: 13,

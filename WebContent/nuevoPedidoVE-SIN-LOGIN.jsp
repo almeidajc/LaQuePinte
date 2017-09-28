@@ -36,7 +36,7 @@
 <body>
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
             if(userSession == null || !(userSession.getTipo().equals("VE"))){
-            	response.sendRedirect("error405.jsp"); }%> 
+            	response.sendRedirect("error405.jsp"); }%>
 
 <!--Header-part-->
 <div id="header">
@@ -44,7 +44,7 @@
   <h1><a href="dashboard.html">Materiales de Construccion</a></h1>
 
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 
@@ -78,7 +78,7 @@
         <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
@@ -87,7 +87,7 @@
         <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
+
 
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicacion</span> </a>
       <ul>
@@ -98,7 +98,7 @@
 
       </ul>
     </li>
-    
+
   </ul>
 </div>
 <!--sidebar-menu-->
@@ -108,7 +108,7 @@
 <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
-   
+
   </div>
 <!--End-breadcrumbs-->
 
@@ -116,43 +116,43 @@
  <div id="titulo">
  <h1>Nuevo Pedido</h1>
  </div>
- 
+
  <!--Action boxes-->
 
- 
+ <div class ="container-fluid">
  <div class="row-fluid">
       <div class="span3">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
             <h5>BUSQUEDA CLIENTE</h5>
           </div>
-          
-         <div class="widget-content nopadding"> 
+
+         <div class="widget-content nopadding">
             <form action="#" method="post" id="formCliente" class="form-horizontal">
             <div class="control-group">
-              <label for="txtDniCliente" class="control-label">DNI :</label>
-              <div class="controls">
-                <input type="text" id="txtDniCliente" name="txtDniCliente" class="span11" placeholder="DNI" />
+            	<div style="margin:10px;">
+       	              <label for="txtDniCliente" class="sr-only">DNI :</label>
+             		  <input type="text" id="txtDniCliente" name="txtDniCliente" class="form-control" placeholder="DNI" />
+            	</div>
+            </div>
+            <div class="control-group">
+            	<div style="margin:10px;">
+              	<label for="txtNombreCliente" class="sr-only">Nombre :</label>
+                <input type="text" id="txtNombreCliente" name="txtNombreCliente" class="form-control" placeholder="Nombre" />
               </div>
             </div>
             <div class="control-group">
-              <label for="txtNombreCliente" class="control-label">Nombre :</label>
-              <div class="controls">
-                <input type="text" id="txtNombreCliente" name="txtNombreCliente" class="span11" placeholder="Nombre" />
+         	 <div style="margin:10px;">
+              	<label class="sr-only">Apellido :</label>
+                <input type="text"  class="form-control" placeholder="Nombre"  />
               </div>
             </div>
-            <div class="control-group">
-              <label class="control-label">Apellido :</label>
-              <div class="controls">
-                <input type="text"  class="span11" placeholder="Nombre"  />
-              </div>
-               </div>
-           
+
           </form>
           </div>
         </div>
       </div>
-      
+
        <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual"); %>
       <div class="span6">
         <div class="widget-box">
@@ -167,8 +167,8 @@
                   <th>Nombre</th>
                   <th>Apellido</th>
                   <th>Direccion</th>
-                 
-                  
+
+
                 </tr>
               </thead>
              <tbody id="cuerpoCliente" name="cuerpoCliente">
@@ -180,138 +180,58 @@
           </div>
         </div>
       </div>
-      
-  <!--    ___-->  
-  
-        
+
+  <!--    ___-->
+
+
        <div class="span3">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
             <h5>CLIENTE ACTUAL</h5>
           </div>
-          
-         <div class="widget-content nopadding"> 
+
+         <div class="widget-content nopadding">
             <form action="GuardarClientePedido" method="post" id="formguardarClientePedido" class="form-horizontal">
             <div class="control-group">
-              <label for="guardarDni" class="control-label">DNI :</label>
-              <div class="controls">
-                <input type="text" id="guardarDni" name="guardarDni"  <%if(cliente!=null){%>value="<%=cliente.getDni()%>"<%}%> class="span11" placeholder="DNI" />
+              <div style="margin:10px;">
+              <label for="guardarDni" class="sr-only">DNI :</label>
+                <input type="text" id="guardarDni" name="guardarDni"  <%if(cliente!=null){%>value="<%=cliente.getDni()%>"<%}%> class="form-control" placeholder="DNI" />
               </div>
             </div>
-            
-            
+
+
             <div class="control-group">
-              <label for="guardarNombre" class="control-label">Nombre :</label>
-              <div class="controls">
-                <input type="text" id="guardarNombre" name="guardarNombre"  <%if(cliente!=null){%>value="<%=cliente.getNombre() %>"<%}%> class="span11" placeholder="Nombre" />
+              <div style="margin:10px;">
+              <label for="guardarNombre" class="sr-only">Nombre :</label>
+                <input type="text" id="guardarNombre" name="guardarNombre"  <%if(cliente!=null){%>value="<%=cliente.getNombre() %>"<%}%> class="form-control" placeholder="Nombre" />
               </div>
             </div>
            <div class="control-group">
-              <label for="guardarApellido" class="control-label">Apellido :</label>
-              <div class="controls">
-                <input type="text" id="guardarApellido" name="guardarApellido" <%if(cliente!=null){%>value="<%=cliente.getApellido()%>"<%}%> class="span11" placeholder="Nombre" />
+             <div style="margin:10px;">
+              <label for="guardarApellido" class="sr-only">Apellido :</label>
+                <input type="text" id="guardarApellido" name="guardarApellido" <%if(cliente!=null){%>value="<%=cliente.getApellido()%>"<%}%> class="form-control" placeholder="Nombre" />
               </div>
             </div>
-            
-            <div class="control-group">
-              <label for="guardarDireccion" class="control-label" >Direccion :</label>
-              <div class="controls">
-                <input type="text" id="guardarDireccion" name="guardarDireccion" <%if(cliente!=null){%>value="<%=cliente.getDireccion() %>"<%}%> class="span11" placeholder="Nombre" />
-              </div>
-            </div>
-           
-     
+
+
 	 <button class="btn btn-lg btn-primary " type="submit">Guardar</button>
-             
+
              <a class="btn btn-danger" href="BorrarClientePedido">Borrar</a>
-		
+
           </form>
           </div>
         </div>
       </div>
-            <% 
-	if(cliente!=null){	
+            <%
+	if(cliente!=null){
 	%><h5>se gaurdo</h5>
       <%} %>
-    <!--    ___    
-      <div class="span3">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-user"></i> </span>
-            <h5>CLIENTE ACTUAL</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Dni</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Direccion</th>
-                </tr>
-              </thead>
-              <tbody id="lineaClienteActual" name="lineaClienteActual">
-                <tr id="linea">
-                  <td colspan="3"><h4></h4></td>
-                </tr>
-              </tbody>
-            </table>
-             
-          </div>
-         
-        </div>
-        
-      </div>
-      -->
-      
-       <!-- 
-  
-        <div class="span3">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
-            <h5>CLIENTE PEDIDO ACTUAL</h5>
-          </div>
-          
-         <div class="widget-content nopadding"> 
-            <form action="#" method="post" id="formCliente1" class="form-horizontal">
-            <div class="control-group">
-              <label for="txtDniCliente" class="control-label">DNI :</label>
-              <div class="controls">
-                <input type="text" id="txtDniCliente" name="txtDniCliente1" class="span11" placeholder="DNI" />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="txtNombreCliente" class="control-label">Nombre :</label>
-              <div class="controls">
-                <input type="text" id="txtNombreCliente" name="txtNombreCliente1" class="span11" placeholder="Nombre" />
-              </div>
-            </div>
-             <div class="control-group">
-              <label for="txtNombreCliente" class="control-label">Apellido :</label>
-              <div class="controls">
-                <input type="text" id="txtApellidoCliente" name="txtApellidoCliente1" class="span11" placeholder="Nombre" />
-              </div>
-            </div>
-            
-             <div class="control-group">
-              <label for="txtNombreCliente" class="control-label">Direccion :</label>
-              <div class="controls">
-                <input type="text" id="txtDireccionCliente" name="txtDireccionCliente1" class="span11" placeholder="Nombre" />
-              </div>
-            </div>
-          </form>
-          </div>
-        </div>
-      </div>
-      
-      </div>
-       -->
-      
 
-  <%Pedido pedido= (Pedido)session.getAttribute("pedido"); 
-	if(pedido!=null){	
+  <%Pedido pedido= (Pedido)session.getAttribute("pedido");
+	if(pedido!=null){
 	%>
 
-  
+
     <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>NUEVO PEDIDO</h5>
@@ -324,7 +244,7 @@
                 <tr>
                   <th>#</th>
                   <th>ID PRODUCTO</th>
-                  <th>DESCRIPCION</th>                  
+                  <th>DESCRIPCION</th>
                   <th>PRECIO UNITARIO</th>
                   <th>CANTIDAD</th>
                   <th>SUBTOTAL</th>
@@ -333,12 +253,12 @@
               </thead>
 
              <tbody>
-            
+
             <%int i=1;
             float total=0;
             for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
             	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
-            %>            
+            %>
               <tr>
                 <td><%=i %></td>
                 <td><%=item.getProducto().getId_producto() %></td>
@@ -365,13 +285,13 @@
 	<%} %>
 
         </div>
-        
-  
-<!--End-Action boxes-->    	
- 
- 
 
-      
+
+<!--End-Action boxes-->
+
+
+
+
       <div class="row-fluid">
       <div class="span3">
         <div class="widget-box">
@@ -380,22 +300,28 @@
           </div>
           <div class="widget-content nopadding">
             <form action="PedidoActual" method="post" id="formItem" class="form-horizontal">
+              <div style="margin:10px;">
                 <label for="txtDescripcion" class="sr-only">Producto</label>
                 <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion" autofocus="autofocus">
                 <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
-                
-                <label for="txtCod" class="sr-only">Codigo</label>
-                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Codigo">
-                <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
-                                
-                <label for="txtCantidad" class="sr-only">Producto</label>
-                <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" placeholder="Cantidad">
-                <label for="txtCantidad" id="errorCantidad" style="color:#FF0004"></label>
-                
-                <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
-   </form>
+              </div>
+                <div style="margin:10px;">
+                  <label for="txtCod" class="sr-only">Codigo</label>
+                  <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Codigo">
+                    <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
+                </div>
 
-   <% 
+
+                <div style="margin:10px;">
+                  <label for="txtCantidad" class="sr-only">Producto</label>
+                  <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" placeholder="Cantidad">
+                    <label for="txtCantidad" id="errorCantidad" style="color:#FF0004"></label>
+                </div>
+
+                <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
+  				 </form>
+
+   <%
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
       		%>
@@ -405,7 +331,7 @@
       		<%
         		}
 
-      		%>      
+      		%>
           </div>
         </div>
       </div>
@@ -429,11 +355,11 @@
 						<td colspan="3"><h2>Comience a escribir para obtener los productos</h2></td>
 					</tr>
 				</tbody>
-			</table>      
+			</table>
 	</div>
 	</div>
-	<%  
-	if(pedido!=null){	
+	<%
+	if(pedido!=null){
 	%>
 	<div class="row" style="text-align: center;">
 		<h1>SU PEDIDO</h1>
@@ -450,12 +376,12 @@
               </tr>
             </thead>
             <tbody>
-            
+
             <%int i=1;
             float total=0;
             for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
             	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
-            %>            
+            %>
               <tr>
                 <td><%=i %></td>
                 <td><%=item.getProducto().getId_producto() %></td>
@@ -480,12 +406,15 @@
 		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
 	</div>
 	<%} %>
-	
- 
-		       
-<!--End-Action boxes-->    
 
-   
+
+
+<!--End-Action boxes-->
+
+   </div>
+   </div>
+
+  </div>
   </div>
 </div>
 
@@ -500,29 +429,29 @@
 
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/excanvas.min.js"></script> 
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/jquery.ui.custom.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
-<script src="bootstrap/js/fullcalendar.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/matrix.dashboard.js"></script> 
-<script src="bootstrap/js/jquery.gritter.min.js"></script> 
-<script src="bootstrap/js/matrix.interface.js"></script> 
-<script src="bootstrap/js/matrix.chat.js"></script> 
-<script src="bootstrap/js/jquery.validate.js"></script> 
-<script src="bootstrap/js/matrix.form_validation.js"></script> 
-<script src="bootstrap/js/jquery.wizard.js"></script> 
-<script src="bootstrap/js/jquery.uniform.js"></script> 
-<script src="bootstrap/js/select2.min.js"></script> 
-<script src="bootstrap/js/matrix.popover.js"></script> 
-<script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script> 
+<script src="bootstrap/js/excanvas.min.js"></script>
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
+<script src="bootstrap/js/fullcalendar.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.dashboard.js"></script>
+<script src="bootstrap/js/jquery.gritter.min.js"></script>
+<script src="bootstrap/js/matrix.interface.js"></script>
+<script src="bootstrap/js/matrix.chat.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script src="bootstrap/js/jquery.wizard.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/matrix.popover.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="bootstrap/js/matrix.tables.js"></script>
 <script src="js/pedido.js"></script>
- 
+
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
   // a different page. Ignore if the value returned is a null string:
@@ -530,13 +459,13 @@
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-      
+
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
+              resetMenu();
+          }
+          // else, send page to designated URL
+          else {
             document.location.href = newURL;
           }
       }
@@ -550,4 +479,3 @@ function resetMenu() {
 </body>
 
 </html>
-
