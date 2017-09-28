@@ -29,8 +29,8 @@
           </ul>
         </li> -->
         <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-        
-        
+
+
          <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
       </ul>
     </div>
@@ -41,14 +41,6 @@
     <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
       <ul>
         <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
-        <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
-          <ul>
-            <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
-<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-            <li><a href="#">Modificar Pedido</a></li>
-            
-          </ul>
-        </li>
 
         <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
           <ul>

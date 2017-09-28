@@ -29,13 +29,13 @@
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
             if(userSession == null || !(userSession.getTipo().equals("VE"))){
-            	response.sendRedirect("error405.jsp"); }%> 
-            	
+            	response.sendRedirect("error405.jsp"); }%>
+
 <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 
@@ -52,8 +52,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -65,26 +65,17 @@
   <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearPedidoVE.jsp">Crear Pedido</a></li>
+        <li><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
         <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
         <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
         <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
-      </ul>
-    </li>
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
-      <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
-        <li><a href="#">Modificar Zona Peligrosa</a></li>
-        <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
     
@@ -97,7 +88,7 @@
 <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
-   
+
   </div>
 <!--End-breadcrumbs-->
 
@@ -106,25 +97,25 @@
  <h1>Nuevo Pedido</h1>
  </div>
   <div class="container-fluid"><hr>
-  
+
   <div class="col-sm-6">
    <form action="CrearPedido" method="post" id="formItem">
                 <label for="txtDescripcion" class="sr-only">Producto</label>
                 <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripci�n" autofocus="autofocus">
                 <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
-                
+
                 <label for="txtCod" class="sr-only">C�digo</label>
                 <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="C�digo">
                 <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
-                                
+
                 <label for="txtCantidad" class="sr-only">Producto</label>
                 <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" placeholder="Cantidad">
                 <label for="txtCantidad" id="errorCantidad" style="color:#FF0004"></label>
-                
+
                 <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
    </form>
-   
-   <% 
+
+   <%
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
       		%>
@@ -133,9 +124,9 @@
       			</div>
       		<%
         		}
-      		%>      		
-    </div> 
-    
+      		%>
+    </div>
+
     <div class="col-sm-6">
 			<table class="table table-hover">
 				<thead>
@@ -150,11 +141,11 @@
 						<td colspan="3"><h2>Comience a escribir para obtener los productos</h2></td>
 					</tr>
 				</tbody>
-			</table>      
+			</table>
 	</div>
-	
-	<%Pedido pedido= (Pedido)session.getAttribute("pedido"); 
-	if(pedido!=null){	
+
+	<%Pedido pedido= (Pedido)session.getAttribute("pedido");
+	if(pedido!=null){
 	%>
 	<div class="row" style="text-align: center;">
 		<h1>SU PEDIDO</h1>
@@ -171,12 +162,12 @@
               </tr>
             </thead>
             <tbody>
-            
+
             <%int i=1;
             float total=0;
             for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
             	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
-            %>            
+            %>
               <tr>
                 <td><%=i %></td>
                 <td><%=item.getProducto().getId_producto() %></td>
@@ -201,10 +192,10 @@
 		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
 	</div>
 	<%} %>
-		
-		       
-<!--End-Action boxes-->    
-   
+
+
+<!--End-Action boxes-->
+
   </div>
 </div>
 
@@ -219,29 +210,29 @@
 
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/excanvas.min.js"></script> 
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/jquery.ui.custom.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
-<script src="bootstrap/js/fullcalendar.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/matrix.dashboard.js"></script> 
-<script src="bootstrap/js/jquery.gritter.min.js"></script> 
-<script src="bootstrap/js/matrix.interface.js"></script> 
-<script src="bootstrap/js/matrix.chat.js"></script> 
-<script src="bootstrap/js/jquery.validate.js"></script> 
-<script src="bootstrap/js/matrix.form_validation.js"></script> 
-<script src="bootstrap/js/jquery.wizard.js"></script> 
-<script src="bootstrap/js/jquery.uniform.js"></script> 
-<script src="bootstrap/js/select2.min.js"></script> 
-<script src="bootstrap/js/matrix.popover.js"></script> 
-<script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script> 
+<script src="bootstrap/js/excanvas.min.js"></script>
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
+<script src="bootstrap/js/fullcalendar.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.dashboard.js"></script>
+<script src="bootstrap/js/jquery.gritter.min.js"></script>
+<script src="bootstrap/js/matrix.interface.js"></script>
+<script src="bootstrap/js/matrix.chat.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script src="bootstrap/js/jquery.wizard.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/matrix.popover.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="bootstrap/js/matrix.tables.js"></script>
 <script src="js/pedido.js"></script>
- 
+
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
   // a different page. Ignore if the value returned is a null string:
@@ -249,13 +240,13 @@
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-      
+
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
+              resetMenu();
+          }
+          // else, send page to designated URL
+          else {
             document.location.href = newURL;
           }
       }

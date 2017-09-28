@@ -18,6 +18,7 @@ function zonasEliminadas() {
 }
 
 function initMap() {
+
   maxId = document.getElementById("cantidadMaxima").value;
   zonasEliminadas();
   var map = new google.maps.Map(document.getElementById('map'), {

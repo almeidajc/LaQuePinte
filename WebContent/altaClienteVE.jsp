@@ -60,8 +60,8 @@
   <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
-<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
+        <li><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
+		<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
         <li><a href="#">Modificar Pedido</a></li>
         
       </ul>
@@ -75,16 +75,7 @@
         <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
-      <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
-        <li><a href="#">Modificar Zona Peligrosa</a></li>
-        <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
-      </ul>
-    </li>
-    
+   
   </ul>
 </div>
 <!--sidebar-menu-->

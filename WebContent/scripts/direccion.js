@@ -11,7 +11,7 @@
 
   function initAutocomplete() {
     autocomplete = new google.maps.places.Autocomplete(
-        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+        /** @type {!HTMLInputElement} */(document.getElementById('inputlg')),
         {types: ['geocode']});
     autocomplete.addListener('place_changed', fillInAddress);
 
@@ -130,7 +130,7 @@ function mostrarMapa(){
   }
   //
   function geocodeAddress(geocoder, resultsMap) {
-    var address = document.getElementById('autocomplete').value;
+    var address = document.getElementById('inputlg').value;
     document.getElementById('map').style.visibility= 'visible';
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {

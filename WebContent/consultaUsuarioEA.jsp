@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
      <%@page import="entidades.Empleado"%>
      <%@page import="negocio.CtrlEmpleado"%>
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +61,7 @@
   });
 
 })(document);
-</script>		
+</script>
 
 <style type="text/css">
 
@@ -81,7 +81,7 @@ input[type=text]:focus {
     width: 100%;
 }
 
-	</style>	
+	</style>
 </head>
 <body>
 
@@ -110,8 +110,8 @@ input[type=text]:focus {
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -121,15 +121,6 @@ input[type=text]:focus {
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
     <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
-      <ul>
-        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
-<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        
-      </ul>
-    </li>
-
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
@@ -147,7 +138,7 @@ input[type=text]:focus {
         <li class="active"><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
@@ -157,7 +148,7 @@ input[type=text]:focus {
       </ul>
     </li>
 
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
 
       <ul>
@@ -168,8 +159,8 @@ input[type=text]:focus {
       </ul>
     </li>
 
-    
-    
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
 
       <ul>
@@ -224,36 +215,36 @@ input[type=text]:focus {
 
       <div class="span12"> <!-- TAMA�O FORMULARIOS -->
 
-      
-  
+
+
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
         <div class="widget-box">
-        
-          
+
+
           <div class="widget-content nopadding" id="tb_content">
             <table class="order-table table" class="table table-hover">
     <thead>
       <tr >
-      	
-        
+
+
         <th><h5 style="text-align:center; ">NOMBRE</h5></th>
         <th><h5 style="text-align:center; ">APELLIDO</h5></th>
         <th><h5 style="text-align:center; ">TELEFONO</h5></th>
         <th><h5 style="text-align:center; ">ROL</h5></th>
-        <th><h5 style="text-align:center; ">USUARIO</h5></th> 
+        <th><h5 style="text-align:center; ">USUARIO</h5></th>
         <th><h5 style="text-align:center; ">EMAIL</h5></th>
         <th><h5 style="text-align:center; ">PATENTE</h5></th>
         <th><h5 style="text-align:center; ">TURNO</h5></th>
-             
+
       </tr>
     </thead>
-    
+
     <tbody>
       <tr>
 <%
     		CtrlEmpleado ctrl = new CtrlEmpleado();
-    		
+
     		//PUEDO HACER TMB
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 			// habitacios = ctrl.Listar();
@@ -264,29 +255,29 @@ input[type=text]:focus {
 		int turno;
 		String desc;
 		turno = ctrl.listarEmpleados().get(indice).getId_turno();
-		
+
 		switch(turno){
-		case 1: 
+		case 1:
 			 desc = "Ma�ana";
 			break;
-		
-		case 2: 
+
+		case 2:
 			 desc = "Tarde";
 			break;
-		
+
 		case 3:  desc = "Todo el dia";
 				break;
-		
+
 		default:
-			
+
 			desc = null;
-			
+
 			break;
 		}
-		
-	%>  
 
-	  
+	%>
+
+
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getTel() %></h5></td>
@@ -295,27 +286,27 @@ input[type=text]:focus {
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getEmail() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= desc %></h5></td>
-	  
+
 	</tr>
-	<% 
+	<%
 		}
 
 	}
 
       %>
-      
-     
+
+
     </tbody>
   </table>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
 
-<!--End-Action boxes-->    
+<!--End-Action boxes-->
 
   </div>
 </div>

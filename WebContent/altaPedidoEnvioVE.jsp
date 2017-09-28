@@ -13,60 +13,59 @@
   <link rel="icon" href="bootstrap/img/logo-fav.png" />
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
-  <link rel="stylesheet" href="bootstrap/css/fullcalendar.css" />
   <link rel="stylesheet" href="bootstrap/css/matrix-style.css" />
   <link rel="stylesheet" href="bootstrap/css/matrix-media.css" />
   <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-	<%-- <meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" href="bootstrap/img/logo-fav.png" />
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
-	<link rel="stylesheet" href="bootstrap/css/matrix-style.css" />
-	<link rel="stylesheet" href="bootstrap/css/matrix-media.css" />
-	<link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
-	<link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-	<link href='css/fullcalendar.css' rel='stylesheet' />
+  <link href='css/fullcalendar.css' rel='stylesheet' />
   <link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
-	<link rel="stylesheet" type="text/css" href="css/jquery.gritter.css" /> --%>
+	<link rel="stylesheet" type="text/css" href="css/jquery.gritter.css" />
 
-<script src='jquery/jquery-1.10.2.js'></script>
-<script src='jquery/jquery-ui.custom.min.js'></script>
-<script src='fullcalendar.js'></script>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">google.load('jquery', '1.7.1');</script>
-<script type="text/javascript" src="js/jquery.gritter.js"></script>
+
+	<script src='jquery/jquery-1.10.2.js'></script>
+	<script src='jquery/jquery-ui.custom.min.js'></script>
+	<script src='jquery/jquery-1.10.2.js'></script>
+
+	<script src='fullcalendar.js'></script>
+
+
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript">google.load('jquery', '1.7.1');</script>
+	<script type="text/javascript" src="js/jquery.gritter.js"></script>
+
 <script>
 let diaStart,diaEnd,diaAll,calendario2,dia,mes,ano,ini,fin,fech,mesLet;
-
+let agregar=0;
 function creardia(){
+
 	//ver lo de validar el dia con el count de sql para cada pedidos
-	if (true) {
+
+		if (true) {
 		var title = "Pedido Actual";
-		calendario2.fullCalendar('renderEvent',
-			{
-				title: title,
-				start: diaStart,
-				end: diaEnd,
-				allDay: diaAll,
-				className: 'success',
-			},
-			true // make the event "stick"
-		);
-	document.getElementById("fechaInsert").value = `${ano}-${mes}-${dia}`;
-	$.gritter.removeAll();
-	}
+			calendario2.fullCalendar('renderEvent',
+				{
+					title: title,
+					start: diaStart,
+					end: diaEnd,
+					allDay: diaAll,
+					className: 'success',
+				},
+				true // make the event "stick"
+			);
+		document.getElementById("fechaInsert").value = `${ano}-${mes}-${dia}`;
+		$.gritter.removeAll();
+		agregar =1;
+		}
 	else{
 		$.gritter.add({
 			title: 'Fecha invalida',
 			text: 'La fecha seleccionada para entregar el pedido ya tiene asignada la maxima cantidad de envios posibles, por favor seleccione una fecha nuevamente',
 			image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
 			sticky: false,
-			time: ''
+			time: '2500'
 		});
+
 	}
 }
 function cancelarFecha(){
@@ -74,6 +73,7 @@ function cancelarFecha(){
 }
 
 	let hoy = new Date();
+
 	$(document).ready(function() {
 	  var date = new Date();
 		var d = date.getDate();
@@ -178,20 +178,22 @@ function cancelarFecha(){
 				console.log(ano);
 				console.log(mes);
 				console.log(dia);
-				if(start>hoy){
-					var unique_id = $.gritter.add({
-						title: 'This is a sticky notice!',
-						text: 'Confirmar el envio para el dia '+dia+' de '+mesLet+' del '+ano+'<br><br><input type="button" onclick="creardia()" class="btn btn-success" value="Agregar fecha">    <input type="button" class="btn btn-danger" onclick="cancelarFecha()" value="Cancelar">',
-						image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
-						// (bool | optional) if you want it to fade out on its own or just sit there
-						sticky: true,
-						// (int | optional) the time you want it to be alive for before fading out
-						time: '',
-						// (string | optional) the class name you want to apply to that specific message
-						class_name: 'my-sticky-class'
-					});
-				}
-				else{
+				if(agregar == 0){
+					if(start>hoy){
+						var unique_id = $.gritter.add({
+							title: 'This is a sticky notice!',
+							text: 'Confirmar el envio para el dia '+dia+' de '+mesLet+' del '+ano+'<br><br><input type="button" onclick="creardia()" class="btn btn-success" value="Agregar fecha">    <input type="button" class="btn btn-danger" onclick="cancelarFecha()" value="Cancelar">',
+							image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+							// (bool | optional) if you want it to fade out on its own or just sit there
+							sticky: true,
+							// (int | optional) the time you want it to be alive for before fading out
+							time: '',
+							// (string | optional) the class name you want to apply to that specific message
+							class_name: 'my-sticky-class'
+						});
+					}
+					else{
+
 						$.gritter.add({
 							// (string | mandatory) the heading of the notification
 							title: 'Fecha incorrecta',
@@ -202,8 +204,21 @@ function cancelarFecha(){
 							// (bool | optional) if you want it to fade out on its own or just sit there
 							sticky: false,
 							// (int | optional) the time you want it to be alive for before fading out
-							time: ''
+							time: '2500'
 						});
+
+
+					}
+
+				}
+				else{
+					$.gritter.add({
+						title: 'Fecha Asignada',
+						text: 'Ya se ha asignado una fecha para este pedido',
+						image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+						sticky: false,
+						time: '2500'
+					});
 				}
 				calendar.fullCalendar('unselect');
 			},
@@ -228,7 +243,7 @@ function cancelarFecha(){
 			events:[
 				{
 					id: 999,
-					title: 'Cumpleaños',
+					title: 'CumpleaÃ±os',
 					start: new Date(2017, 8-1, 9),
 					allDay: true,
 					className: 'important'
@@ -340,10 +355,10 @@ function cancelarFecha(){
 </head>
 <body>
 
-  <%-- <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
-  			String nombre="";
-             if(userSession == null || !(userSession.getTipo().equals("EA"))){
-            	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %> --%>
+<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+            if(userSession == null || !(userSession.getTipo().equals("VE"))){
+            	response.sendRedirect("error405.jsp"); }
+            	 String tipo_em = userSession.getTipo();%>
 
   <!--Header-part-->
   <div id="header">
@@ -375,77 +390,23 @@ function cancelarFecha(){
   <!--sidebar-menu-->
   <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul>
-      <li ><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
-      <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
+      <li><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
+      <li class="submenu active"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
         <ul>
-          <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
-  <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
+          <li class="active"><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
+          <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
           <li><a href="#">Modificar Pedido</a></li>
-          
+
         </ul>
       </li>
-
-      <li class="submenu active" > <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
-        <ul>
-          <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
-          <li><a href="modifproducto.jsp">Modificar Producto</a></li>
-          <li><a href="bajaproducto.jsp">Eliminar Producto</a></li>
-          <li><a href="consultarproducto.jsp">Consultar Producto</a></li>
-        </ul>
-      </li>
-
-      <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
-        <ul>
-          <li><a href="#">Nuevo Empleado</a></li>
-          <li><a href="#">Modificar Empleado</a></li>
-          <li><a href="#">Eliminar Empleado</a></li>
-          <li><a href="#">Consultar Empleado</a></li>
-        </ul>
-      </li>
-
-
-      <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
-        <ul>
-          <li><a href="altacliente.jsp">Nuevo Cliente</a></li>
-          <li><a href="#">Modificar Cliente</a></li>
-          <li><a href="#">Eliminar Cliente</a></li>
-          <li><a href="#">Consultar Cliente</a></li>
-        </ul>
-      </li>
-
-         <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
-        <ul>
-          <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
-          <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
-          <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
-          <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
-        </ul>
-      </li>
-
-
-      <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
-        <ul>
-          <li><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
-          <li><a href="#">Modificar Zona Peligrosa</a></li>
-          <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
-          <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
-        </ul>
-      </li>
-
-      <li><a href="#"><i class="icon icon-money"></i> <span>Informe Deudas</span></a></li>
-
-      <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-
-
-
-      <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-        <ul>
-          <li><a href="#">Crear Pedido</a></li>
-          <li><a href="#">Modificar Pedido</a></li>
-          <li><a href="#">Cambiar Estado Pedido</a></li>
-          <li><a href="#">Consultar Pedido</a></li>
-        </ul>
-      </li>
+         <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+           <ul>
+             <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
+             <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
+             <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
+             <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
+           </ul>
+         </li>
 
     </ul>
   </div>
@@ -463,11 +424,15 @@ function cancelarFecha(){
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span12">
+      <div class="span3">
+      </div>
+      <div class="span7">
         <div id="Gmapas" style="align-items: center;">
           <div id="locationField">
-            <input id="autocomplete" size="80" class="direction" placeholder="Ingrese la direccion del envio" onFocus="geolocate()" type="text"></input>
+            <input id="inputlg" size="80" class="direction span9" placeholder="Ingrese la direccion del envio" onFocus="geolocate()" type="text"></input>
             <input id="submit" type="button" value="Localizar">
           </div>
+        </div>
         </div>
       </div>
       <div class="span2">
@@ -484,22 +449,27 @@ function cancelarFecha(){
 	  	</div>
 	</div>
 
+	<br>
+
 
     <div class="row-fluid">
-      <div class="span12">
+    	<div class="span5">
+    	</div>
+      <div class="span6">
+	      	<div id="lugares">
+				<input type="hidden"  name="" value="" id="direc" required>
+				<input type="hidden" name="" value="" id="fechaInsert">
+				<input type="hidden" name="" value="" id="coordsInsert">
+				<input type="hidden" name="" value="" id="distanciaInsert">
+				<input type="hidden" name="" value="" id="zonaPeligrosa">
+			</div>
           <input type="button" class="btn btn-success" value="Confirmar">
           <input type="button" class="btn btn-danger" value="Cancelar" onclick="location.reload()">
       </div>
     </div>
 </div>
 
-		<div id="lugares">
-			<input type="hidden"  name="" value="" id="direc" required>
-			<input type="hidden" name="" value="" id="fechaInsert">
-			<input type="hidden" name="" value="" id="coordsInsert">
-			<input type="hidden" name="" value="" id="distanciaInsert">
-			<input type="hidden" name="" value="" id="zonaPeligrosa">
-		</div>
+
 		<div style='clear:both'></div>
     <!--end-main-container-part-->
 
@@ -515,52 +485,21 @@ function cancelarFecha(){
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD_1mkSBgMDYfy00Z6JGLq9zsTlmmlLuA&libraries=places,geometry&callback=initAutocomplete" async defer></script>
 		<script src="scripts/direccion.js"></script>
 
-    <script src="bootstrap/js/excanvas.min.js"></script>
-    <script src="bootstrap/js/jquery.min.js"></script>
-    <script src="bootstrap/js/jquery.ui.custom.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="bootstrap/js/jquery.flot.min.js"></script>
-    <script src="bootstrap/js/jquery.flot.resize.min.js"></script>
-    <script src="bootstrap/js/jquery.peity.min.js"></script>
-    <script src="bootstrap/js/fullcalendar.min.js"></script>
-    <script src="bootstrap/js/matrix.js"></script>
-    <script src="bootstrap/js/matrix.dashboard.js"></script>
+
+	<script src='fullcalendar.js'></script>
+
+
     <script src="bootstrap/js/jquery.gritter.min.js"></script>
-    <script src="bootstrap/js/matrix.interface.js"></script>
-    <script src="bootstrap/js/matrix.chat.js"></script>
-    <script src="bootstrap/js/jquery.validate.js"></script>
-    <script src="bootstrap/js/matrix.form_validation.js"></script>
     <script src="bootstrap/js/jquery.wizard.js"></script>
     <script src="bootstrap/js/jquery.uniform.js"></script>
-    <script src="bootstrap/js/select2.min.js"></script>
-    <script src="bootstrap/js/matrix.popover.js"></script>
     <script src="bootstrap/js/jquery.dataTables.min.js"></script>
+    <script src="bootstrap/js/matrix.js"></script>
+    <script src="bootstrap/js/matrix.dashboard.js"></script>
+    <script src="bootstrap/js/matrix.interface.js"></script>
+    <script src="bootstrap/js/matrix.chat.js"></script>
+    <script src="bootstrap/js/matrix.form_validation.js"></script>
+    <script src="bootstrap/js/matrix.popover.js"></script>
     <script src="bootstrap/js/matrix.tables.js"></script>
 
-
-    <script type="text/javascript">
-      // This function is called from the pop-up menus to transfer to
-      // a different page. Ignore if the value returned is a null string:
-      function goPage (newURL) {
-
-          // if url is empty, skip the menu dividers and reset the menu selection to default
-          if (newURL != "") {
-
-              // if url is "-", it is this page -- reset the menu:
-              if (newURL == "-" ) {
-                  resetMenu();
-              }
-              // else, send page to designated URL
-              else {
-                document.location.href = newURL;
-              }
-          }
-      }
-
-    // resets the menu selection upon entry to this page:
-    function resetMenu() {
-       document.gomenu.selector.selectedIndex = 2;
-    }
-    </script>
 </body>
 </html>

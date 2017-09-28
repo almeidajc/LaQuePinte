@@ -85,7 +85,7 @@ input[type=text]:focus {
 
 	</style>
 </head>
-<body onload="initMap()">
+<body onload="setTimeout(function(){initMap();}, 10)">
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
@@ -123,15 +123,6 @@ input[type=text]:focus {
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
     <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
-      <ul>
-        <li><a href="crearPedidoEnvioEA.jsp">Crear Pedido a enviar</a></li>
-		<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-
-      </ul>
-    </li>
-
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
@@ -230,25 +221,34 @@ input[type=text]:focus {
        <div class="span6">
          <%
          	CtrlZona ctrlZ = new CtrlZona();
-        	Zona zona = new Zona();       	
-       	%>	
+        	Zona zona = new Zona();
+       	%>
        	<input type="hidden" id="cantidadMaxima" value="<%=ctrlZ.listarZona().size() %>">
-       	<%
-         	int indice;
-   	  		for ( indice = 0; indice < ctrlZ.listarZona().size(); indice++){
-   	  		zona = ctrlZ.listarZona().get(indice);
-   	  		
-         %>
+       	<table>
+            <tbody>
+		       	<%
+		         	int indice;
+		   	  		for ( indice = 0; indice < ctrlZ.listarZona().size(); indice++){
+		   	  		zona = ctrlZ.listarZona().get(indice);
 
-         <div class="zona<%=zona.getId_zona() %>">
-           <label><%=zona.getDescripcion() %></label>
-           <input type="hidden" id="zonaPelig<%=indice %>" name="" value="<%=zona.getId_zona() %>">
-           <input type="checkbox" id="checZ<%=indice %>" name="" value="" onchange="initMap()" checked>
-           <input type="hidden" id="coordZ<%=indice %>" name="" value='<%=zona.getCoordenadas() %>'>
-         </div>
-           <%
-   	  		}
-           %>
+		         %>
+				<tr>
+		         <div class="zona<%=zona.getId_zona() %>">
+		         	<div class="control-group">
+						<td><h4><%=zona.getDescripcion() %> <input type="checkbox" id="checZ<%=indice %>" name="" value="" onchange="initMap()"  checked></h4></td>
+            		</div>
+
+		           <input type="hidden" id="zonaPelig<%=indice %>" name="" value="<%=zona.getId_zona() %>">
+		           <input type="hidden" id="coordZ<%=indice %>" name="" value='<%=zona.getCoordenadas() %>'>
+		         </div>
+		         </tr>
+		           <%
+		   	  		}
+		           %>
+           </tbody>
+         </table>
+
+
        </div>
     </div>
   </div>
