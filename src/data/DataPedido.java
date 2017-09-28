@@ -202,7 +202,7 @@ public ArrayList<Pedido> listarPedidosConfirmados() {
 
 	try {
 
-		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("select pedidos.id_pedido, pedidos.fecha_entrega, pedidos.id_estado ,pedidos.total, pedidos.direccion_envio, pedidos.nombre, pedidos.apellido, pedidos.id_empleado "
+		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("select pedidos.id_pedido, pedidos.fecha_entrega, pedidos.id_estado ,pedidos.total, pedidos.direccion_envio, pedidos.nombre, pedidos.apellido, pedidos.id_empleado,pedidos.coordenadas "
 						+ " from pedidos where id_estado = ? and fecha_entrega <= current_date()");
 
 		stmt.setInt(1, 1);
@@ -223,6 +223,7 @@ public ArrayList<Pedido> listarPedidosConfirmados() {
 			p.setNombre(rs.getString("nombre"));
 			p.setApellido(rs.getString("apellido"));
 			p.setEmpleado(e);
+			p.setCoordenadas(rs.getString("coordenadas"));
 			pedidos.add(p);
 
 		}
@@ -274,7 +275,7 @@ ResultSet rs=null;
 			p.setDireccion_envio(rs.getString("direccion_envio"));
 			p.setNombre(rs.getString("nombre"));
 			p.setApellido(rs.getString("apellido"));
-
+			
 			p.setEmpleado(e);
 
 			pedidos.add(p);

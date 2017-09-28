@@ -96,7 +96,7 @@
     	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
     		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
           // if dia=igual hoy
-        	if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null){
+        	if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null ){
         		sum++;
         	}
         }
@@ -139,7 +139,7 @@
                 </td>
               </tr>
               <%
-                }
+               }
               }
               %>
 

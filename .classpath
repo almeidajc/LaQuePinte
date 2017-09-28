@@ -9,7 +9,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
-	<classpathentry kind="lib" path="D:/Users/almei/Desktop/git/LaQuePinte/WebContent/WEB-INF/lib/gson-2.2.4.jar"/>
-	<classpathentry kind="lib" path="D:/Users/almei/Desktop/git/LaQuePinte/WebContent/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/valen12/Desktop/Facultad/proyecto/Git java/LaQuePinte/WebContent/WEB-INF/lib/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/valen12/Desktop/Facultad/proyecto/Git java/LaQuePinte/WebContent/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
