@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="entidades.EncargadoAdministracion"%>
-    <%@page import="entidades.Empleado"%>
-
-    <%@page import="negocio.CtrlPedido"%>
-
-
+     <%@page import="entidades.Empleado"%>
+     <%@page import="entidades.CostosEnvio"%>
+      <%@page import="negocio.CtrlCostosEnvio"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<title>Materiales::de::Construcci�n</title>
-
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -23,20 +18,81 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<% String id = request.getParameter("id_costos");
+      CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
+      CostosEnvio c =ctrl.listarCostosEnvio();
+      float costokm= c.getCosto_km();
+      float recargo= c.getRecargo_zona();
+     
+
+
+      //String numeroStr = String.valueOf(h.getNumero());
+
+
+
+       Empleado userSession = (Empleado)session.getAttribute("userSession");
+	String tipo_em = userSession.getTipo();
+	%>
+
+<script type="text/javascript"> // inicio tabla js1//
+(function(document) {
+  'use strict';
+
+  var LightTableFilter = (function(Arr) {
+
+    var _input;
+
+    function _onInputEvent(e) {
+      _input = e.target;
+      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+      Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+      });
+    }
+
+    function _filter(row) {
+      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+
+    return {
+      init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+      }
+    };
+  })(Array.prototype);
+
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+      LightTableFilter.init();
+    }
+  });
+
+})(document);
+</script>
 </head>
 <body>
 
-<%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+<%
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
           	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
-           String tipo_em = userSession.getTipo();%>
+
+          %>
+
+
+
+
 
 <!--Header-part-->
 <div id="header">
-
-  <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
-
+  <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -61,11 +117,11 @@
 </div>
 <!--close-top-Header-menu-->
 
+
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
-
+    <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
@@ -85,19 +141,11 @@
     </li>
 
 
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
-      <ul>
-        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
-        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
-        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
-        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
-      </ul>
-    </li>
 
+     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
 
-    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li class="active"><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
         <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
@@ -105,18 +153,15 @@
     </li>
 
 
-
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
+
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
         <li><a href="#">Modificar Zona Peligrosa</a></li>
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
-
       </ul>
     </li>
-
-
 
     <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
 
@@ -139,106 +184,76 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consulta Pedidos</a></div>
-
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Cliente</a></div>
 
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
-  <div id="titulo">
- <h1>Consulta Pedidos</h1>
+<div id="titulo">
+ <h1>Modificar Costos de env&iacute;o</h1>
  </div>
   <div class="container-fluid"><hr>
 
   <div class="row-fluid">
     <div class="span6">
-   <%
-      			String mensaje=(String)request.getAttribute("mensaje");
-        		if(mensaje!=null){
-      		%>
-      		<div class="alert alert-success">
-   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> .
-  			</div>
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+          <h5>Modificar Costos de Env&iacute;o</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <form action="ModificarCostosEnvio" method="post" class="form-horizontal">
+			<% 
+			
+			if(id.equalsIgnoreCase("1")){
+				
+				String costo = String.format ("%.2f", costokm);
+				
+				
+				
+				%>
+             <div class="control-group">
+              <label class="control-label">Precio por kil&oacute;metro: </label>
+              <div class="controls">
 
-
-      		<%
-        		}
-
-      		%>
-
-
-
-
-
-<div class="accordion" id="collapse-group">
-
-
-   <% CtrlPedido ctrlP = new CtrlPedido();
-   		int id=0;
-	  for (int indice = 0; indice < ctrlP.listarPedidos().size(); indice++){
-	%>
-
-     <!-- ac3 inicio-->
-         <div class="accordion-group widget-box">
-
-            <div class="accordion-heading">
-              <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidos().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
-                <h5>FECHA: <%= ctrlP.listarPedidos().get(indice).getFecha_entrega() %>| N&deg; FACTURA: <%= ctrlP.listarPedidos().get(indice).getId_pedido() %>| TOTAL: $<%= ctrlP.listarPedidos().get(indice).getTotal() %>| juance: <%= ctrlP.listarPedidos().get(indice).getJuance() %></h5>
-
-                </a> </div>
+                <input type="text" style="text-align:right" class="span11" name="costokm"  value=" <%= costo %>" id="costokm" placeholder="" onchange="" />
+                <input type="hidden" id="id_costos" name="id_costos" value="<%= 1 %>" >
+          
             </div>
-            <div class="collapse accordion-body" id="<%= ctrlP.listarPedidos().get(indice).getId_pedido() %>">
-              <div class="widget-content"> <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>PRODUCTO</th>
-                  <th>CANTIDAD</th>
-                  <th>PRECIO UNITARIO(s)</th>
-                  <th>SUB T</th>
-                </tr>
-              </thead>
-              <%
-              id= ctrlP.listarPedidos().get(indice).getId_pedido();
-              for (int indice2 = 0; indice2 < ctrlP.getLineaDetallePedido(id).size(); indice2++){
-	%>
-              <tbody>
-                <tr class="odd gradeX">
-                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getNombre_producto() %></td>
-                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getCantidad() %></td>
-                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getPrecioUnitario() %></td>
-                  <td class="center"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getSubtotal() %></td>
+            
+            <% }
+			else{	String costo2 = String.format ("%.2f", recargo);		
+				%>
+                 <div class="control-group">
+              <label class="control-label">Recargo por zona peligrosa:</label>
+              <div class="controls">
 
-                </tr>
-
-              </tbody>
-              <%}%>
-
-            </table> </div>
+                <input type="text" style="text-align:right" class="span11" name="recargo"  value=" <%= costo2 %>" id="recargo" placeholder="" onchange="" />
+                 <input type="hidden" id="id_costos" name="id_costos" value="<%= 2 %>" >
+            
             </div>
-          </div>
+            <% 
+			}
+				%>
+            
+                   
+                </div>
 
-
-      <!-- ac3 fin-->
-
-      	<%}%>
-</div>
-
-
-
-
-
+                <div class="form-actions">
+                  <input type="submit" value="Modificar" class="btn btn-success">
+                </div>
+              </form>
+        </div>
       </div>
-      </div>
+    </div>
+    </div>
 <!--End-Action boxes-->
 
   </div>
 </div>
-
+</div>
 <!--end-main-container-part-->
-
+</div>
 
 <!--Footer-part-->
 
@@ -280,7 +295,6 @@
 
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();
           }
           // else, send page to designated URL
           else {

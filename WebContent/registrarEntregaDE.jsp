@@ -54,7 +54,7 @@
 <li><a href="asignarEnviosDE.jsp"><i class="icon icon-group"></i> <span>Asignar Pedidos a Camioneros</span></a></li>
    <li class="active"> <a href="registrarEntregaDE.jsp"> <i class="icon-user"></i> Registrar Entrega Pedido</a> </li>
     <li><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos </span></a></li>
-    <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
+    
   </ul>
 </div>
 <!--sidebar-menu-->
