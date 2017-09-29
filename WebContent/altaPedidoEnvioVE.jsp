@@ -428,8 +428,11 @@ function cancelarFecha(){
             
             
             
-            int indicex,a=0;
-            for ( indicex = 0; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
+            int indicex,a=1,b=0;   
+            
+            pedido = ctrlP.listarPedidosOrdenados().get(0);
+            dia = pedido.getFecha_entrega();
+            for ( indicex = 1; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
       		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
       		  if (pedido.getFecha_entrega() != dia){
       			  a++;
@@ -437,42 +440,45 @@ function cancelarFecha(){
       		  }
             }
             
-            String [][] arregloFechas = new String [a][2];
+       		
+            String [][] arregloFechas = new String [365][2];
+            
+            pedido = ctrlP.listarPedidosOrdenados().get(0);
+            dia = pedido.getFecha_entrega();
+
+            
+            String DATE_FORMAT_NOW = "yyyy-MM-dd";
+            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+            String str;
+            
+            a=0;
+            str = Integer.toString(1);
+			arregloFechas[a][1] = str;
+            arregloFechas[0][0]= sdf.format(dia) ;
             for ( indicex = 0; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
       		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
-            
-            
+     		  if (!pedido.getFecha_entrega().equals(dia)){
+     			 a++;
+				  dia =pedido.getFecha_entrega();
+				  b=1;
+				  str = Integer.toString(b);
+				  arregloFechas[a][1] = str;
+			  }
+     		  else{
+     			 b++;
+     			 str = Integer.toString(b);
+				  arregloFechas[a][1] = str;
+			  }
    %>
-   	<input type="hidden" id="Pedidos" value="<%=pedido.getFecha_entrega() %>">
-   	<input type="hidden" id="Pedidos" value="<%=pedido.getId_pedido() %>">
-	
+   <input type="hidden" id="CantidadDiasDistintos" value="<%=a %>">	
+   <input type="hidden" id="arregloDias" value="<%=b %>">	
 	<%	
+     		  
             }
      
             %>
             <input type="hidden" id="cantidadMaxima" value="<%=ctrlZ.listarZona().size() %>">
             <%
-	    pedido = ctrlP.listarPedidosOrdenados().get(0);
-		dia = pedido.getFecha_entrega();
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-		int b=1;
-		a=0;
-		arregloFechas[a][0] = df.format(dia);
-	    /*for ( indicex = 0; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
-			  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
-			  if (pedido.getFecha_entrega() != dia){
-				  a++;
-				  dia =pedido.getFecha_entrega();
-				  arregloFechas[a][0] = df.format(dia);
-				  b=1;
-				  arregloFechas[a][1] = String.valueOf(b);
-			  }
-			  else{
-				 b++;
-				 arregloFechas[a][1] = String.valueOf(b);
-			  }
-	    }
-	    */
 		int indice;
 		
   		for ( indice = 0; indice < ctrlZ.listarZona().size(); indice++){
@@ -487,8 +493,7 @@ function cancelarFecha(){
   			
   		
        %>
-       <input type="hidden" id="dia<%=indicex %>" name="" value='<%=arregloFechas[indicex][0] %>'>
-       <input type="hidden" id="cantidad<%=indicex %>" name="" value='<%=arregloFechas[indicex][1] %>'>
+
        
        <%
   		}
