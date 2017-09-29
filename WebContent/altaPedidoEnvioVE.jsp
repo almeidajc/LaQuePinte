@@ -4,6 +4,15 @@
     <%@page import="entidades.Empleado"%>
     <%@page import="entidades.Zona"%>
     <%@page import="negocio.CtrlZona"%>
+    <%@page import="negocio.CtrlPedido"%>
+    <%@page import="entidades.Pedido"%>
+    
+    <%@page import="java.text.DateFormat"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.time.format.DateTimeFormatter"%>
+    <%@page import="java.time.LocalDateTime"%>
+    <%@page import="java.util.Calendar"%>
+    <%@page import="java.util.Date"%>
 
 <!DOCTYPE html>
 <html>
@@ -413,16 +422,80 @@ function cancelarFecha(){
   <%
          	CtrlZona ctrlZ = new CtrlZona();
         	Zona zona = new Zona();
+        	CtrlPedido ctrlP = new CtrlPedido();
+            Pedido pedido = new Pedido();            
+            Date dia = new Date();
+            
+            
+            
+            int indicex,a=0;
+            for ( indicex = 0; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
+      		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
+      		  if (pedido.getFecha_entrega() != dia){
+      			  a++;
+      			  dia =pedido.getFecha_entrega();
+      		  }
+            }
+            
+            String [][] arregloFechas = new String [a][2];
+            for ( indicex = 0; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
+      		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
+            
+            
    %>
-	<input type="hidden" id="cantidadMaxima" value="<%=ctrlZ.listarZona().size() %>">
-	<%
+   	<input type="hidden" id="Pedidos" value="<%=pedido.getFecha_entrega() %>">
+   	<input type="hidden" id="Pedidos" value="<%=pedido.getId_pedido() %>">
+	
+	<%	
+            }
+     
+            %>
+            <input type="hidden" id="cantidadMaxima" value="<%=ctrlZ.listarZona().size() %>">
+            <%
+	    pedido = ctrlP.listarPedidosOrdenados().get(0);
+		dia = pedido.getFecha_entrega();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+		int b=1;
+		a=0;
+		arregloFechas[a][0] = df.format(dia);
+	    /*for ( indicex = 0; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
+			  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
+			  if (pedido.getFecha_entrega() != dia){
+				  a++;
+				  dia =pedido.getFecha_entrega();
+				  arregloFechas[a][0] = df.format(dia);
+				  b=1;
+				  arregloFechas[a][1] = String.valueOf(b);
+			  }
+			  else{
+				 b++;
+				 arregloFechas[a][1] = String.valueOf(b);
+			  }
+	    }
+	    */
 		int indice;
+		
   		for ( indice = 0; indice < ctrlZ.listarZona().size(); indice++){
   		zona = ctrlZ.listarZona().get(indice);
-     %> <input type="hidden" id="coordZ<%=indice %>" name="" value='<%=zona.getCoordenadas() %>'>
+     %> 
+     
+     <input type="hidden" id="coordZ<%=indice %>" name="" value='<%=zona.getCoordenadas() %>'>
        <%
   		}
+  		
+  		for(indicex = 0; indicex<=a;indicex++){  		
+  			
+  		
        %>
+       <input type="hidden" id="dia<%=indicex %>" name="" value='<%=arregloFechas[indicex][0] %>'>
+       <input type="hidden" id="cantidad<%=indicex %>" name="" value='<%=arregloFechas[indicex][1] %>'>
+       
+       <%
+  		}
+  		
+  		
+       %>
+       
 
     <div class="row-fluid">
       <div class="span12">
