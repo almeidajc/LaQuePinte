@@ -125,12 +125,12 @@
          <div class="accordion-group widget-box">
            
             <div class="accordion-heading">
-              <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidosOrdenados().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
                 <h5>FECHA: <%= ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega() %>| N&deg; FACTURA: <%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>| TOTAL: $<%= total %></h5>
 
                 </a> </div>
             </div>
-            <div class="collapse accordion-body" id="<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>">
+            <div class="collapse accordion-body" id="<%= ctrlP.listarPedidosOrdenados().get(indice).getId_pedido() %>">
               <div class="widget-content"> <table class="table table-bordered table-striped">
               <thead>
                 <tr>
@@ -141,7 +141,7 @@
                 </tr>
               </thead>
               <%  
-              id= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido();
+              id= ctrlP.listarPedidosOrdenados().get(indice).getId_pedido();
               for (int indice2 = 0; indice2 < ctrlP.getLineaDetallePedido(id).size(); indice2++){
             	  float b=ctrlP.getLineaDetallePedido(id).get(indice2).getPrecioUnitario();
           		String preciou = String.format ("%.2f", b);
