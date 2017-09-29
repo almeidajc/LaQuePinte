@@ -27,12 +27,14 @@ public class CtrlPedido {
 		return cat.listarPedidosConfirmados();
 	}
 	
-	public ArrayList<Pedido> listarPedidosOrdenados(){
-		return cat.listarPedidosConfirmados();
-	}
+	
 	
 	public ArrayList<Pedido> listarPedidosRealizados(){
 		return cat.listarPedidosRealizados();
+	}
+	
+	public ArrayList<Pedido> listarPedidosOrdenados(){
+		return cat.listarPedidosOrdenados();
 	}
 	
 	public ArrayList<LineaDetallePedido> getLineaDetallePedido (int id){
