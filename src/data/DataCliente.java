@@ -162,12 +162,20 @@ public class DataCliente {
 	         }
 	      
 	    }catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-	   
-			FactoryConexion.getInstancia().releaseConn();
-		}
-		
+	    	// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    		    } finally
+	    			{
+	    				try {
+	    					if(rs!=null)rs.close();
+	    					
+	    					
+	    				} catch (SQLException e) {
+	    					// TODO Auto-generated catch block
+	    					e.printStackTrace();
+	    				}
+	    				FactoryConexion.getInstancia().releaseConn();
+	    			}
 		return c;
 		
 	}
@@ -268,7 +276,7 @@ public class DataCliente {
 			stmt= FactoryConexion.getInstancia().getConn().prepareStatement(
 					"select clientes.dni,clientes.nombre,clientes.apellido,clientes.direccion"
 					+ " from clientes"
-					+ " where clientes.nombre like ?"
+					+ " where clientes.apellido like ?"
 					+ " limit ?,?");
 			stmt.setString(1, "%"+apellidoCliente+"%");
 			stmt.setInt(2, desde);

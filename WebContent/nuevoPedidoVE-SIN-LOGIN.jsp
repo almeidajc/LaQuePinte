@@ -114,35 +114,48 @@
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Pedido <a href="#" title="FOTO" class="tip-bottom"><i class="icon-question-sign"> </a></i></h1> 
+ <h1>Nuevo Pedido</h1> 
  </div>
-
  
- <p>
+ <!--
+<div class="accordion" id="collapse-group">
+  
+        
+         <div class="accordion-group widget-box">
+           
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#1" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
+                <h4>AYUDA</h4>
+            </div>
+            <div class="collapse accordion-body" id="1">
+
 <img src="bootstrap/img/ayuda.gif">
-<img src="bootstrap/img/gallery/imgbox3.jpg">
-<img src="${request.contextPath}/images/java_logo.gif" />
-<img src="${pageContext.request.contextPath}/bootstrap/img/ayuda.gif"/>
+<!--<img src="${pageContext.request.contextPath}/bootstrap/img/ayuda.gif"/>
 <img src="${pageContext.request.contextPath}/ayuda.gif"/>
-<img src="ayuda.gif"/>
-<img src="/imgbox3.jpg"/>
+<img src="ayuda.gif"/> -->
+ <!--
+            </div>
+          </div>
+        </div> 
+</div>-->
+<div class="container-fluid">
 
-<img src="${pageContext.request.contextPath}/images/whatever.jpg"/>
-<img src="../bootstrap/img/logo-fav.png">
-
-</p>
- 
-               <div class="widget-content">
-            <ul class="bs-docs-tooltip-examples">
-              <li><a title="" id="example" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="top" data-toggle="popover" class="btn btn-success" href="" data-original-title="Popover on top">Popover on top</a> </li>
-              <li><a title="" id="example2" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="right" data-toggle="popover" class="btn btn-success" href="" data-original-title="Popover on right">Popover on right</a> </li>
-              <li><a title="" id="example3" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="bottom" data-toggle="popover" class="btn btn-success" href="" data-original-title="Popover on bottom">Popover on bottom</a> </li>
-              <li><a title="" id="example4" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="left" data-toggle="popover" class="btn btn-success" href="" data-original-title="Popover on left">Popover on left</a> </li>
-            </ul>
-          </div>  
+ <div class="accordion" id="collapse-group">
+          <div class="accordion-group widget-box">
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
+                <h5>AYUDA</h5>
+                </a> </div>
+            </div>
+            <div class="collapse accordion-body" id="collapseGThree">
+              <div class="widget-content"> <img src="bootstrap/img/ayuda.gif"> </div>
+            </div>
+          </div>
+          
+        </div>
  
  <!--Action boxes-->
-<div class="container-fluid">
+
  
 
  <div class="row-fluid">
@@ -154,27 +167,28 @@
 
          <div class="widget-content nopadding">
             <form action="#" method="post" id="formCliente" class="form-horizontal">
-            <div class="control-group">
-
-              <label for="txtDniCliente" class="control-label">Dni :</label>
+            	
+              <div class="control-group">
+             			
+              <label for="txtDniCliente" class="sr-only">Dni </label>
               <div class="controls">
-                <input type="text" id="txtDniCliente" name="txtDniCliente" class="span11" placeholder="Dni" />
+              <input type="text" id="txtDniCliente" name="txtDniCliente" class="span11" placeholder="Dni" />
               </div>
 
             </div>
             <div class="control-group">
             	<div style="margin:10px;">
-              	<label for="txtNombreCliente" class="sr-only">Nombre :</label>
+              	<label for="txtNombreCliente" class="sr-only">Nombre </label>
                 <input type="text" id="txtNombreCliente" name="txtNombreCliente" class="form-control" placeholder="Nombre" />
               </div>
             </div>
             <div class="control-group">
-
-              <label for="txtApellidoCliente" class="control-label">Apellido :</label>
-              <div class="controls">
-                <input type="text" id="txtApellidoCliente" name="txtApellidoCliente" class="span11" placeholder="Apellido" />
+            	<div style="margin:10px;">
+              	<label for="txtApellidoCliente" class="sr-only">Apellido </label>
+                <input type="text" id="txtApellidoCliente" name="txtApellidoCliente" class="form-control" placeholder="Apellido" />
               </div>
             </div>
+            
 
           </form>
           </div>
