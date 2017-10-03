@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import appExceptions.ApplicationException;
 import data.DataPedido;
 import data.DataProducto;
+import entidades.Cliente;
 import entidades.Empleado;
 import entidades.LineaDetallePedido;
 import entidades.Pedido;
@@ -41,7 +42,7 @@ public class CtrlPedido {
 		return cat.getLineaDetallePedido(id);
 	}
 
-	public void confirmarPedido(Pedido pedido, Empleado empleado) throws ApplicationException {
+	public void confirmarPedido(Pedido pedido, Cliente cliente) throws ApplicationException {
 		String mensaje ="";
 		for (LineaDetallePedido lp : pedido.getLineasDetallePedido()) {
 			int stock = dprod.getStock(lp.getProducto().getId_producto());

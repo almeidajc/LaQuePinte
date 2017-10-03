@@ -37,10 +37,10 @@ public class ajaxBusquedaApellidoCliente extends HttpServlet {
 		int inicio=0;		
 		CtrlCliente ctrlC = new CtrlCliente();
 		int cant_por_pagina=5;
-		String nombreCliente = request.getParameter("nombreCliente");
+		String apellidoCliente = request.getParameter("apellidoCliente");
 		ArrayList<Cliente> clientes;
 		try {
-			clientes = ctrlC.getClienteByNombreYApellido(nombreCliente, inicio, cant_por_pagina);
+			clientes = ctrlC.getClienteByApellido(apellidoCliente, inicio, cant_por_pagina);
 			response.getWriter().write(new Gson().toJson(clientes));			
 		} catch (ApplicationException e) {
 			

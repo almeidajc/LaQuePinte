@@ -21,10 +21,10 @@ $(document).ready(function(){
 	
 	$("#txtDniCliente").keyup(function(e) {
 		if($("#txtDniCliente").val()==""){
-			$("#cuerpoCliente").html('<tr id="x"><td colspan="4"><h5>Comience a escribir para obtener los clientes</h5></td></tr>');
+			$("#cuerpoCliente").html('<tr><td colspan="4"><h5>Comience a escribir para obtener los clientes</h5></td></tr>');
 		} else{
 	        var dniCliente = {dniCliente:$("#txtDniCliente").val()}
-			$.post("ajaxBusquedaDniCliente",dniCliente,mostrarCliente);
+	        $.post("ajaxBusquedaDniCliente",dniCliente,mostrarCliente);
 		}
     });
 	
@@ -58,21 +58,36 @@ function llenarTablaCliente(datos){
 	}
 }
 
-
-
+/*function mostrarCliente(respuesta){
+	var cliente = $.parseJSON(respuesta);
+	$("#cuerpoCliente").html("");
+	if(cliente==null){
+		$("#cuerpoCliente").html('<tr><td colspan="4"><h5>No se encontro cliente con 1el dni ingresado. <a href="altaClienteVE.jsp">Agregar nuevo cliente</a></h5></td></tr>');
+	} else{
+		$("#cuerpoCliente").append(
+			"<tr id='1'>"+
+				"<td id='dni1'>"+cliente.dni+"</td>"+
+				"<td id='nombre1'>"+cliente.nombre+"</td>"+
+				"<td id='apellido1'>"+cliente.apellido+"</td>"+
+				"<td id='direccion1'>"+cliente.direccion+"</td>"+
+			"</tr>"
+		);
+		//$("tr").click(fila_clickCliente);
+	}
+}*/
 
 function mostrarCliente(respuesta){
 	var cliente = $.parseJSON(respuesta);
 	$("#cuerpoCliente").html("");
-	if(producto==null){
-		$("#cuerpoCliente").html('<tr><td colspan="3"><h5>No se encontro cliente con el dni ingresado. <a href="altaClienteVE.jsp">Agregar nuevo cliente</a></h5></td></tr>');
+	if(cliente==null){
+		$("#cuerpoCliente").html('<tr><td colspan="4"><h5>No se encontro cliente con el dni ingresado.</h5></td></tr>');
 	} else{
 		$("#cuerpoCliente").append(
 			"<tr id='1'>"+
-				"<td id='dni1'>"+clientes[i-1].dni+"</td>"+
-				"<td id='nombre1'>"+clientes[i-1].nombre+"</td>"+
-				"<td id='apellido1'>"+clientes[i-1].apellido+"</td>"+
-				"<td id='direccion1'>"+clientes[i-1].direccion+"</td>"+
+				"<td id='dni1'>"+cliente.dni+"</td>"+
+				"<td id='nombre1'>"+cliente.nombre+"</td>"+
+				"<td id='apellido1'>"+cliente.apellido+"</td>"+
+				"<td id='direccion1'>"+cliente.direccion+"</td>"+				
 			"</tr>"
 		);
 		$("tr").click(fila_clickCliente);
