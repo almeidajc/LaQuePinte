@@ -66,7 +66,7 @@
 <li><a href="asignarEnviosDE.jsp"><i class="icon icon-group"></i> <span>Asignar Pedidos a Camioneros</span></a></li>
     <li><a href="registrarEntregaDE.jsp"><i class="icon icon-group"></i> <span>Registrar Entrega Pedido</span></a></li>
     <li><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos</span></a></li>
-    <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
+    
   </ul>
 </div>
 </div>
@@ -91,10 +91,10 @@
       
         
         <li class="bg_ls span8"> <a href="registrarEnvioDE.jsp"> <i class="icon-truck"></i> Registrar Env&iacute;o</a> </li>
-        <li class="bg_ly span8"> <a href="registrarEntregaDE.jsp"> <i class="icon-user"></i> Registrar Entrega Pedido</a> </li>
-        
+        <li class="bg_ly span8"> <a href="registrarEntregaDE.jsp"> <i class="icon-briefcase"></i> Registrar Entrega Pedido</a> </li>
+        <li class="bg_lr span8"> <a href="consultaPedidoDE.jsp"> <i class="icon-user"></i> Asignar Pedidos a Camionero</a> </li>
         <li class="bg_lg span8"> <a href="consultaPedidoDE.jsp"> <i class="icon-list-ol"></i> Resumen de Pedidos confirmados</a> </li>
-        <li class="bg_lr span8"> <a href="balance.jsp"> <i class="icon-credit-card"></i> Balance</a> </li>
+        
 
       </ul>
     </div>

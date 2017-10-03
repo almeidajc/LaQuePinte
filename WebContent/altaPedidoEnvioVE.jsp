@@ -2,6 +2,17 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
+    <%@page import="entidades.Zona"%>
+    <%@page import="negocio.CtrlZona"%>
+    <%@page import="negocio.CtrlPedido"%>
+    <%@page import="entidades.Pedido"%>
+    
+    <%@page import="java.text.DateFormat"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.time.format.DateTimeFormatter"%>
+    <%@page import="java.time.LocalDateTime"%>
+    <%@page import="java.util.Calendar"%>
+    <%@page import="java.util.Date"%>
 
 <!DOCTYPE html>
 <html>
@@ -42,6 +53,7 @@ function creardia(){
 	//ver lo de validar el dia con el count de sql para cada pedidos
 
 		if (true) {
+			document.getElementById("fechaInsert").value = ano+"-"+mes+"-"+dia;
 		var title = "Pedido Actual";
 			calendario2.fullCalendar('renderEvent',
 				{
@@ -53,7 +65,6 @@ function creardia(){
 				},
 				true // make the event "stick"
 			);
-		document.getElementById("fechaInsert").value = `${ano}-${mes}-${dia}`;
 		$.gritter.removeAll();
 		agregar =1;
 		}
@@ -175,9 +186,6 @@ function cancelarFecha(){
 				ini = 9;
 				fin = 11;
 				dia = fech.substring(ini , fin);
-				console.log(ano);
-				console.log(mes);
-				console.log(dia);
 				if(agregar == 0){
 					if(start>hoy){
 						var unique_id = $.gritter.add({
@@ -353,7 +361,7 @@ function cancelarFecha(){
 		}
 </style>
 </head>
-<body>
+<body onload="localStorage.clear();">
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
             if(userSession == null || !(userSession.getTipo().equals("VE"))){
@@ -370,17 +378,6 @@ function cancelarFecha(){
   <!--top-Header-menu-->
   <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
-      <!-- <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-          <li class="divider"></li>
-          <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
-        </ul>
-      </li> -->
-      <%-- <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li> --%>
-
 
        <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
     </ul>
@@ -416,12 +413,95 @@ function cancelarFecha(){
   <!--breadcrumbs-->
     <div id="content-header">
       <div id="breadcrumb"> <a href="indexVE.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Producto</a></div>
-
+      <a href="#abajo">Click aqu� ir abajo</a>
     </div>
   <!--End-breadcrumbs-->
 
 <!--Action boxes-->
   <div class="container-fluid">
+  <%
+         	CtrlZona ctrlZ = new CtrlZona();
+        	Zona zona = new Zona();
+        	CtrlPedido ctrlP = new CtrlPedido();
+            Pedido pedido = new Pedido();            
+            Date dia = new Date();
+            
+            
+            
+            int indicex,a=1,b=0;   
+            
+            pedido = ctrlP.listarPedidosOrdenados().get(0);
+            dia = pedido.getFecha_entrega();
+            for ( indicex = 1; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
+      		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
+      		  if (pedido.getFecha_entrega() != dia){
+      			  a++;
+      			  dia =pedido.getFecha_entrega();
+      		  }
+            }
+            
+       		
+            String [][] arregloFechas = new String [365][2];
+            
+            pedido = ctrlP.listarPedidosOrdenados().get(0);
+            dia = pedido.getFecha_entrega();
+
+            
+            String DATE_FORMAT_NOW = "yyyy-MM-dd";
+            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+            String str;
+            
+            a=0;
+            str = Integer.toString(1);
+			arregloFechas[a][1] = str;
+            arregloFechas[0][0]= sdf.format(dia) ;
+            for ( indicex = 0; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
+      		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
+     		  if (!pedido.getFecha_entrega().equals(dia)){
+     			 a++;
+				  dia =pedido.getFecha_entrega();
+				  b=1;
+				  str = Integer.toString(b);
+				  arregloFechas[a][1] = str;
+			  }
+     		  else{
+     			 b++;
+     			 str = Integer.toString(b);
+				  arregloFechas[a][1] = str;
+			  }
+   %>
+   <input type="hidden" id="CantidadDiasDistintos" value="<%=a %>">	
+   <input type="hidden" id="arregloDias" value="<%=b %>">	
+	<%	
+     		  
+            }
+     
+            %>
+            <input type="hidden" id="cantidadMaxima" value="<%=ctrlZ.listarZona().size() %>">
+            <%
+		int indice;
+		
+  		for ( indice = 0; indice < ctrlZ.listarZona().size(); indice++){
+  		zona = ctrlZ.listarZona().get(indice);
+     %> 
+     
+     <input type="hidden" id="coordZ<%=indice %>" name="" value='<%=zona.getCoordenadas() %>'>
+       <%
+  		}
+  		
+  		for(indicex = 0; indicex<=a;indicex++){  		
+  			
+  		
+       %>
+
+       
+       <%
+  		}
+  		
+  		
+       %>
+       
+
     <div class="row-fluid">
       <div class="span12">
       <div class="span3">
@@ -463,7 +543,7 @@ function cancelarFecha(){
 				<input type="hidden" name="" value="" id="distanciaInsert">
 				<input type="hidden" name="" value="" id="zonaPeligrosa">
 			</div>
-          <input type="button" class="btn btn-success" value="Confirmar">
+          <input type="button" class="btn btn-success" value="Confirmar" onclick="asignarLocal()">
           <input type="button" class="btn btn-danger" value="Cancelar" onclick="location.reload()">
       </div>
     </div>
@@ -477,6 +557,8 @@ function cancelarFecha(){
     <!--Footer-part-->
 
     <div class="row-fluid">
+
+      <a name="abajo" id="abajo"></a>
       <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
     </div>
 

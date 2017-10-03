@@ -100,7 +100,9 @@
       <ul class="quick-actions">
       
          
-        <li class="bg_ly span8"> <a href="crearpedido.jsp"> <i class="icon-shopping-cart"></i> Pedido</a> </li>
+        <li class="bg_lg span8"> <a href="crearpedido.jsp"> <i class="icon-shopping-cart"></i> Pedido a retirar en mostrador</a> </li>
+        
+        <li class="bg_ly span8"> <a href="altaPedidoEnvioVE.jsp"> <i class="icon-truck"></i> Pedido a enviar</a> </li>
      
         
         <li class="bg_lo span8"> <a href="altacliente.jsp"> <i class="icon-user"></i> Cliente</a> </li>

@@ -69,7 +69,7 @@
         <li class="active"><a href="asignarEnviosDE.jsp"><i class="icon icon-group"></i> <span>Asignar Pedidos a Camioneros</span></a></li>
         <li><a href="registrarEntregaDE.jsp"><i class="icon icon-group"></i> <span>Registrar Entrega Pedido</span></a></li>
         <li><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos </span></a></li>
-        <li><a href="balance.jsp"><i class="icon icon-credit-card"></i> <span>Balance</span></a></li>
+        
       </ul>
     </div>
     <!--sidebar-menu-->
@@ -103,12 +103,11 @@
      %>
           <%-- los pedidos solo los de hoy!!!!!!!!!!!!!!!! sino hacer un for y sumar la cantidad que son hoy --%>
           <input type="hidden" id="cantidadPedidos" value="<%= ctrlP.listarPedidosConfirmados().size() %>">
-
+		<form>
           <table>
             <tbody>
-              <%
-
-  
+            
+              <%  
             	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
             		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
                   // if dia=igual hoy
@@ -144,6 +143,9 @@
               %>
 
             </table>
+            <input type="submit" class="btn btn-success" value="Confirmar">
+            
+           </form>
           </div>
                 <%
 

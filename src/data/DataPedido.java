@@ -247,6 +247,52 @@ public ArrayList<Pedido> listarPedidosConfirmados() {
 	return pedidos;
 }
 
+public ArrayList<Pedido> listarPedidosOrdenados() {
+	ResultSet rs=null;
+	
+	PreparedStatement stmt=null;
+	
+	ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+
+	try {
+
+		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("select pedidos.id_pedido, pedidos.fecha_entrega"
+						+ " from pedidos where id_estado = ? and fecha_entrega >= current_date()"
+						+ "order by fecha_entrega");
+
+		stmt.setInt(1, 1);
+		rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			Pedido p = new Pedido();
+			
+							
+			p.setId_pedido(rs.getInt("id_pedido"));
+			p.setFecha_entrega(rs.getDate("fecha_entrega"));
+			
+			pedidos.add(p);
+
+		}
+
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		try {
+			if (rs != null)
+				rs.close();				
+			if (stmt != null)
+				stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoryConexion.getInstancia().releaseConn();
+	}
+
+	return pedidos;
+}
+
 public ArrayList<Pedido> listarPedidosRealizados() {
 ResultSet rs=null;
 	
