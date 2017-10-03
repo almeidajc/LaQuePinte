@@ -6,7 +6,7 @@
     <%@page import="negocio.CtrlZona"%>
     <%@page import="negocio.CtrlPedido"%>
     <%@page import="entidades.Pedido"%>
-    
+
     <%@page import="java.text.DateFormat"%>
     <%@page import="java.text.SimpleDateFormat"%>
     <%@page import="java.time.format.DateTimeFormatter"%>
@@ -86,6 +86,53 @@ function cancelarFecha(){
 	let hoy = new Date();
 
 	$(document).ready(function() {
+
+    // for (let  cantidades= 0; cantidades < document.getElementById('CantidadDiasDistintos').value; cantidades++) {
+    //   cantPedid = document.getElementById('arregloDias'+cantidades).value;
+    //   dia =  document.getElementById('diaPedido'+cantidades).value;
+    //   dia++;
+    //   pedidoNuevo ={
+    //  title: cantPedid+'pedidos',
+    //  start: dia,
+    //  end: dia,
+    //  allDay: true,
+    //  className: 'important'
+    //    };
+    //     events.push(pedidoNuevo);
+    // }
+
+     let listaPedidos = new Array();
+     let title,cantidadMaximaDiasDistintos,cantPedid,diaPed,tipoDia;
+
+     cantidadMaximaDiasDistintos =document.getElementById('CantidadDiasDistintos').value;
+     console.log(cantidadMaximaDiasDistintos);
+        for (let  indiceee = 1; indiceee <= 2 ; indiceee++) {
+          diaPed= document.getElementById('fecha'+indiceee).value;
+          cantPedid= document.getElementById('arregloDias'+indiceee).value;
+          if (cantPedid< 20){
+            tipoDia= 'info'
+          }
+          else{
+            tipoDia = 'important'
+          }
+   				ano = diaPed.substring(0 , 4);
+          mes = diaPed.substring(5 , 7);
+          dia = diaPed.substring(8 ,10 );
+          diaPed = new Date(ano, mes-1, dia);
+          cantPedid = "Cantidad de pedidos: "+cantPedid;
+
+         pedidoNuevo=	{
+  					id: 999,
+  					title: cantPedid,
+  					start: diaPed,
+  					allDay: true,
+  					className: tipoDia
+  				}
+          listaPedidos.push(pedidoNuevo);
+        }
+        console.log(listaPedidos)
+
+
 	  var date = new Date();
 		var d = date.getDate();
 		var m = date.getMonth();
@@ -186,12 +233,43 @@ function cancelarFecha(){
 				ini = 9;
 				fin = 11;
 				dia = fech.substring(ini , fin);
+        let cantMaximaAlcanzada;
+
+        // console.log(start);
+        let cantidadPedidosDia;
+        listaPedidos.map(function (ped){
+          cantidadPedidosDia = ped.title.substring(17 ,ped.title.length);
+          if (start.getFullYear() === ped.start.getFullYear()){
+            if (start.getMonth() === ped.start.getMonth()) {
+              if (start.getDate() === ped.start.getDate() && cantidadPedidosDia == 20) {
+                console.log("entro");
+                cantMaximaAlcanzada = true;
+
+              }
+            }
+          }
+        })
 				if(agregar == 0){
 					if(start>hoy){
+            if(cantMaximaAlcanzada){
+              $.gritter.add({
+  							// (string | mandatory) the heading of the notification
+  							title: 'Cantidad maxima de pedidos alcanzada',
+  							// (string | mandatory) the text inside the notification
+  							text: 'La fecha seleccionada para entregar es invalida ya que posee la maxima cantidad de pedidos asignados para un mismo dia',
+  							// (string | optional) the image to display on the left
+  							image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+  							// (bool | optional) if you want it to fade out on its own or just sit there
+  							sticky: false,
+  							// (int | optional) the time you want it to be alive for before fading out
+  							time: '2500'
+  						});
+            }
+            else{
 						var unique_id = $.gritter.add({
 							title: 'This is a sticky notice!',
 							text: 'Confirmar el envio para el dia '+dia+' de '+mesLet+' del '+ano+'<br><br><input type="button" onclick="creardia()" class="btn btn-success" value="Agregar fecha">    <input type="button" class="btn btn-danger" onclick="cancelarFecha()" value="Cancelar">',
-							image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+							// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
 							// (bool | optional) if you want it to fade out on its own or just sit there
 							sticky: true,
 							// (int | optional) the time you want it to be alive for before fading out
@@ -199,6 +277,7 @@ function cancelarFecha(){
 							// (string | optional) the class name you want to apply to that specific message
 							class_name: 'my-sticky-class'
 						});
+            }
 					}
 					else{
 
@@ -248,69 +327,7 @@ function cancelarFecha(){
 					$(this).remove();
 				}
 			},
-			events:[
-				{
-					id: 999,
-					title: 'CumpleaÃ±os',
-					start: new Date(2017, 8-1, 9),
-					allDay: true,
-					className: 'important'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event2',
-					start: new Date(y, m, d-3, 16, 0),
-					allDay: true,
-					className: 'important'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event3',
-					start: new Date(y, m, d-3, 16, 0),
-					allDay: true,
-					className: 'important'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d-3, 16, 0),
-					allDay: true,
-					className: 'important'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d-3, 16, 0),
-					allDay: true,
-					className: 'important'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d+4, 16, 0),
-					allDay: true,
-					className: 'important'
-				},
-				{
-					title: 'aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
-					start: new Date(y, m, d),
-					allDay: true,
-					className: 'important'
-				},
-				{
-					title: 'Lunch',
-					start: new Date(y, m, d, 12, 0),
-					end: new Date(y, m, d, 14, 0),
-					allDay: true,
-					className: 'important'
-				},
-				// {
-				// 	title: 'Click for Google',
-				// 	start: new Date(y, m, 28),
-				// 	end: new Date(y, m, 28),
-				// 	className: 'success'
-				// }
-			],
+			events: listaPedidos,
 		});
 
 		//fin de calendar =  $('#calendar').fullCalendar({
@@ -423,84 +440,92 @@ function cancelarFecha(){
          	CtrlZona ctrlZ = new CtrlZona();
         	Zona zona = new Zona();
         	CtrlPedido ctrlP = new CtrlPedido();
-            Pedido pedido = new Pedido();            
+            Pedido pedido = new Pedido();
             Date dia = new Date();
-            
-            
-            
-            int indicex,a=1,b=0;   
-            
+
+
+
+            int indicex,a=1,b=0,cantMaximaa;
+
             pedido = ctrlP.listarPedidosOrdenados().get(0);
             dia = pedido.getFecha_entrega();
             for ( indicex = 1; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
-      		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
-      		  if (pedido.getFecha_entrega() != dia){
-      			  a++;
-      			  dia =pedido.getFecha_entrega();
-      		  }
+        		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
+        		  if (!pedido.getFecha_entrega().equals(dia)){
+        			  a++;
+        			  dia =pedido.getFecha_entrega();
+        		    }
             }
-            
-       		
+            cantMaximaa = a;
+             %>
+              <input type="hidden" id="CantidadDiasDistintos" value="<%=a %>">
+
+             <%
             String [][] arregloFechas = new String [365][2];
-            
+
             pedido = ctrlP.listarPedidosOrdenados().get(0);
             dia = pedido.getFecha_entrega();
 
-            
+
             String DATE_FORMAT_NOW = "yyyy-MM-dd";
             SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
             String str;
-            
+
             a=0;
             str = Integer.toString(1);
-			arregloFechas[a][1] = str;
-            arregloFechas[0][0]= sdf.format(dia) ;
+            dia = new Date();
+
             for ( indicex = 0; indicex < ctrlP.listarPedidosOrdenados().size(); indicex++){
-      		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
-     		  if (!pedido.getFecha_entrega().equals(dia)){
-     			 a++;
-				  dia =pedido.getFecha_entrega();
-				  b=1;
-				  str = Integer.toString(b);
-				  arregloFechas[a][1] = str;
-			  }
-     		  else{
-     			 b++;
-     			 str = Integer.toString(b);
-				  arregloFechas[a][1] = str;
-			  }
-   %>
-   <input type="hidden" id="CantidadDiasDistintos" value="<%=a %>">	
-   <input type="hidden" id="arregloDias" value="<%=b %>">	
-	<%	
-     		  
+        		  pedido = ctrlP.listarPedidosOrdenados().get(indicex);
+         		  if (!pedido.getFecha_entrega().equals(dia)){
+           			 a++;
+      				  dia =pedido.getFecha_entrega();
+      				  b=1;
+      				  arregloFechas[a][0] = sdf.format(dia);
+                str = Integer.toString(b);
+                arregloFechas[a][1] = str;
+      			  }
+           		  else{
+           			 b++;
+           			 str = Integer.toString(b);
+      				  arregloFechas[a][1] = str;
+      			  }
             }
-     
+            for (indicex = 1; indicex <= cantMaximaa; indicex++) {
+
+   %>
+      <input type="hidden" id="fecha<%=indicex %>" value="<%=arregloFechas[indicex][0] %>">
+   		<input type="hidden" id="arregloDias<%=indicex %>" value="<%=arregloFechas[indicex][1] %>">
+	<%
+
+            }
+
             %>
+            <input type="hidden" id="cantidadMaximaPedidos" value="<%=ctrlP.listarPedidosOrdenados().size() %>">
             <input type="hidden" id="cantidadMaxima" value="<%=ctrlZ.listarZona().size() %>">
             <%
 		int indice;
-		
+
   		for ( indice = 0; indice < ctrlZ.listarZona().size(); indice++){
   		zona = ctrlZ.listarZona().get(indice);
-     %> 
-     
+     %>
+
      <input type="hidden" id="coordZ<%=indice %>" name="" value='<%=zona.getCoordenadas() %>'>
        <%
   		}
-  		
-  		for(indicex = 0; indicex<=a;indicex++){  		
-  			
-  		
+
+  		for(indicex = 0; indicex<=a;indicex++){
+
+
        %>
 
-       
+
        <%
   		}
-  		
-  		
+
+
        %>
-       
+
 
     <div class="row-fluid">
       <div class="span12">
