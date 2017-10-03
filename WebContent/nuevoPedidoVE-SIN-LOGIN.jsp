@@ -114,11 +114,34 @@
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Pedido</h1>
+ <h1>Nuevo Pedido <a href="#" title="FOTO" class="tip-bottom"><i class="icon-question-sign"> </a></i></h1> 
  </div>
  
- <!--Action boxes-->
+ <p>
+<img src="bootstrap/img/ayuda.gif">
+<img src="bootstrap/img/gallery/imgbox3.jpg">
+<img src="${request.contextPath}/images/java_logo.gif" />
+<img src="${pageContext.request.contextPath}/bootstrap/img/ayuda.gif"/>
+<img src="${pageContext.request.contextPath}/ayuda.gif"/>
+<img src="ayuda.gif"/>
+<img src="/imgbox3.jpg"/>
 
+<img src="${pageContext.request.contextPath}/images/whatever.jpg"/>
+<img src="../bootstrap/img/logo-fav.png">
+
+</p>
+ 
+               <div class="widget-content">
+            <ul class="bs-docs-tooltip-examples">
+              <li><a title="" id="example" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="top" data-toggle="popover" class="btn btn-success" href="" data-original-title="Popover on top">Popover on top</a> </li>
+              <li><a title="" id="example2" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="right" data-toggle="popover" class="btn btn-success" href="" data-original-title="Popover on right">Popover on right</a> </li>
+              <li><a title="" id="example3" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="bottom" data-toggle="popover" class="btn btn-success" href="" data-original-title="Popover on bottom">Popover on bottom</a> </li>
+              <li><a title="" id="example4" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="left" data-toggle="popover" class="btn btn-success" href="" data-original-title="Popover on left">Popover on left</a> </li>
+            </ul>
+          </div>  
+ 
+ <!--Action boxes-->
+<div class="container-fluid">
  
  <div class="row-fluid">
       <div class="span3">
@@ -130,9 +153,9 @@
          <div class="widget-content nopadding"> 
             <form action="#" method="post" id="formCliente" class="form-horizontal">
             <div class="control-group">
-              <label for="txtDniCliente" class="control-label">DNI :</label>
+              <label for="txtDniCliente" class="control-label">Dni :</label>
               <div class="controls">
-                <input type="text" id="txtDniCliente" name="txtDniCliente" class="span11" placeholder="DNI" />
+                <input type="text" id="txtDniCliente" name="txtDniCliente" class="span11" placeholder="Dni" />
               </div>
             </div>
             <div class="control-group">
@@ -142,11 +165,11 @@
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label">Apellido :</label>
+              <label for="txtApellidoCliente" class="control-label">Apellido :</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Nombre"  />
+                <input type="text" id="txtApellidoCliente" name="txtApellidoCliente" class="span11" placeholder="Apellido" />
               </div>
-               </div>
+            </div>
            
           </form>
           </div>
@@ -173,7 +196,7 @@
               </thead>
              <tbody id="cuerpoCliente" name="cuerpoCliente">
                <tr>
-						<td colspan="4"><h4>Comience a escribir para obtener los clientes</h4></td>
+						<td colspan="4"><h5>Comience a escribir para obtener los clientes</h5></td>
 			   </tr>
               </tbody>
             </table>
@@ -233,79 +256,7 @@
 	if(cliente!=null){	
 	%><h5>se gaurdo</h5>
       <%} %>
-    <!--    ___    
-      <div class="span3">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-user"></i> </span>
-            <h5>CLIENTE ACTUAL</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Dni</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Direccion</th>
-                </tr>
-              </thead>
-              <tbody id="lineaClienteActual" name="lineaClienteActual">
-                <tr id="linea">
-                  <td colspan="3"><h4></h4></td>
-                </tr>
-              </tbody>
-            </table>
-             
-          </div>
-         
-        </div>
-        
-      </div>
-      -->
-      
-       <!-- 
   
-        <div class="span3">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
-            <h5>CLIENTE PEDIDO ACTUAL</h5>
-          </div>
-          
-         <div class="widget-content nopadding"> 
-            <form action="#" method="post" id="formCliente1" class="form-horizontal">
-            <div class="control-group">
-              <label for="txtDniCliente" class="control-label">DNI :</label>
-              <div class="controls">
-                <input type="text" id="txtDniCliente" name="txtDniCliente1" class="span11" placeholder="DNI" />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="txtNombreCliente" class="control-label">Nombre :</label>
-              <div class="controls">
-                <input type="text" id="txtNombreCliente" name="txtNombreCliente1" class="span11" placeholder="Nombre" />
-              </div>
-            </div>
-             <div class="control-group">
-              <label for="txtNombreCliente" class="control-label">Apellido :</label>
-              <div class="controls">
-                <input type="text" id="txtApellidoCliente" name="txtApellidoCliente1" class="span11" placeholder="Nombre" />
-              </div>
-            </div>
-            
-             <div class="control-group">
-              <label for="txtNombreCliente" class="control-label">Direccion :</label>
-              <div class="controls">
-                <input type="text" id="txtDireccionCliente" name="txtDireccionCliente1" class="span11" placeholder="Nombre" />
-              </div>
-            </div>
-          </form>
-          </div>
-        </div>
-      </div>
-      
-      </div>
-       -->
-      
 
   <%Pedido pedido= (Pedido)session.getAttribute("pedido"); 
 	if(pedido!=null){	
@@ -316,7 +267,7 @@
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>NUEVO PEDIDO</h5>
 
-            <span class="label label-info">Featured</span> </div>
+             </div>
 
           <div class="widget-content nopadding">
             <table class="table table-bordered table-striped">
@@ -352,8 +303,8 @@
             	total+=subtotal;
             }%>
             <tr>
-                <td style="text-align: right;" colspan="5"><h4>IMPORTE TOTAL DEL PEDIDO</h4></td>
-                <td><h4><%=total %></h4></td>
+                <td style="text-align: right;" colspan="5"><h5>IMPORTE TOTAL DEL PEDIDO</h5></td>
+                <td><h5><%=total %></h5></td>
               </tr>
             </tbody>
           </table>
@@ -426,61 +377,13 @@
 				</thead>
 				<tbody id="cuerpo">
 					<tr>
-						<td colspan="3"><h2>Comience a escribir para obtener los productos</h2></td>
+						<td colspan="3"><h5>Comience a escribir para obtener los productos</h5></td>
 					</tr>
 				</tbody>
 			</table>      
 	</div>
 	</div>
-	<%  
-	if(pedido!=null){	
-	%>
-	<div class="row" style="text-align: center;">
-		<h1>SU PEDIDO</h1>
-		<table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>C�digo</th>
-                <th>Descripci�n</th>
-                <th>Precio Unitario</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
-                <th>Borrar</th>
-              </tr>
-            </thead>
-            <tbody>
-            
-            <%int i=1;
-            float total=0;
-            for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
-            	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
-            %>            
-              <tr>
-                <td><%=i %></td>
-                <td><%=item.getProducto().getId_producto() %></td>
-                <td><%=item.getProducto().getNombre_producto() %></td>
-                <td><%=item.getProducto().getPrecio() %></td>
-                <td><%=item.getCantidad() %></td>
-                <td><%=subtotal %></td>
-                <td><a class="btn btn-danger" href="pedido/borrarLinea?nro=<%=i %>">X</a></td>
-              </tr>
-            <%	i++;
-            	total+=subtotal;
-            }%>
-            <tr>
-                <td style="text-align: right;" colspan="5"><h4>IMPORTE TOTAL DEL PEDIDO</h4></td>
-                <td><h4><%=total %></h4></td>
-              </tr>
-            </tbody>
-          </table>
-	</div>
-	<div class="row" style="float: right;">
-		<a class="btn btn-danger" href="pedido/borrarPedido">BORRAR PEDIDO</a>
-		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
-	</div>
-	<%} %>
-	
+		
  
 		       
 <!--End-Action boxes-->    
@@ -488,6 +391,11 @@
    
   </div>
 </div>
+</div>
+</div>
+</div>
+
+
 
 <!--end-main-container-part-->
 

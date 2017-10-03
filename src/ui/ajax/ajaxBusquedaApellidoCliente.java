@@ -14,17 +14,18 @@ import com.google.gson.Gson;
 import appExceptions.ApplicationException;
 import entidades.Cliente;
 import negocio.CtrlCliente;
+
 /**
- * Servlet implementation class ajaxBusquedaNombreCliente
+ * Servlet implementation class ajaxBusquedaApellidoCliente
  */
-@WebServlet(asyncSupported = true, description = "Codigo para realizar busqueda parcial de cliente y devolverlo por ajax", urlPatterns = { "/ajaxBusquedaNombreCliente" })
-public class ajaxBusquedaNombreCliente extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/ajaxBusquedaApellidoCliente" })
+public class ajaxBusquedaApellidoCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ajaxBusquedaNombreCliente() {
+    public ajaxBusquedaApellidoCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +33,7 @@ public class ajaxBusquedaNombreCliente extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int inicio=0;		
 		CtrlCliente ctrlC = new CtrlCliente();
 		int cant_por_pagina=5;

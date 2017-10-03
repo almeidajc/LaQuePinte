@@ -44,4 +44,8 @@ public class CtrlCliente {
 		return catalogo.getClienteByNombreYApellido(nombreYapellido,inicio,cant_por_pagina);
 	}
 
+	public ArrayList<Cliente> getClienteByApellido(String apellidoCliente,int inicio, int cant_por_pagina) throws ApplicationException {
+		return catalogo.getClienteByApellido(apellidoCliente,inicio,cant_por_pagina);
+	}
+
 }
