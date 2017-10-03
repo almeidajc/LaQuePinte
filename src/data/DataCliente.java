@@ -258,4 +258,45 @@ public class DataCliente {
 		}
 		return clientes;
 	}
+
+	public ArrayList<Cliente> getClienteByApellido(String apellidoCliente,int desde, int hasta)throws ApplicationException {
+		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+		Cliente C;
+		ResultSet rs= null;
+		PreparedStatement stmt = null;
+		try{				 
+			stmt= FactoryConexion.getInstancia().getConn().prepareStatement(
+					"select clientes.dni,clientes.nombre,clientes.apellido,clientes.direccion"
+					+ " from clientes"
+					+ " where clientes.nombre like ?"
+					+ " limit ?,?");
+			stmt.setString(1, "%"+apellidoCliente+"%");
+			stmt.setInt(2, desde);
+			stmt.setInt(3, hasta);
+			rs=stmt.executeQuery();
+			
+			while(rs.next()){
+				C = new Cliente();
+				C.setDni(rs.getInt("dni"));
+				C.setNombre(rs.getString("nombre"));
+				C.setApellido(rs.getString("apellido"));
+				C.setDireccion(rs.getString("direccion"));
+				clientes.add(C);
+			}
+			
+		} catch (SQLException e){
+			e.printStackTrace();
+			throw new ApplicationException("Error al obtener la lista de clientes desde la base de datos", null);			
+			
+		} finally{
+			try {
+				if(stmt!=null) stmt.close();
+				if(rs!=null) rs.close();
+				FactoryConexion.getInstancia().getConn().close();
+			} catch (SQLException e) {
+				throw new ApplicationException("Error al cerrar conexiones con la base de datos", e);
+			}
+		}
+		return clientes;
+	}
 }
