@@ -162,12 +162,7 @@
           </div>
           <div class="widget-content nopadding">
             <form class="form-horizontal" method="post" action="ModificarProducto" >
-            <div class="control-group">
-                <label class="control-label">C�digo Producto</label>
-                <div class="controls">
-                  <input type="text" name="codigo_producto" id="codigo_producto" required autofocus class="form-control" value="<%=idprod %>">
-                </div>
-            </div>
+            
 
               <div class="control-group">
                 <label class="control-label">Nombre Producto</label>
@@ -175,32 +170,10 @@
                   <input type="text" name="nombre_producto" id="nombre_producto" required autofocus class="form-control" value="<%=p.getNombre_producto() %>">
                 </div>
               </div>
-              <div class="control-group">
-              <label class="control-label">Tipo Material</label>
+              
 
 
-
-              <div class="controls">
-                <select name="material" id="material">
-                  <option selected class="selectpicker" data-live-search="true"><%=p.getNombre_material() %></option>
-
-                          <%
-    		CtrlMaterial ctrlM = new CtrlMaterial();
-
-
-	for (int indice = 0; indice < ctrlM.listarMateriales().size(); indice++){
-	%>
-  <option id="material" value="<%= ctrlM.listarMateriales().get(indice).getId()%>"><%= ctrlM.listarMateriales().get(indice).getNombre()%></option>
-
-
-
-              	<%
-}
-      %>
-
-       </select>
-              </div>
-            </div>
+            
                <div class="control-group">
                 <label class="control-label">Precio</label>
                 <div class="controls">
@@ -208,12 +181,7 @@
                 </div>
               </div>
 
-              <div class="control-group">
-                <label class="control-label">Fecha</label>
-                <div class="controls">
-                  <input type="date" name="fecha_producto" id="fecha_producto" required autofocus class="form-control" value="<%=p.getFecha() %>">
-                </div>
-              </div>
+             
 
               <div class="control-group">
                 <label class="control-label">Stock Ingresado</label>
@@ -222,18 +190,20 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Stock M�nimo</label>
+                <label class="control-label">Stock M&iacute;nimo</label>
                 <div class="controls">
                   <input type="text" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control" value="<%=p.getCantidad_min_stock() %>">
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Stock M�ximo</label>
+                <label class="control-label">Stock M&aacute;ximo</label>
                 <div class="controls">
                   <input type="text" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control" value="<%=p.getCantidad_max_stock()%>">
                 </div>
               </div>
               <div class="form-actions" >
+               <input type="hidden" id="id_prod" name="id_prod" value="<%= idprod %>" >
+               <input type="hidden" id="fecha_prod" name="fecha_prod" value="<%= p.getFecha() %>" >
                 <input type="submit" value="Registrar" class="btn btn-success btn-large">
 
               </div>

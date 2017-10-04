@@ -321,7 +321,60 @@ try {
 		}
 		return stock;
 	}
-	
 
-	
+	public void modificarProducto(Producto p) throws ApplicationException {
+		// TODO Auto-generated method stub
+		
+
+		ResultSet rs=null;
+		PreparedStatement stmtPrecio = null;
+		PreparedStatement stmt=null;
+		
+		
+		try {
+			
+			
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"update productos set nombre_producto=?,cantidad_stock=?, cantidad_minima=?, cantidad_maxima=? where id_producto=?"
+					);
+			stmt.setString(1, p.getNombre_producto());
+			
+			stmt.setInt(2, p.getCantidad_stock());
+			stmt.setInt(3, p.getCantidad_min_stock());
+			stmt.setInt(4, p.getCantidad_max_stock());
+			stmt.setInt(5, p.getId_producto());
+			
+		
+			stmt.execute();
+			
+			
+			stmtPrecio = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"Insert into precio_producto_venta (id_producto, fecha, precio)"
+					+"values (?,current_date(),?)");
+			stmtPrecio.setInt(1, p.getId_producto());						
+							
+			stmtPrecio.setFloat(2, p.getPrecio());
+			stmtPrecio.execute();
+			
+		} catch (SQLException d) {
+			try {
+				FactoryConexion.getInstancia().getConn().rollback();
+			} catch (SQLException e1) {
+				throw new ApplicationException("Error al recuperar producto en la base de datos", d);
+			}
+			throw new ApplicationException("Error al modificar producto en la base de datos", d);
+		} finally {
+			try {
+			if(stmt!=null) stmt.close();
+			
+					
+			if(rs!=null) rs.close();
+			FactoryConexion.getInstancia().getConn().close();
+			} catch (SQLException d) {
+				throw new ApplicationException("Error al cerrar conexiones con la base de datos", d);
+			}
+			
+		
+	}
+}
 }

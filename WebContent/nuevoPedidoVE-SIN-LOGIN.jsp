@@ -367,7 +367,7 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>C�digo</th>
+                <th>C&oacute;digo</th>
                 <th>Descripci�n</th>
                 <th>Precio Unitario</th>
                 <th>Cantidad</th>

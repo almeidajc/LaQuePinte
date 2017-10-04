@@ -92,7 +92,7 @@
         
         <li class="bg_ls span8"> <a href="registrarEnvioDE.jsp"> <i class="icon-truck"></i> Registrar Env&iacute;o</a> </li>
         <li class="bg_ly span8"> <a href="registrarEntregaDE.jsp"> <i class="icon-briefcase"></i> Registrar Entrega Pedido</a> </li>
-        <li class="bg_lr span8"> <a href="consultaPedidoDE.jsp"> <i class="icon-user"></i> Asignar Pedidos a Camionero</a> </li>
+        <li class="bg_lr span8"> <a href="asignarEnviosDE.jsp"> <i class="icon-user"></i> Asignar Pedidos a Camionero</a> </li>
         <li class="bg_lg span8"> <a href="consultaPedidoDE.jsp"> <i class="icon-list-ol"></i> Resumen de Pedidos confirmados</a> </li>
         
 

@@ -61,6 +61,13 @@ public class CtrlPedido {
 		cat.registrarEnvioPedido(id_pedido);
 	}
 
+	public void asignarPedido(int idped, int idcam) throws ApplicationException {
+		// TODO Auto-generated method stub
+		cat.asignarPedido(idped,idcam);
+		
+		
+	}
+
 
 	/* public void agregarProducto(Producto p) throws ApplicationException {
 		cat.agregarProducto(p);

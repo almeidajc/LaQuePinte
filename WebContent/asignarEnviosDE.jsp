@@ -103,7 +103,7 @@
      %>
           <%-- los pedidos solo los de hoy!!!!!!!!!!!!!!!! sino hacer un for y sumar la cantidad que son hoy --%>
           <input type="hidden" id="cantidadPedidos" value="<%= ctrlP.listarPedidosConfirmados().size() %>">
-		<form>
+		
           <table>
             <tbody>
             
@@ -111,17 +111,20 @@
             	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
             		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
                   // if dia=igual hoy
-                if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null){
+                if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null && pedido.getEmpleado().getId_empleado() == 0){
                 	//&& pedido.getFecha_efectiva() != null
+                			
             	%>
 
               <tr>
-                <td><input type="hidden" id="id<%=indice %>" value="<%=pedido.getId_pedido() %>"></td>
+              <form method="post" action="AsignarPedido">
+              
+                <td><input type="hidden" name="idpedido" id="idpedido>" value="<%=pedido.getId_pedido() %>"></td>
                 <td><input type="hidden" id="coord<%=indice %>" value="<%=pedido.getCoordenadas() %>"></td>
                 <td><h5 onclick="animarPedido(<%= pedido.getId_pedido() %>)">Pedido numero <%= pedido.getId_pedido() %></h5></td>
                 <td>
-
-                  <select id="<%= pedido.getId_pedido() %>">
+				
+                  <select name="idcamionero"  id="idcamionero">
                     <%
                     CtrlEmpleado ctrl = new CtrlEmpleado();
                     for ( int indiceEmpleados = 0; indiceEmpleados < ctrl.listarEmpleados().size(); indiceEmpleados++){
@@ -129,13 +132,17 @@
                       if(tipo.equalsIgnoreCase("CA")){
                         %>
                         <option value="<%= ctrl.listarEmpleados().get(indiceEmpleados).getId_empleado() %>"><%= ctrl.listarEmpleados().get(indiceEmpleados).getNombre() %> <%= ctrl.listarEmpleados().get(indiceEmpleados).getApellido() %></option>
+                       
                         <%
+                      
                       }
                     }
                     %>
                   </select>
+                  <input type="submit" class="btn btn-success" >
 
                 </td>
+                </form>
               </tr>
               <%
                }
@@ -143,9 +150,9 @@
               %>
 
             </table>
-            <input type="submit" class="btn btn-success" value="Confirmar">
             
-           </form>
+            
+           
           </div>
                 <%
 

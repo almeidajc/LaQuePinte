@@ -96,7 +96,7 @@ public class AltaProducto extends HttpServlet {
 		if(existeProd){	
 			mjs = "El producto ya se encuentra registrado";
 			request.setAttribute("mensaje", mjs);
-			request.getRequestDispatcher("altaproducto.jsp").forward(request, response);
+			request.getRequestDispatcher("altaProductoEA.jsp").forward(request, response);
 			
 		}else{			
 			
@@ -108,7 +108,7 @@ public class AltaProducto extends HttpServlet {
 		}
 			mjs = "Producto agregado correctamente";
 			request.setAttribute("mensaje",mjs );
-			request.getRequestDispatcher("altaproducto.jsp").forward(request, response);
+			request.getRequestDispatcher("altaProductoEA.jsp").forward(request, response);
 			
 		}
 		

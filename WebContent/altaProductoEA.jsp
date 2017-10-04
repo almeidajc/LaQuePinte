@@ -217,14 +217,14 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Stock M�nimo</label>
+                <label class="control-label">Stock M&iacute;nimo</label>
                 <div class="controls">
                   <input type="text" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control">
                   <a href="#" title="Ingrese el nivel m�nimo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Stock M�ximo</label>
+                <label class="control-label">Stock M&acute;ximo</label>
                 <div class="controls">
                   <input type="text" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control">
                	 <a href="#" title="Ingrese el nivel m�ximo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
