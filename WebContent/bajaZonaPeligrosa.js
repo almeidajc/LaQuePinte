@@ -9,6 +9,7 @@ let bajaZonas = new Array();
 
 function zonasEliminadas() {
   bajaZonas = [];
+  console.log(maxId);
   for (var ind = 0; ind < maxId; ind++) {
     if (!document.getElementById(`checZ${ind}`).checked) {
       bajaZonas.push(document.getElementById(`zonaPelig${ind}`).value);
