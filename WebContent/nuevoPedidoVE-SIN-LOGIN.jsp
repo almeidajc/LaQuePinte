@@ -114,12 +114,50 @@
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Pedido</h1>
+ <h1>Nuevo Pedido</h1> 
  </div>
+ 
+ <!--
+<div class="accordion" id="collapse-group">
+  
+        
+         <div class="accordion-group widget-box">
+           
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#1" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
+                <h4>AYUDA</h4>
+            </div>
+            <div class="collapse accordion-body" id="1">
 
+<img src="bootstrap/img/ayuda.gif">
+<!--<img src="${pageContext.request.contextPath}/bootstrap/img/ayuda.gif"/>
+<img src="${pageContext.request.contextPath}/ayuda.gif"/>
+<img src="ayuda.gif"/> -->
+ <!--
+            </div>
+          </div>
+        </div> 
+</div>-->
+<div class="container-fluid">
+
+ <div class="accordion" id="collapse-group">
+          <div class="accordion-group widget-box">
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
+                <h5>AYUDA</h5>
+                </a> </div>
+            </div>
+            <div class="collapse accordion-body" id="collapseGThree">
+              <div class="widget-content"> <img src="bootstrap/img/ayuda.gif"> </div>
+            </div>
+          </div>
+          
+        </div>
+ 
  <!--Action boxes-->
 
- <div class ="container-fluid">
+ 
+
  <div class="row-fluid">
       <div class="span3">
         <div class="widget-box">
@@ -129,24 +167,28 @@
 
          <div class="widget-content nopadding">
             <form action="#" method="post" id="formCliente" class="form-horizontal">
-            <div class="control-group">
-            	<div style="margin:10px;">
-       	              <label for="txtDniCliente" class="sr-only">DNI :</label>
-             		  <input type="text" id="txtDniCliente" name="txtDniCliente" class="form-control" placeholder="DNI" />
-            	</div>
+            	
+              <div class="control-group">
+             			
+              <label for="txtDniCliente" class="sr-only">Dni </label>
+              <div class="controls">
+              <input type="text" id="txtDniCliente" name="txtDniCliente" class="span11" placeholder="Dni" />
+              </div>
+
             </div>
             <div class="control-group">
             	<div style="margin:10px;">
-              	<label for="txtNombreCliente" class="sr-only">Nombre :</label>
+              	<label for="txtNombreCliente" class="sr-only">Nombre </label>
                 <input type="text" id="txtNombreCliente" name="txtNombreCliente" class="form-control" placeholder="Nombre" />
               </div>
             </div>
             <div class="control-group">
-         	 <div style="margin:10px;">
-              	<label class="sr-only">Apellido :</label>
-                <input type="text"  class="form-control" placeholder="Nombre"  />
+            	<div style="margin:10px;">
+              	<label for="txtApellidoCliente" class="sr-only">Apellido </label>
+                <input type="text" id="txtApellidoCliente" name="txtApellidoCliente" class="form-control" placeholder="Apellido" />
               </div>
             </div>
+            
 
           </form>
           </div>
@@ -173,7 +215,7 @@
               </thead>
              <tbody id="cuerpoCliente" name="cuerpoCliente">
                <tr>
-						<td colspan="4"><h4>Comience a escribir para obtener los clientes</h4></td>
+						<td colspan="4"><h5>Comience a escribir para obtener los clientes</h5></td>
 			   </tr>
               </tbody>
             </table>
@@ -227,6 +269,7 @@
 	%><h5>se gaurdo</h5>
       <%} %>
 
+
   <%Pedido pedido= (Pedido)session.getAttribute("pedido");
 	if(pedido!=null){
 	%>
@@ -236,7 +279,7 @@
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>NUEVO PEDIDO</h5>
 
-            <span class="label label-info">Featured</span> </div>
+             </div>
 
           <div class="widget-content nopadding">
             <table class="table table-bordered table-striped">
@@ -272,8 +315,8 @@
             	total+=subtotal;
             }%>
             <tr>
-                <td style="text-align: right;" colspan="5"><h4>IMPORTE TOTAL DEL PEDIDO</h4></td>
-                <td><h4><%=total %></h4></td>
+                <td style="text-align: right;" colspan="5"><h5>IMPORTE TOTAL DEL PEDIDO</h5></td>
+                <td><h5><%=total %></h5></td>
               </tr>
             </tbody>
           </table>
@@ -352,60 +395,12 @@
 				</thead>
 				<tbody id="cuerpo">
 					<tr>
-						<td colspan="3"><h2>Comience a escribir para obtener los productos</h2></td>
+						<td colspan="3"><h5>Comience a escribir para obtener los productos</h5></td>
 					</tr>
 				</tbody>
 			</table>
 	</div>
 	</div>
-	<%
-	if(pedido!=null){
-	%>
-	<div class="row" style="text-align: center;">
-		<h1>SU PEDIDO</h1>
-		<table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>C&oacute;digo</th>
-                <th>Descripci�n</th>
-                <th>Precio Unitario</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
-                <th>Borrar</th>
-              </tr>
-            </thead>
-            <tbody>
-
-            <%int i=1;
-            float total=0;
-            for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
-            	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
-            %>
-              <tr>
-                <td><%=i %></td>
-                <td><%=item.getProducto().getId_producto() %></td>
-                <td><%=item.getProducto().getNombre_producto() %></td>
-                <td><%=item.getProducto().getPrecio() %></td>
-                <td><%=item.getCantidad() %></td>
-                <td><%=subtotal %></td>
-                <td><a class="btn btn-danger" href="pedido/borrarLinea?nro=<%=i %>">X</a></td>
-              </tr>
-            <%	i++;
-            	total+=subtotal;
-            }%>
-            <tr>
-                <td style="text-align: right;" colspan="5"><h4>IMPORTE TOTAL DEL PEDIDO</h4></td>
-                <td><h4><%=total %></h4></td>
-              </tr>
-            </tbody>
-          </table>
-	</div>
-	<div class="row" style="float: right;">
-		<a class="btn btn-danger" href="pedido/borrarPedido">BORRAR PEDIDO</a>
-		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
-	</div>
-	<%} %>
 
 
 
@@ -417,6 +412,11 @@
   </div>
   </div>
 </div>
+</div>
+</div>
+</div>
+
+
 
 <!--end-main-container-part-->
 

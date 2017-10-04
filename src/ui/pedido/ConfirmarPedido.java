@@ -37,15 +37,14 @@ public class ConfirmarPedido extends HttpServlet {
 				throw new ApplicationException("No se encontró un pedido en la sesión", null);
 			} else {
 				Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
-				Empleado empleado = (Empleado)request.getSession().getAttribute("userSession");
-				if(empleado==null||empleado.getId_empleado()==0){
-					throw new ApplicationException("Para confirmar el pedido debe iniciar sesión como empleado", null);
+				Cliente cliente = (Cliente)request.getSession().getAttribute("clientePedidoActual");
+				if(cliente==null||cliente.getDni()==0){
+					throw new ApplicationException("Para confirmar el pedido debe seleccionar y guardar un cliente", null);
 				} else {
 					CtrlPedido ctrlPedido = new CtrlPedido();
-					ctrlPedido.confirmarPedido(pedido,empleado);
+					ctrlPedido.confirmarPedido(pedido,cliente);
 					request.getSession().removeAttribute("pedido");
-					request.setAttribute("mensajeConfirmacion", "El pedido ha sido registrado con éxito. "
-							+ "El número asignado del pedido es ");
+					request.setAttribute("mensajeConfirmacion", "El pedido ha sido registrado con éxito. ");
 					request.getRequestDispatcher("nuevoPedidoVE-SIN-LOGIN.jsp").forward(request, response);
 				}	
 			}

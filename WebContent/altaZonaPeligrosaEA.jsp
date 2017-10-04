@@ -112,7 +112,7 @@ pageEncoding="ISO-8859-1"%>
 
         <ul>
           <li class="active"><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
-          <li><a href="#">Modificar Zona Peligrosa</a></li>
+
           <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
           <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
         </ul>
@@ -120,17 +120,7 @@ pageEncoding="ISO-8859-1"%>
 
 
       <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-
-
-
-      <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-        <ul>
-          <li><a href="#">Crear Pedido</a></li>
-          <li><a href="#">Modificar Pedido</a></li>
-          <li><a href="#">Cambiar Estado Pedido</a></li>
-          <li><a href="#">Consultar Pedido</a></li>
-        </ul>
-      </li>
+<li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
 
     </ul>
   </div>

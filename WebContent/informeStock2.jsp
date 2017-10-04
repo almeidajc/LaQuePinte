@@ -31,7 +31,7 @@
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 
@@ -49,8 +49,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -60,15 +60,7 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
     <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
-      <ul>
-        <li><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
-<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        
-      </ul>
-    </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaproducto.jsp">Nuevo Producto</a></li>
@@ -77,7 +69,7 @@
         <li><a href="consultarproducto.jsp">Consultar Producto</a></li>
       </ul>
     </li>
-    
+
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
@@ -86,8 +78,8 @@
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
-    
+
+
         <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
         <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
@@ -96,8 +88,8 @@
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
       </ul>
     </li>
-    
-    
+
+
   <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
@@ -106,33 +98,23 @@
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
 
-    
+
+
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
         <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
-        <li><a href="#">Modificar Zona Peligrosa</a></li>
+
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
-    
-   
-    
+
+
+
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-    
-    
-    
-    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-      <ul>
-        <li><a href="#">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Cambiar Estado Pedido</a></li>
-        <li><a href="#">Consultar Pedido</a></li>
-      </ul>
-    </li>
-    
+<li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
+
   </ul>
 </div>
 <!-- sidebar-menu-->
@@ -143,7 +125,7 @@
 <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
-   
+
   </div>
 <!--End-breadcrumbs-->
 
@@ -152,7 +134,7 @@
  <h1>Informe Stock</h1>
  </div>
   <div class="container-fluid" ><hr>
-  
+
    <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
@@ -166,8 +148,8 @@
       </div>
     </div>
     </div>
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
   </div>
 </div>
 
@@ -179,14 +161,14 @@
   <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
 </div>
 <!--end-Footer-part-->
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.pie.min.js"></script> 
-<script src="bootstrap/js/matrix.charts.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.pie.min.js"></script>
+<script src="bootstrap/js/matrix.charts.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
 <!--Real-time-chart-js-->
 <script type="text/javascript">
 $(function () {
@@ -241,13 +223,13 @@ $(function () {
         plot.setData([ getRandomData() ]);
         // since the axes don't change, we don't need to call plot.setupGrid()
         plot.draw();
-        
+
         setTimeout(update, updateInterval);
     }
 
     update();
 });
-</script> 
+</script>
 <!--Real-time-chart-js-end-->
 <!--Turning-series-chart-js-->
 <script type="text/javascript">
@@ -256,7 +238,7 @@ $(function () {
         "usa": {
             label: "USA",
             data: [[1988, 483994], [1989, 479060], [1990, 457648], [1991, 401949], [1992, 424705], [1993, 402375], [1994, 377867], [1995, 357382], [1996, 337946], [1997, 336185], [1998, 328611], [1999, 329421], [2000, 342172], [2001, 344932], [2002, 387303], [2003, 440813], [2004, 480451], [2005, 504638], [2006, 528692]]
-        },        
+        },
         "russia": {
             label: "Russia",
             data: [[1988, 218000], [1989, 203000], [1990, 171000], [1992, 42500], [1993, 37600], [1994, 36600], [1995, 21700], [1996, 19200], [1997, 21300], [1998, 13600], [1999, 14000], [2000, 19100], [2001, 21300], [2002, 23600], [2003, 25100], [2004, 26100], [2005, 31100], [2006, 34700]]
@@ -290,8 +272,8 @@ $(function () {
         val.color = i;
         ++i;
     });
-    
-    // insert checkboxes 
+
+    // insert checkboxes
     var choiceContainer = $("#choices");
     $.each(datasets, function(key, val) {
         choiceContainer.append('<br/><input type="checkbox" name="' + key +
@@ -301,7 +283,7 @@ $(function () {
     });
     choiceContainer.find("input").click(plotAccordingToChoices);
 
-    
+
     function plotAccordingToChoices() {
         var data = [];
 
@@ -320,7 +302,7 @@ $(function () {
 
     plotAccordingToChoices();
 });
-</script> 
+</script>
 <!--Turning-series-chart-js-->
 <script src="bootstrap/js/matrix.dashboard.js"></script>
 </body>

@@ -24,7 +24,7 @@
       CostosEnvio c =ctrl.listarCostosEnvio();
       float costokm= c.getCosto_km();
       float recargo= c.getRecargo_zona();
-     
+
 
 
       //String numeroStr = String.valueOf(h.getNumero());
@@ -157,24 +157,14 @@
 
       <ul>
         <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
-        <li><a href="#">Modificar Zona Peligrosa</a></li>
+
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
 
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-
-
-
-    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-      <ul>
-        <li><a href="#">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Cambiar Estado Pedido</a></li>
-        <li><a href="#">Consultar Pedido</a></li>
-      </ul>
-    </li>
+    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+<li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
 
   </ul>
 </div>
@@ -203,14 +193,14 @@
         </div>
         <div class="widget-content nopadding">
           <form action="ModificarCostosEnvio" method="post" class="form-horizontal">
-			<% 
-			
+			<%
+
 			if(id.equalsIgnoreCase("1")){
-				
+
 				String costo = String.format ("%.2f", costokm);
-				
-				
-				
+
+
+
 				%>
              <div class="control-group">
               <label class="control-label">Precio por kil&oacute;metro: </label>
@@ -218,11 +208,11 @@
 
                 <input type="text" style="text-align:right" class="span11" name="costokm"  value=" <%= costo %>" id="costokm" placeholder="" onchange="" />
                 <input type="hidden" id="id_costos" name="id_costos" value="<%= 1 %>" >
-          
+
             </div>
-            
+
             <% }
-			else{	String costo2 = String.format ("%.2f", recargo);		
+			else{	String costo2 = String.format ("%.2f", recargo);
 				%>
                  <div class="control-group">
               <label class="control-label">Recargo por zona peligrosa:</label>
@@ -230,13 +220,13 @@
 
                 <input type="text" style="text-align:right" class="span11" name="recargo"  value=" <%= costo2 %>" id="recargo" placeholder="" onchange="" />
                  <input type="hidden" id="id_costos" name="id_costos" value="<%= 2 %>" >
-            
+
             </div>
-            <% 
+            <%
 			}
 				%>
-            
-                   
+
+
                 </div>
 
                 <div class="form-actions">
