@@ -237,7 +237,7 @@ input[type=text]:focus {
 
         <th><h5 style="text-align:center; ">ID ZONA</h5></th>
         <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
-        <th><h5 style="text-align:center; ">COORDENADAS</h5></th>
+       
         <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
 
 
@@ -261,8 +261,8 @@ input[type=text]:focus {
 
 	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getId_zona() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getDescripcion() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getCoordenadas() %></h5></td>
-	   <td><form method="post" action="BajaUbicacion">
+	  
+	   <td><form method="post" action="BajaZona">
            <input type="hidden" id="id_zona" name="id_zona" value="<%= ctrl.listarZona().get(indice).getId_zona()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
            <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="bajaubicacion" id="bajaubicacion" onClick="return confirm('�Esta Seguro que deseas dar de baja esta zona?')">

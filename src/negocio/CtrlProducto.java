@@ -48,5 +48,10 @@ public class CtrlProducto {
 	public int getStock(int id) throws ApplicationException {
 		return cat.getStock(id);		
 	}
+
+	public void modificarProducto(Producto p) throws ApplicationException {
+		// TODO Auto-generated method stub
+		cat.modificarProducto(p);
+	}
 	
 }

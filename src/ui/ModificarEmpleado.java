@@ -63,11 +63,11 @@ public class ModificarEmpleado extends HttpServlet {
 		e1.printStackTrace();
 	}
 	if(tipo_em.equalsIgnoreCase("EA")){
-		request.setAttribute("mensaje", "Empleado agregado correctamente");
+		request.setAttribute("mensaje", "Empleado modificado correctamente");
 		request.getRequestDispatcher("modificarUsuarioEA.jsp").forward(request, response);
 		}
 		else{
-			request.setAttribute("mensaje", "Empleado agregado correctamente");
+			request.setAttribute("mensaje", "Empleado modificado correctamente");
 			request.getRequestDispatcher("modificarUsuarioADM.jsp").forward(request, response);
 		}
 	}}

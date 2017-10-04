@@ -346,5 +346,44 @@ ResultSet rs=null;
 
 	return pedidos;
 }
+
+public void asignarPedido(int idped, int idcam) throws ApplicationException {
+	// TODO Auto-generated method stub
+	
+	ResultSet rs=null;
+	PreparedStatement stmt=null;
+	
+	
+	try {
+		
+		
+		stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+				"update pedidos set id_empleado=? where id_pedido=?");
+		stmt.setInt(1, idcam);
+		
+		stmt.setInt(2, idped);
+		
+	
+		stmt.execute();
+		
+	} catch (SQLException d) {
+		try {
+			FactoryConexion.getInstancia().getConn().rollback();
+		} catch (SQLException d1) {
+			throw new ApplicationException("Error al recuperar el pedido en la base de datos", d1);
+		}
+		throw new ApplicationException("Error al asignar el camionero en la base de datos", d);
+	} finally {
+		try {
+		if(stmt!=null) stmt.close();
+		
+				
+		if(rs!=null) rs.close();
+		FactoryConexion.getInstancia().getConn().close();
+		} catch (SQLException d) {
+			throw new ApplicationException("Error al cerrar conexiones con la base de datos", d);
+		
+}}}
+
 }
 

@@ -266,6 +266,7 @@ input[type=text]:focus {
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
 	   <td><form method="post" action="modProductoEA.jsp">
            <input type="hidden" id="id_producto" name="id_producto" value="<%= ctrl.listarProductos().get(indice).getId_producto()%>" >
+           
             <button style="margin:auto;display:block;"  class="btn2" name="modificarproducto" style="background-color: #F9F9F9; text-align:center;"id="modificarproducto" >
            <span class="icon-pencil" style="color: blue; font-size:100%; background-color: #F9F9F9;content-align:center"></span></a></form></td>
 
