@@ -430,7 +430,6 @@ function cancelarFecha(){
   <!--breadcrumbs-->
     <div id="content-header">
       <div id="breadcrumb"> <a href="indexVE.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Producto</a></div>
-      <a href="#abajo">Click aqu� ir abajo</a>
     </div>
   <!--End-breadcrumbs-->
 
@@ -582,8 +581,6 @@ function cancelarFecha(){
     <!--Footer-part-->
 
     <div class="row-fluid">
-
-      <a name="abajo" id="abajo"></a>
       <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
     </div>
 
