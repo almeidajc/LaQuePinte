@@ -409,7 +409,7 @@ function cancelarFecha(){
         <ul>
           <li class="active"><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
           <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-          <li><a href="#">Modificar Pedido</a></li>
+          <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>          
 
         </ul>
       </li>

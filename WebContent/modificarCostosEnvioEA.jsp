@@ -131,10 +131,10 @@ input[type=text]:focus {
       </ul>
     </li>
 
-    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
         <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
-        <li class="active"><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
+        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
@@ -162,24 +162,14 @@ input[type=text]:focus {
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
         <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
-        <li><a href="#">Modificar Zona Peligrosa</a></li>
+
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
     </li>
 
-    <li><a href="#"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-
-
-
-    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-      <ul>
-        <li><a href="#">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Cambiar Estado Pedido</a></li>
-        <li><a href="#">Consultar Pedido</a></li>
-      </ul>
-    </li>
+    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+    <li class="active"><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
 
   </ul>
 </div>
@@ -222,8 +212,8 @@ input[type=text]:focus {
       <tr >
 
 	    <th><h5 style="text-align:center; ">COSTO POR KILOMETRO</h5></th>
-        
-       
+
+
         <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
 
       </tr>
@@ -237,8 +227,8 @@ CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
 %>
 
    	   <td><h5 style="text-align:center; ">$<%= ctrl.listarCostosEnvio().getCosto_km() %></h5></td>
-	   
-	   
+
+
 	    <td><form method="post" action="modCostosEnvioEA.jsp">
            <input type="hidden" id="id_costos" name="id_costos" value="1" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
@@ -248,25 +238,25 @@ CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
 	</tr>
 
 	</tr>
-	
+
 
 
     </tbody>
   </table>
-  
+
   </div>
         </div>
    <div class="widget-box">
 
 
           <div class="widget-content nopadding" id="tb_content">
-            <table class="order-table table" class="table table-hover"> 
+            <table class="order-table table" class="table table-hover">
   <thead>
       <tr >
 
-	    
+
         <th><h5 style="text-align:center; ">RECARGO ZONA PELIGROSA</h5></th>
-       
+
         <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
 
       </tr>
@@ -279,10 +269,10 @@ CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
 
 %>
 
-   	  
+
 	   <td><h5 style="text-align:center; ">$<%= ctrl.listarCostosEnvio().getRecargo_zona() %></h5></td>
-	
-	   
+
+
 	    <td><form method="post" action="modCostosEnvioEA.jsp">
            <input type="hidden" id="id_costos" name="id_costos" value="2" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
@@ -292,7 +282,7 @@ CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
 	</tr>
 
 	</tr>
-	
+
 
 
     </tbody>

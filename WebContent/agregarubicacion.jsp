@@ -67,7 +67,7 @@
       <ul>
         <li><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
 <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
+        
         
       </ul>
     </li>
@@ -116,7 +116,7 @@
     <li class="submenu  active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
         <li class="submenu active"><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
-        <li><a href="#">Modificar Zona Peligrosa</a></li>
+        
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
@@ -124,15 +124,16 @@
 
 
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
+<li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
 
 
 
-    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
+    
       <ul>
-        <li><a href="#">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Cambiar Estado Pedido</a></li>
-        <li><a href="#">Consultar Pedido</a></li>
+        
+        
+        
+        
       </ul>
     </li>
 

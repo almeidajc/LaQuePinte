@@ -22,68 +22,6 @@
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
-
-<script type="text/javascript"> // inicio tabla js1//
-(function(document) {
-  'use strict';
-
-  var LightTableFilter = (function(Arr) {
-
-    var _input;
-
-    function _onInputEvent(e) {
-      _input = e.target;
-      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-      Arr.forEach.call(tables, function(table) {
-        Arr.forEach.call(table.tBodies, function(tbody) {
-          Arr.forEach.call(tbody.rows, _filter);
-        });
-      });
-    }
-
-    function _filter(row) {
-      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-    }
-
-    return {
-      init: function() {
-        var inputs = document.getElementsByClassName('light-table-filter');
-        Arr.forEach.call(inputs, function(input) {
-          input.oninput = _onInputEvent;
-        });
-      }
-    };
-  })(Array.prototype);
-
-  document.addEventListener('readystatechange', function() {
-    if (document.readyState === 'complete') {
-      LightTableFilter.init();
-    }
-  });
-
-})(document);
-</script>
-
-<style type="text/css">
-
-}
-tbody tr:nth-child(odd) {
-  background: #eee;
-}
-
-.input[type=text] {
-    width: 130px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-    width: 100%;
-}
-
-	</style>
 </head>
 <body onload="setTimeout(function(){initMap();}, 10)">
 
@@ -101,19 +39,7 @@ input[type=text]:focus {
 
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
-  <ul class="nav">
-    <!-- <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-        <li class="divider"></li>
-        <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
-      </ul>
-    </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
-
-
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -167,7 +93,6 @@ input[type=text]:focus {
 
       <ul>
         <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
-        <li><a href="#">Modificar Zona Peligrosa</a></li>
         <li ><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li class="active"><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
@@ -175,17 +100,7 @@ input[type=text]:focus {
 
 
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-
-
-
-    <li class="submenu"> <a href="#"><i class="icon icon-briefcase"></i> <span>Pedido a Proveedores</span> </a>
-      <ul>
-        <li><a href="#">Crear Pedido</a></li>
-        <li><a href="#">Modificar Pedido</a></li>
-        <li><a href="#">Cambiar Estado Pedido</a></li>
-        <li><a href="#">Consultar Pedido</a></li>
-      </ul>
-    </li>
+<li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
 
   </ul>
 </div>
@@ -235,8 +150,8 @@ input[type=text]:focus {
 				<tr>
 		         <div class="zona<%=zona.getId_zona() %>">
 		         	<div class="control-group">
-						<td><h4><%=zona.getDescripcion() %> <input type="checkbox" id="checZ<%=indice %>" name="" value="" onchange="initMap()"  checked></h4></td>
-            		</div>
+						     <td><h4><%=zona.getDescripcion() %> <input type="checkbox" id="checZ<%=indice %>" name="" value="" onchange="initMap()"  checked></h4></td>
+          		</div>
 
 		           <input type="hidden" id="zonaPelig<%=indice %>" name="" value="<%=zona.getId_zona() %>">
 		           <input type="hidden" id="coordZ<%=indice %>" name="" value='<%=zona.getCoordenadas() %>'>
