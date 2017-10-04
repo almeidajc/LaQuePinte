@@ -102,7 +102,7 @@
         }
      %>
           <%-- los pedidos solo los de hoy!!!!!!!!!!!!!!!! sino hacer un for y sumar la cantidad que son hoy --%>
-          <input type="hidden" id="cantidadPedidos" value="<%= ctrlP.listarPedidosConfirmados().size() %>">
+          <input type="hidden" id="cantidadPedidos" value="<%=sum %>">
 		<form>
           <table>
             <tbody>
