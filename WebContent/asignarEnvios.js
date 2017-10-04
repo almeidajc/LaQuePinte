@@ -16,7 +16,6 @@ function animarPedido(idPed) {
 
 
 function init(){
-	console.log(document.getElementById('arregloDias').value)
 let cantidadPedidos = document.getElementById('cantidadPedidos').value;
 
 var pinColor = "00ff03";
