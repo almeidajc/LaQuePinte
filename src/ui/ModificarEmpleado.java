@@ -50,7 +50,7 @@ public class ModificarEmpleado extends HttpServlet {
 		
 		
 		e.setTel(Integer.parseInt(request.getParameter("tel")));
-		e.setEmail((request.getParameter("email")));
+		e.setEmail(request.getParameter("email"));
 		e.setContraseña((request.getParameter("contrasena")));
 		
 		CtrlEmpleado ctrl = new CtrlEmpleado();

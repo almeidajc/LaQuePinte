@@ -98,6 +98,14 @@
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
+    
+     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
+    </li>
 
 
 
@@ -147,9 +155,10 @@
        <li class="bg_ls span5"> <a href="altaUsuarioEA.jsp"> <i class="icon-user"></i> Empleado</a> </li>
        <li class="bg_lg span5" > <a href="altaProveedorEA.jsp"> <i class="icon-user" ></i> Proveedor</a> </li>
        <li class="bg_lo span5"> <a href="altaClienteEA.jsp"> <i class="icon-user"></i> Cliente</a> </li>
+       <li class="bg_ly span5"> <a href="altaMaterialEA.jsp"> <i class="icon-barcode"></i> Material</a> </li>
        <li class="bg_lb span5"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Zona Peligrosa</a> </li>
        <li class="bg_lr span5"> <a href="informestock.jsp"> <i class="icon-bar-chart"></i> Informe Stock</a> </li>
-       <li class="bg_ly span5"> <a href="modificarCostosEnvioEA.jsp"> <i class="icon-briefcase"></i>Actualizar costos envio  </a> </li>
+       <li class="bg_lg span5"> <a href="modificarCostosEnvioEA.jsp"> <i class="icon-briefcase"></i>Actualizar costos envio  </a> </li>
 
 
       </ul>

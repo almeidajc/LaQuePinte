@@ -47,7 +47,7 @@ public class BajaProducto extends HttpServlet {
 		}
 				
 		request.setAttribute("mensaje", "Producto eliminado correctamente");
-		request.getRequestDispatcher("bajaproducto.jsp").forward(request, response);
+		request.getRequestDispatcher("bajaProductoEA.jsp").forward(request, response);
 		}
 	
 
