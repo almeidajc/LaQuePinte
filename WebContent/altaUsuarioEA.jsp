@@ -205,9 +205,9 @@
               <div class="controls">
 
                 <select id="rol" name="rol" >
-                  <option value="CA">Camionero</option>
                   <option value="VE">Vendedor</option>
                   <option value="DE">Despachante</option>
+                  <option value="CA">Camionero</option>
 
                 </select>
               </div>

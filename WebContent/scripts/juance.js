@@ -1,3 +1,24 @@
+function cambiarHREF() {
+  if (localStorage.getItem("fecha")) {
+    document.getElementById("altaPedidoIdHREF").href = "nuevoPedidoVE.jsp"
+  }
+}
+
+function altaPedido(){
+  let direccion,coord,fech,distancia,zona;
+  direccion = localStorage.getItem("direccion");
+  coord = localStorage.getItem("coordenadas");
+  distancia = localStorage.getItem("distanciaInsert");
+  fech = localStorage.getItem("fecha");
+  zona = localStorage.getItem("zonaPeligrosa");
+  document.getElementById("direccion").value = direccion;
+  document.getElementById("coordenadas").value = coord;
+  document.getElementById("distancia").value = distancia;
+  document.getElementById("fecha").value = fech;
+  document.getElementById("zonaPeligrosa").value = zona;
+
+}
+
 function empleado_rol(){
   let emp_rol = document.getElementById("rol");
   let strUser = emp_rol.options[emp_rol.selectedIndex].value;

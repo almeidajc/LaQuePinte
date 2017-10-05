@@ -33,7 +33,9 @@
 <script src="js/cliente.js"></script>
 
 </head>
-<body>
+
+<body onload="altaPedido()">
+
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
             if(userSession == null || !(userSession.getTipo().equals("VE"))){
             	response.sendRedirect("error405.jsp"); }%>
@@ -61,7 +63,9 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido</span></a></li>
+
     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -72,7 +76,7 @@
   <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
+        <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
         <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
@@ -114,13 +118,15 @@
  <div id="titulo">
  <h1>Nuevo Pedido</h1> 
  </div>
- 
+
+
  <!--
 <div class="accordion" id="collapse-group">
-  
-        
+
+
          <div class="accordion-group widget-box">
-           
+
+
             <div class="accordion-heading">
               <div class="widget-title"> <a data-parent="#collapse-group" href="#1" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
                 <h4>AYUDA</h4>
@@ -134,7 +140,7 @@
  <!--
             </div>
           </div>
-        </div> 
+
 </div>-->
 <div class="container-fluid">
 
@@ -149,12 +155,14 @@
               <div class="widget-content"> <img src="bootstrap/img/ayuda.gif"> </div>
             </div>
           </div>
-          
+
+
         </div>
- 
+
  <!--Action boxes-->
 
- 
+
+
 
  <div class="row-fluid">
       <div class="span3">
@@ -165,33 +173,37 @@
 
          <div class="widget-content nopadding">
             <form action="#" method="post" id="formCliente" class="form-horizontal">
-            	
+
+
               <div class="control-group">
-             			
-              <label for="txtDniCliente" class="sr-only">Dni </label>
-              <div class="controls">
-              <input type="text" id="txtDniCliente" name="txtDniCliente" class="span11" placeholder="Dni" />
+              <div style="margin:10px;">
+              	<label for="txtDniCliente" class="sr-only">Dni </label>
+              	<input type="text" id="txtDniCliente" name="txtDniCliente" class="form-control" placeholder="Dni" />
+
               </div>
 
             </div>
             <div class="control-group">
             	<div style="margin:10px;">
-              	<label for="txtNombreCliente" class="sr-only">Nombre </label>
-                <input type="text" id="txtNombreCliente" name="txtNombreCliente" class="form-control" placeholder="Nombre" />
+
+              		<label for="txtNombreCliente" class="sr-only">Nombre </label>
+                	<input type="text" id="txtNombreCliente" name="txtNombreCliente" class="form-control" placeholder="Nombre" />
+              	</div>
               </div>
-            </div>
+
             <div class="control-group">
             	<div style="margin:10px;">
               	<label for="txtApellidoCliente" class="sr-only">Apellido </label>
                 <input type="text" id="txtApellidoCliente" name="txtApellidoCliente" class="form-control" placeholder="Apellido" />
               </div>
             </div>
-            
 
+
+		</div>
           </form>
           </div>
         </div>
-      </div>
+
 
        <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual"); %>
       <div class="span6">
@@ -254,6 +266,13 @@
             </div>
 
 
+            <input type="hidden" name="coordenadas" value="">
+            <input type="hidden" name="direccion" id="direccion" value="">
+            <input type="hidden" name="distancia" id="distancia" value="">
+            <input type="hidden" name="fecha" id="fecha" value="">
+            <input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa" value="">
+
+
 	 <button class="btn btn-lg btn-primary " type="submit">Guardar</button>
 
              <a class="btn btn-danger" href="BorrarClientePedido">Borrar</a>
@@ -262,6 +281,7 @@
           </div>
         </div>
       </div>
+
     <%Pedido pedido= (Pedido)session.getAttribute("pedido");
 	if(pedido!=null){
 	%>
@@ -286,6 +306,7 @@
                   <th>BORRAR</th>
                 </tr>
               </thead>
+
 
              <tbody>
 
@@ -314,8 +335,10 @@
           </table>
           </div>
           <div class="row" style="float: right;">
-		<a class="btn btn-danger" href="pedido/borrarPedido">BORRAR PEDIDO</a>
-		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
+
+		<a class="btn btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
+		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido" onclick="localStorage.clear();">CONFIRMAR PEDIDO</a>
+
 	</div>
 	<%} %>
 
@@ -420,6 +443,8 @@
 </div>
 
 <!--end-Footer-part-->
+
+<script src="scripts/juance.js"></script>
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>
