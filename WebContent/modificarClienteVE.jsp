@@ -62,7 +62,7 @@
 })(document);
 </script>
 </head>
-<body>
+<body onload="cambiarHREF()">
 
 <%   Empleado userSession = (Empleado)session.getAttribute("userSession");
 		if(userSession == null || !(userSession.getTipo().equals("VE"))){
@@ -104,7 +104,7 @@
   <li><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
+        <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
 <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
 <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
 
@@ -240,6 +240,7 @@
 </div>
 
 <!--end-Footer-part-->
+<script src="scripts/juance.js"></script>
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>
