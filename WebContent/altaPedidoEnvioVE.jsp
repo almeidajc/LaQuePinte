@@ -381,9 +381,12 @@ function cancelarFecha(){
 <body onload="localStorage.clear();">
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
+String nombre="";
             if(userSession == null || !(userSession.getTipo().equals("VE"))){
             	response.sendRedirect("error405.jsp"); }
-            	 String tipo_em = userSession.getTipo();%>
+              else{nombre=userSession.getNombre();}
+            	 String tipo_em = userSession.getTipo();
+               %>
 
   <!--Header-part-->
   <div id="header">
@@ -395,7 +398,7 @@ function cancelarFecha(){
   <!--top-Header-menu-->
   <div id="user-nav" class="navbar navbar-inverse">
     <ul class="nav">
-
+       <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
        <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
     </ul>
   </div>
@@ -409,7 +412,7 @@ function cancelarFecha(){
         <ul>
           <li class="active"><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
           <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-          <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>          
+          <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
 
         </ul>
       </li>
