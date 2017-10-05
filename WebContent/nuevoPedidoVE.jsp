@@ -265,14 +265,7 @@
               </div>
             </div>
 
-
-            <input type="hidden" name="coordenadas" value="">
-            <input type="hidden" name="direccion" id="direccion" value="">
-            <input type="hidden" name="distancia" id="distancia" value="">
-            <input type="hidden" name="fecha" id="fecha" value="">
-            <input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa" value="">
-
-
+            
 	 <button class="btn btn-lg btn-primary " type="submit">Guardar</button>
 
              <a class="btn btn-danger" href="BorrarClientePedido">Borrar</a>
@@ -335,11 +328,26 @@
           </table>
           </div>
           <div class="row" style="float: right;">
+          
+            </div>
+		<div class="row" style="float: right;">	
+			<form action="pedido/confirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
+			
+		 	<input type="hidden" name="coordenadas" value="">
+      		<input type="hidden" name="direccion" id="direccion" value="">
+            <input type="hidden" name="distancia" id="distancia" value="">
+            <input type="hidden" name="fecha" id="fecha" value="">
+            <input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa" value="">
+            
+            		
+		 	<button class="btn btn-lg btn-primary " type="submit" onclick="localStorage.clear();">CONFIRMAR PEDIDO</button>
+			<a class="btn btn-lg btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
 
-		<a class="btn btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
-		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido" onclick="localStorage.clear();">CONFIRMAR PEDIDO</a>
+           </form>
+		
+		</div>
 
-	</div>
+	
 	<%} %>
 
         </div>
