@@ -1,6 +1,7 @@
 package ui.pedido;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,10 +39,27 @@ public class ConfirmarPedido extends HttpServlet {
 			} else {
 				Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
 				Cliente cliente = (Cliente)request.getSession().getAttribute("clientePedidoActual");
+				
 				if(cliente==null||cliente.getDni()==0){
 					throw new ApplicationException("Para confirmar el pedido debe seleccionar y guardar un cliente", null);
 				} else {
 					CtrlPedido ctrlPedido = new CtrlPedido();
+					//leo los datos provenientes de ubicacion
+					
+					String direccion = request.getParameter("direccion");
+					String fecha_teorica = ((String)request.getParameter("fecha")).trim();
+					int distancia = Integer.parseInt(request.getParameter("distancia"));
+					String coordenadas = request.getParameter("coordenadas");
+					String EsZonaPeligrosa = request.getParameter("zonaPeligrosa");
+					
+					//seteo pedido
+					
+					pedido.setDireccion_envio(direccion);
+					pedido.setFecha_entrega(fecha_teorica);
+					pedido.setDistancia(distancia);
+					pedido.setCoordenadas(coordenadas);
+					pedido.setEsZonaPeligrosa(EsZonaPeligrosa);					
+					
 					ctrlPedido.confirmarPedido(pedido,cliente);
 					request.getSession().removeAttribute("pedido");
 					request.setAttribute("mensajeConfirmacion", "El pedido ha sido registrado con éxito. ");

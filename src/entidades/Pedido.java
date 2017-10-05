@@ -15,8 +15,10 @@ public class Pedido {
 	
 	private int id_pedido;
 	private Date fecha_emision;
-	private Date fecha_entrega;
+	private String fecha_entrega;
+	private int distancia;
 	private Date fecha_efectiva;
+	private String EsZonaPeligrosa;
 	private double total;
 	private FormaPago formapago;
 	private double recarga_actual;
@@ -44,6 +46,14 @@ public class Pedido {
 	}
 
 
+	public String getEsZonaPeligrosa() {
+		return EsZonaPeligrosa;
+	}
+	public void setEsZonaPeligrosa(String esZonaPeligrosa) {
+		EsZonaPeligrosa = esZonaPeligrosa;
+	}
+
+
 	private String apellido;
 	
 	public String getEstado() {
@@ -55,6 +65,13 @@ public class Pedido {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	
+	public int getDistancia() {
+		return distancia;
+	}
+	public void setDistancia(int distancia) {
+		this.distancia = distancia;
 	}
 
 
@@ -95,8 +112,8 @@ public class Pedido {
 	public Date getFecha_entrega() {
 		return fecha_entrega;
 	}
-	public void setFecha_entrega(Date fecha_entrega) {
-		this.fecha_entrega = fecha_entrega;
+	public void setFecha_entrega(String fecha_teorica) {
+		this.fecha_entrega = fecha_teorica;
 	}
 	public Date getFecha_efectiva() {
 		return fecha_efectiva;
