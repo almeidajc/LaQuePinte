@@ -51,7 +51,7 @@ public class GuardarClientePedido extends HttpServlet {
 		C.setDireccion(request.getParameter("guardarDireccion"));
 		
 		request.getSession().setAttribute("clientePedidoActual", C);	
-		response.sendRedirect("nuevoPedidoVE-SIN-LOGIN.jsp");
+		response.sendRedirect("nuevoPedidoVE.jsp");
 	}
 
 }

@@ -33,7 +33,9 @@
 <script src="js/cliente.js"></script>
 
 </head>
+
 <body onload="altaPedido()">
+
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
             if(userSession == null || !(userSession.getTipo().equals("VE"))){
             	response.sendRedirect("error405.jsp"); }%>
@@ -61,9 +63,9 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido</span></a></li>
-    <li class=""><a title="" href="micuenta.jsp"><i class="icon icon-th-list"></i> <span class="text">Mi cuenta</span></a></li>
-    <li class=""><a title="" href="ajustes.jsp"><i class="icon icon-cog"></i> <span class="text">Ajustes</span></a></li>
-     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+
+    <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -114,14 +116,16 @@
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Pedido</h1>
+ <h1>Nuevo Pedido</h1> 
  </div>
+
 
  <!--
 <div class="accordion" id="collapse-group">
 
 
          <div class="accordion-group widget-box">
+
 
             <div class="accordion-heading">
               <div class="widget-title"> <a data-parent="#collapse-group" href="#1" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
@@ -136,7 +140,7 @@
  <!--
             </div>
           </div>
-        </div>
+
 </div>-->
 <div class="container-fluid">
 
@@ -152,9 +156,11 @@
             </div>
           </div>
 
+
         </div>
 
  <!--Action boxes-->
+
 
 
 
@@ -168,15 +174,18 @@
          <div class="widget-content nopadding">
             <form action="#" method="post" id="formCliente" class="form-horizontal">
 
+
               <div class="control-group">
               <div style="margin:10px;">
               	<label for="txtDniCliente" class="sr-only">Dni </label>
               	<input type="text" id="txtDniCliente" name="txtDniCliente" class="form-control" placeholder="Dni" />
+
               </div>
 
             </div>
             <div class="control-group">
             	<div style="margin:10px;">
+
               		<label for="txtNombreCliente" class="sr-only">Nombre </label>
                 	<input type="text" id="txtNombreCliente" name="txtNombreCliente" class="form-control" placeholder="Nombre" />
               	</div>
@@ -189,10 +198,12 @@
               </div>
             </div>
 
+
 		</div>
           </form>
           </div>
         </div>
+
 
        <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual"); %>
       <div class="span6">
@@ -254,11 +265,13 @@
               </div>
             </div>
 
+
             <input type="hidden" name="coordenadas" value="">
             <input type="hidden" name="direccion" id="direccion" value="">
             <input type="hidden" name="distancia" id="distancia" value="">
             <input type="hidden" name="fecha" id="fecha" value="">
             <input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa" value="">
+
 
 	 <button class="btn btn-lg btn-primary " type="submit">Guardar</button>
 
@@ -268,13 +281,8 @@
           </div>
         </div>
       </div>
-            <%
-	if(cliente!=null){
-	%><h5>se gaurdo</h5>
-      <%} %>
 
-
-  <%Pedido pedido= (Pedido)session.getAttribute("pedido");
+    <%Pedido pedido= (Pedido)session.getAttribute("pedido");
 	if(pedido!=null){
 	%>
 
@@ -298,6 +306,7 @@
                   <th>BORRAR</th>
                 </tr>
               </thead>
+
 
              <tbody>
 
@@ -326,8 +335,10 @@
           </table>
           </div>
           <div class="row" style="float: right;">
+
 		<a class="btn btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
 		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido" onclick="localStorage.clear();">CONFIRMAR PEDIDO</a>
+
 	</div>
 	<%} %>
 
