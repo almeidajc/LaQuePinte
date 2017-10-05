@@ -77,7 +77,7 @@ public class PedidoActual extends HttpServlet {
 						items.add(new LineaDetallePedido(producto,cantidad));
 						pedido.setLineasDetallePedido(items);
 						request.getSession().setAttribute("pedido", pedido);
-						response.sendRedirect("nuevoPedidoVE-SIN-LOGIN.jsp");
+						response.sendRedirect("nuevoPedidoVE.jsp");
 					} else{
 						throw new ApplicationException("No hay stock suficiente para esa cantidad", null);
 					}
@@ -91,13 +91,13 @@ public class PedidoActual extends HttpServlet {
 			if(!esEntero(request.getParameter("txtCod"))) msj+="El código de producto debe ser un número entero. \n";
 			if(!esEntero(request.getParameter("txtCantidad"))) msj+="La cantidad debe ser un número entero. \n";
 			request.setAttribute("mensaje", msj);
-			request.getRequestDispatcher("nuevoPedidoVE-SIN-LOGIN.jsp").forward(request, response);
+			request.getRequestDispatcher("nuevoPedidoVE.jsp").forward(request, response);
 		} catch (NullPointerException e) {
 			request.setAttribute("mensaje", "No se encontro producto con el código ingresado");
-			request.getRequestDispatcher("nuevoPedidoVE-SIN-LOGIN.jsp").forward(request, response);
+			request.getRequestDispatcher("nuevoPedidoVE.jsp").forward(request, response);
 		} catch (ApplicationException e){
 			request.setAttribute("mensaje", e.getMessage());
-			request.getRequestDispatcher("nuevoPedidoVE-SIN-LOGIN.jsp").forward(request, response);
+			request.getRequestDispatcher("nuevoPedidoVE.jsp").forward(request, response);
 		}
 		
 	}

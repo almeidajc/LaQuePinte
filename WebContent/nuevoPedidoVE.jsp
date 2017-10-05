@@ -4,13 +4,18 @@
     <%@page import="entidades.Empleado"%>
     <%@page import="entidades.Pedido"%>
     <%@page import="entidades.Producto"%>
+    <%@page import="entidades.Cliente"%>
     <%@page import="negocio.CtrlPedido"%>
     <%@page import="java.util.ArrayList"%>
     <%@page import="entidades.LineaDetallePedido"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+
+<title>Materiales::de::Construccion</title>
+
+
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -22,18 +27,22 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
- <script src="js/jquery-1.12.3.min.js"></script>
- <script src="js/pedido.js"></script>
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/pedido.js"></script>
+<script src="js/cliente.js"></script>
+
 </head>
 <body>
-
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
             if(userSession == null || !(userSession.getTipo().equals("VE"))){
             	response.sendRedirect("error405.jsp"); }%>
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
+
+  <h1><a href="dashboard.html">Materiales de Construccion</a></h1>
+
 </div>
 <!--close-Header-part-->
 
@@ -51,10 +60,8 @@
         <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
-
-
-     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido</span></a></li>
+    <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -78,7 +85,18 @@
         <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
-    
+
+
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicacion</span> </a>
+      <ul>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicacion</a></li>
+        <li><a href="#">Modificar Ubicacion</a></li>
+        <li><a href="#">Eliminar Ubicacion</a></li>
+        <li><a href="#">Consultar Ubicacion</a></li>
+
+      </ul>
+    </li>
+
   </ul>
 </div>
 <!--sidebar-menu-->
@@ -94,74 +112,182 @@
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Pedido</h1>
+ <h1>Nuevo Pedido</h1> 
  </div>
-  <div class="container-fluid"><hr>
+ 
+ <!--
+<div class="accordion" id="collapse-group">
+  
+        
+         <div class="accordion-group widget-box">
+           
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#1" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
+                <h4>AYUDA</h4>
+            </div>
+            <div class="collapse accordion-body" id="1">
 
-  <div class="col-sm-6">
-   <form action="CrearPedido" method="post" id="formItem">
-                <label for="txtDescripcion" class="sr-only">Producto</label>
-                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripci�n" autofocus="autofocus">
-                <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
+<img src="bootstrap/img/ayuda.gif">
+<!--<img src="${pageContext.request.contextPath}/bootstrap/img/ayuda.gif"/>
+<img src="${pageContext.request.contextPath}/ayuda.gif"/>
+<img src="ayuda.gif"/> -->
+ <!--
+            </div>
+          </div>
+        </div> 
+</div>-->
+<div class="container-fluid">
 
-                <label for="txtCod" class="sr-only">C�digo</label>
-                <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="C�digo">
-                <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
+ <div class="accordion" id="collapse-group">
+          <div class="accordion-group widget-box">
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
+                <h5>AYUDA</h5>
+                </a> </div>
+            </div>
+            <div class="collapse accordion-body" id="collapseGThree">
+              <div class="widget-content"> <img src="bootstrap/img/ayuda.gif"> </div>
+            </div>
+          </div>
+          
+        </div>
+ 
+ <!--Action boxes-->
 
-                <label for="txtCantidad" class="sr-only">Producto</label>
-                <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" placeholder="Cantidad">
-                <label for="txtCantidad" id="errorCantidad" style="color:#FF0004"></label>
+ 
 
-                <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
-   </form>
+ <div class="row-fluid">
+      <div class="span3">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
+            <h5>BUSQUEDA CLIENTE</h5>
+          </div>
 
-   <%
-      			String mensaje=(String)request.getAttribute("mensaje");
-        		if(mensaje!=null){
-      		%>
-      			<div class="alert alert-danger" role="alert">
-        			<strong>Error!</strong> <%=mensaje %>
-      			</div>
-      		<%
-        		}
-      		%>
-    </div>
+         <div class="widget-content nopadding">
+            <form action="#" method="post" id="formCliente" class="form-horizontal">
+            	
+              <div class="control-group">
+             			
+              <label for="txtDniCliente" class="sr-only">Dni </label>
+              <div class="controls">
+              <input type="text" id="txtDniCliente" name="txtDniCliente" class="span11" placeholder="Dni" />
+              </div>
 
-    <div class="col-sm-6">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>C�digo</th>
-						<th>Descripcion</th>
-						<th>Precio</th>
-					</tr>
-				</thead>
-				<tbody id="cuerpo">
-					<tr>
-						<td colspan="3"><h2>Comience a escribir para obtener los productos</h2></td>
-					</tr>
-				</tbody>
-			</table>
-	</div>
+            </div>
+            <div class="control-group">
+            	<div style="margin:10px;">
+              	<label for="txtNombreCliente" class="sr-only">Nombre </label>
+                <input type="text" id="txtNombreCliente" name="txtNombreCliente" class="form-control" placeholder="Nombre" />
+              </div>
+            </div>
+            <div class="control-group">
+            	<div style="margin:10px;">
+              	<label for="txtApellidoCliente" class="sr-only">Apellido </label>
+                <input type="text" id="txtApellidoCliente" name="txtApellidoCliente" class="form-control" placeholder="Apellido" />
+              </div>
+            </div>
+            
 
-	<%Pedido pedido= (Pedido)session.getAttribute("pedido");
+          </form>
+          </div>
+        </div>
+      </div>
+
+       <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual"); %>
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-list"></i> </span>
+            <h5>CLIENTES</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Dni</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Direccion</th>
+
+
+                </tr>
+              </thead>
+             <tbody id="cuerpoCliente" name="cuerpoCliente">
+               <tr>
+						<td colspan="4"><h5>Comience a escribir para obtener los clientes</h5></td>
+			   </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+  <!--    ___-->
+
+
+       <div class="span3">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
+            <h5>CLIENTE ACTUAL</h5>
+          </div>
+
+         <div class="widget-content nopadding">
+            <form action="GuardarClientePedido" method="post" id="formguardarClientePedido" class="form-horizontal">
+            <div class="control-group">
+              <div style="margin:10px;">
+              <label for="guardarDni" class="sr-only">DNI :</label>
+                <input type="text" id="guardarDni" name="guardarDni"  <%if(cliente!=null){%>value="<%=cliente.getDni()%>"<%}%> class="form-control" placeholder="DNI" />
+              </div>
+            </div>
+
+
+            <div class="control-group">
+              <div style="margin:10px;">
+              <label for="guardarNombre" class="sr-only">Nombre :</label>
+                <input type="text" id="guardarNombre" name="guardarNombre"  <%if(cliente!=null){%>value="<%=cliente.getNombre() %>"<%}%> class="form-control" placeholder="Nombre" />
+              </div>
+            </div>
+           <div class="control-group">
+             <div style="margin:10px;">
+              <label for="guardarApellido" class="sr-only">Apellido :</label>
+                <input type="text" id="guardarApellido" name="guardarApellido" <%if(cliente!=null){%>value="<%=cliente.getApellido()%>"<%}%> class="form-control" placeholder="Nombre" />
+              </div>
+            </div>
+
+
+	 <button class="btn btn-lg btn-primary " type="submit">Guardar</button>
+
+             <a class="btn btn-danger" href="BorrarClientePedido">Borrar</a>
+
+          </form>
+          </div>
+        </div>
+      </div>
+    <%Pedido pedido= (Pedido)session.getAttribute("pedido");
 	if(pedido!=null){
 	%>
-	<div class="row" style="text-align: center;">
-		<h1>SU PEDIDO</h1>
-		<table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>C�digo</th>
-                <th>Descripci�n</th>
-                <th>Precio Unitario</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
-                <th>Borrar</th>
-              </tr>
-            </thead>
-            <tbody>
+
+
+    <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+            <h5>NUEVO PEDIDO</h5>
+
+             </div>
+
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ID PRODUCTO</th>
+                  <th>DESCRIPCION</th>
+                  <th>PRECIO UNITARIO</th>
+                  <th>CANTIDAD</th>
+                  <th>SUBTOTAL</th>
+                  <th>BORRAR</th>
+                </tr>
+              </thead>
+
+             <tbody>
 
             <%int i=1;
             float total=0;
@@ -181,23 +307,108 @@
             	total+=subtotal;
             }%>
             <tr>
-                <td style="text-align: right;" colspan="5"><h4>IMPORTE TOTAL DEL PEDIDO</h4></td>
-                <td><h4><%=total %></h4></td>
+                <td style="text-align: right;" colspan="5"><h5>IMPORTE TOTAL DEL PEDIDO</h5></td>
+                <td><h5><%=total %></h5></td>
               </tr>
             </tbody>
           </table>
-	</div>
-	<div class="row" style="float: right;">
+          </div>
+          <div class="row" style="float: right;">
 		<a class="btn btn-danger" href="pedido/borrarPedido">BORRAR PEDIDO</a>
 		<a class="btn btn-primary btn-lg" href="pedido/confirmarPedido">CONFIRMAR PEDIDO</a>
 	</div>
 	<%} %>
 
+        </div>
+
 
 <!--End-Action boxes-->
 
+
+
+
+      <div class="row-fluid">
+      <div class="span3">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
+            <h5>BUSQUEDA PRODUCTOS</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form action="PedidoActual" method="post" id="formItem" class="form-horizontal">
+              <div style="margin:10px;">
+                <label for="txtDescripcion" class="sr-only">Producto</label>
+                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion" autofocus="autofocus">
+                <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
+              </div>
+                <div style="margin:10px;">
+                  <label for="txtCod" class="sr-only">Codigo</label>
+                  <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Codigo">
+                    <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
+                </div>
+
+
+                <div style="margin:10px;">
+                  <label for="txtCantidad" class="sr-only">Producto</label>
+                  <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" placeholder="Cantidad">
+                    <label for="txtCantidad" id="errorCantidad" style="color:#FF0004"></label>
+                </div>
+
+                <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
+  				 </form>
+
+   <%
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+      		%>
+      			<div class="alert alert-danger" role="alert">
+        			<strong>Error!</strong> <%=mensaje %>
+      			</div>
+      		<%
+        		}
+
+      		%>
+          </div>
+        </div>
+      </div>
+      <div class="span7">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-shopping-cart"></i> </span>
+            <h5>PRODUCTOS</h5>
+          </div>
+        <div class="widget-content nopadding">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                 		<th>Codigo</th>
+
+						<th>Descripcion</th>
+						<th>Precio</th>
+					</tr>
+				</thead>
+				<tbody id="cuerpo">
+					<tr>
+						<td colspan="3"><h5>Comience a escribir para obtener los productos</h5></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+	</div>
+
+
+
+<!--End-Action boxes-->
+
+   </div>
+   </div>
+
+  </div>
   </div>
 </div>
+</div>
+</div>
+</div>
+
+
 
 <!--end-main-container-part-->
 
@@ -258,4 +469,5 @@ function resetMenu() {
 }
 </script>
 </body>
+
 </html>

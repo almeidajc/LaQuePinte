@@ -37,12 +37,12 @@ public class BorrarLinea extends HttpServlet {
 				Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
 				pedido.getLineasDetallePedido().remove(nro-1);
 				request.getSession().setAttribute("pedido", pedido);
-				response.sendRedirect("../nuevoPedidoVE-SIN-LOGIN.jsp");
+				response.sendRedirect("../nuevoPedidoVE.jsp");
 			}
 			
 		} catch (ApplicationException e) {
 			request.setAttribute("mensajeError", e.getMessage());
-			request.getRequestDispatcher("nuevoPedidoVE-SIN-LOGIN.jsp").forward(request, response);
+			request.getRequestDispatcher("nuevoPedidoVE.jsp").forward(request, response);
 		}
 	}
 

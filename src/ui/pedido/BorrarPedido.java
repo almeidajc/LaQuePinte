@@ -27,7 +27,7 @@ public class BorrarPedido extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().removeAttribute("pedido");
-		response.sendRedirect("../nuevoPedidoVE-SIN-LOGIN.jsp");
+		response.sendRedirect("../nuevoPedidoVE.jsp");
 	}
 
 	/**

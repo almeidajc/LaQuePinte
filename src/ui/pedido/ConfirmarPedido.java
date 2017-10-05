@@ -45,12 +45,12 @@ public class ConfirmarPedido extends HttpServlet {
 					ctrlPedido.confirmarPedido(pedido,cliente);
 					request.getSession().removeAttribute("pedido");
 					request.setAttribute("mensajeConfirmacion", "El pedido ha sido registrado con éxito. ");
-					request.getRequestDispatcher("nuevoPedidoVE-SIN-LOGIN.jsp").forward(request, response);
+					request.getRequestDispatcher("nuevoPedidoVE.jsp").forward(request, response);
 				}	
 			}
 		} catch (ApplicationException e) {
 			request.setAttribute("mensajeError", e.getMessage());
-			request.getRequestDispatcher("nuevoPedidoVE-SIN-LOGIN.jsp").forward(request, response);
+			request.getRequestDispatcher("nuevoPedidoVE.jsp").forward(request, response);
 		}
 	}
 
