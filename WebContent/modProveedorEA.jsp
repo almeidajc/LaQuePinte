@@ -152,8 +152,9 @@
               <label class="control-label">Razon Social :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="razon_soc"  value=" <%= razon_soc %>" id="razon_soc" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
-                <div id="emailText"></div>
+                <input type="text" class="span11" name="razon_soc"  value=" <%= razon_soc %>" name="razon_soc" id="razon_soc" onchange="validaRazon(this.value)"/>
+              	<a href="#" title="Ingrese la raz�n social del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+              	<div id="razon"></div>
                </div>
 
             </div>
@@ -161,8 +162,9 @@
               <label class="control-label">Telefono</label>
               <div class="controls">
 
-                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
-                <div id="telef"></div>
+                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="email" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                 <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+              	<div id="emailText"></div>
 
               </div>
             </div>
@@ -170,8 +172,9 @@
               <label class="control-label">Email :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="email"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
-                <div id="emailText"></div>
+                <input type="text" class="span11" name="email"  value=" <%= email %>" name="email" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                 <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+              	<div id="emailText"></div>
 
               </div>
             </div>
@@ -180,8 +183,9 @@
               <label class="control-label">Direccion :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="direccion"  value=" <%= direccion %>" id="direccion" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
-                <div id="direccionText"></div>
+                <input type="text" class="span11" name="direccion"  value=" <%= direccion %>" name="direccion" id="direccion" onchange="validaDirec(this.value)" />
+              	<a href="#" title="Ingrese la direcci�n del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+              	<div id="direc"></div>
 
 
                 </div>
@@ -212,6 +216,8 @@
 </div>
 
 <!--end-Footer-part-->
+
+<script src="scripts/juance.js"></script>
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>

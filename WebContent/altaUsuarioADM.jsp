@@ -156,7 +156,7 @@
               <label class="control-label">Telefono</label>
               <div class="controls">
                  <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
-              <div id="telef"></div>
+              	<div id="telef"></div>
                  <a href="#" title="Ingrese el número de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               </div>
             </div>
@@ -248,7 +248,7 @@
 <!--end-Footer-part-->
 
 <%-- juance's jc --%>
-<script src="juance.js"></script>
+<script src="scripts/juance.js"></script>
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>

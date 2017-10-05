@@ -156,29 +156,34 @@
             <div class="control-group">
               <label class="control-label">Raz�n social :</label>
               <div class="controls">
-                <input type="text" class="span11" placeholder="Razon social proveedor" name="razon_soc" id="razon_soc"/>
+                <input type="text" class="span11" placeholder="Razon social proveedor" name="razon_soc" id="razon_soc" onchange="validaRazon(this.value)"/>
               	<a href="#" title="Ingrese la raz�n social del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+              	<div id="razon"></div>
               </div>
+             </div>
 
             <div class="control-group">
               <label class="control-label">CUIT :</label>
               <div class="controls">
-               <input type="text" class="span11" placeholder="Cuit provedor" name="cuit" id="cuit"/>
-               <a href="#" title="Ingrese el CUIT del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+	               <input type="text" class="span11" placeholder="Cuit provedor" name="cuit" id="cuit" onchange="validaCUIT(this.value)"/>
+	               <a href="#" title="Ingrese el CUIT del nuevo proveedor solamente los numeros" class="tip-right"><i class="icon-question-sign"> </a></i>
+	               <div id="cuitErro"></div>
                </div>
-               </div>
+             </div>
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
-                <a href="#" title="Ingrese el tel�fono del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+                 <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
+              	<a href="#" title="Ingrese el n�mero de telefono del nuevo Proveedor" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+              	<div id="telef"></div>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" class="span11" name="email" id="email" placeholder="Nombre de email" />
-                <a href="#" title="Ingrese la direcci�n de email del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+                <input type="text" class="span11" name="email" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                 <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+              	<div id="emailText"></div>
               </div>
             </div>
 
@@ -186,8 +191,9 @@
             <div class="control-group">
               <label class="control-label">Direcci�n</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Direccion proveedor" name="direccion" id="direccion" />
+                <input type="text"  class="span11" placeholder="Direccion proveedor" name="direccion" id="direccion" onchange="validaDirec(this.value)" />
               	<a href="#" title="Ingrese la direcci�n del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+              	<div id="direc"></div>
               </div>
               </div>
               <div class="widget-content nopadding">
@@ -217,6 +223,7 @@
 </div>
 
 <!--end-Footer-part-->
+<script src="scripts/juance.js"></script>
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>

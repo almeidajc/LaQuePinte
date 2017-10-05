@@ -148,8 +148,9 @@
               <label class="control-label">Telefono</label>
               <div class="controls">
 
-                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
-                <div id="telef"></div>
+                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
+               <a href="#" title="Ingrese el n�mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+              <div id="telef"></div>
 
               </div>
             </div>
@@ -157,8 +158,9 @@
               <label class="control-label">Email :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="email"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
-                <div id="emailText"></div>
+                <input type="text" class="span11" name="email"  value=" <%= email %>" onchange="validarEmail(this.value)" />
+             	<a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+             	<div id="emailText"></div>
 
               </div>
             </div>
@@ -166,18 +168,19 @@
               <div class="widget-content nopadding">
 
                 <div class="control-group">
-                  <label class="control-label">Password</label>
+                  <label class="control-label">Contrase&ntilde;a</label>
                   <div class="controls">
 
-                    <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contraseña"  onchange="validaPass(this.value)" required >
-	                <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
+                    <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" id="pwd" name="pwd" class="form-control" placeholder="Contrase&ntilde;a" onchange="validaPass(this.value)" required>
+            		<a href="#" title="La contrase&ntilde;a la decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+            		<label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
 
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label">Confirm password</label>
+                  <label class="control-label">Confirmar contrase&ntilde;ad</label>
                   <div class="controls">
-                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseña" onchange="validaPass2(this.value)" required>
+                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseña" onchange="validaPass22(this.value)" required>
             		<label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                   <% int idem=Integer.parseInt(request.getParameter("id_empleado")); %>
@@ -208,6 +211,7 @@
 </div>
 
 <!--end-Footer-part-->
+<script src="scripts/juance.js"></script>
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>
