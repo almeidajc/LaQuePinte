@@ -214,10 +214,13 @@
               <label class="control-label">Rol del empleado</label>
               <div class="controls">
 
+
                 <select id="rol" name="rol" required>
                   <option value="CA">Camionero</option>
+
                   <option value="VE">Vendedor</option>
                   <option value="DE">Despachante</option>
+                  <option value="CA">Camionero</option>
 
                 </select>
               </div>
