@@ -143,7 +143,7 @@
                   <label class="control-label">Password</label>
                   <div class="controls">
 
-	                  <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="ContraseÃ±a"  onchange="validaPass(this.value)" required >
+	                  <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contraseña"  onchange="validaPass(this.value)" required >
 	                  <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
 
                   </div>

@@ -65,8 +65,9 @@
         <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
+     <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
     
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+    <li class="submenu"> <a href=""><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
         <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
@@ -102,12 +103,14 @@
          
         <li class="bg_lg span8"> <a href="crearpedido.jsp"> <i class="icon-shopping-cart"></i> Pedido a retirar en mostrador</a> </li>
         
-        <li class="bg_ly span8"> <a href="altaPedidoEnvioVE.jsp"> <i class="icon-truck"></i> Pedido a enviar</a> </li>
+        <li class="bg_ls span8"> <a href="altaPedidoEnvioVE.jsp"> <i class="icon-truck"></i> Pedido a enviar</a> </li>
+        
+        <li class="bg_ly span8"> <a href="consultaProductoVE.jsp"> <i class="icon-barcode"></i> Consultar Productos</a> </li>
      
         
         <li class="bg_lo span8"> <a href="altacliente.jsp"> <i class="icon-user"></i> Cliente</a> </li>
       
-        <li class="bg_lb span8"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Zona Peligrosa</a> </li>
+        
         
 
       </ul>

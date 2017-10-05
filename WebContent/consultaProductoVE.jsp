@@ -1,13 +1,14 @@
+<%@page import="java.text.NumberFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@page import="entidades.EncargadoAdministracion"%>
-    <%@page import="entidades.Empleado"%>
-    <%@page import="entidades.Material"%>
-    <%@page import="negocio.CtrlMaterial"%>
+    pageEncoding="UTF-8"%>
+     <%@page import="entidades.Producto"%>
+     <%@page import="negocio.CtrlProducto"%>
+     <%@page import="entidades.Vendedor"%>
+      <%@page import="entidades.Empleado"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci&oacute;n</title>
+<title>Materiales::de::Construcción</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -18,18 +19,84 @@
 <link rel="stylesheet" href="bootstrap/css/matrix-media.css" />
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
+
+
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+(function(document) {
+  'use strict';
+
+  var LightTableFilter = (function(Arr) {
+
+    var _input;
+
+    function _onInputEvent(e) {
+      _input = e.target;
+      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+      Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+      });
+    }
+
+    function _filter(row) {
+      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+
+    return {
+      init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+      }
+    };
+  })(Array.prototype);
+
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+      LightTableFilter.init();
+    }
+  });
+
+})(document);
+</script>
+
+<style type="text/css">
+
+}
+tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+.input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
+
+	</style>
+
+
+
 </head>
 <body>
-
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
-           if(userSession == null || !(userSession.getTipo().equals("EA"))){
+           if(userSession == null || !(userSession.getTipo().equals("VE"))){
           	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();} %>
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -61,10 +128,10 @@
 
     <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li class="active"><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
         <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
         <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
-        <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
+        <li class="active"><a href="consultarProductoEA.jsp">Consultar Producto</a></li>
       </ul>
     </li>
 
@@ -99,19 +166,18 @@
 
 
 
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
+    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
-
-        <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
-        <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
+        <li><a href="#">Modificar Ubicación</a></li>
+        <li><a href="#">Eliminar Ubicación</a></li>
+        <li><a href="#">Consultar Ubicación</a></li>
       </ul>
     </li>
 
 
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
 <li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
-
   </ul>
 </div>
 <!-- sidebar-menu-->
@@ -121,110 +187,75 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Producto</a></div>
+    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Producto</a></div>
 
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Producto</h1>
+ <h1>Consultar Producto</h1><hr>
  </div>
-  <div class="container-fluid"><hr>
-
-
-
+  <div class="container-fluid">
      <div class="row-fluid">
-      <div class="span6"> <!-- TAMA�O FORMULARIOS -->
-      <%
-      			String mensaje=(String)request.getAttribute("mensaje");
-        		if(mensaje!=null){
-      		%>
-      		<div class="alert alert-success">
-   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> .
-  			</div>
+      <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
 
 
-      		<%
-        		}
+     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
-      		%>
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-            <h5>Ingresar los valores: </h5>
-          </div>
-          <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="AltaProducto" >
-
-              <div class="control-group">
-                <label class="control-label">Nombre Producto</label>
-                <div class="controls">
-                  <input type="text" name="nombre_producto" id="nombre_producto" required autofocus class="form-control">
-                <a href="#" title="Ingrese los datos en el siguiente orden: Tipo de producto + [Material del producto] + [medida del producto] + [especificaci�n extra] + [marca]. (Los items entre [] s�lo ingresarlos cuando corresponda )" class="tip-top"><i class="icon-question-sign"> </a></i>
-                </div>
-              </div>
-              <div class="control-group">
-              <label class="control-label">Tipo Material</label>
 
 
-
-              <div class="controls">
-                <select name="material" id="material">
-                  <option selected >Seleccionar...</option>
-
-                          <%
-    		CtrlMaterial ctrl = new CtrlMaterial();
+          <div class="widget-content nopadding" id="tb_content">
+            <table class="order-table table" class="table table-hover">
+    <thead>
+      <tr >
 
 
-	for (int indice = 0; indice < ctrl.listarMateriales().size(); indice++){
+        <th><h5 style="text-align:center; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:center; ">PRECIO</h5></th>
+        <th><h5 style="text-align:center; ">STOCK DISPONIBLE</h5></th>
+        <th><h5 style="text-align:center; ">STOCK MIN</h5></th>
+        <th><h5 style="text-align:center; ">STOCK MAX</h5></th>
+        <th><h5 style="text-align:center; ">MATERIAL</h5></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+<%
+
+    		CtrlProducto ctrl = new CtrlProducto();
+
+
+    		//PUEDO HACER TMB
+			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+			// habitacios = ctrl.Listar();
+
+	for (int indice = 0; indice < ctrl.listarProductos().size(); indice++){
+		float a=ctrl.listarProductos().get(indice).getPrecio();
+		String precio = String.format ("%.2f", a);
 	%>
-  <option id="material" value="<%= ctrl.listarMateriales().get(indice).getId()%>"><%= ctrl.listarMateriales().get(indice).getNombre()%></option>
 
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
+	   <td><h5 style="text-align:center; ">$<%= precio %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
 
+	</tr>
+	<%
 
-              	<%
 }
+
+
       %>
 
-       </select>
-              </div>
-            </div>
-               <div class="control-group">
-                <label class="control-label">Precio de venta</label>
-                <div class="controls">
-                  <input type="text" name="precio_producto" id="precio_producto" required autofocus class="form-control">
-                 <a href="#" title="Ingrese el precio de venta del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                </div>
-              </div>
 
-
-              <div class="control-group">
-                <label class="control-label">Stock Ingresado</label>
-                <div class="controls">
-                  <input type="text" name="stock_producto" id="stock_producto" required autofocus class="form-control">
-                  <a href="#" title="Ingrese el stock por el que ingresa el nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">Stock M&iacute;nimo</label>
-                <div class="controls">
-                  <input type="text" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control">
-                  <a href="#" title="Ingrese el nivel m�nimo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">Stock M&aacute;ximo</label>
-                <div class="controls">
-                  <input type="text" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control">
-               	 <a href="#" title="Ingrese el nivel m�ximo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                </div>
-              </div>
-              <div class="form-actions" >
-                <input type="submit" value="Registrar" class="btn btn-success btn-large">
-
-              </div>
-            </form>
+    </tbody>
+  </table>
           </div>
         </div>
       </div>
