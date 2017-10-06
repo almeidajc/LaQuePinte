@@ -65,8 +65,8 @@
       <ul>
         <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
 <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-        
-        
+
+
       </ul>
     </li>
 
@@ -107,14 +107,21 @@
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
-    </li>
+  </li>
 
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
+    </li>
 
 
     <li class="submenu  active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
         <li class="submenu active"><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
-        
+
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
@@ -126,12 +133,12 @@
 
 
 
-    
+
       <ul>
-        
-        
-        
-        
+
+
+
+
       </ul>
     </li>
 

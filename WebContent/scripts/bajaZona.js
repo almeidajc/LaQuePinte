@@ -22,10 +22,7 @@ maxId = 4; //traer el valor de la db
 
 function cargaInicio() {
   var x,newDiv;
-  
-  <%
-    for (int indice = 0; indice < ctrl.listarZona().size(); indice++){
-  %>
+
       newDiv = document.createElement("div");
       newDiv.setAttribute("id",`<%= ctrl.listarZona().get(indice).getDescripcion() %>`);
       x = document.createElement("INPUT");
@@ -43,9 +40,7 @@ function cargaInicio() {
       x.setAttribute("id",`coordZ<%= ctrl.listarZona().get(indice).getId_zona() %>`);
       x.setAttribute("type", "hidden");
       x.setAttribute("value","<%= ctrl.listarZona().get(indice).getCoordenadas() %>");
-  <%
-   }
-  %>
+ 
   var newDiv = document.createElement("div");
   newDiv.setAttribute("id",`fechaLugares`);
   var x = document.createElement("INPUT");

@@ -145,6 +145,14 @@
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
+  </li>
+
+    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li class="active"><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
     </li>
 
 
@@ -208,8 +216,8 @@
 
         <th><h5 style="text-align:center; ">NOMBRE</h5></th>
         <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
-        
-        
+
+
 
       </tr>
     </thead>
@@ -228,14 +236,14 @@
 		if(desc==null){
 			desc="-";
 		}
-		
+
 	%>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarMateriales().get(indice).getNombre() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= desc %></h5></td>
-	   
 
 
-	 
+
+
 	</tr>
 	<%
 		}

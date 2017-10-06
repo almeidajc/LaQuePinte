@@ -92,8 +92,8 @@
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
-    </li>
-    
+  </li>
+
       <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
       <ul>
         <li class="active"><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
@@ -164,7 +164,7 @@
               <div class="controls">
                 <input type="text" class="span11" placeholder="Nombre material" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
              	<a href="#" title="Ingrese el nombre del material" class="tip-right"><i class="icon-question-sign"> </a></i>
-				<div id="nombreError"></div>             
+				<div id="nombreError"></div>
               </div>
             </div>
             <div class="control-group">
@@ -175,7 +175,7 @@
               <div id="descripError"></div>
               </div>
             </div>
-            
+
               <div class="widget-content nopadding">
 
                </div>

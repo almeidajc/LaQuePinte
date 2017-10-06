@@ -117,7 +117,7 @@ function validaNombre(valor){
 }
 
 function validaApellido(valor){
-	let patronNombre = /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/;
+	let patronNombre = /^([A-ZÁÉÍÓÚa-z]{1}[a-zñáéíóú]+[\s]*)+$/;
 	  if (patronNombre.test(valor)){
 		  document.getElementById('apError').style.visibility = "hidden";
 	  } else {
@@ -162,6 +162,53 @@ function validaCUIT(x){
 
 }
 
+
+function validaStock(x){
+
+	if(x>0){
+		document.getElementById('stockError').style.visibility = "hidden";
+	}
+	else{
+		document.getElementById('stockError').style.visibility = "visible";
+		document.getElementById('stockError').innerHTML = 'Valor de stock no es valido';
+		document.getElementById('stockError').style.color = "red";
+	}
+
+}
+
+function validaStockMin(x){
+
+	if(x>0){
+		document.getElementById('stockMinError').style.visibility = "hidden";
+	}
+	else{
+		document.getElementById('stockMinError').style.visibility = "visible";
+		document.getElementById('stockMinError').innerHTML = 'Valor de stock no es valido';
+		document.getElementById('stockMinError').style.color = "red";
+	}
+
+}
+
+function validaStockMax(x){
+	let stMin = document.getElementById('stock_min_producto').value
+	if(x> stMin){
+		document.getElementById('stockMaxError').style.visibility = "hidden";
+	}
+	else{
+		if(x>0){
+			document.getElementById('stockMaxError').style.visibility = "visible";
+			document.getElementById('stockMaxError').innerHTML = 'El stock maximo debe ser mayor al minimo';
+			document.getElementById('stockMaxError').style.color = "red";
+		}
+		else{
+			document.getElementById('stockMaxError').style.visibility = "visible";
+			document.getElementById('stockMaxError').innerHTML = 'Valor de stock no es valido';
+			document.getElementById('stockMaxError').style.color = "red";
+		}
+	}
+
+}
+
 function validarEmail(valor) {
 	  if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor)){
 		  document.getElementById('emailText').style.visibility = "hidden";
@@ -172,6 +219,20 @@ function validarEmail(valor) {
 	  }
 	}
 
+function validarNombrePr(valor){
+	console.log(valor)
+	let patronNombre = /.{4,}/;
+	
+	  if (patronNombre.test(valor)){
+		  document.getElementById('producError').style.visibility = "hidden";
+		  console.log("queondaaa")
+	  } else {
+		  document.getElementById('producError').style.visibility = "visible";
+		  document.getElementById('producError').innerHTML = 'Nombre del producto no valido';
+		  document.getElementById('producError').style.color = "red";
+		  console.log("else")
+	  }
+}
 
 function validaPrecio(valor){
 	let patronNombre = /([?1234567890][.][1234567890][1234567890])+$/;

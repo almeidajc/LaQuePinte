@@ -158,6 +158,14 @@ input[type=text]:focus {
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
+  </li>
+
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
     </li>
 
 

@@ -162,7 +162,13 @@ input[type=text]:focus {
       </ul>
     </li>
 
-
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
+    </li>
 
     <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
 
@@ -237,7 +243,7 @@ input[type=text]:focus {
 
         <th><h5 style="text-align:center; ">ID ZONA</h5></th>
         <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
-       
+
         <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
 
 
@@ -261,7 +267,7 @@ input[type=text]:focus {
 
 	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getId_zona() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getDescripcion() %></h5></td>
-	  
+
 	   <td><form method="post" action="BajaZona">
            <input type="hidden" id="id_zona" name="id_zona" value="<%= ctrl.listarZona().get(indice).getId_zona()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >

@@ -153,6 +153,14 @@
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
+  </li>
+
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
     </li>
 
 
@@ -220,7 +228,7 @@
               <div class="controls">
 
                 <input type="text"  class="span11"  value="<%= tel %>" id="tel" onchange="validaTel(this.value)" required>
-               <a href="#" title="Ingrese el número de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+               <a href="#" title="Ingrese el nï¿½mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               <div id="telef"></div>
 
               </div>
@@ -246,7 +254,7 @@
 
 
                 </div>
-                   <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
+                  	<input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
                     <input type="hidden" id="dni_cli" name="dni_cli" value="<%= dniCli %>" >
                 </div>
 

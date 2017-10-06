@@ -23,7 +23,7 @@
 <% int id = Integer.parseInt(request.getParameter("id"));
       CtrlMaterial ctrl = new CtrlMaterial();
       Material m =ctrl.getMaterialById(id);
-    
+
 
 
       //String numeroStr = String.valueOf(h.getNumero());
@@ -34,7 +34,7 @@ Empleado userSession = (Empleado)session.getAttribute("userSession");
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
           	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
            String tipo_em = userSession.getTipo();%>
-	
+
 
 <script type="text/javascript"> // inicio tabla js1//
 (function(document) {
@@ -80,7 +80,7 @@ Empleado userSession = (Empleado)session.getAttribute("userSession");
 </head>
 <body>
 
-<%		
+<%
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
           	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
 
@@ -150,6 +150,14 @@ Empleado userSession = (Empleado)session.getAttribute("userSession");
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
+  </li>
+
+    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li class="active"><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
     </li>
 
 
@@ -210,11 +218,11 @@ Empleado userSession = (Empleado)session.getAttribute("userSession");
                 <div id="descText"></div>
                </div>
             </div>
-           
-                
+
+
                    <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
                     <input type="hidden" id="id" name="id" value="<%= id %>" >
-               
+
 
                 <div class="form-actions">
                   <input type="submit" value="Modificar" class="btn btn-success">

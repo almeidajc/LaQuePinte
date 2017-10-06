@@ -97,8 +97,9 @@
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
-    </li>
-    
+  </li>
+
+
      <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
       <ul>
         <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
