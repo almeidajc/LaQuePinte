@@ -172,6 +172,14 @@ input[type=text]:focus {
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>
+  </li>
+
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
     </li>
 
 
@@ -266,7 +274,7 @@ input[type=text]:focus {
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
 	   <td><form method="post" action="modProductoEA.jsp">
            <input type="hidden" id="id_producto" name="id_producto" value="<%= ctrl.listarProductos().get(indice).getId_producto()%>" >
-           
+
             <button style="margin:auto;display:block;"  class="btn2" name="modificarproducto" style="background-color: #F9F9F9; text-align:center;"id="modificarproducto" >
            <span class="icon-pencil" style="color: blue; font-size:100%; background-color: #F9F9F9;content-align:center"></span></a></form></td>
 
