@@ -314,7 +314,7 @@ CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
 </div>
 
 <!--end-Footer-part-->

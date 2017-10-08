@@ -28,7 +28,7 @@
       Empleado e= ctrl.getEmpleadoById(idEmp);
       String email= e.getEmail();
       int tel= e.getTel();
-      String pass= e.getContraseña();
+      String pass= e.getContraseï¿½a();
       //String numeroStr = String.valueOf(h.getNumero());
       
       
@@ -143,7 +143,7 @@
                   <label class="control-label">Password</label>
                   <div class="controls">
 
-	                  <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contraseña"  onchange="validaPass(this.value)" required >
+	                  <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contraseï¿½a"  onchange="validaPass(this.value)" required >
 	                  <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
 
                   </div>
@@ -181,7 +181,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
 </div>
 
 <!--end-Footer-part-->
