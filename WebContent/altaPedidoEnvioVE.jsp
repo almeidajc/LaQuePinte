@@ -267,7 +267,7 @@ function cancelarFecha(){
             }
             else{
 						var unique_id = $.gritter.add({
-							title: 'This is a sticky notice!',
+							title: 'Asignar Fecha',
 							text: 'Confirmar el envio para el dia '+dia+' de '+mesLet+' del '+ano+'<br><br><input type="button" onclick="creardia()" class="btn btn-success" value="Agregar fecha">    <input type="button" class="btn btn-danger" onclick="cancelarFecha()" value="Cancelar">',
 							// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
 							// (bool | optional) if you want it to fade out on its own or just sit there
