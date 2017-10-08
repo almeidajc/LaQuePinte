@@ -65,8 +65,8 @@
       <ul>
         <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
 <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-        
-        
+
+
       </ul>
     </li>
 
@@ -114,7 +114,7 @@
     <li class="submenu  active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
         <li class="submenu active"><a href="agregarubicacion.jsp">Agregar Zona Peligrosa</a></li>
-        
+
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
@@ -126,12 +126,12 @@
 
 
 
-    
+
       <ul>
-        
-        
-        
-        
+
+
+
+
       </ul>
     </li>
 
@@ -185,7 +185,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
 </div>
 
 <!--end-Footer-part-->

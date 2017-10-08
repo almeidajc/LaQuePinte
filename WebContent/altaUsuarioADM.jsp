@@ -157,7 +157,7 @@
               <div class="controls">
                  <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
               	<div id="telef"></div>
-                 <a href="#" title="Ingrese el número de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+                 <a href="#" title="Ingrese el nï¿½mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               </div>
             </div>
             <div class="control-group">
@@ -211,7 +211,7 @@
                 <div class="control-group">
                   <label class="control-label">Contrase&ntilde;a</label>
                   <div class="controls">
-                    <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Contraseña" onchange="validaPass(this.value)" required>
+                    <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Contraseï¿½a" onchange="validaPass(this.value)" required>
             		<a href="#" title="La contrase&ntilde;a la decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
             		<label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
 
@@ -220,7 +220,7 @@
                 <div class="control-group">
                   <label class="control-label">Confirmar contrase&ntilde;a</label>
                   <div class="controls">
-                   <input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="Repita la contraseña" onchange="validaPass2(this.value)" required>
+                   <input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="Repita la contraseï¿½a" onchange="validaPass2(this.value)" required>
             <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                 </div>
@@ -242,7 +242,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
 </div>
 
 <!--end-Footer-part-->

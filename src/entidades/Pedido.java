@@ -15,7 +15,7 @@ public class Pedido {
 	
 	private int id_pedido;
 	private Date fecha_emision;
-	private String fecha_entrega;
+	private Date fecha_entrega;
 	private int distancia;
 	private Date fecha_efectiva;
 	private String EsZonaPeligrosa;
@@ -112,7 +112,7 @@ public class Pedido {
 	public Date getFecha_entrega() {
 		return fecha_entrega;
 	}
-	public void setFecha_entrega(String fecha_teorica) {
+	public void setFecha_entrega(Date fecha_teorica) {
 		this.fecha_entrega = fecha_teorica;
 	}
 	public Date getFecha_efectiva() {

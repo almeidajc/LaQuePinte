@@ -220,7 +220,7 @@
               <div class="controls">
 
                 <input type="text"  class="span11"  value="<%= tel %>" id="tel" onchange="validaTel(this.value)" required>
-               <a href="#" title="Ingrese el número de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+               <a href="#" title="Ingrese el nï¿½mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               <div id="telef"></div>
 
               </div>
@@ -269,7 +269,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
 </div>
 
 <!--end-Footer-part-->
