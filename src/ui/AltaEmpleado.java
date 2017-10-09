@@ -53,7 +53,7 @@ public class AltaEmpleado extends HttpServlet {
 		String tipo = request.getParameter("rol");
 		String patente = request.getParameter("patente");
 		String usuario = request.getParameter("usuario");
-		String password = request.getParameter("contrasena");
+		String password = request.getParameter("pwd");
 		int id_turno = Integer.parseInt(request.getParameter("id_turno"));
 		
 		

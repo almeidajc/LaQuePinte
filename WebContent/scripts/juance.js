@@ -27,6 +27,7 @@ function empleado_rol(){
   }
   else{
     document.getElementById("patente_di").style.visibility = "hidden";
+    document.getElementById("patente_di").value = null;
   }
 }
 

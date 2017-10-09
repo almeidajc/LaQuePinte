@@ -35,7 +35,7 @@ function validarPass_1(){
 			return false;
 		}
 	}
-	return true;	
+	return true;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,7 +124,7 @@ function validarCantidad() {
 			$('#msjHabitacion').append('Debe ingresar un número de 1 dígito, distinto de cero');
 			return false;
 		}
-	
+
 	return true;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -137,7 +137,7 @@ function validarCantidad2() {
 			$('#msjHabitacion2').append('Debe ingresar un número de 1 dígito, distinto de cero');
 			return false;
 		}
-	
+
 	return true;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -150,7 +150,7 @@ function validarCantidad3() {
 			$('#msjHabitacion3').append('Debe ingresar un número de 1 dígito, distinto de cero');
 			return false;
 		}
-	
+
 	return true;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -211,7 +211,7 @@ function validarEmaill() {
 //HACE LAS VALIDACIONES CUANDO SE PRESIONA EL BOTON
 function enviar() {
 	var continua=true;
-	
+
 	if(!validarUsuario()){ continua = false;}
 	if(!validarNombre()){ continua = false; }
 	if(!validarApellido()){ continua = false; }
@@ -224,7 +224,7 @@ function enviar() {
 	if(!validarCantidad()){ continua = false; }
 	if(!validarCantidad2()){ continua = false; }
 	if(!validarCantidad3()){ continua = false; }
-	
+
 	if(continua){ document.formRegistro.submit(); }
 }
 //////////////////////////////////////////////////////////////////////////////////////
@@ -236,8 +236,8 @@ $(function(){
 			enviar();
 		}
 	});
-	
-	
+
+
 //PONE EN BLANCO UN CAMPO CUANDO SE EMPIEZA A ESCRIBIR EN ÉL
 	$('#pass_1').keyup(function(){ $('#pass_1').attr('style', 'background:white'); });
 	$('#pass_2').keyup(function(){ $('#pass_2').attr('style', 'background:white'); });

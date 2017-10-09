@@ -157,12 +157,12 @@ public class DataEmpleado {
 	            e.setApellido(rs.getString("apellido"));
 	            e.setTel(rs.getInt("tel"));
 	            e.setTipo(rs.getString("tipo"));
-	            if(rs.getString("patente")==null){
+	            if(rs.getString("patente")==null || rs.getString("patente")==""){
 	            	e.setPatente("-");
 	            }
 	            else
 	            e.setPatente(rs.getString("patente"));
-	            if(rs.getString("email")==null){
+	            if(rs.getString("email")==null || rs.getString("email")=="" ){
 	            	e.setEmail("-");
 	            }
 	            else

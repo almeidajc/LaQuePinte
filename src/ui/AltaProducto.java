@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import negocio.CtrlProducto;
-
 import appExceptions.ApplicationException;
 import entidades.Producto;
 
@@ -44,50 +43,45 @@ public class AltaProducto extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Producto p = new Producto();
-		int cod = Integer.parseInt(request.getParameter("codigo_producto"));
+		Producto p = new Producto();		
 		String nombre = request.getParameter("nombre_producto");
 		float precio = Float.parseFloat(request.getParameter("precio_producto"));
 		int stock = Integer.parseInt(request.getParameter("stock_producto"));
 		int stock_min = Integer.parseInt(request.getParameter("stock_min_producto"));
 		int stock_max = Integer.parseInt(request.getParameter("stock_max_producto"));
 		int idmaterial = Integer.parseInt(request.getParameter("material"));
-		String fechaString = ((String)request.getParameter("fecha_producto")).trim();
-		Date fecha_desde = null;	
-		try {
-			fecha_desde = new SimpleDateFormat("yyyy-MM-dd").parse(fechaString);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 				
 		
 	/*	String fechaStr = ((String)request.getParameter("fecha"));
 		s.setFecha(fechaStr); // CONVERSION DE DATOS */
 		
-		p.setId_producto(cod);
+		
 		p.setNombre_producto(nombre);
 		p.setPrecio(precio);
-		p.setFecha(fecha_desde);
+		
 		p.setCantidad_stock(stock);
 		p.setCantidad_min_stock(stock_min);
 		p.setCantidad_max_stock(stock_max);
-		p.setId_material(idmaterial);
+		if(idmaterial==99){
+			p.setId_material(0);
+		}
+		else{p.setId_material(idmaterial);}
 		
 		CtrlProducto ctrl = new CtrlProducto();
 		
 		boolean existeProd = false;
-		int idp;
+		
 		String nomp;
 		String mjs="";
 		
 		for (int indice = 0; indice < ctrl.listarProductos().size(); indice++){
 			
-			idp = ctrl.listarProductos().get(indice).getId_producto();
+			
 			nomp= ctrl.listarProductos().get(indice).getNombre_producto();
 			
 					
-			if(cod == idp || nomp.equalsIgnoreCase(nombre)){
+			if(nombre == nomp || nomp.equalsIgnoreCase(nombre)){
 				existeProd = true;
 			}
 			   

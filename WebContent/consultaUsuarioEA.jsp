@@ -245,10 +245,12 @@ input[type=text]:focus {
 		int turno;
 		String desc;
 		turno = ctrl.listarEmpleados().get(indice).getId_turno();
-
+		String patente= ctrl.listarEmpleados().get(indice).getPatente();
+		if(patente==null)
+		{patente="-";}
 		switch(turno){
 		case 1:
-			 desc = "Ma�ana";
+			 desc = "Ma&ntilde;ana";
 			break;
 
 		case 2:
@@ -274,7 +276,7 @@ input[type=text]:focus {
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getEmail() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= patente %></h5></td>
 	   <td><h5 style="text-align:center; "><%= desc %></h5></td>
 
 	</tr>

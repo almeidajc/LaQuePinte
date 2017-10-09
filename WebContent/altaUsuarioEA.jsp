@@ -212,7 +212,7 @@
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="email" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
              	<a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
              	<div id="emailText"></div>
 
