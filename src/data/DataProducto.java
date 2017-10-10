@@ -32,10 +32,10 @@ public class DataProducto {
 			
 			stmtPrecio = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"Insert into precio_producto_venta (id_producto, fecha, precio)"
-					+"values (?,?,?)");
+					+"values (?,current_date(),?)");
 			stmtPrecio.setInt(1, p.getId_producto());						
-			stmtPrecio.setDate(2, new java.sql.Date(p.getFecha().getTime()));				
-			stmtPrecio.setFloat(3, p.getPrecio());
+							
+			stmtPrecio.setFloat(2, p.getPrecio());
 			stmtPrecio.execute();
 			
 			

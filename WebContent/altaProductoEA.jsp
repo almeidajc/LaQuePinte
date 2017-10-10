@@ -195,7 +195,7 @@
               	<%
 }
       %>
-
+	<option id="material" value="99">No aplica</option>
        </select>
               </div>
             </div>
@@ -229,7 +229,7 @@
                 <label class="control-label">Stock M&aacute;ximo</label>
                 <div class="controls">
                  	<input type="text" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control" onchange="validaStockMax(this.value)">
-               	 	<a href="#" title="Ingrese el nivel m�ximo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
+               	 	<a href="#" title="Ingrese el nivel m&aacute;ximo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                 	<div id="stockMaxError"></div>
                 </div>
               </div>
