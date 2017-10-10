@@ -19,7 +19,7 @@
 	  localStorage.setItem("fecha", fecha);
 	  localStorage.setItem("distanciaInsert", distanciaLugar);
 	  localStorage.setItem("zonaPeligrosa", esZonaPeligrosa);
-	  location.href ="indexVE.jsp";
+	  location.href ="nuevoPedidoVE.jsp";
   }
   
   function initAutocomplete() {
