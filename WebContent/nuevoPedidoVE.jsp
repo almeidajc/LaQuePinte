@@ -236,7 +236,7 @@
   <!--    ___-->
 
 
-       <div class="span3">
+       <div class="span3" id="Menucliente">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
             <h5>CLIENTE ACTUAL</h5>
@@ -266,7 +266,7 @@
             </div>
 
             
-	 <button class="btn btn-lg btn-primary " type="submit">Guardar</button>
+	 		<button class="btn btn-lg btn-primary " type="submit" onclick="ocultarCliente()">Guardar</button>
 
              <a class="btn btn-danger" href="BorrarClientePedido">Borrar</a>
 
@@ -333,16 +333,15 @@
 		<div class="row" style="float: right;">	
 			<form action="pedido/confirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
 			
-		 	<input type="hidden" name="coordenadas" value="">
-      		<input type="hidden" name="direccion" id="direccion" value="">
-            <input type="hidden" name="distancia" id="distancia" value="">
-            <input type="hidden" name="fecha" id="fecha" value="">
-            <input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa" value="">
+		 		<input type="hidden" name="coordenadas" id="coordenadas">
+      			<input type="hidden" name="direccion" id="direccion">
+            	<input type="hidden" name="distancia" id="distancia">
+            	<input type="hidden" name="fecha" id="fecha">
+           		<input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa">
             
-            		
-		 	<button class="btn btn-lg btn-primary " type="submit" onclick="localStorage.clear();">CONFIRMAR PEDIDO</button>
-			<a class="btn btn-lg btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
-
+            	<input type="button" id="MostrarCliente" style="visibility:hidden;" class="btn btn-lg btn-info " value="MODIFICAR DATOS DEL CLIENTE" onclick="mostrarCliente()">		
+		 		<button class="btn btn-lg btn-primary " type="submit" onclick="localStorage.clear();">CONFIRMAR PEDIDO</button>
+				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
            </form>
 		
 		</div>
