@@ -1,13 +1,3 @@
-function ocultarCliente(){
-	documente.getElementById("Menucliente").style.visibility = "hidden";
-	documente.getElementById("MostrarCliente").style.visibility = "visible";
-}
-
-function mostrarCliente(){
-	documente.getElementById("Menucliente").style.visibility = "visible";
-	documente.getElementById("MostrarCliente").style.visibility = "hidden";
-}
-
 function cambiarHREF() {
   if (localStorage.getItem("fecha")) {
     document.getElementById("altaPedidoIdHREF").href = "nuevoPedidoVE.jsp"
@@ -15,6 +5,15 @@ function cambiarHREF() {
 }
 
 function altaPedido(){
+	var clienteLog;
+	clienteLog = document.getElementById("clienteLoggeado").value;
+	
+	if(clienteLog == "null"){
+	}
+	else{
+		location.href = "#clienteFijo";
+	}
+	
   let direccion,coord,fech,distancia,zona;
   direccion = localStorage.getItem("direccion");
   coord = localStorage.getItem("coordenadas");

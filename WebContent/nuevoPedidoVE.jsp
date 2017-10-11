@@ -165,6 +165,7 @@
 
 
  <div class="row-fluid">
+ 	<div class="widget-box" id="Menucliente">
       <div class="span3">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
@@ -206,6 +207,7 @@
 
 
        <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual"); %>
+       
       <div class="span6">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-list"></i> </span>
@@ -236,7 +238,8 @@
   <!--    ___-->
 
 
-       <div class="span3" id="Menucliente">
+       <div class="span3">
+       <input type="hidden" id="clienteLoggeado" value="<%=cliente %>">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
             <h5>CLIENTE ACTUAL</h5>
@@ -266,7 +269,7 @@
             </div>
 
             
-	 		<button class="btn btn-lg btn-primary " type="submit" onclick="ocultarCliente()">Guardar</button>
+	 		<button class="btn btn-lg btn-primary " type="submit">Guardar</button>
 
              <a class="btn btn-danger" href="BorrarClientePedido">Borrar</a>
 
@@ -274,12 +277,13 @@
           </div>
         </div>
       </div>
+      </div>
 
     <%Pedido pedido= (Pedido)session.getAttribute("pedido");
 	if(pedido!=null){
 	%>
 
-
+	<a name="clienteFijo" id="clienteFijo"></a>
     <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>NUEVO PEDIDO</h5>
@@ -291,7 +295,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>ID PRODUCTO</th>
+                  <th>CODIGO DEL PRODUCTO</th>
                   <th>DESCRIPCION</th>
                   <th>PRECIO UNITARIO</th>
                   <th>CANTIDAD</th>
@@ -312,9 +316,9 @@
                 <td><%=i %></td>
                 <td><%=item.getProducto().getId_producto() %></td>
                 <td><%=item.getProducto().getNombre_producto() %></td>
-                <td><%=item.getProducto().getPrecio() %></td>
-                <td><%=item.getCantidad() %></td>
-                <td><%=subtotal %></td>
+                <td style="text-align: right;">$<%=item.getProducto().getPrecio() %></td>
+                <td style="text-align: right;"><%=item.getCantidad() %></td>
+                <td style="text-align: right;">$<%=subtotal %></td>
                 <td><a class="btn btn-danger" href="pedido/borrarLinea?nro=<%=i %>">X</a></td>
               </tr>
             <%	i++;
@@ -322,7 +326,7 @@
             }%>
             <tr>
                 <td style="text-align: right;" colspan="5"><h5>IMPORTE TOTAL DEL PEDIDO</h5></td>
-                <td><h5><%=total %></h5></td>
+                <td><h5 style="text-align: right;">$<%=total %></h5></td>
               </tr>
             </tbody>
           </table>
@@ -338,8 +342,7 @@
             	<input type="hidden" name="distancia" id="distancia">
             	<input type="hidden" name="fecha" id="fecha">
            		<input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa">
-            
-            	<input type="button" id="MostrarCliente" style="visibility:hidden;" class="btn btn-lg btn-info " value="MODIFICAR DATOS DEL CLIENTE" onclick="mostrarCliente()">		
+            		
 		 		<button class="btn btn-lg btn-primary " type="submit" onclick="localStorage.clear();">CONFIRMAR PEDIDO</button>
 				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
            </form>
