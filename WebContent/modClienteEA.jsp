@@ -227,7 +227,7 @@
               <label class="control-label">Telefono</label>
               <div class="controls">
 
-                <input type="text"  class="span11"  value="<%= tel %>" id="tel" onchange="validaTel(this.value)" required>
+                <input type="number"  class="span11"  value="<%= tel %>" id="tel" onchange="validaTel(this.value)" required>
                <a href="#" title="Ingrese el n�mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               <div id="telef"></div>
 

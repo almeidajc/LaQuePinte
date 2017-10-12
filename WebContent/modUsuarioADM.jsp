@@ -122,7 +122,7 @@
               <label class="control-label">Telefono</label>
               <div class="controls">
 
-                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
+                <input type="number"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
                 <div id="telef"></div>
 
               </div>

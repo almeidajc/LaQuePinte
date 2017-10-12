@@ -80,7 +80,7 @@
         <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
-
+    <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
@@ -90,16 +90,6 @@
       </ul>
     </li>
 
-
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicacion</span> </a>
-      <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicacion</a></li>
-        <li><a href="#">Modificar Ubicacion</a></li>
-        <li><a href="#">Eliminar Ubicacion</a></li>
-        <li><a href="#">Consultar Ubicacion</a></li>
-
-      </ul>
-    </li>
 
   </ul>
 </div>
@@ -116,7 +106,7 @@
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Pedido</h1> 
+ <h1>Nuevo Pedido</h1>
  </div>
 
 
@@ -207,7 +197,7 @@
 
 
        <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual"); %>
-       
+
       <div class="span6">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-list"></i> </span>
@@ -268,7 +258,7 @@
               </div>
             </div>
 
-            
+
 	 		<button class="btn btn-lg btn-primary " type="submit">Guardar</button>
 
              <a class="btn btn-danger" href="BorrarClientePedido">Borrar</a>
@@ -332,24 +322,24 @@
           </table>
           </div>
           <div class="row" style="float: right;">
-          
+
             </div>
-		<div class="row" style="float: right;">	
+		<div class="row" style="float: right;">
 			<form action="pedido/confirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
-			
+
 		 		<input type="hidden" name="coordenadas" id="coordenadas">
       			<input type="hidden" name="direccion" id="direccion">
             	<input type="hidden" name="distancia" id="distancia">
             	<input type="hidden" name="fecha" id="fecha">
            		<input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa">
-            		
+
 		 		<button class="btn btn-lg btn-primary " type="submit" onclick="localStorage.clear();">CONFIRMAR PEDIDO</button>
 				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
            </form>
-		
+
 		</div>
 
-	
+
 	<%} %>
 
         </div>

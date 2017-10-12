@@ -111,7 +111,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 
       </ul>
     </li>
-
+    <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
