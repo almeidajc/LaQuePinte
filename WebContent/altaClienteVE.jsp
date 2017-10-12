@@ -63,11 +63,10 @@
         <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
 		<li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
     <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
-
-
       </ul>
     </li>
 
+    <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
         <li class="active"><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
@@ -136,14 +135,14 @@
             <div class="control-group">
               <label class="control-label">DNI :</label>
               <div class="controls">
-               <input type="text" class="span11" placeholder="Numero de documento cliente" name="dni" id="dni"/>
+               <input type="number" class="span11" placeholder="Numero de documento cliente" name="dni" id="dni"/>
                <a href="#" title="Ingrese el Numero de identificacion nacional del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i>
                </div>
                </div>
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
+                <input type="number"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
                 <a href="#" title="Ingrese el telefono del nuevo cliente (ingrese tambien la caracteristica de la ciudad)" class="tip-right"><i class="icon-question-sign"> </a></i>
               </div>
             </div>

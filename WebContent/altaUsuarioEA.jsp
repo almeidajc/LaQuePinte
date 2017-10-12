@@ -194,7 +194,7 @@
             <div class="control-group">
                 <label class="control-label">DNI :</label>
                 <div class="controls">
-                <input type="text" class="span11" placeholder="Numero de documento empleado" name="dni" id="dni" onchange="validaDNI(this.value)"/>
+                <input type="number" class="span11" placeholder="Numero de documento empleado" name="dni" id="dni" onchange="validaDNI(this.value)"/>
           	   <a href="#" title="Ingrese el Numero de Identificacion Nacional del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
           	   <div id="dniErro"></div>
 
@@ -203,7 +203,7 @@
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
-                 <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
+                 <input type="number"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
                <a href="#" title="Ingrese el número de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               <div id="telef"></div>
 

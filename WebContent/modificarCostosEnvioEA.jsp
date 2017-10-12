@@ -231,10 +231,12 @@ input[type=text]:focus {
       <tr>
 <%
 CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
+float a = ctrl.listarCostosEnvio().getCosto_km();
+String precio = String.format ("%.2f", a);
 
 %>
 
-   	   <td><h5 style="text-align:center; ">$<%= ctrl.listarCostosEnvio().getCosto_km() %></h5></td>
+   	   <td><h5 style="text-align:center; ">$<%= precio  %></h5></td>
 
 
 	    <td><form method="post" action="modCostosEnvioEA.jsp">
@@ -273,12 +275,12 @@ CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
     <tbody>
       <tr>
 <%
-
-
+a =ctrl.listarCostosEnvio().getRecargo_zona();
+String precio2 = String.format ("%.2f", a);
 %>
 
 
-	   <td><h5 style="text-align:center; ">$<%= ctrl.listarCostosEnvio().getRecargo_zona() %></h5></td>
+	   <td><h5 style="text-align:center; ">$<%= precio2  %></h5></td>
 
 
 	    <td><form method="post" action="modCostosEnvioEA.jsp">

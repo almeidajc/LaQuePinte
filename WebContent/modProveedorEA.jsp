@@ -170,7 +170,7 @@
               <label class="control-label">Telefono</label>
               <div class="controls">
 
-                <input type="text"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="email" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <input type="number"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="email" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
                  <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               	<div id="emailText"></div>
 

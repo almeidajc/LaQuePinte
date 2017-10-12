@@ -254,7 +254,10 @@ function validaPrecio(valor){
 	else{
 		document.getElementById('precioError').style.visibility = "visible";
 		document.getElementById('precioError').innerHTML = 'El precio no es valido';
-    document.getElementById('precioError').style.color = "red";
+		document.getElementById('precioError').style.color = "red";
+		document.getElementById('precio_producto').value = "";
+		document.getElementById('precio_producto').placeholder = valor;
+		
 	}
 }
 

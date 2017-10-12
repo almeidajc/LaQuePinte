@@ -124,68 +124,26 @@ input[type=text]:focus {
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li ><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
-
-    <li class="submenu active"> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
+  <li><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
-        <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
-        <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
-        <li class="active"><a href="consultarProductoEA.jsp">Consultar Producto</a></li>
+        <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
+        <li><a href="crearPedidoRetiroVE.jsp">Crear Pedido para retirar</a></li>
+        <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
-
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
+     <li class="active"><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
+     <li class="submenu"> <a href=""><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-       <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
-        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
-        <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
-        <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
-      </ul>
-    </li>
-
-
-        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
-      <ul>
-        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
-        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
-        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
-        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
-      </ul>
-    </li>
-
-
-  <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
-      <ul>
-        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
-        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
-        <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
-        <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
-      </ul>
-  </li>
-
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
-      <ul>
-        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
-        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
-        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+        <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
+        <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
+        <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
+        <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
 
 
 
-    <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
-      <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
-        <li><a href="#">Modificar Ubicación</a></li>
-        <li><a href="#">Eliminar Ubicación</a></li>
-        <li><a href="#">Consultar Ubicación</a></li>
-      </ul>
-    </li>
-
-
-    <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-<li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
   </ul>
 </div>
 <!-- sidebar-menu-->

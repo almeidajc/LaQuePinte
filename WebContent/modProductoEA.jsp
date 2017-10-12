@@ -177,7 +177,7 @@
                 <label class="control-label">Precio</label>
                 <div class="controls">
                  	<input type="text" name="precio_producto" id="precio_producto" autofocus class="form-control" value="<%=p.getPrecio() %>" onchange="validaPrecio(this.value)">
-                	<a href="#" title="Ingrese el precio de venta del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
+                	<a href="#" title="Ingrese el precio de venta del nuevo producto con dos decimales" class="tip-right"><i class="icon-question-sign"> </a></i>
                 	<div id="precioError"></div>
                	</div>
               </div>
@@ -187,7 +187,7 @@
               <div class="control-group">
                 <label class="control-label">Stock Ingresado</label>
                 <div class="controls">
-                  <input type="text" name="stock_producto" id="stock_producto" autofocus class="form-control" value="<%=p.getCantidad_stock() %>" onchange="validaStock(this.value)">
+                  <input type="number" name="stock_producto" id="stock_producto" autofocus class="form-control" value="<%=p.getCantidad_stock() %>" onchange="validaStock(this.value)">
                   <a href="#" title="Ingrese el stock por el que ingresa el nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                   <div id="stockError"></div>
                   </div>
@@ -195,7 +195,7 @@
               <div class="control-group">
                 <label class="control-label">Stock M&iacute;nimo</label>
                 <div class="controls">
-                  <input type="text" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control" value="<%=p.getCantidad_min_stock() %>" onchange="validaStockMin(this.value)">
+                  <input type="number" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control" value="<%=p.getCantidad_min_stock() %>" onchange="validaStockMin(this.value)">
                   <a href="#" title="Ingrese el nivel m�nimo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                   <div id="stockMinError"></div>
                  </div>
@@ -203,7 +203,7 @@
               <div class="control-group">
                 <label class="control-label">Stock M&aacute;ximo</label>
                 <div class="controls">
-                  	<input type="text" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control" value="<%=p.getCantidad_max_stock()%>"onchange="validaStockMax(this.value)">
+                  	<input type="number" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control" value="<%=p.getCantidad_max_stock()%>"onchange="validaStockMax(this.value)">
                	 	<a href="#" title="Ingrese el nivel m�ximo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                 	<div id="stockMaxError"></div>
                	</div>
