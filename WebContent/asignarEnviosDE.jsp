@@ -140,7 +140,7 @@
                     }
                     %>
                   </select>
-                  <input type="submit" class="btn btn-success" >
+                  <button type="submit" class="btn btn-success"><i class="icon-ok"></i></button>
 
                 </td>
                 </form>
