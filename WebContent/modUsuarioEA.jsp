@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::ConstrucciÃ³n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -25,7 +25,7 @@
       Empleado e= ctrl.getEmpleadoById(idEmp);
       String email= e.getEmail();
       int tel= e.getTel();
-      String pass= e.getContraseña();
+      String pass= e.getContraseï¿½a();
       //String numeroStr = String.valueOf(h.getNumero());
 
 
@@ -65,13 +65,13 @@
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
     <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
 
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li><a href="altaProductoEA.jsp">Crear Producto</a></li>
         <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
         <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
         <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
@@ -80,7 +80,7 @@
 
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="altaUsuarioEA.jsp">Crear Empleado</a></li>
         <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
@@ -207,7 +207,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 
 <!--end-Footer-part-->

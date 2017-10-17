@@ -2,11 +2,11 @@
     pageEncoding="ISO-8859-1"%>
      <%@page import="entidades.Empleado"%>
      <%@page import="negocio.CtrlEmpleado"%>
-     
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcción</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -60,7 +60,7 @@
   });
 
 })(document);
-</script>		
+</script>
 
 </head>
 <body>
@@ -74,7 +74,7 @@
 <div id="header">
   <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 <!--top-Header-menu-->
@@ -90,19 +90,19 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
     <li><a href="indexADM.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
-     	
-    
+
+
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
         <li><a href="altaUsuarioADM.jsp">Nuevo Empleado</a></li>
@@ -111,10 +111,10 @@
         <li class="active"><a href="consultaUsuarioADM.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
-    
-  
-    
+
+
+
+
   </ul>
 </div>
 <!-- sidebar-menu-->
@@ -126,10 +126,10 @@
     <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consultar Empleado</a></div>
-   
+
   </div>
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
 
 
 <!--End-breadcrumbs-->
@@ -143,40 +143,40 @@
   <div class="container-fluid">
      <div class="row-fluid">
       <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
-      
-  
+
+
      <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
 
         <div class="widget-box">
-        
-          
+
+
           <div class="widget-content nopadding" id="tb_content">
             <table class="order-table table" class="table table-hover">
     <thead>
       <tr >
-      	
+
         <th><h5 style="text-align:left; ">ID</h5></th>
         <th><h5 style="text-align:left; ">NOMBRE</h5></th>
         <th><h5 style="text-align:left; ">APELLIDO</h5></th>
         <th><h5 style="text-align:left; ">TELEFONO</h5></th>
         <th><h5 style="text-align:left; ">ROL</h5></th>
-        <th><h5 style="text-align:left; ">USUARIO</h5></th> 
+        <th><h5 style="text-align:left; ">USUARIO</h5></th>
         <th><h5 style="text-align:left; ">PATENTE</h5></th>
-             
+
       </tr>
     </thead>
-    
+
     <tbody>
       <tr>
 <%
     		CtrlEmpleado ctrl = new CtrlEmpleado();
-    		
+
     		//PUEDO HACER TMB
 			// ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
-	%>  
+	%>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
@@ -184,28 +184,28 @@
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
 	   <td><h5><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
-	  
+
 	</tr>
 	<%
-	
+
 }
 
 
       %>
-      
-     
+
+
     </tbody>
   </table>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
 
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
   </div>
 </div>
 
@@ -215,32 +215,32 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/excanvas.min.js"></script> 
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/jquery.ui.custom.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
-<script src="bootstrap/js/fullcalendar.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/matrix.dashboard.js"></script> 
-<script src="bootstrap/js/jquery.gritter.min.js"></script> 
-<script src="bootstrap/js/matrix.interface.js"></script> 
-<script src="bootstrap/js/matrix.chat.js"></script> 
-<script src="bootstrap/js/jquery.validate.js"></script> 
-<script src="bootstrap/js/matrix.form_validation.js"></script> 
-<script src="bootstrap/js/jquery.wizard.js"></script> 
-<script src="bootstrap/js/jquery.uniform.js"></script> 
-<script src="bootstrap/js/select2.min.js"></script> 
-<script src="bootstrap/js/matrix.popover.js"></script> 
-<script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script> 
+<script src="bootstrap/js/excanvas.min.js"></script>
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
+<script src="bootstrap/js/fullcalendar.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.dashboard.js"></script>
+<script src="bootstrap/js/jquery.gritter.min.js"></script>
+<script src="bootstrap/js/matrix.interface.js"></script>
+<script src="bootstrap/js/matrix.chat.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script src="bootstrap/js/jquery.wizard.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/matrix.popover.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="bootstrap/js/matrix.tables.js"></script>
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
@@ -249,12 +249,12 @@
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-      
+
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-          } 
-          // else, send page to designated URL            
-          else {  
+          }
+          // else, send page to designated URL
+          else {
             document.location.href = newURL;
           }
       }

@@ -50,7 +50,7 @@ map = new google.maps.Map(document.getElementById('map'), {
 		  comaSeparacion = coordeandasPedido.indexOf(",")
 		  lat = coordeandasPedido.substring(0 , comaSeparacion-1);;
 		  lng = coordeandasPedido.substring(comaSeparacion+1,coordeandasPedido.length-1);
-		  id = document.getElementById(`id${indicePedidos}`).value;
+		  id = document.getElementById(`idpedido${indicePedidos}`).value;
 		  
 		  var place = new google.maps.LatLng(lat, lng);
 		  // el icono y el titulo es lo que muestra cuando esta el mouse arriba

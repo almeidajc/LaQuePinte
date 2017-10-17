@@ -55,7 +55,7 @@
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
     <li ><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
@@ -97,7 +97,7 @@
     
        <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="altaProveedorEA.jsp">Crear Proveedor</a></li>
         <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
         <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
@@ -107,7 +107,7 @@
     
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Crear Zona Peligrosa</a></li>
         
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
@@ -139,14 +139,14 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Producto</a></div>
+    <div id="breadcrumb"> <a href="indexEA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Crear Producto</a></div>
    
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Producto</h1>
+ <h1>Crear Producto</h1>
  </div>
   <div class="container-fluid"><hr>
   
@@ -264,7 +264,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 
 <!--end-Footer-part-->

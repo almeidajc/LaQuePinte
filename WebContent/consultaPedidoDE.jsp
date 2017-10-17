@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>   
+    pageEncoding="ISO-8859-1"%>
     <%@page import="entidades.Despachante"%>
     <%@page import="entidades.Empleado"%>
 
     <%@page import="negocio.CtrlPedido"%>
-    
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-<title>Materiales::de::Construcci�n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,7 +38,7 @@
   <h1><a href="dashboard.html">Materiales de Construcci&oacute;n</a></h1>
 
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 <!--top-Header-menu-->
@@ -54,8 +54,8 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -65,12 +65,12 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu DESPACHANTE</a>
   <ul>
     <li><a href="indexDE.jsp"><i class="icon icon-home"></i> <span>Menu Despachante</span></a> </li>
-    
+
     <li><a href="registrarEnvioDE.jsp"><i class="icon icon-truck"></i> <span>Registrar Env&iacute;o</span></a></li>
 <li><a href="asignarEnviosDE.jsp"><i class="icon icon-group"></i> <span>Asignar Pedidos a Camioneros</span></a></li>
     <li><a href="registrarEntregaDE.jsp"><i class="icon icon-group"></i> <span>Registrar Entrega Pedido</span></a></li>
     <li class="active"><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos</span></a></li>
-    
+
   </ul>
 </div>
 <!--sidebar-menu-->
@@ -80,7 +80,7 @@
 <!--breadcrumbs-->
   <div id="content-header">
     <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Consulta Pedidos Confirmados</a></div>
-   
+
   </div>
 <!--End-breadcrumbs-->
 
@@ -89,41 +89,41 @@
  <h1>Consulta de Pedidos Confirmados</h1>
  </div>
   <div class="container-fluid"><hr>
-   
+
   <div class="row-fluid">
     <div class="span6">
-   <% 
+   <%
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
       		%>
       		<div class="alert alert-success">
    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> . 
+    		<strong><%=mensaje %></strong> .
   			</div>
-      		
-      			
+
+
       		<%
         		}
-      			
+
       		%>
 
-      		
-      		 
+
+
 
 
 <div class="accordion" id="collapse-group">
-  
-   
-   <% CtrlPedido ctrlP = new CtrlPedido(); 
+
+
+   <% CtrlPedido ctrlP = new CtrlPedido();
    		int id=0;
 	  for (int indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
 		  double a=ctrlP.listarPedidosConfirmados().get(indice).getTotal();
     		String total = String.format ("%.2f", a);
-	%>    
-   
-     <!-- ac3 inicio-->        
+	%>
+
+     <!-- ac3 inicio-->
          <div class="accordion-group widget-box">
-           
+
             <div class="accordion-heading">
               <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
                 <h5>FECHA: <%= ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega() %>| N&deg; FACTURA: <%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>| TOTAL: $<%= total %></h5>
@@ -140,7 +140,7 @@
                   <th>SUB T</th>
                 </tr>
               </thead>
-              <%  
+              <%
               id= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido();
               for (int indice2 = 0; indice2 < ctrlP.getLineaDetallePedido(id).size(); indice2++){
             	  float b=ctrlP.getLineaDetallePedido(id).get(indice2).getPrecioUnitario();
@@ -154,30 +154,30 @@
                   <td class="center" style="text-align: right"><%= ctrlP.getLineaDetallePedido(id).get(indice2).getCantidad() %></td>
                   <td class="center" style="text-align: right">$<%= preciou %></td>
                   <td class="center" style="text-align: right">$<%= subt %></td>
-                 
+
                 </tr>
-                
+
               </tbody>
               <%}%>
 
             </table> </div>
             </div>
           </div>
-          
 
-      <!-- ac3 fin-->   
-      
+
+      <!-- ac3 fin-->
+
       	<%}%>
 </div>
-        
-        	
-	
+
+
+
 
 
       </div>
       </div>
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
   </div>
 </div>
 
@@ -187,32 +187,32 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 
 <!--end-Footer-part-->
 
-<script src="bootstrap/js/excanvas.min.js"></script> 
-<script src="bootstrap/js/jquery.min.js"></script> 
-<script src="bootstrap/js/jquery.ui.custom.js"></script> 
-<script src="bootstrap/js/bootstrap.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.min.js"></script> 
-<script src="bootstrap/js/jquery.flot.resize.min.js"></script> 
-<script src="bootstrap/js/jquery.peity.min.js"></script> 
-<script src="bootstrap/js/fullcalendar.min.js"></script> 
-<script src="bootstrap/js/matrix.js"></script> 
-<script src="bootstrap/js/matrix.dashboard.js"></script> 
-<script src="bootstrap/js/jquery.gritter.min.js"></script> 
-<script src="bootstrap/js/matrix.interface.js"></script> 
-<script src="bootstrap/js/matrix.chat.js"></script> 
-<script src="bootstrap/js/jquery.validate.js"></script> 
-<script src="bootstrap/js/matrix.form_validation.js"></script> 
-<script src="bootstrap/js/jquery.wizard.js"></script> 
-<script src="bootstrap/js/jquery.uniform.js"></script> 
-<script src="bootstrap/js/select2.min.js"></script> 
-<script src="bootstrap/js/matrix.popover.js"></script> 
-<script src="bootstrap/js/jquery.dataTables.min.js"></script> 
-<script src="bootstrap/js/matrix.tables.js"></script> 
+<script src="bootstrap/js/excanvas.min.js"></script>
+<script src="bootstrap/js/jquery.min.js"></script>
+<script src="bootstrap/js/jquery.ui.custom.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
+<script src="bootstrap/js/fullcalendar.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.dashboard.js"></script>
+<script src="bootstrap/js/jquery.gritter.min.js"></script>
+<script src="bootstrap/js/matrix.interface.js"></script>
+<script src="bootstrap/js/matrix.chat.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script src="bootstrap/js/jquery.wizard.js"></script>
+<script src="bootstrap/js/jquery.uniform.js"></script>
+<script src="bootstrap/js/select2.min.js"></script>
+<script src="bootstrap/js/matrix.popover.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="bootstrap/js/matrix.tables.js"></script>
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
@@ -221,13 +221,13 @@
 
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
-      
+
           // if url is "-", it is this page -- reset the menu:
           if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
+              resetMenu();
+          }
+          // else, send page to designated URL
+          else {
             document.location.href = newURL;
           }
       }

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcciï¿½n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -56,14 +56,14 @@
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
     <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
 
 
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li><a href="altaProductoEA.jsp">Crear Producto</a></li>
         <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
         <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
         <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
@@ -72,7 +72,7 @@
 
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li class="active"><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li class="active"><a href="altaUsuarioEA.jsp">Crear Empleado</a></li>
         <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
@@ -81,7 +81,7 @@
 
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="altaProveedorEA.jsp">Crear Proveedor</a></li>
         <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
         <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
@@ -91,7 +91,7 @@
 
       <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="altaClienteEA.jsp">Crear Cliente</a></li>
         <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
@@ -100,7 +100,7 @@
 
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
       <ul>
-        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li><a href="altaMaterialEA.jsp">Crear Material</a></li>
         <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
         <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
       </ul>
@@ -112,7 +112,7 @@
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
 
       <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Crear Zona Peligrosa</a></li>
 
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
@@ -133,7 +133,7 @@
     <div id="content">
     <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Empleado</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Crear Empleado</a></div>
 
   </div>
 <!--End-Action boxes-->
@@ -144,7 +144,7 @@
 
 <!--Action boxes-->
   <div id="titulo">
- <h1>Nuevo Empleado</h1>
+ <h1>Crear Empleado</h1>
  </div>
   <div class="container-fluid"><hr>
 
@@ -195,7 +195,7 @@
                 <label class="control-label">DNI :</label>
                 <div class="controls">
                 <input type="number" class="span11" placeholder="Numero de documento empleado" name="dni" id="dni" onchange="validaDNI(this.value)"/>
-          	   <a href="#" title="Ingrese el Numero de Identificacion Nacional del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+          	   <a href="#" title="Ingrese el N&acute;mero de Identificacion Nacional del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
           	   <div id="dniErro"></div>
 
                </div>
@@ -204,7 +204,7 @@
               <label class="control-label">Telefono</label>
               <div class="controls">
                  <input type="number"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
-               <a href="#" title="Ingrese el número de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+               <a href="#" title="Ingrese el n&uacute;mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               <div id="telef"></div>
 
               </div>
@@ -292,7 +292,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 <!--end-Footer-part-->
 

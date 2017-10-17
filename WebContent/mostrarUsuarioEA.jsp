@@ -56,7 +56,7 @@
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
     <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
 
@@ -71,7 +71,7 @@
 
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="altaUsuarioEA.jsp">Crear Empleado</a></li>
         <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
@@ -91,7 +91,7 @@
 
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Crear Zona Peligrosa</a></li>
 
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
@@ -140,7 +140,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 
 <!--end-Footer-part-->

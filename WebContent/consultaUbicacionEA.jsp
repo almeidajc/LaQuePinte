@@ -39,6 +39,7 @@
 
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
+  <ul>
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
      <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
@@ -46,12 +47,12 @@
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
     <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
-        <li><a href="altaProductoEA.jsp">Nuevo Producto</a></li>
+        <li><a href="altaProductoEA.jsp">Crear Producto</a></li>
         <li><a href="modificarProductoEA.jsp">Modificar Producto</a></li>
         <li><a href="bajaProductoEA.jsp">Eliminar Producto</a></li>
         <li><a href="consultaProductoEA.jsp">Consultar Producto</a></li>
@@ -60,7 +61,7 @@
 
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li><a href="altaUsuarioEA.jsp">Nuevo Empleado</a></li>
+        <li><a href="altaUsuarioEA.jsp">Crear Empleado</a></li>
         <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
         <li class="active"><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
@@ -69,7 +70,7 @@
 
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
       <ul>
-        <li><a href="altaProveedorEA.jsp">Nuevo Proveedor</a></li>
+        <li><a href="altaProveedorEA.jsp">Crear Proveedor</a></li>
         <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
         <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
         <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
@@ -80,7 +81,7 @@
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
 
       <ul>
-        <li><a href="altaClienteEA.jsp">Nuevo Cliente</a></li>
+        <li><a href="altaClienteEA.jsp">Crear Cliente</a></li>
         <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li ><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
@@ -90,7 +91,7 @@
 
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
       <ul>
-        <li><a href="altaMaterialEA.jsp">Nuevo Material</a></li>
+        <li><a href="altaMaterialEA.jsp">Crear Material</a></li>
         <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
         <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
       </ul>
@@ -100,7 +101,7 @@
     <li class="submenu active"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
 
       <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Zona Peligrosa</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Crear Zona Peligrosa</a></li>
         <li ><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li class="active"><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
       </ul>
@@ -108,7 +109,7 @@
 
 
     <li><a href="informestock.jsp"><i class="icon icon-bar-chart"></i> <span>Informe Stock</span></a></li>
-<li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
+	<li><a href="modificarCostosEnvioEA.jsp"><i class="icon icon-bar-chart"></i> <span>Actualizar costos de env&iacute;o</span></a></li>
 
   </ul>
 </div>
@@ -188,7 +189,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 
 <!--end-Footer-part-->
