@@ -99,7 +99,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
   <li><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
@@ -114,7 +114,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
     <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
+        <li><a href="altaClienteVE.jsp">Crear Cliente</a></li>
         <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
         <li class="active"><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
@@ -129,14 +129,14 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Cliente</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Eliminar Cliente</a></div>
 
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
 <div id="titulo">
-<h1>Baja Cliente</h1><hr>
+<h1>Eliminar Cliente</h1><hr>
  </div>
   <div class="container-fluid">
      <div class="row-fluid">
@@ -231,7 +231,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 
 <!--end-Footer-part-->

@@ -170,7 +170,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-weight:bold;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
+  <div id="footer" class="span12" style="font-weight:bold;"> 2016 &copy; Aguirre Almeida Marimon System. <a href="https://www.google.com.ar/">Visit us</a> </div>
 </div>
 </div>
 <!--end-Footer-part-->

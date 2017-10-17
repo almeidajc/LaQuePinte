@@ -19,6 +19,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Materiales::de::Construcci&oacute;n</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -69,7 +70,7 @@
         <li class="active"><a href="asignarEnviosDE.jsp"><i class="icon icon-group"></i> <span>Asignar Pedidos a Camioneros</span></a></li>
         <li><a href="registrarEntregaDE.jsp"><i class="icon icon-group"></i> <span>Registrar Entrega Pedido</span></a></li>
         <li><a href="consultaPedidoDE.jsp"><i class="icon icon-list-ol"></i> <span>Resumen de Pedidos </span></a></li>
-        
+
       </ul>
     </div>
     <!--sidebar-menu-->
@@ -96,7 +97,7 @@
     	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
     		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
           // if dia=igual hoy
-        	if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null ){
+        	if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null  && pedido.getEmpleado().getId_empleado() <= 0 ){
         		sum++;
         	}
         }
@@ -104,28 +105,26 @@
           <%-- los pedidos solo los de hoy!!!!!!!!!!!!!!!! sino hacer un for y sumar la cantidad que son hoy --%>
 
           <input type="hidden" id="cantidadPedidos" value="<%= ctrlP.listarPedidosConfirmados().size() %>">
-		
+
 
           <table>
             <tbody>
-            
-              <%  
+
+              <%
             	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
             		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
                   // if dia=igual hoy
-                if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null && pedido.getEmpleado().getId_empleado() == 0){
+                if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null ){
+                	if(pedido.getEmpleado().getId_empleado()<=0){
                 	//&& pedido.getFecha_efectiva() != null
-                			
             	%>
-
-              <tr>
+              <tr id="formularioPed<%=indice %>">
               <form method="post" action="AsignarPedido">
-              
-                <td><input type="hidden" name="idpedido" id="idpedido>" value="<%=pedido.getId_pedido() %>"></td>
+                <td><input type="hidden" name="idpedido" id="idpedido<%=indice %>" value="<%=pedido.getId_pedido() %>"> <input type="hidden" id="empleadoPed<%=indice %>" name="empleado" id="empleado" value="<%=pedido.getEmpleado().getId_empleado() %>"></td>
                 <td><input type="hidden" id="coord<%=indice %>" value="<%=pedido.getCoordenadas() %>"></td>
                 <td><h5 onclick="animarPedido(<%= pedido.getId_pedido() %>)">Pedido numero <%= pedido.getId_pedido() %></h5></td>
                 <td>
-				
+
                   <select name="idcamionero"  id="idcamionero">
                     <%
                     CtrlEmpleado ctrl = new CtrlEmpleado();
@@ -134,9 +133,9 @@
                       if(tipo.equalsIgnoreCase("CA")){
                         %>
                         <option value="<%= ctrl.listarEmpleados().get(indiceEmpleados).getId_empleado() %>"><%= ctrl.listarEmpleados().get(indiceEmpleados).getNombre() %> <%= ctrl.listarEmpleados().get(indiceEmpleados).getApellido() %></option>
-                       
+
                         <%
-                      
+
                       }
                     }
                     %>
@@ -147,18 +146,19 @@
                 </form>
               </tr>
               <%
+                	}
                }
               }
               %>
 
             </table>
-            
-            
-           
+
+
+
           </div>
                 <%
 
-  
+
             	  for ( indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
             		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
                   // if dia=igual hoy
@@ -179,34 +179,11 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-<div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida SYStem. <a href="https://www.google.com.ar/">Visit us</a> </div>
+<div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. <a href="https://www.google.com.ar/">Visit us</a> </div>
 </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD_1mkSBgMDYfy00Z6JGLq9zsTlmmlLuA" async defer ></script>
 
-    // This function is called from the pop-up menus to transfer to
-    // a different page. Ignore if the value returned is a null string:
-    function goPage (newURL) {
-
-      // if url is empty, skip the menu dividers and reset the menu selection to default
-      if (newURL != "") {
-
-          // if url is "-", it is this page -- reset the menu:
-          if (newURL == "-" ) {
-              resetMenu();
-          }
-          // else, send page to designated URL
-          else {
-            document.location.href = newURL;
-          }
-      }
-    }
-
-    // resets the menu selection upon entry to this page:
-    function resetMenu() {
-    document.gomenu.selector.selectedIndex = 2;
-    }
-    </script>
 
 
   </body>

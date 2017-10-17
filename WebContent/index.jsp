@@ -5,9 +5,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
-        <title>::Materiales:de:Contruccion::</title>
+        <title>Materiales::de::Construcci&oacute;n</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -19,10 +19,10 @@
 
     </head>
     <body>
-        <div id="loginbox">     <h1 style="text-align: center; color: #E8E8E8">Bienvenidos</h1>    
-        
+        <div id="loginbox">     <h1 style="text-align: center; color: #E8E8E8">Bienvenidos</h1>
+
         <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
-        
+
            if(userSession != null ){
         	   String tipo = userSession.getTipo();
         	   int tipo_int=0;
@@ -32,29 +32,29 @@
         	   if(tipo.equals("DE")){tipo_int=4;}
         	   if(tipo.equals("ADM")){tipo_int=5;}
    			switch (tipo_int) {
-   			case 2:			
+   			case 2:
    				response.sendRedirect("indexCA.jsp");
-   				break;				
-   			case 3:			
+   				break;
+   			case 3:
    				response.sendRedirect("indexVE.jsp");
-   				break;			
-   			case 1:			
+   				break;
+   			case 1:
    				response.sendRedirect("indexEA.jsp");
-   				break;				
-   			case 4:			
-   				response.sendRedirect("indexDE.jsp");		
-   				break;		
-   			case 5:			
-   				response.sendRedirect("indexADM.jsp");		
+   				break;
+   			case 4:
+   				response.sendRedirect("indexDE.jsp");
+   				break;
+   			case 5:
+   				response.sendRedirect("indexADM.jsp");
    				break;
    			default:
    				response.sendRedirect("login.jsp");
    				break;
-   			}        	  
+   			}
           	} else { response.sendRedirect("login.jsp");}%>
-           
-        
-         <% 
+
+
+         <%
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
       		%>
@@ -62,14 +62,14 @@
    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     		<strong>El usuario <%=mensaje %> no existe o la contraseÃ±a ingresada es incorrecta</strong> .
   			</div>
-      		
-      			
+
+
       		<%
         		}
-      			
-      		%> 
+
+      		%>
             <form id="loginform" class="form-vertical" action="IniciarSesion" method="post">
-           
+
 				 <div class="control-group normal_text"> <h3><img src="bootstrap/img/logogin.png" alt="Logo" /></h3></div>
                 <div class="control-group">
                     <div class="controls">
@@ -87,28 +87,28 @@
                 </div>
                 <div class="form-actions">
                     <a href="#" class="flip-link btn btn-info btn-block" id="to-recover">Â¿ Olvidaste tu contraseÃ±a ?</a>
-                    
+
                     <button class="btn btn-success btn-block" type="submit" >Iniciar SesiÃ³n</button>
                 </div>
             </form>
             <form id="recoverform" action="#" class="form-vertical">
 				<p class="normal_text">Ingrese su direcciÃ³n de e-mail y te enviaremos las instrucciones para recuperar su password.</p>
-				
+
                     <div class="controls">
                         <div class="main_input_box">
                             <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder=" direcciÃ³n E-mail" />
                         </div>
                     </div>
-               
+
                 <div class="form-actions">
                     <a href="#" class="flip-link btn btn-success btn-block" id="to-login">&laquo; Volver al login</a><br>
                     <a class="btn btn-info btn-block"/>Recuperar</a>
                 </div>
             </form>
         </div>
-        
-        <script src="bootstrap/js/jquery.min.js"></script>  
-        <script src="bootstrap/js/matrix.login.js"></script> 
+
+        <script src="bootstrap/js/jquery.min.js"></script>
+        <script src="bootstrap/js/matrix.login.js"></script>
           <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
      	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

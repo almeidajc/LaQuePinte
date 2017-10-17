@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 
-<title>Materiales::de::Construcciï¿½n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,7 +34,7 @@
   <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
 
 </div>
-<!--close-Header-part--> 
+<!--close-Header-part-->
 
 
 <!--top-Header-menu-->
@@ -50,33 +50,33 @@
       </ul>
     </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
-    
-    
+
+
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
 
     <li><a href="indexADM.jsp"><i class="icon icon-th-list"></i> <span>Menu Administrador</span></a> </li>
-     	
-    
+
+
 
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
-        <li class="active"><a href="altaUsuarioADM.jsp">Nuevo Empleado</a></li>
+        <li class="active"><a href="altaUsuarioADM.jsp">Crear Empleado</a></li>
         <li><a href="modificarUsuarioADM.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioADM.jsp">Eliminar Empleado</a></li>
         <li><a href="consultaUsuarioADM.jsp">Consultar Empleado</a></li>
       </ul>
     </li>
-    
-    
-  
-    
+
+
+
+
   </ul>
 </div>
 <!-- sidebar-menu-->
@@ -87,40 +87,40 @@
     <div id="content">
     <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Nuevo Empleado</a></div>
-   
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Crear Empleado</a></div>
+
   </div>
-<!--End-Action boxes-->    
-   
+<!--End-Action boxes-->
+
 
 
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
   <div id="titulo">
- <h1>Nuevo Empleado</h1>
+ <h1>Crear Empleado</h1>
  </div>
   <div class="container-fluid"><hr>
-   
+
   <div class="row-fluid">
     <div class="span6">
-    
-     <% 
+
+     <%
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
       		%>
       		<div class="alert alert-success">
    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> . 
+    		<strong><%=mensaje %></strong> .
   			</div>
-      		
-      			
+
+
       		<%
         		}
-      			
+
       		%>
-      		
-      		
+
+
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
           <h5>Alta usuario</h5>
@@ -132,40 +132,44 @@
               <label class="control-label">Nombre :</label>
               <div class="controls">
                 <input type="text" class="span11" placeholder="Nombre empleado" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
-                <div id="nombreError"></div>
                 <a href="#" title="Ingrese el nombre del nuevo empleado" class="tip-right"><i class="icon-question-sign"></a></i></li>
+                <div id="nombreError"></div>
                 </div>
             </div>
             <div class="control-group">
               <label class="control-label">Apellido :</label>
               <div class="controls">
                <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido empleado" onchange="validaApellido(this.value)" required />
-                	<div id="apError"></div>
+
                 <a href="#" title="Ingrese el apellido del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+              	<div id="apError"></div>
               </div>
             </div>
             <div class="control-group">
                 <label class="control-label">DNI :</label>
                 <div class="controls">
                 <input type="number" class="span11" placeholder="Numero de documento empleado" name="dni" id="dni" onchange="validaDNI(this.value)"/>
-          	   <div id="dniErro"></div>
-               <a href="#" title="Ingrese el Numero de Identificacion Nacional del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+
+               <a href="#" title="Ingrese el N&oacute;mero de Identificacion Nacional del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+               <div id="dniErro"></div>
                </div>
                </div>
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
                  <input type="number"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
-              	<div id="telef"></div>
-                 <a href="#" title="Ingrese el n�mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+
+                 <a href="#" title="Ingrese el n&oacute;mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+              	 <div id="telef"></div>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
                 <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
-             	<div id="emailText"></div>
-                 <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+
+                <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+              	<div id="emailText"></div>
               </div>
             </div>
            <div class="control-group">
@@ -211,7 +215,7 @@
                 <div class="control-group">
                   <label class="control-label">Contrase&ntilde;a</label>
                   <div class="controls">
-                    <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Contrase�a" onchange="validaPass(this.value)" required>
+                    <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Contrase&ntilde;a" onchange="validaPass(this.value)" required>
             		<a href="#" title="La contrase&ntilde;a la decide el empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
             		<label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
 
@@ -220,7 +224,7 @@
                 <div class="control-group">
                   <label class="control-label">Confirmar contrase&ntilde;a</label>
                   <div class="controls">
-                   <input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="Repita la contrase�a" onchange="validaPass2(this.value)" required>
+                   <input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="Repita la contrase&ntilde;a" onchange="validaPass2(this.value)" required>
             <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                 </div>
@@ -242,7 +246,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 
 <!--end-Footer-part-->

@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci�n</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -97,7 +97,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 <!--close-top-Header-menu-->
 
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
   <li><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
@@ -111,9 +111,9 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
     <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
-        <li><a href="altaClienteVE.jsp">Nuevo Cliente</a></li>
+        <li><a href="altaClienteVE.jsp">Crear Cliente</a></li>
         <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
-        <li><a href="bajaClienteVE.jsp">Eliminar Cliente</a></li>
+
         <li class="active"><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
       </ul>
     </li>
@@ -212,7 +212,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Marimon Almeida System. </div>
+  <div id="footer" class="span12" style="font-size: 15px;"> 2016 &copy; Aguirre Almeida Marimon System. </div>
 </div>
 
 <!--end-Footer-part-->
