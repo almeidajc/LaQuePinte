@@ -67,7 +67,7 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
-    <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li class=""><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
 
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
@@ -78,10 +78,10 @@
       </ul>
     </li>
 
-    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
+    <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Empleado</span> </a>
       <ul>
         <li><a href="altaUsuarioEA.jsp">Crear Empleado</a></li>
-        <li><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
+        <li class="active"><a href="modificarUsuarioEA.jsp">Modificar Empleado</a></li>
         <li><a href="bajaUsuarioEA.jsp">Eliminar Empleado</a></li>
         <li><a href="consultaUsuarioEA.jsp">Consultar Empleado</a></li>
       </ul>
@@ -165,7 +165,7 @@
               <label class="control-label">Email :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="email"  value=" <%= email %>" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="email"  value="<%= email %>" onchange="validarEmail(this.value)" />
              	<a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
              	<div id="emailText"></div>
 
@@ -187,7 +187,7 @@
                 <div class="control-group">
                   <label class="control-label">Confirmar contrase&ntilde;a</label>
                   <div class="controls">
-                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseña" onchange="validaPass22(this.value)" required>
+                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contrase&ntilde;a" onchange="validaPass22(this.value)" required>
             		<label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                   <% int idem=Integer.parseInt(request.getParameter("id_empleado")); %>

@@ -214,7 +214,7 @@
               <label class="control-label">Precio por kil&oacute;metro: </label>
               <div class="controls">
 
-                <input type="text" style="text-align:right" class="span11" name="costokm"  value=" <%= costo %>" id="costokm" placeholder="" onchange="" />
+                <input type="text" style="text-align:right" class="span11" name="costokm"  value="<%= costo %>" id="costokm" placeholder="" onchange="" />
                 <input type="hidden" id="id_costos" name="id_costos" value="<%= 1 %>" >
 
             </div>
@@ -226,7 +226,7 @@
               <label class="control-label">Recargo por zona peligrosa:</label>
               <div class="controls">
 
-                <input type="text" style="text-align:right" class="span11" name="recargo"  value=" <%= costo2 %>" id="recargo" placeholder="" onchange="" />
+                <input type="text" style="text-align:right" class="span11" name="recargo"  value="<%= costo2 %>" id="recargo" placeholder="" onchange="" />
                  <input type="hidden" id="id_costos" name="id_costos" value="<%= 2 %>" >
 
             </div>

@@ -23,6 +23,10 @@
 <% int id = Integer.parseInt(request.getParameter("id"));
       CtrlMaterial ctrl = new CtrlMaterial();
       Material m =ctrl.getMaterialById(id);
+      String desc = m.getDescripcion();
+      if(desc=="" || desc==null){
+    	  desc="";
+      }
 
 
 
@@ -206,7 +210,7 @@ Empleado userSession = (Empleado)session.getAttribute("userSession");
               <label class="control-label">Nombre :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="nombre"  value=" <%= m.getNombre() %>" id="nombre" placeholder="Nombre de material" onchange="validarNombre(this.value)" />
+                <input type="text" class="span11" name="nombre"  value="<%= m.getNombre() %>" id="nombre" placeholder="Nombre de material" onchange="validarNombre(this.value)" />
                 <div id="nombreText"></div>
                    </div>
             </div>
@@ -214,7 +218,7 @@ Empleado userSession = (Empleado)session.getAttribute("userSession");
               <label class="control-label">Descripcion :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="desc"  value=" <%= m.getDescripcion() %>" id="desc" placeholder="Nombre de email" onchange="validarDescripcion(this.value)" />
+                <input type="text" class="span11" name="desc"  value="<%= desc %>" id="desc" placeholder="Descripcion del material" onchange="validarDescripcion(this.value)" />
                 <div id="descText"></div>
                </div>
             </div>

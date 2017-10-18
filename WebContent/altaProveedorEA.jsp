@@ -162,10 +162,10 @@
           <form action="AltaProveedor" method="post" class="form-horizontal">
           <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
             <div class="control-group">
-              <label class="control-label">Raz�n social :</label>
+              <label class="control-label">Raz&oacute;n social :</label>
               <div class="controls">
                 <input type="text" class="span11" placeholder="Razon social proveedor" name="razon_soc" id="razon_soc" onchange="validaRazon(this.value)"/>
-              	<a href="#" title="Ingrese la raz�n social del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+              	<a href="#" title="Ingrese la razz&oacute;n social del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
               	<div id="razon"></div>
               </div>
              </div>
@@ -197,10 +197,10 @@
 
 
             <div class="control-group">
-              <label class="control-label">Direcci�n</label>
+              <label class="control-label">Direcci&oacute;n</label>
               <div class="controls">
                 <input type="text"  class="span11" placeholder="Direccion proveedor" name="direccion" id="direccion" onchange="validaDirec(this.value)" />
-              	<a href="#" title="Ingrese la direcci�n del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+              	<a href="#" title="Ingrese la direcci&oacute;n del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
               	<div id="direc"></div>
               </div>
               </div>
