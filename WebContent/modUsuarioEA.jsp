@@ -59,7 +59,7 @@
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
 
 
-     <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -97,6 +97,13 @@
       </ul>
     </li>
 
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Crear Material</a></li>
+        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
+    </li>
 
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
