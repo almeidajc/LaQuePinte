@@ -272,7 +272,7 @@ input[type=text]:focus {
 
 		switch(turno){
 		case 1:
-			 desc = "Ma�ana";
+			 desc = "Ma&ntilde;ana";
 			break;
 
 		case 2:

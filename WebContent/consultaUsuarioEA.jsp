@@ -246,7 +246,7 @@ input[type=text]:focus {
 		String desc;
 		turno = ctrl.listarEmpleados().get(indice).getId_turno();
 		String patente= ctrl.listarEmpleados().get(indice).getPatente();
-		if(patente==null)
+		if(patente==null || patente=="")
 		{patente="-";}
 		switch(turno){
 		case 1:

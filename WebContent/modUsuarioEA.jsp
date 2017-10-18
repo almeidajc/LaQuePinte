@@ -25,7 +25,7 @@
       Empleado e= ctrl.getEmpleadoById(idEmp);
       String email= e.getEmail();
       int tel= e.getTel();
-      String pass= e.getContraseï¿½a();
+      String pass= e.getContraseña();
       //String numeroStr = String.valueOf(h.getNumero());
 
 
@@ -178,7 +178,7 @@
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label">Confirmar contrase&ntilde;ad</label>
+                  <label class="control-label">Confirmar contrase&ntilde;a</label>
                   <div class="controls">
                    <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseÃ±a" onchange="validaPass22(this.value)" required>
             		<label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>

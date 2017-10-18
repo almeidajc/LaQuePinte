@@ -245,7 +245,7 @@ for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
 
 	switch(turno){
 	case 1:
-		 desc = "Ma�ana";
+		 desc = "Ma&ntilde;ana";
 		break;
 
 	case 2:
