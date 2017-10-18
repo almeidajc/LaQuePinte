@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import appExceptions.ApplicationException;
-import negocio.CtrlModificarPedido;
 
 /**
  * Servlet implementation class BorrarPedidoGuardado
@@ -28,7 +27,7 @@ public class BorrarPedidoGuardado extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nroPedido;
+		/*int nroPedido;
 		try {
 			if(request.getParameter("nroPedido")==null){
 				throw new ApplicationException("Error al recuperar el número de pedido", null);
@@ -41,7 +40,7 @@ public class BorrarPedidoGuardado extends HttpServlet {
 		} catch (ApplicationException e) {
 			request.setAttribute("mensajeError", e.getMessage());
 			request.getRequestDispatcher("mensajePedidoModificar.jsp").forward(request, response);
-		}
+		}*/
 	}
 
 	/**

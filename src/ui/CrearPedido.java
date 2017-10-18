@@ -40,13 +40,13 @@ public class CrearPedido extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*Pedido pedido = (Pedido) request.getSession().getAttribute("pedido");
+		Pedido pedido = (Pedido) request.getSession().getAttribute("pedido");
 		Vendedor vendedor = (Vendedor) request.getSession().getAttribute("usuario");
 		CtrlProducto ctrlProducto = new CtrlProducto();
 		Cliente cliente = new Cliente(); // TENGO QUE UBICARLO EN LA BD
-		/*CtrlCliente ctrl = new CtrlCliente();
-		Cliente c = ctrl.getClienteByDni(Dni);*/
-		/*Date fechaEntrega = new Date(); // OBTENER A PARTIR DE JS QUE DETERMINE LA PROX FECHA POSIBLE DE ENVIO
+		CtrlCliente ctrl = new CtrlCliente();
+		Cliente c = ctrl.getClienteByDni(Dni);
+		Date fechaEntrega = new Date(); // OBTENER A PARTIR DE JS QUE DETERMINE LA PROX FECHA POSIBLE DE ENVIO
 		ArrayList<LineaDetallePedido> items;
 		Producto producto;
 		String mensaje="";
@@ -77,7 +77,7 @@ public class CrearPedido extends HttpServlet {
 							throw new ApplicationException("El producto ingresado ya existe en su pedido. Eliminelo y vuelva a intentarlo", null);
 						}
 					}
-					/*int cantidad=Integer.valueOf(request.getParameter("txtCantidad"));
+					int cantidad=Integer.valueOf(request.getParameter("txtCantidad"));
 					int stock = ctrlProducto.getStock(producto); // OBTENER STOCK
 					if(stock>cantidad){
 						items.add(new LineaDetallePedido(producto,cantidad));
@@ -86,7 +86,7 @@ public class CrearPedido extends HttpServlet {
 						response.sendRedirect("nuevoPedidoVE.jsp");
 					} else{
 						throw new ApplicationException("No hay stock suficiente para esa cantidad", null);
-					}*/
+					}
 				}
 			}
 			else {
@@ -104,7 +104,7 @@ public class CrearPedido extends HttpServlet {
 		} catch (ApplicationException e){
 			request.setAttribute("mensaje", e.getMessage());
 			request.getRequestDispatcher("pedido.jsp").forward(request, response);
-		}*/
+		}
 		
 	}
 	

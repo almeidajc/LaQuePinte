@@ -29,7 +29,7 @@
             <div class="error_ex">
               <h1>405</h1>
               <h3>Acceso denegado. Ud no posee los permisos adecuados</h3>
-              <p>P�ngase en contacto con el Administrador</p>
+              <p>Pongase en contacto con el Administrador</p>
               <a class="btn btn-warning btn-big"  href="login.jsp">Volver</a> </div>
           </div>
         </div>
