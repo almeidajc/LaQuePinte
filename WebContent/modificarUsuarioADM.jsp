@@ -171,13 +171,13 @@ input[type=text]:focus {
     <thead>
       <tr >
 
-        <th><h5 style="text-align:left; ">ID</h5></th>
-        <th><h5 style="text-align:left; ">NOMBRE</h5></th>
-        <th><h5 style="text-align:left; ">APELLIDO</h5></th>
-        <th><h5 style="text-align:left; ">TELEFONO</h5></th>
-        <th><h5 style="text-align:left; ">ROL</h5></th>
-        <th><h5 style="text-align:left; ">USUARIO</h5></th>
-        <th><h5 style="text-align:left; ">PATENTE</h5></th>
+        <th><h5 style="text-align:center; ">ID</h5></th>
+        <th><h5 style="text-align:center; ">NOMBRE</h5></th>
+        <th><h5 style="text-align:center; ">APELLIDO</h5></th>
+        <th><h5 style="text-align:center; ">TELEFONO</h5></th>
+        <th><h5 style="text-align:center; ">ROL</h5></th>
+        <th><h5 style="text-align:center; ">USUARIO</h5></th>
+        <th><h5 style="text-align:center; ">PATENTE</h5></th>
         <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
 
       </tr>
@@ -195,17 +195,17 @@ input[type=text]:focus {
 	for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
 		String tipo = ctrl.listarEmpleados().get(indice).getTipo();
 		if( !tipo.equalsIgnoreCase("ADM")){%>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTel() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
-	   <td><h5><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
-	    <td><form method="post" action="modUsuarioEA.jsp">
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getId_empleado() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getNombre() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getApellido() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getTel() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getTipo() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getUsuario() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
+	    <td><form method="post" action="modUsuarioADM.jsp">
            <input type="hidden" id="id_empleado" name="id_empleado" value="<%= ctrl.listarEmpleados().get(indice).getId_empleado()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button type="submit" class="btn2" name="modempleado" id="modempleado" onClick="">
+            <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="modempleado" id="modempleado" onClick="">
            <span class="icon-pencil" style="color: blue; font-size:100%;"></span></a></form></td>
 
 	</tr>

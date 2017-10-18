@@ -43,7 +43,7 @@ public class ModificarEmpleado extends HttpServlet {
 		
 		Empleado e = new Empleado();
 		
-		String tipo_em = request.getParameter("tipo_empleado");
+		String tipo_em = request.getParameter("tipo_em");
 		
 		int idemp = Integer.parseInt(request.getParameter("id_empleado"));
 		e.setId_empleado(idemp);

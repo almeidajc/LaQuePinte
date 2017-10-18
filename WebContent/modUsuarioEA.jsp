@@ -59,7 +59,7 @@
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido  <%=nombre %></span></a></li>
 
 
-     <li class=""><a title="" href="login.jsp"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -97,6 +97,13 @@
       </ul>
     </li>
 
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
+      <ul>
+        <li><a href="altaMaterialEA.jsp">Crear Material</a></li>
+        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
+        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
+      </ul>
+    </li>
 
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
@@ -178,7 +185,7 @@
                   </div>
                 </div>
                 <div class="control-group">
-                  <label class="control-label">Confirmar contrase&ntilde;ad</label>
+                  <label class="control-label">Confirmar contrase&ntilde;a</label>
                   <div class="controls">
                    <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseña" onchange="validaPass22(this.value)" required>
             		<label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>

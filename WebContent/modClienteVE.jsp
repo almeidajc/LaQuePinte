@@ -26,6 +26,11 @@
       String nombrecli= c.getNombre();
       String apellido= c.getApellido();
       String email= c.getEmail();
+      if(email==null || email=="")
+      {email="";}
+      else{
+    	  
+      }
       String direccion= c.getDireccion();
       int tel= c.getTel();
 
@@ -174,7 +179,7 @@
               <label class="control-label">Nombre :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="nombre"  value=" <%= nombrecli %>" id="nombre" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="nombre"  value="<%= nombrecli %>" id="nombre" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
                 <div id="emailText"></div>
                    </div>
             </div>
@@ -182,7 +187,7 @@
               <label class="control-label">Apellido :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="apellido"  value=" <%= apellido %>" id="apellido" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="apellido"  value="<%= apellido %>" id="apellido" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
                 <div id="emailText"></div>
                </div>
             </div>
@@ -199,7 +204,7 @@
               <label class="control-label">Email :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="email"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="email"  value="<%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
                 <div id="emailText"></div>
 
               </div>
@@ -209,7 +214,7 @@
               <label class="control-label">Direccion :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="direccion"  value=" <%= direccion %>" id="direccion" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="direccion"  value="<%= direccion %>" id="direccion" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
                 <div id="direccionText"></div>
 
 

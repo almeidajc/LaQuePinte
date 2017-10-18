@@ -95,7 +95,7 @@
 
       <ul class="quick-actions" >
 
-       <li class="bg_ls span5"> <a href="#"> <i class="icon-user"></i> Empleado</a> </li>
+       <li class="bg_ls span5"> <a href="altaUsuarioADM.jsp"> <i class="icon-user"></i> Empleado</a> </li>
 
 
       </ul>
