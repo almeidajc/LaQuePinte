@@ -41,10 +41,14 @@ public class ModificarMaterial extends HttpServlet {
 		// TODO Auto-generated method stub
 	Material m=new Material();
 	int id = Integer.parseInt(request.getParameter("id"));
-	
+	String desc = request.getParameter("desc");
 	m.setId(id);
 	m.setNombre(request.getParameter("nombre"));
-	m.setDescripcion(request.getParameter("desc"));
+	if(desc=="" || desc==null){
+		m.setDescripcion(null);
+	}
+	else{
+	m.setDescripcion(desc);}
 	
 	CtrlMaterial ctrl = new CtrlMaterial();
 	

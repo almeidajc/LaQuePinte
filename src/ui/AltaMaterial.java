@@ -47,8 +47,12 @@ Material m = new Material();
 		
 		
 		m.setNombre(nombre);
+		if(descripcion==null || descripcion==""){
+			m.setDescripcion(null);
+		}
+		else{
 		m.setDescripcion(descripcion);
-		
+		}
 		CtrlMaterial ctrl = new CtrlMaterial();
 		
 	try {
