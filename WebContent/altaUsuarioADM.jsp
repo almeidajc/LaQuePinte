@@ -176,12 +176,11 @@
               <label class="control-label">Rol del empleado</label>
               <div class="controls">
 
-                <select id="rol" name="rol" required>
-                  <option value="CA">Camionero</option>
+                <select id="rol" name="rol" onchange="empleado_rol()">
+                  <option value="EA">Encargado de administracion</option>
                   <option value="VE">Vendedor</option>
                   <option value="DE">Despachante</option>
-                  <option value="EA">Encargado de administracion</option>
-
+                  <option value="CA">Camionero</option>            
                 </select>
               </div>
               </div>
@@ -191,7 +190,6 @@
                 <input type="text" class="span11" name="patente" id="patente" placeholder="Patente" />
               </div>
             </div>
-
             <div class="control-group">
                <label class="control-label">Turno de trabajo</label>
                <div class="controls">

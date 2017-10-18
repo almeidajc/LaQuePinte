@@ -91,7 +91,6 @@
         <li class="bg_ls span8"> <a href="consultaEnviosPendientesCA.jsp"> <i class="icon-truck"></i> Env&iacute;os Pendientes</a> </li>
         
         <li class="bg_lg span8"> <a href="consultaEnviosRealizadosCA.jsp"> <i class="icon-list-ol"></i> Env&iacute;os Realizados</a> </li>
-        <li class="bg_lr span8"> <a href="balance.jsp"> <i class="icon-credit-card"></i> Balance</a> </li>
 
       </ul>
     </div>

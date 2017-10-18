@@ -112,7 +112,7 @@
     
     <tbody>
       <tr>
-      <div></div>
+      
 <%
     		CtrlPedido ctrlP = new CtrlPedido();
     		
@@ -123,10 +123,11 @@
 	int id;
 	  for (int indice = 0; indice < ctrlP.listarPedidosRealizados().size(); indice++){
 		   id = ctrlP.listarPedidosRealizados().get(indice).getEmpleado().getId_empleado();
-		  if(userSession.getId_empleado() == id ){
+	if(userSession.getId_empleado() == id ){
 		if(ctrlP.listarPedidosRealizados().get(indice).getDireccion_envio() != null ){
 		
 	%>  
+	   
 	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getId_pedido() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getFecha_entrega() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getFecha_efectiva() %></h5></td>
@@ -147,6 +148,7 @@
       %></div>
           </tbody>
   </table>
+  
           </div>
         </div>
       </div>
