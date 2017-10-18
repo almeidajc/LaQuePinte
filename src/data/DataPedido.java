@@ -126,8 +126,8 @@ public class DataPedido {
 				pedido.setId_pedido(rs.getInt(1));
 				}
 			for (LineaDetallePedido lp : pedido.getLineasDetallePedido()) {
-				dprod.descontarStock(stmtStock, lp.getCantidad(), lp.getProducto().getId_producto());
-				this.insertLinea(stmtLineas, pedido.getId_pedido(), lp.getProducto().getId_producto(), lp.getCantidad());
+				//dprod.descontarStock(stmtStock, lp.getCantidad(), lp.getProducto().getId_producto());
+				//this.insertLinea(stmtLineas, pedido.getId_pedido(), lp.getProducto().getId_producto(), lp.getCantidad());
 			}			
 			FactoryConexion.getInstancia().getConn().commit();
 			

@@ -37,6 +37,7 @@ public class PedidoActual extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Pedido pedido = (Pedido) request.getSession().getAttribute("pedido");
 		Empleado empleado = (Empleado) request.getSession().getAttribute("userSession");
@@ -77,7 +78,12 @@ public class PedidoActual extends HttpServlet {
 						items.add(new LineaDetallePedido(producto,cantidad));
 						pedido.setLineasDetallePedido(items);
 						request.getSession().setAttribute("pedido", pedido);
-						response.sendRedirect("nuevoPedidoVE.jsp");
+						String origen = request.getParameter("origen");
+						if(String.valueOf(origen).equals("mostrador")){
+							response.sendRedirect("crearpedido.jsp");
+						}else{
+							response.sendRedirect("nuevoPedidoVE.jsp");
+						}
 					} else{
 						throw new ApplicationException("No hay stock suficiente para esa cantidad", null);
 					}

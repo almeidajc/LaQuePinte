@@ -1,6 +1,7 @@
 package ui.pedido;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +28,13 @@ public class BorrarPedido extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().removeAttribute("pedido");
-		response.sendRedirect("../nuevoPedidoVE.jsp");
+		String origen = request.getParameter("origen");
+		if(String.valueOf(origen).equals("mostrador")){
+			response.sendRedirect("../crearpedido.jsp");
+		}else{
+			response.sendRedirect("../nuevoPedidoVE.jsp");
+		}
+		
 	}
 
 	/**

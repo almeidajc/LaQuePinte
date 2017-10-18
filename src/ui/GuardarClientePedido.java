@@ -40,7 +40,7 @@ public class GuardarClientePedido extends HttpServlet {
 		
 		CtrlCliente ctrlC = new CtrlCliente();
 		Cliente C = new Cliente();
-		
+		String origen = request.getParameter("origen");
 		int dniCliente = Integer.parseInt(request.getParameter("guardarDni"));
 		
 		C = ctrlC.getClienteByDni(dniCliente);
@@ -50,8 +50,13 @@ public class GuardarClientePedido extends HttpServlet {
 		C.setApellido(request.getParameter("guardarApellido"));
 		C.setDireccion(request.getParameter("guardarDireccion"));
 		
-		request.getSession().setAttribute("clientePedidoActual", C);	
-		response.sendRedirect("nuevoPedidoVE.jsp");
+		request.getSession().setAttribute("clientePedidoActual", C);
+		if(String.valueOf(origen).equals("mostrador")){
+			response.sendRedirect("crearpedido.jsp");
+		}else{
+			response.sendRedirect("nuevoPedidoVE.jsp");
+		}
+		
 	}
 
 }

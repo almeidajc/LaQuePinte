@@ -1,33 +1,3 @@
-function show(){
-  if(document.getElementById("juanceChe").checked != true){
-    var parent = document.getElementById("fechaLugares");
-    var child = document.getElementById("fechaInsert");
-    parent.removeChild(child);
-    var child = document.getElementById("lugarInsert");
-    parent.removeChild(child);
-    var child = document.getElementById("coordsInsert");
-    parent.removeChild(child);
-  }
-
-  else{
-    var newDiv = document.createElement("div");
-    newDiv.setAttribute("id",`fechaLugares`);
-    var x = document.createElement("INPUT");
-    x.setAttribute("id",`fechaInsert`);
-    x.setAttribute("type", "hidden");
-    newDiv.appendChild(x);
-    // lineanueva.appendChild(newDiv);
-    var x = document.createElement("INPUT");
-    x.setAttribute("id",`lugarInsert`);
-    x.setAttribute("type", "hidden");
-    newDiv.appendChild(x);
-    // lineanueva.appendChild(newDiv);
-
-    document.getElementById("lugares").appendChild(newDiv);
-    // lineanueva.appendChild(newDiv);
-  }
-}
-
 (function($, undefined) {
 
 
