@@ -28,7 +28,7 @@
       Empleado e= ctrl.getEmpleadoById(idEmp);
       String email= e.getEmail();
       int tel= e.getTel();
-      String pass= e.getContraseï¿½a();
+      String pass= e.getContraseña();
       //String numeroStr = String.valueOf(h.getNumero());
 
 

@@ -67,7 +67,11 @@ public class AltaEmpleado extends HttpServlet {
 		e.setUsuario(usuario);
 		e.setContraseña(password);
 		e.setTipo(tipo);
-		e.setPatente(patente);
+		if(patente==""){
+			e.setPatente(null);}
+		else{
+			e.setPatente(patente);
+		}
 		e.setEmail(email);
 		e.setId_turno(id_turno);
 		

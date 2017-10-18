@@ -46,6 +46,7 @@ public class ModificarCliente extends HttpServlet {
 		Cliente c = new Cliente();
 		
 		String tipo_em = request.getParameter("tipo_em");
+		String email = request.getParameter("email");
 		
 		int dnicli = Integer.parseInt(request.getParameter("dni_cli"));
 		c.setDni(dnicli);
@@ -53,7 +54,11 @@ public class ModificarCliente extends HttpServlet {
 		c.setApellido((request.getParameter("apellido")));
 		c.setDireccion((request.getParameter("direccion")));
 		c.setTel(Integer.parseInt(request.getParameter("tel")));
-		c.setEmail((request.getParameter("email")));
+		if(email==""){
+			c.setEmail(null);
+		}
+		else{
+		c.setEmail(email);}
 		
 		
 		CtrlCliente ctrl = new CtrlCliente();

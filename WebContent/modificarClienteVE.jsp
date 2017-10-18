@@ -174,7 +174,6 @@
         <th><h5 style="text-align:center; ">TELEFONO</h5></th>
         <th><h5 style="text-align:center; ">DIRECCION</h5></th>
         <th><h5 style="text-align:center; ">EMAIL</h5></th>
-        <th><h5 style="text-align:center; ">ID ZONA</h5></th>
         <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
 
       </tr>
@@ -197,7 +196,7 @@
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getTel() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
+	  
 
 
 	   <td><form method="post" action="modClienteVE.jsp">

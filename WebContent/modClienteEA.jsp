@@ -26,6 +26,11 @@
       String nombrecli= c.getNombre();
       String apellido= c.getApellido();
       String email= c.getEmail();
+      if(email==null || email=="")
+      {email="";}
+      else{
+    	  
+      }
       String direccion= c.getDireccion();
       int tel= c.getTel();
 
@@ -185,14 +190,14 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Baja Cliente</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Modificar Cliente</a></div>
 
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
 <div id="titulo">
- <h1>Modificar Empleado</h1>
+ <h1>Modificar Cliente</h1>
  </div>
   <div class="container-fluid"><hr>
 
@@ -209,7 +214,7 @@
               <label class="control-label">Nombre :</label>
               <div class="controls">
 
-                <input type="text" class="span11" value=" <%= nombrecli %>" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
+                <input type="text" class="span11" value="<%= nombrecli %>" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
                 <a href="#" title="Ingrese el nombre del nuevo empleado" class="tip-right"><i class="icon-question-sign"></a></i></li>
                 <div id="nombreError"></div>
                    </div>
@@ -218,7 +223,7 @@
               <label class="control-label">Apellido :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="apellido"  value=" <%= apellido %>" id="apellido" placeholder="Apellido empleado" onchange="validaApellido(this.value)" required />
+                <input type="text" class="span11" name="apellido"  value="<%= apellido %>" id="apellido" placeholder="Apellido empleado" onchange="validaApellido(this.value)" required />
                 <a href="#" title="Ingrese el apellido del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
                 	<div id="apError"></div>
                </div>
@@ -227,7 +232,7 @@
               <label class="control-label">Telefono</label>
               <div class="controls">
 
-                <input type="number"  class="span11"  value="<%= tel %>" id="tel" onchange="validaTel(this.value)" required>
+                <input type="number"  class="span11"  value="<%= tel %>" name="tel" id="tel" onchange="validaTel(this.value)" required>
                <a href="#" title="Ingrese el n�mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               <div id="telef"></div>
 
@@ -237,7 +242,7 @@
               <label class="control-label">Email :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="email"  value=" <%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="email"  value="<%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
              	<a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
              	<div id="emailText"></div>
 
@@ -248,7 +253,7 @@
               <label class="control-label">Direccion :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="direccion"  value=" <%= direccion %>" id="direccion" onchange="validaDirec(this.value)" />
+                <input type="text" class="span11" name="direccion"  value="<%= direccion %>" id="direccion" onchange="validaDirec(this.value)" />
               	<a href="#" title="Ingrese la direcci�n del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
               	<div id="direc"></div>
 

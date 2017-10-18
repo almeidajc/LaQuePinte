@@ -162,24 +162,24 @@
             <div class="control-group">
               <label class="control-label">Nombre :</label>
               <div class="controls">
-                <input type="text" class="span11" placeholder="Nombre empleado" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
-                <a href="#" title="Ingrese el nombre del nuevo empleado" class="tip-right"><i class="icon-question-sign"></a></i></li>
+                <input type="text" class="span11" placeholder="Nombre cliente" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
+                <a href="#" title="Ingrese el nombre del nuevo cliente" class="tip-right"><i class="icon-question-sign"></a></i></li>
                 <div id="nombreError"></div>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Apellido :</label>
               <div class="controls">
-                <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido empleado" onchange="validaApellido(this.value)" required />
-                <a href="#" title="Ingrese el apellido del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+                <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido cliente" onchange="validaApellido(this.value)" required />
+                <a href="#" title="Ingrese el apellido del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i></li>
                 	<div id="apError"></div>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">DNI :</label>
               <div class="controls">
-               <input type="number" class="span11" placeholder="Numero de documento empleado" name="dni" id="dni" onchange="validaDNI(this.value)"/>
-          	   <a href="#" title="Ingrese el Numero de Identificacion Nacional del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+               <input type="number" class="span11" placeholder="Numero de documento cliente" name="dni" id="dni" onchange="validaDNI(this.value)"/>
+          	   <a href="#" title="Ingrese el Numero de Identificacion Nacional del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i></li>
           	   <div id="dniErro"></div>
                </div>
                </div>
@@ -187,25 +187,25 @@
               <label class="control-label">Telefono</label>
               <div class="controls">
                 <input type="number"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
-               <a href="#" title="Ingrese el n�mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+               <a href="#" title="Ingrese el n�mero de telefono del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i></li>
               <div id="telef"></div>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
-             	<a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
+                <input type="text" class="span11" name="email" id="email" placeholder="Direccion de email" onchange="validarEmail(this.value)" />
+             	<a href="#" title="Ingrese la direccion de email del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i></li>
              	<div id="emailText"></div>
               </div>
             </div>
 
 
             <div class="control-group">
-              <label class="control-label">Direcci�n</label>
+              <label class="control-label">Direcci&oacute;n</label>
               <div class="controls">
-                <input type="text"  class="span11" placeholder="Direccion proveedor" name="direccion" id="direccion" onchange="validaDirec(this.value)" />
-              	<a href="#" title="Ingrese la direcci�n del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
+                <input type="text"  class="span11" placeholder="Direccion cliente" name="direccion" id="direccion" onchange="validaDirec(this.value)" />
+              	<a href="#" title="Ingrese la direcci&oacute;n del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i>
               	<div id="direc"></div>
               </div>
               </div>
