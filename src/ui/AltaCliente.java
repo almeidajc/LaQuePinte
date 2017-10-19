@@ -106,7 +106,7 @@ public class AltaCliente extends HttpServlet {
 		e1.printStackTrace();
 	}
 	
-		}
+	
 	
 	if(tipo_em.equalsIgnoreCase("EA")){
 	request.setAttribute("mensaje", "Cliente agregado correctamente");
@@ -117,5 +117,5 @@ public class AltaCliente extends HttpServlet {
 		request.getRequestDispatcher("altaClienteVE.jsp").forward(request, response);
 	}
 	}
-
+	}
 	}
