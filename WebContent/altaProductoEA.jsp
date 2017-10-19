@@ -146,11 +146,20 @@
       <div class="span6"> <!-- TAMA�O FORMULARIOS -->
       <%
       			String mensaje=(String)request.getAttribute("mensaje");
+      			String mensaje2=(String)request.getAttribute("mensaje2");
         		if(mensaje!=null){
       		%>
       		<div class="alert alert-success">
    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     		<strong><%=mensaje %></strong> .
+  			</div>
+  			<%
+        		}
+        		if(mensaje2!=null){
+      		%>
+  			<div class="alert alert-error">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje2 %></strong> .
   			</div>
 
 
@@ -195,7 +204,6 @@
               	<%
 }
       %>
-	<option id="material" value="99">No aplica</option>
        </select>
               </div>
             </div>
