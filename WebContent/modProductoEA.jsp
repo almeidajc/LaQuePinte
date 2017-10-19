@@ -140,6 +140,8 @@
 <% int idprod = Integer.parseInt(request.getParameter("id_producto"));
 		CtrlProducto ctrl = new CtrlProducto();
 		Producto p = ctrl.getById(idprod);
+		float a=p.getPrecio();
+		String precio = String.format ("%.2f", a);
 
 
 	%>
@@ -176,7 +178,7 @@
                <div class="control-group">
                 <label class="control-label">Precio</label>
                 <div class="controls">
-                 	<input type="text" name="precio_producto" id="precio_producto" autofocus class="form-control" value="<%=p.getPrecio() %>" onchange="validaPrecio(this.value)">
+                 	<input type="text" name="precio_producto" id="precio_producto" autofocus class="form-control" value="<%=precio %>" onchange="validaPrecio(this.value)">
                 	<a href="#" title="Ingrese el precio de venta del nuevo producto con dos decimales" class="tip-right"><i class="icon-question-sign"> </a></i>
                 	<div id="precioError"></div>
                	</div>

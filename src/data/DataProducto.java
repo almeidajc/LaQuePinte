@@ -13,9 +13,25 @@ public class DataProducto {
 		
 		ResultSet rs=null;
 		PreparedStatement stmtProd =null;
+		PreparedStatement stmtId = null;
 		PreparedStatement stmtPrecio = null;
 		
 		try {
+			
+			 stmtId = (PreparedStatement) FactoryConexion.getInstancia().getConn().createStatement();
+			   
+		     stmtId=FactoryConexion.getInstancia().getConn().prepareStatement(
+					  "select max(id_producto) from productos"
+					);
+			stmtId.setString(1, p.getNombre_producto());
+			rs = stmtId.executeQuery();
+		    		            
+		    
+		
+			int id= rs.getInt("nombre_produco");
+			
+			
+			
 			stmtProd = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"insert into productos (id_producto, nombre_producto, cantidad_stock, cantidad_minima, cantidad_maxima, id_material) values (?,?,?,?,?,?)");
 			stmtProd.setInt(1, p.getId_producto());
@@ -27,13 +43,24 @@ public class DataProducto {
 			
 			stmtProd.execute();
 			
+				
+		
+			
+		
+		    
+			
 			//LUEGO DE AGREGAR EL PRODUCTO A LA TABLA PRODUCTO, AGREGO LOS DATOS CORRESPONDIENTES A LA TABLA PRECIOS
 			
 			
 			stmtPrecio = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"Insert into precio_producto_venta (id_producto, fecha, precio)"
 					+"values (?,current_date(),?)");
+
+			stmtPrecio.setInt(1, id);						
+							
+
 			stmtPrecio.setInt(1, p.getId_producto());
+
 			stmtPrecio.setFloat(2, p.getPrecio());
 			stmtPrecio.execute();
 			
