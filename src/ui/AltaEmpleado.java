@@ -45,6 +45,7 @@ public class AltaEmpleado extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Empleado e = new Empleado();
+		String tipo_em =  request.getParameter("tipo_em");
 		
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
@@ -76,6 +77,33 @@ public class AltaEmpleado extends HttpServlet {
 		e.setId_turno(id_turno);
 		
 		CtrlEmpleado ctrl = new CtrlEmpleado();
+		boolean existeEmp = false;
+		
+		String usu;
+		String mjs="";
+		for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
+
+
+			usu= ctrl.listarEmpleados().get(indice).getUsuario();
+
+
+			if(usuario == usu || usu.equalsIgnoreCase(usuario)){
+				existeEmp = true;
+			}
+
+		}
+
+		if(existeEmp){
+			mjs = "El empleado ya se encuentra registrado";
+				request.setAttribute("mensaje2", mjs);
+				if(tipo_em.equalsIgnoreCase("EA")){
+					request.getRequestDispatcher("altaUsuarioEA.jsp").forward(request, response);	}		
+				
+				else{
+					
+					request.getRequestDispatcher("altaUsuarioADM.jsp").forward(request, response);
+				}
+		}else{
 		
 	try {
 		ctrl.agregarEmpleado(e);
@@ -83,7 +111,7 @@ public class AltaEmpleado extends HttpServlet {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
-	String tipo_em = (String) request.getParameter("tipo_em");
+	
 
 	
 	if(tipo_em.equalsIgnoreCase("EA")){
@@ -95,5 +123,5 @@ public class AltaEmpleado extends HttpServlet {
 		request.getRequestDispatcher("altaUsuarioADM.jsp").forward(request, response);
 	}
 	}
-
+	}
 }
