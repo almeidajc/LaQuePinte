@@ -52,6 +52,28 @@ public class AltaZona extends HttpServlet {
 
 
 		CtrlZona ctrl = new CtrlZona();
+		boolean existeZona = false;
+		
+		String desc;
+		String mjs="";
+		
+		for (int indice = 0; indice < ctrl.listarZona().size(); indice++){
+			
+			
+			desc= ctrl.listarZona().get(indice).getDescripcion();
+			
+					
+			if(desc == descripcion || desc.equalsIgnoreCase(descripcion) ){
+				existeZona = true;
+			}
+			   
+		}
+		
+		if(existeZona){	
+			mjs = "La zona ya se encuentra registrada";
+			request.setAttribute("mensaje2", mjs);
+			request.getRequestDispatcher("altaZonaPeligrosaEA.jsp").forward(request, response);}
+		else{
 
 	try {
 		ctrl.agregarZona(z);
@@ -67,5 +89,5 @@ public class AltaZona extends HttpServlet {
 		request.getRequestDispatcher("altaZonaPeligrosaEA.jsp").forward(request, response);
 
 	}
-
+	}
 }

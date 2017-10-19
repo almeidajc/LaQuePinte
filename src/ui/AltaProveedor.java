@@ -62,6 +62,29 @@ public class AltaProveedor extends HttpServlet {
 		p.setEmail(email);
 		
 		CtrlProveedor ctrl = new CtrlProveedor();
+		boolean existeProv = false;
+
+		String razon;
+		String mjs="";
+
+		for (int indice = 0; indice < ctrl.listarProveedores().size(); indice++){
+
+
+			razon= ctrl.listarProveedores().get(indice).getRazon_social();
+
+
+			if(razon_soc == razon || razon.equalsIgnoreCase(razon_soc)){
+				existeProv = true;
+			}
+
+		}
+
+		if(existeProv){
+			mjs = "El proveedor ya se encuentra registrado";
+				request.setAttribute("mensaje2", mjs);
+			request.getRequestDispatcher("altaProveedorEA.jsp").forward(request, response);
+
+		}else{
 		
 	try {
 		ctrl.agregarProveedor(p);
@@ -69,6 +92,7 @@ public class AltaProveedor extends HttpServlet {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
+	
 	String tipo_em =  request.getParameter("tipo_em");
 
 	
@@ -79,6 +103,7 @@ public class AltaProveedor extends HttpServlet {
 	
 	}
 
+}
 }
 
 
