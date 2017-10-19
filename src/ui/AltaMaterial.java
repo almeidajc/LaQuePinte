@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import appExceptions.ApplicationException;
 import negocio.CtrlMaterial;
+import negocio.CtrlProducto;
 import entidades.Material;
 
 /**
@@ -54,6 +55,31 @@ Material m = new Material();
 		m.setDescripcion(descripcion);
 		}
 		CtrlMaterial ctrl = new CtrlMaterial();
+
+		
+		boolean existeMat = false;
+		
+		String nomp;
+		String mjs="";
+		
+		for (int indice = 0; indice < ctrl.listarMateriales().size(); indice++){
+			
+			
+			nomp= ctrl.listarMateriales().get(indice).getNombre();
+			
+					
+			if(nombre == nomp || nomp.equalsIgnoreCase(nombre)){
+				existeMat = true;
+			}
+			   
+		}
+		
+		if(existeMat){	
+			mjs = "El material ya se encuentra registrado";
+			request.setAttribute("mensaje2", mjs);
+			request.getRequestDispatcher("altaMaterialEA.jsp").forward(request, response);
+			
+		}else{			
 		
 	try {
 		ctrl.agregarMaterial(m);

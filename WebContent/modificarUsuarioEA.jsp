@@ -242,7 +242,7 @@ for (int indice = 0; indice < ctrl.listarEmpleados().size(); indice++){
 	int turno;
 	String desc;
 	turno = ctrl.listarEmpleados().get(indice).getId_turno();
-
+	
 	switch(turno){
 	case 1:
 		 desc = "Ma&ntilde;ana";

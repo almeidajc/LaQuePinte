@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import negocio.CtrlCliente;
 import negocio.CtrlEmpleado;
+import negocio.CtrlProducto;
 import appExceptions.ApplicationException;
 import entidades.Cliente;
 import entidades.Empleado;
@@ -42,6 +43,7 @@ public class AltaCliente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Cliente c = new Cliente();
+		String tipo_em =  request.getParameter("tipo_em");
 		
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
@@ -64,6 +66,38 @@ public class AltaCliente extends HttpServlet {
 		c.setEmail(email);
 		
 		CtrlCliente ctrl = new CtrlCliente();
+
+		
+		boolean existeCli = false;
+		
+		int dnii;
+		String mjs="";
+		
+		for (int indice = 0; indice < ctrl.listarClientes().size(); indice++){
+			
+			
+			dnii= ctrl.listarClientes().get(indice).getDni();
+			
+					
+			if(dni == dnii ){
+				existeCli = true;
+			}
+			   
+		}
+		
+		if(existeCli){	
+			mjs = "El cliente ya se encuentra registrado";
+			request.setAttribute("mensaje2", mjs);
+			
+		 if(tipo_em.equalsIgnoreCase("EA")){
+				request.getRequestDispatcher("altaClienteEA.jsp").forward(request, response);}
+			else{
+				
+				request.getRequestDispatcher("altaClienteVE.jsp").forward(request, response);}
+		}
+			
+			
+		else{			
 		
 	try {
 		ctrl.agregarCliente(c);
@@ -71,8 +105,8 @@ public class AltaCliente extends HttpServlet {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
-	String tipo_em =  request.getParameter("tipo_em");
-
+	
+		}
 	
 	if(tipo_em.equalsIgnoreCase("EA")){
 	request.setAttribute("mensaje", "Cliente agregado correctamente");
@@ -84,4 +118,4 @@ public class AltaCliente extends HttpServlet {
 	}
 	}
 
-}
+	}

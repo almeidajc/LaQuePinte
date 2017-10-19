@@ -162,11 +162,12 @@ public class DataEmpleado {
 	            }
 	            else
 	            e.setPatente(rs.getString("patente"));
-	            if(rs.getString("email")==null || rs.getString("email")=="" ){
-	            	e.setEmail("-");
-	            }
-	            else
-	            e.setEmail(rs.getString("email"));
+	            
+	            if(rs.getString("email")==null){
+					e.setEmail("-");
+				}
+				else
+				e.setEmail(rs.getString("email"));
 	            e.setId_turno(rs.getInt("id_turno"));
 	            
 	 
