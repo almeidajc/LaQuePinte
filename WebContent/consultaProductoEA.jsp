@@ -264,6 +264,7 @@ input[type=text]:focus {
 
     </tbody>
   </table>
+  <h5 style="text-align:center; "><%= ctrl.listarProductos().size() %></h5>
           </div>
         </div>
       </div>

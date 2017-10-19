@@ -55,8 +55,12 @@ public class DataProducto {
 			stmtPrecio = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"Insert into precio_producto_venta (id_producto, fecha, precio)"
 					+"values (?,current_date(),?)");
+
 			stmtPrecio.setInt(1, id);						
 							
+
+			stmtPrecio.setInt(1, p.getId_producto());
+
 			stmtPrecio.setFloat(2, p.getPrecio());
 			stmtPrecio.execute();
 			
@@ -359,20 +363,17 @@ try {
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"update productos set nombre_producto=?,cantidad_stock=?, cantidad_minima=?, cantidad_maxima=? where id_producto=?"
 					);
-			stmt.setString(1, p.getNombre_producto());
-			
+			stmt.setString(1, p.getNombre_producto());			
 			stmt.setInt(2, p.getCantidad_stock());
 			stmt.setInt(3, p.getCantidad_min_stock());
 			stmt.setInt(4, p.getCantidad_max_stock());
 			stmt.setInt(5, p.getId_producto());
-			
 		
 			stmt.execute();
 			
 			
 			stmtPrecio = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"Insert into precio_producto_venta (id_producto, fecha, precio)"
-					+"values (?,current_date(),?)");
+					"Insert into precio_producto_venta (id_producto, fecha, precio) values (?,current_date(),?)");
 			stmtPrecio.setInt(1, p.getId_producto());						
 							
 			stmtPrecio.setFloat(2, p.getPrecio());

@@ -254,7 +254,7 @@ public class DataEmpleado {
 
 			
 		} catch (SQLException e) {
-			throw new ApplicationException("Error agregar un cliente en la base de datos", e);
+			throw new ApplicationException("Error agregar un empleado en la base de datos", e);
 			
 		}
 		finally{
