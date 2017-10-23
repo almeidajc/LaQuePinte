@@ -125,7 +125,7 @@
 
          <input type="hidden" id="entrega" name="entrega" value="1" >
         
-	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('ï¿½Estï¿½ Seguro que deseas dar registrar el envï¿½o de este pedido?')">
+	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('¿Est&aacute; seguro que deseas dar registrar el env&iacute;o de este pedido?')">
 
            <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
 

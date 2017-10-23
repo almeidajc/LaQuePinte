@@ -86,7 +86,7 @@
     <thead>
       <tr >
       	
-        <th><h5 style="text-align:center; ">ID</h5></th>
+        <th><h5 style="text-align:center; ">Nº FACTURA</h5></th>
         <th><h5 style="text-align:center; ">FECHA ENTREGA</h5></th>
         
         <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
@@ -120,7 +120,8 @@
 	   		   
 	  
 	  <td><form method="post" action="RegistrarEnvioPedido">
-        <input type="hidden" id="id_pedido" name="id_pedido" value="<%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido()%>" >
+        <input type="hidden" name="id_pedido" value="<%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido()%>" >
+        <input type="hidden" id="entrega" name="entrega" value="2" >
         
 	   <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="registrarenvio" id="registrarenvio" onClick="return confirm('¿Est&aacute; seguro que deseas dar registrar el env&iacute;o de este pedido?')">
            <span class="icon-pencil" style="color: blue; font-size:100%; align-items:center"></span></a></form></td>
