@@ -13,24 +13,20 @@ public class DataProducto {
 		
 		ResultSet rs=null;
 		PreparedStatement stmtProd =null;
-		PreparedStatement stmtId = null;
+		Statement stmtId = null;
 		PreparedStatement stmtPrecio = null;
+		int maxID;
 		
 		try {
-			
-			 stmtId = (PreparedStatement) FactoryConexion.getInstancia().getConn().createStatement();
+			   stmtId = FactoryConexion.getInstancia().getConn().createStatement();
 			   
-		     stmtId=FactoryConexion.getInstancia().getConn().prepareStatement(
-					  "select max(id_producto) from productos"
+			     rs = stmtId.executeQuery(
+					  "select max(id_producto)id_p from productos"
 					);
-			stmtId.setString(1, p.getNombre_producto());
-			rs = stmtId.executeQuery();
-		    		            
-		    
-		
-			int id= rs.getInt("nombre_produco");
-			
-			
+			     if (rs.next()) {
+			    	   maxID = rs.getInt(1);
+			    	   maxID++;
+			    	
 			
 			stmtProd = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"insert into productos (id_producto, nombre_producto, cantidad_stock, cantidad_minima, cantidad_maxima, id_material) values (?,?,?,?,?,?)");
@@ -56,14 +52,10 @@ public class DataProducto {
 					"Insert into precio_producto_venta (id_producto, fecha, precio)"
 					+"values (?,current_date(),?)");
 
-			stmtPrecio.setInt(1, id);						
-							
-
-			stmtPrecio.setInt(1, p.getId_producto());
-
+			stmtPrecio.setInt(1, maxID);						
 			stmtPrecio.setFloat(2, p.getPrecio());
 			stmtPrecio.execute();
-			
+			     }
 			
 		} catch (SQLException e) {
 			try {
