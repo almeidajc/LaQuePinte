@@ -19,6 +19,34 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script>
+var resp;
+function confirmarEliminacion(indice){
+	resp =indice;
+	var unique_id = $.gritter.add({
+		title: 'Eliminar Producto',
+		text: 'Desea eliminar el producto? <br><br><input type="button" onclick="eliminarProducto()" class="btn btn-success" value="Eliminar Producto">    <input type="button" class="btn btn-danger" onclick="cancelarProducto()" value="Cancelar">',
+		// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+		// (bool | optional) if you want it to fade out on its own or just sit there
+		sticky: true,
+		// (int | optional) the time you want it to be alive for before fading out
+		time: '',
+		// (string | optional) the class name you want to apply to that specific message
+		class_name: 'my-sticky-class'
+	});
+	 
+	}
+	
+function eliminarProducto(){
+	document.getElementById("producto"+resp).submit();
+}
+
+function cancelarProducto(){
+	$.gritter.removeAll();
+}
+</script>
+
 <script type="text/javascript">
 (function(document) {
   'use strict';
@@ -272,10 +300,14 @@ input[type=text]:focus {
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_material() %></h5></td>
-	   <td><form method="post" action="BajaProducto">
+	   <td><form method="post" id="producto<%= indice %>" action="BajaProducto">
            <input type="hidden" id="id_producto" name="id_producto" value="<%= ctrl.listarProductos().get(indice).getId_producto()%>" >
-           <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="bajaproducto" style="background-color:#F9F9F9;" id="bajaproducto" onClick="return confirm('�Esta Seguro que deseas eliminar este producto?')">
-           <span class="icon-trash" style="color: red; font-size:100%; background-color:#F9F9F9"></span></a></form></td>
+
+           
+           <button style="margin:auto;display:block;" type="button" class="btn2" name="bajaproducto" id="bajaproducto" onClick="confirmarEliminacion(<%= indice %>)">
+           <span class="icon-trash" style="color: red; font-size:100%;"></span></button>   
+           
+           </form></td>
 
 	</tr>
 	<%

@@ -22,6 +22,75 @@
 </head>
 <body>
 
+<script>
+var resp;
+function confirmarEliminacion(indice){
+	resp =indice;
+	var unique_id = $.gritter.add({
+		title: 'Eliminar Proveedor',
+		text: 'Desea eliminar el Proveedor? <br><br><input type="button" onclick="eliminarProveedor()" class="btn btn-success" value="Eliminar Proveedor">    <input type="button" class="btn btn-danger" onclick="cancelarProveedorProveedorProveedor()" value="Cancelar">',
+		// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+		// (bool | optional) if you want it to fade out on its own or just sit there
+		sticky: true,
+		// (int | optional) the time you want it to be alive for before fading out
+		time: '',
+		// (string | optional) the class name you want to apply to that specific message
+		class_name: 'my-sticky-class'
+	});
+	 
+	}
+	
+function eliminarProveedor(){
+	document.getElementById("proveedor"+resp).submit();
+}
+
+function cancelarProveedor(){
+	$.gritter.removeAll();
+}
+</script>
+
+<script type="text/javascript">
+(function(document) {
+  'use strict';
+
+  var LightTableFilter = (function(Arr) {
+
+    var _input;
+
+    function _onInputEvent(e) {
+      _input = e.target;
+      var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+      Arr.forEach.call(tables, function(table) {
+        Arr.forEach.call(table.tBodies, function(tbody) {
+          Arr.forEach.call(tbody.rows, _filter);
+        });
+      });
+    }
+
+    function _filter(row) {
+      var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+      row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+
+    return {
+      init: function() {
+        var inputs = document.getElementsByClassName('light-table-filter');
+        Arr.forEach.call(inputs, function(input) {
+          input.oninput = _onInputEvent;
+        });
+      }
+    };
+  })(Array.prototype);
+
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+      LightTableFilter.init();
+    }
+  });
+
+})(document);
+</script>
+
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 			String nombre="";
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
@@ -163,6 +232,7 @@
 
           <div class="widget-content nopadding" id="tb_content">
             <table class="order-table table" class="table table-hover" style="text-align:left; ">
+            
     <thead>
       <tr >
 
@@ -190,11 +260,15 @@
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getDireccion() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getEmail() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProveedores().get(indice).getTel() %></h5></td>
-	    <td><form method="post" action="BajaProveedor">
+	    <td><form method="post" id="proveedor<%= indice %>" action="BajaProveedor">
            <input type="hidden" id="cuit" name="cuit" value="<%= ctrl.listarProveedores().get(indice).getCuit()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button style="margin:auto;display:block;" type="submit" class="btn2" name="bajaproveedor" id="bajaproveedor" onClick="return confirm('�Esta Seguro que deseas dar de baja este proveedor?')">
-           <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
+           
+           
+           <button style="margin:auto;display:block;" type="button" class="btn2" name="bajaproveedor" id="bajaproveedor" onClick="confirmarEliminacion(<%= indice %>)">
+           <span class="icon-trash" style="color: red; font-size:100%;"></span></button>   
+           
+           </form></td>
 
 
 	   </tr>

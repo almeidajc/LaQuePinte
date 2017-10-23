@@ -22,6 +22,32 @@
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
+<script>
+var resp;
+function confirmarEliminacion(indice){
+	resp =indice;
+	var unique_id = $.gritter.add({
+		title: 'Eliminar Zona Peligrosa',
+		text: 'Desea eliminar la zona peligrosa? <br><br><input type="button" onclick="eliminarZona()" class="btn btn-success" value="Eliminar Zona Peligrosa">    <input type="button" class="btn btn-danger" onclick="cancelarZona()" value="Cancelar">',
+		// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+		// (bool | optional) if you want it to fade out on its own or just sit there
+		sticky: true,
+		// (int | optional) the time you want it to be alive for before fading out
+		time: '',
+		// (string | optional) the class name you want to apply to that specific message
+		class_name: 'my-sticky-class'
+	});
+	 
+	}
+	
+function eliminarZona(){
+	document.getElementById("zona"+resp).submit();
+}
+
+function cancelarZona(){
+	$.gritter.removeAll();
+}
+</script>
 
 <script type="text/javascript"> // inicio tabla js1//
 (function(document) {
@@ -268,11 +294,14 @@ input[type=text]:focus {
 	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getId_zona() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarZona().get(indice).getDescripcion() %></h5></td>
 
-	   <td><form method="post" action="BajaZona">
+	   <td><form method="post" id="zona<%= indice %>" action="BajaZona">
            <input type="hidden" id="id_zona" name="id_zona" value="<%= ctrl.listarZona().get(indice).getId_zona()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="bajaubicacion" id="bajaubicacion" onClick="return confirm('�Esta Seguro que deseas dar de baja esta zona?')">
-           <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
+            
+           <button style="margin:auto;display:block;" type="button" class="btn2" name="bajaubicacion" id="bajaubicacion" onClick="confirmarEliminacion(<%= indice %>)">
+           <span class="icon-trash" style="color: red; font-size:100%;"></span></button>   
+           
+           </form></td>
 
 
 

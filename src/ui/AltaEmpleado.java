@@ -94,7 +94,7 @@ public class AltaEmpleado extends HttpServlet {
 		}
 
 		if(existeEmp){
-			mjs = "El empleado ya se encuentra registrado";
+			mjs = "El usuario no disponible, por favor ingrese uno distinto";
 				request.setAttribute("mensaje2", mjs);
 				if(tipo_em.equalsIgnoreCase("EA")){
 					request.getRequestDispatcher("altaUsuarioEA.jsp").forward(request, response);	}		

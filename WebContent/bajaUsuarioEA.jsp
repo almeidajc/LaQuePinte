@@ -8,11 +8,9 @@
 <html lang="en">
 <head>
 <title>Materiales::de::Construcci&oacute;n</title>
-<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-
 <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="bootstrap/css/fullcalendar.css" />
 <link rel="stylesheet" href="bootstrap/css/matrix-style.css" />
@@ -20,9 +18,39 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="js/jquery.gritter.js"></script>
 
+
+<script>
+var resp;
+function confirmarEliminacion(indice){
+	resp =indice;
+	var unique_id = $.gritter.add({
+		title: 'Eliminar Empleado',
+		text: 'Desea eliminar el empleado? <br><br><input type="button" onclick="eliminarEmpleado()" class="btn btn-success" value="Eliminar Empleado">    <input type="button" class="btn btn-danger" onclick="cancelarEmpleado()" value="Cancelar">',
+		// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+		// (bool | optional) if you want it to fade out on its own or just sit there
+		sticky: true,
+		// (int | optional) the time you want it to be alive for before fading out
+		time: '',
+		// (string | optional) the class name you want to apply to that specific message
+		class_name: 'my-sticky-class'
+	});
+	 
+	}
+	
+function eliminarEmpleado(){
+	document.getElementById("empleado"+resp).submit();
+}
+
+function cancelarEmpleado(){
+	$.gritter.removeAll();
+}
+</script>
 
 <script type="text/javascript"> // inicio tabla js1//
+
+
 (function(document) {
   'use strict';
 
@@ -299,15 +327,15 @@ input[type=text]:focus {
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getEmail() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarEmpleados().get(indice).getPatente() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= desc %></h5></td>
-	    <td><form method="post" action="BajaEmpleado">
+	    <td><form method="post" id="empleado<%= indice %>" action="BajaEmpleado">
            <input type="hidden" id="id_empleado" name="id_empleado" value="<%= ctrl.listarEmpleados().get(indice).getId_empleado()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
 
-           <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="bajaempleado" id="bajaempleado" onClick="return confirm('�Esta Seguro que deseas dar de baja este empleado?')">
+           <button style="margin:auto;display:block;" type="button" class="btn2" name="bajaempleado" id="bajaempleado" onClick="confirmarEliminacion(<%= indice %>)">
+           <span class="icon-trash" style="color: red; font-size:100%;"></span></button>           
 
-           <span class="icon-trash" style="color: red; font-size:100%;"></span></a></form></td>
-
-	</tr>
+		   
+           </form></td>
 
 	</tr>
 	<%

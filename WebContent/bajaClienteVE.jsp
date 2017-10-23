@@ -20,6 +20,33 @@
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
+<script>
+var resp;
+function confirmarEliminacion(indice){
+	resp =indice;
+	var unique_id = $.gritter.add({
+		title: 'Eliminar Cliente',
+		text: 'Desea eliminar el cliente? <br><br><input type="button" onclick="eliminarCliente()" class="btn btn-success" value="Eliminar Cliente">    <input type="button" class="btn btn-danger" onclick="cancelarCliente()" value="Cancelar">',
+		// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+		// (bool | optional) if you want it to fade out on its own or just sit there
+		sticky: true,
+		// (int | optional) the time you want it to be alive for before fading out
+		time: '',
+		// (string | optional) the class name you want to apply to that specific message
+		class_name: 'my-sticky-class'
+	});
+	 
+	}
+	
+function eliminarCliente(){
+	document.getElementById("cliente"+resp).submit();
+}
+
+function cancelarCliente(){
+	$.gritter.removeAll();
+}
+</script>
+
 <script type="text/javascript"> // inicio tabla js1//
 (function(document) {
   'use strict';
@@ -196,11 +223,14 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getId_zona() %></h5></td>
-	   <td><form method="post" action="BajaCliente">
+	   <td><form method="post" id="cliente<%= indice %>" action="BajaCliente">
            <input type="hidden" id="dni_cli" name="dni_cli" value="<%= ctrl.listarClientes().get(indice).getDni()%>" >
-            <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
-           <button style="margin:auto;display:block;" type="submit" type="submit" class="btn2" name="bajacliente" id="bajacliente" onClick="return confirm('�Esta Seguro que deseas dar de baja este cliente?')">
-           <span class="icon-trash" style="color: red; font-size:100%; align-items:center"></span></a></form></td>
+            <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >      
+           
+           <button style="margin:auto;display:block;" type="button" class="btn2" name="bajacliente" id="bajacliente" onClick="confirmarEliminacion(<%= indice %>)">
+           <span class="icon-trash" style="color: red; font-size:100%;"></span></button>   
+           
+           </form></td>
 
 	</tr>
 	<%
