@@ -64,16 +64,16 @@ public class AltaProveedor extends HttpServlet {
 		CtrlProveedor ctrl = new CtrlProveedor();
 		boolean existeProv = false;
 
-		String razon;
+		int razon;
 		String mjs="";
 
 		for (int indice = 0; indice < ctrl.listarProveedores().size(); indice++){
 
 
-			razon= ctrl.listarProveedores().get(indice).getRazon_social();
+			razon= ctrl.listarProveedores().get(indice).getCuit();
 
 
-			if(razon_soc == razon || razon.equalsIgnoreCase(razon_soc)){
+			if(cuit == razon){
 				existeProv = true;
 			}
 
