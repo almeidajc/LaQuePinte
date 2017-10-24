@@ -11,7 +11,6 @@ pageEncoding="ISO-8859-1"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-
 <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="bootstrap/css/fullcalendar.css" />
 <link rel="stylesheet" href="bootstrap/css/matrix-style.css" />
@@ -19,16 +18,48 @@ pageEncoding="ISO-8859-1"%>
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="css/jquery.gritter.css" />
 
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">google.load('jquery', '1.7.1');</script>
-<script type="text/javascript" src="scripts/jquery.gritter.js"></script> <!--Notificaciones-->
-
+<script>
+function guardarZona() {
+	  validaNombre= document.getElementById('nombreZona').value;
+	  if(coords.length<3){
+		  var unique_id = $.gritter.add({
+				title: 'Error al crear zona peligrosa',
+				text: 'La zona debe contener al menos 3 vertices',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+	  }  
+	    else{
+	      if (validaNombre !="") {
+	    	 document.getElementById("formAlta").submit();
+	      }
+	      else {
+	    	  var unique_id = $.gritter.add({
+					title: 'Error al crear zona peligrosa',
+					text: 'Por favor complete el nombre',
+					// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+					// (bool | optional) if you want it to fade out on its own or just sit there
+					sticky: true,
+					// (int | optional) the time you want it to be alive for before fading out
+					time: '1500',
+					// (string | optional) the class name you want to apply to that specific message
+					class_name: 'my-sticky-class'
+				});
+	      }
+	    }
+	  
+	}
+</script>
 
 
 </head>
-<body body onload="initMap()">
+<body onload="initMap()">
 
 
   <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
@@ -174,7 +205,7 @@ pageEncoding="ISO-8859-1"%>
       		%>
 
 <div class="quick-actions_homepage">
-	<form action="AltaZona" method="post" class="form-horizontal">
+	<form action="AltaZona" id="formAlta" method="post" class="form-horizontal">
 		<div class="Span12">
 			  <div>
 			    	<label for="">Nombre de la zona peligrosa</label><input type="text" id="nombreZona" name="nombreZona" placeholder="Nombre de la zona peligrosa" required>
@@ -192,7 +223,7 @@ pageEncoding="ISO-8859-1"%>
 
 		  <div class="Span12">
 		   	  <div>
-		      	<input type="submit" class="btn btn-success" value="Guardar la zona peligrosa">
+		      	<input type="button" onclick="guardarZona()" class="btn btn-success" value="Guardar la zona peligrosa">
 		      	<input type="button" class="btn btn-danger" value="Resetear la zona peligrosa" onclick="resetearZona()">
 		      </div>
 	     </div>
@@ -220,15 +251,27 @@ pageEncoding="ISO-8859-1"%>
 <script src="scripts/altaZona.js"></script><!--Codigo para coordeanadas-->
 
 
+<script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>
 <script src="bootstrap/js/jquery.ui.custom.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.flot.min.js"></script>
+<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+<script src="bootstrap/js/jquery.peity.min.js"></script>
+<script src="bootstrap/js/fullcalendar.min.js"></script>
+<script src="bootstrap/js/matrix.js"></script>
+<script src="bootstrap/js/matrix.dashboard.js"></script>
+<script src="bootstrap/js/jquery.gritter.min.js"></script>
+<script src="bootstrap/js/matrix.interface.js"></script>
+<script src="bootstrap/js/matrix.chat.js"></script>
+<script src="bootstrap/js/jquery.validate.js"></script>
+<script src="bootstrap/js/matrix.form_validation.js"></script>
+<script src="bootstrap/js/jquery.wizard.js"></script>
 <script src="bootstrap/js/jquery.uniform.js"></script>
 <script src="bootstrap/js/select2.min.js"></script>
-<script src="bootstrap/js/jquery.validate.js"></script>
-<script src="bootstrap/js/matrix.js"></script>
-<script src="bootstrap/js/matrix.form_validation.js"></script>
-<script type="text/javascript">
+<script src="bootstrap/js/matrix.popover.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="bootstrap/js/matrix.tables.js"></script>
 // This function is called from the pop-up menus to transfer to
 // a different page. Ignore if the value returned is a null string:
 function goPage (newURL) {

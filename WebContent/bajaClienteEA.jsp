@@ -234,8 +234,8 @@ function cancelarCliente(){
 
       		%>
 
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
+     <input placeholder="Buscar" type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+	 <a href="#" title="Ingrese algun dato para buscar" class="tip-right"><i class="icon-question-sign"> </a></i>
         <div class="widget-box">
 
 
@@ -251,7 +251,7 @@ function cancelarCliente(){
         <th><h5 style="text-align:center; ">DIRECCION</h5></th>
         <th><h5 style="text-align:center; ">EMAIL</h5></th>
         
-        <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
+        <th><h5 style="text-align:center; ">ELIMINAR <a href="#" title="Clickee en el icono correspondiente al cliente para eliminarlo" class="tip-right"><i class="icon-question-sign"> </a></i></h5></th>
 
       </tr>
     </thead>

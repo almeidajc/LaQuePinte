@@ -17,6 +17,51 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script>
+function validarFormulario(){
+	let nom;
+	nom = document.getElementById('nombre').value;
+
+	if(nom != ""){
+		let nombre;
+
+		nombre = document.getElementById('nombreError').style.visibility;
+
+		if(nombre == "hidden"){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al crear material',
+				text: 'Por favor complete los campos correctamente',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+	else{
+		var unique_id = $.gritter.add({
+			title: 'Error al crear material',
+			text: 'Por favor complete todos los campos',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '1500',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+}
+
+</script>
 </head>
 <body>
 
@@ -166,7 +211,7 @@
           <h5>Alta Material</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="AltaMaterial" method="post" class="form-horizontal">
+          <form action="AltaMaterial" id="formAlta" method="post" class="form-horizontal">
           <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
             <div class="control-group">
               <label class="control-label">Nombre :</label>
@@ -189,7 +234,7 @@
 
                </div>
                 <div class="form-actions">
-                 <p align="right"> <input type="submit" value="Alta" class="btn btn-success">
+                 <p align="right"> <input type="button" onclick="validarFormulario()" value="Alta" class="btn btn-success">
                 </div>
               </form>
         </div>

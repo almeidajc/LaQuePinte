@@ -20,6 +20,66 @@
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
+<script>
+function validarFormulario(){
+	let nom,sto,stomi,stoma,prec,tipoMat,rol;
+	nom = document.getElementById('nombre').value;
+	sto = document.getElementById('apellido').value;
+	stoma = document.getElementById('email').value;
+	pre = document.getElementById('tel').value;
+	rol = document.getElementById('direccion').value;
+	console.log(nom);
+	console.log(sto);
+	console.log(stoma);
+	console.log(pre);
+	console.log(rol);
+	if(nom != "" && sto != "" && stoma != "" && pre !="" && rol !="" ){
+		let stock,stockmin,stockmax,nombre,precio,direc;
+		direc = document.getElementById('direc').style.visibility;
+		stock = document.getElementById('nombreError').style.visibility;
+		stockmin= document.getElementById('apError').style.visibility;
+		nombre = document.getElementById('emailText').style.visibility;
+		precio = document.getElementById('telef').style.visibility;
+		console.log(direc);
+		console.log(stock);
+		console.log(stockmin);
+		console.log(nombre);
+		console.log(precio);
+		if(stock == "hidden" && stockmin == "hidden" && nombre == "hidden" && precio == "hidden" && direc == "hidden"){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al crear cliente',
+				text: 'Por favor complete todo los campos correctamente',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+	else{
+		var unique_id = $.gritter.add({
+			title: 'Error al crear cliente',
+			text: 'Por favor complete todos los campos',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '1500',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+}
+
+</script>
+
 <% int dniCli = Integer.parseInt(request.getParameter("dni_cli"));
       CtrlCliente ctrl = new CtrlCliente();
       Cliente c =ctrl.getClienteByDni(dniCli);
@@ -208,7 +268,7 @@
           <h5>Modificar datos de usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="ModificarCliente" method="post" class="form-horizontal">
+          <form action="ModificarCliente" id="formAlta" method="post" class="form-horizontal">
 
              <div class="control-group">
               <label class="control-label">Nombre :</label>
@@ -216,7 +276,7 @@
 
                 <input type="text" class="span11" value="<%= nombrecli %>" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
                 <a href="#" title="Ingrese el nombre del nuevo empleado" class="tip-right"><i class="icon-question-sign"></a></i></li>
-                <div id="nombreError"></div>
+                <div id="nombreError" style="visibility:hidden"></div>
                    </div>
             </div>
                  <div class="control-group">
@@ -225,7 +285,7 @@
 
                 <input type="text" class="span11" name="apellido"  value="<%= apellido %>" id="apellido" placeholder="Apellido empleado" onchange="validaApellido(this.value)" required />
                 <a href="#" title="Ingrese el apellido del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
-                	<div id="apError"></div>
+                	<div id="apError" style="visibility:hidden"></div>
                </div>
             </div>
             <div class="control-group">
@@ -234,7 +294,7 @@
 
                 <input type="number"  class="span11"  value="<%= tel %>" name="tel" id="tel" onchange="validaTel(this.value)" required>
                <a href="#" title="Ingrese el n�mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
-              <div id="telef"></div>
+              <div id="telef" style="visibility:hidden"></div>
 
               </div>
             </div>
@@ -244,7 +304,7 @@
 
                 <input type="text" class="span11" name="email"  value="<%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
              	<a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
-             	<div id="emailText"></div>
+             	<div id="emailText" style="visibility:hidden"></div>
 
               </div>
             </div>
@@ -255,7 +315,7 @@
 
                 <input type="text" class="span11" name="direccion"  value="<%= direccion %>" id="direccion" onchange="validaDirec(this.value)" />
               	<a href="#" title="Ingrese la direcci�n del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
-              	<div id="direc"></div>
+              	<div id="direc" style="visibility:hidden"></div>
 
 
                 </div>
@@ -264,7 +324,7 @@
                 </div>
 
                 <div class="form-actions">
-                  <input type="submit" value="Modificar" class="btn btn-success">
+                  <input type="button" onclick="validarFormulario()" value="Modificar" class="btn btn-success">
                 </div>
               </form>
         </div>

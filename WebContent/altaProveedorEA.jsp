@@ -17,6 +17,57 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script>
+function validarFormulario(){
+	let nom,sto,stomi,stoma,prec,tipoMat;
+	nom = document.getElementById('razon_soc').value;
+	sto = document.getElementById('cuit').value;
+	stomi = document.getElementById('tel').value;
+	stoma = document.getElementById('email').value;
+	pre = document.getElementById('direccion').value;
+	if(nom != "" && sto != "" && stomi != "" && stoma != "" && pre !=""){
+		let stock,stockmin,stockmax,nombre,precio;
+		
+		stock = document.getElementById('razon').style.visibility;
+		stockmin= document.getElementById('cuitErro').style.visibility;
+		stockmax = document.getElementById('telef').style.visibility;
+		nombre = document.getElementById('emailText').style.visibility;
+		precio = document.getElementById('direc').style.visibility;
+		if(stock == "hidden" && stockmin == "hidden" && stockmax== "hidden" && nombre == "hidden" && precio == "hidden"){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al crear proveedor',
+				text: 'Por favor complete todo los campos correctamente',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+	else{
+		var unique_id = $.gritter.add({
+			title: 'Error al crear proveedor',
+			text: 'Por favor complete todos los campos',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '1500',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+}
+
+</script>
 </head>
 <body>
 
@@ -168,7 +219,7 @@
           <h5>Alta Proveedor</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="AltaProveedor" method="post" class="form-horizontal">
+          <form action="AltaProveedor" id="formAlta" method="post" class="form-horizontal">
           <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
             <div class="control-group">
               <label class="control-label">Raz&oacute;n social :</label>
@@ -217,7 +268,7 @@
 
                </div>
                 <div class="form-actions">
-                 <p align="right"> <input type="submit" value="Alta" class="btn btn-success">
+                 <p align="right"> <input type="button" onclick="validarFormulario()" value="Alta" class="btn btn-success">
                 </div>
               </form>
         </div>

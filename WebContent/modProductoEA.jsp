@@ -23,6 +23,61 @@
 <script src="bootstrap/js/bootstrap-select.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
+<script>    
+function validarFormulario(){
+	let nom,sto,stomi,stoma,prec,tipoMat;
+	nom = document.getElementById('nombre_producto').value;
+	sto = document.getElementById('stock_producto').value;
+	stomi = document.getElementById('stock_min_producto').value;
+	stoma = document.getElementById('stock_max_producto').value;
+	pre = document.getElementById('precio_producto').value;
+	document.getElementById('precio_producto').value = pre.replace(",",".");
+	if(nom != "" && sto != "" && stomi != "" && stoma != "" && pre !=""){
+		let stock,stockmin,stockmax,nombre,precio;		
+		stock = document.getElementById('stockError').style.visibility;
+		stockmin= document.getElementById('stockMinError').style.visibility;
+		stockmax = document.getElementById('stockMaxError').style.visibility;
+		nombre = document.getElementById('producError').style.visibility;
+		precio = document.getElementById('precioError').style.visibility;
+		if(stock == "hidden" && stockmin == "hidden" && stockmax== "hidden" && nombre == "hidden" && precio == "hidden"){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al modificar producto',
+				text: 'Por favor complete todo los campos correctamente',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+	else{
+		var unique_id = $.gritter.add({
+			title: 'Error al modificar producto',
+			text: 'Por favor complete todos los campos',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '1500',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+}
+
+function replacePunto(string){
+	  return string.replace(",",".");
+	}
+
+</script>
+
 </head>
 <body>
 
@@ -160,7 +215,7 @@
             <h5>Ingresar los valores: </h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="ModificarProducto" >
+            <form class="form-horizontal" id="formAlta" method="post" action="ModificarProducto" >
 
 
               <div class="control-group">
@@ -168,10 +223,9 @@
                 <div class="controls">
                   	<input type="text" name="nombre_producto" id="nombre_producto"  autofocus class="form-control" value="<%=p.getNombre_producto() %>"onchange="validarNombrePr(this.value)" required/>
                 	<a href="#" title="Ingrese los datos en el siguiente orden: Tipo de producto + [Material del producto] + [medida del producto] + [especificaci�n extra] + [marca]. (Los items entre [] s�lo ingresarlos cuando corresponda )" class="tip-top"><i class="icon-question-sign"> </a></i>
-                	<div id="producError"></div>
+                	<div id="producError" style="visibility:hidden"></div>
                	</div>
               </div>
-
 
 
 
@@ -180,7 +234,7 @@
                 <div class="controls">
                  	<input type="text" name="precio_producto" id="precio_producto" autofocus class="form-control" value="<%=precio %>" onchange="validaPrecio(this.value)">
                 	<a href="#" title="Ingrese el precio de venta del nuevo producto con dos decimales" class="tip-right"><i class="icon-question-sign"> </a></i>
-                	<div id="precioError"></div>
+                	<div id="precioError" style="visibility:hidden"></div>
                	</div>
               </div>
 
@@ -191,7 +245,7 @@
                 <div class="controls">
                   <input type="number" name="stock_producto" id="stock_producto" autofocus class="form-control" value="<%=p.getCantidad_stock() %>" onchange="validaStock(this.value)">
                   <a href="#" title="Ingrese el stock por el que ingresa el nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                  <div id="stockError"></div>
+                  <div id="stockError" style="visibility:hidden"></div>
                   </div>
               </div>
               <div class="control-group">
@@ -199,7 +253,7 @@
                 <div class="controls">
                   <input type="number" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control" value="<%=p.getCantidad_min_stock() %>" onchange="validaStockMin(this.value)">
                   <a href="#" title="Ingrese el nivel m�nimo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                  <div id="stockMinError"></div>
+                  <div id="stockMinError" style="visibility:hidden"></div>
                  </div>
               </div>
               <div class="control-group">
@@ -207,13 +261,13 @@
                 <div class="controls">
                   	<input type="number" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control" value="<%=p.getCantidad_max_stock()%>"onchange="validaStockMax(this.value)">
                	 	<a href="#" title="Ingrese el nivel m�ximo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                	<div id="stockMaxError"></div>
+                	<div id="stockMaxError" style="visibility:hidden"></div>
                	</div>
               </div>
               <div class="form-actions" >
                <input type="hidden" id="id_prod" name="id_prod" value="<%= idprod %>" >
                <input type="hidden" id="fecha_prod" name="fecha_prod" value="<%= p.getFecha() %>" >
-                <input type="submit" value="Registrar" class="btn btn-success btn-large">
+                <input type="button" value="Registrar" onclick="validarFormulario()" class="btn btn-success btn-large">
 
               </div>
             </form>

@@ -38,6 +38,50 @@ Empleado userSession = (Empleado)session.getAttribute("userSession");
            if(userSession == null || !(userSession.getTipo().equals("EA"))){
           	response.sendRedirect("error405.jsp"); }else{nombre=userSession.getNombre();}
            String tipo_em = userSession.getTipo();%>
+<script>
+function validarFormulario(){
+	let nom;
+	nom = document.getElementById('nombre').value;
+
+	if(nom != ""){
+		let nombre;
+
+		nombre = document.getElementById('nombreError').style.visibility;
+
+		if(nombre == "hidden"){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al modificar material',
+				text: 'Por favor complete los campos correctamente',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+	else{
+		var unique_id = $.gritter.add({
+			title: 'Error al modificar material',
+			text: 'Por favor complete los campos correctamente',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '1500',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+}
+
+</script>
 
 
 <script type="text/javascript"> // inicio tabla js1//
@@ -204,22 +248,22 @@ Empleado userSession = (Empleado)session.getAttribute("userSession");
           <h5>Modificar datos de material</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="ModificarMaterial" method="post" class="form-horizontal">
+          <form action="ModificarMaterial" id="formAlta" method="post" class="form-horizontal">
 
              <div class="control-group">
               <label class="control-label">Nombre :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="nombre"  value="<%= m.getNombre() %>" id="nombre" placeholder="Nombre de material" onchange="validarNombre(this.value)" />
-                <div id="nombreText"></div>
+                <input type="text" class="span11" name="nombre"  value="<%= m.getNombre() %>" id="nombre" placeholder="Nombre de material" onchange="validaNombre(this.value)" />
+                <div id="nombreError" style="visibility:hidden"></div>
                    </div>
             </div>
                  <div class="control-group">
               <label class="control-label">Descripcion :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="desc"  value="<%= desc %>" id="desc" placeholder="Descripcion del material" onchange="validarDescripcion(this.value)" />
-                <div id="descText"></div>
+                <input type="text" class="span11" name="desc"  value="<%= desc %>" id="desc" placeholder="Descripcion del material" onchange="validaDescripcion(this.value)" />
+                <div id="descText" style="visibility:hidden"></div>
                </div>
             </div>
 
@@ -229,7 +273,7 @@ Empleado userSession = (Empleado)session.getAttribute("userSession");
 
 
                 <div class="form-actions">
-                  <input type="submit" value="Modificar" class="btn btn-success">
+                  <input type="button" onclick="validarFormulario()" value="Modificar" class="btn btn-success">
                 </div>
               </form>
         </div>

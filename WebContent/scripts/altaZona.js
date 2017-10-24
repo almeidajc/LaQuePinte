@@ -11,22 +11,6 @@ function resetearZona(){
   initMap();
 }
 
-function guardarZona() {
-  validaNombre= document.getElementById('nombreZona').value;
-  if(coords.length<3){
-    alert("La zona debe contar al menos con 3 extremos, por favor siga agregando extremos para poder cumplir con el requisito minimo");
-  }  
-    else{
-      if (validaNombre !="") {
-        alert("se re guardo perro");
-      }
-      else {
-        alert("Ingrese el nombre correspondiente a la zona")
-      }
-    }
-  
-}
-
 
 function makeInfoBox(controlDiv, map) {
   // Set CSS for the control border.
