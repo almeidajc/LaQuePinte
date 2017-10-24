@@ -42,18 +42,19 @@ public class CtrlPedido {
 		return cat.getLineaDetallePedido(id);
 	}
 
-	public void confirmarPedido(Pedido pedido, Cliente cliente) throws ApplicationException {
-		String mensaje ="";
-		for (LineaDetallePedido lp : pedido.getLineasDetallePedido()) {
-			int stock = dprod.getStock(lp.getProducto().getId_producto());
-			if(stock<lp.getCantidad()){
-				mensaje+="<br> Se ha agotado el stock del producto "+lp.getProducto().getId_producto()+" "+lp.getProducto().getNombre_producto();
-				mensaje+=" Eliminar la linea de pedido correspondiente para poder confirmar el pedido";
-			}
-		}
-		if(mensaje.equals("")){
+	public void confirmarPedido(Pedido pedido) throws ApplicationException {
+		//String mensaje ="";
+		//valida que exista stock de todos los productos seleccionados
+		//for (LineaDetallePedido lp : pedido.getLineasDetallePedido()) {
+		//	int stock = dprod.getStock(lp.getProducto().getId_producto());
+		//	if(stock<lp.getCantidad()){
+		//		mensaje+="<br> Se ha agotado el stock del producto "+lp.getProducto().getId_producto()+" "+lp.getProducto().getNombre_producto();
+		//		mensaje+=" Eliminar la linea de pedido correspondiente para poder confirmar el pedido";
+		//	}
+		//}
+		//if(mensaje.equals("")){
 			cat.registrarPedido(pedido);
-		} else throw new ApplicationException(mensaje, null);
+		//} else throw new ApplicationException(mensaje, null);
 	}
 
 

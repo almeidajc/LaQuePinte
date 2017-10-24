@@ -339,6 +339,14 @@ try {
 		}
 		return stock;
 	}
+	
+	protected void descontarStock(PreparedStatement stmt, int cantidad, int codProducto) throws SQLException, ApplicationException {
+		stmt= FactoryConexion.getInstancia().getConn().prepareStatement(""
+				+ "update productos set cantidad_stock=cantidad_stock-? where id_producto=?");
+		stmt.setInt(1, cantidad);
+		stmt.setInt(2, codProducto);
+		stmt.execute();
+	}
 
 	public void modificarProducto(Producto p) throws ApplicationException {
 		// TODO Auto-generated method stub
