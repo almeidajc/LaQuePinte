@@ -200,7 +200,7 @@
           <h5>Modificar Costos de Env&iacute;o</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="ModificarCostosEnvio" method="post" class="form-horizontal">
+          <form action="ModificarCostosEnvio" id="formAlta" method="post" class="form-horizontal">
 			<%
 
 			if(id.equalsIgnoreCase("1")){
@@ -238,7 +238,7 @@
                 </div>
 
                 <div class="form-actions">
-                  <input type="submit" value="Modificar" class="btn btn-success">
+                  <input type="button" onclick="validarFormulario()" value="Modificar" class="btn btn-success">
                 </div>
               </form>
         </div>

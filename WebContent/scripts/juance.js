@@ -200,12 +200,12 @@ function validaStockMin(x){
 }
 
 function validaStockMax(x){
-	let stMin = document.getElementById('stock_min_producto').value
-	if(x> stMin){
+	let stMin = document.getElementById('stock_min_producto').value;
+	if(parseInt(x) > parseInt(stMin)){
 		document.getElementById('stockMaxError').style.visibility = "hidden";
 	}
-	else{
-		if(x>0){
+	if( Number(x)< Number(stMin) ){
+		if(parseInt(x)>0){
 			document.getElementById('stockMaxError').style.visibility = "visible";
 			document.getElementById('stockMaxError').innerHTML = 'El stock maximo debe ser mayor al minimo';
 			document.getElementById('stockMaxError').style.color = "red";
@@ -230,17 +230,13 @@ function validarEmail(valor) {
 	}
 
 function validarNombrePr(valor){
-	console.log(valor)
-	let patronNombre = /.{4,}/;
-	
+	let patronNombre = /.{4,}/;	
 	  if (patronNombre.test(valor)){
 		  document.getElementById('producError').style.visibility = "hidden";
-		  console.log("queondaaa")
 	  } else {
 		  document.getElementById('producError').style.visibility = "visible";
 		  document.getElementById('producError').innerHTML = 'Nombre del producto no valido';
 		  document.getElementById('producError').style.color = "red";
-		  console.log("else")
 	  }
 }
 

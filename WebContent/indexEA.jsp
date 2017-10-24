@@ -156,7 +156,7 @@
        <li class="bg_lg span5" > <a href="altaProveedorEA.jsp"> <i class="icon-user" ></i> Proveedor</a> </li>
        <li class="bg_lo span5"> <a href="altaClienteEA.jsp"> <i class="icon-user"></i> Cliente</a> </li>
        <li class="bg_ly span5"> <a href="altaMaterialEA.jsp"> <i class="icon-barcode"></i> Material</a> </li>
-       <li class="bg_lb span5"> <a href="agregarubicacion.jsp"> <i class="icon-map-marker"></i> Zona Peligrosa</a> </li>
+       <li class="bg_lb span5"> <a href="altaZonaPeligrosaEA.jsp"> <i class="icon-map-marker"></i> Zona Peligrosa</a> </li>
        <li class="bg_lr span5"> <a href="informestock.jsp"> <i class="icon-bar-chart"></i> Informe Stock</a> </li>
        <li class="bg_lg span5"> <a href="modificarCostosEnvioEA.jsp"> <i class="icon-briefcase"></i>Actualizar costos envio  </a> </li>
 

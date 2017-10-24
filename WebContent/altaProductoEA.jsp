@@ -19,6 +19,58 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script>
+function validarFormulario(){
+	let nom,sto,stomi,stoma,prec,tipoMat;
+	nom = document.getElementById('nombre_producto').value;
+	sto = document.getElementById('stock_producto').value;
+	stomi = document.getElementById('stock_min_producto').value;
+	stoma = document.getElementById('stock_max_producto').value;
+	pre = document.getElementById('precio_producto').value;
+	tipoMat = document.getElementById('material').value;
+	if(tipoMat != "" && nom != "" && sto != "" && stomi != "" && stoma != "" && pre !=""){
+		let stock,stockmin,stockmax,nombre,precio;
+		
+		stock = document.getElementById('stockError').style.visibility;
+		stockmin= document.getElementById('stockMinError').style.visibility;
+		stockmax = document.getElementById('stockMaxError').style.visibility;
+		nombre = document.getElementById('producError').style.visibility;
+		precio = document.getElementById('stockMinError').style.visibility;
+		if(stock == "hidden" && stockmin == "hidden" && stockmax== "hidden" && nombre == "hidden" && precio == "hidden"){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al crear producto',
+				text: 'Por favor complete todo los campos correctamente',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+	else{
+		var unique_id = $.gritter.add({
+			title: 'Error al crear producto',
+			text: 'Por favor complete todos los campos',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '1500',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+}
+
+</script>
 </head>
 <body>
 
@@ -37,18 +89,7 @@
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
-    <!-- <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-        <li class="divider"></li>
-        <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
-      </ul>
-    </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=nombre %></span></a></li>
-
-
      <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
@@ -172,14 +213,14 @@
             <h5>Ingresar los valores: </h5>
           </div>
           <div class="widget-content nopadding">
-            <form class="form-horizontal" method="post" action="AltaProducto" >
+            <form class="form-horizontal" id="formAlta" method="post" action="AltaProducto" >
 
               <div class="control-group">
                 <label class="control-label">Nombre Producto</label>
                 <div class="controls">
              		<input type="text" class="form-control" placeholder="Nombre del producto" autofocus name="nombre_producto" id="nombre_producto" onchange="validarNombrePr(this.value)" required/>
                 	<a href="#" title="Ingrese los datos en el siguiente orden: Tipo de producto + [Material del producto] + [medida del producto] + [especificaci�n extra] + [marca]. (Los items entre [] s�lo ingresarlos cuando corresponda )" class="tip-top"><i class="icon-question-sign"> </a></i>
-                	<div id="producError"></div>
+                	<div id="producError" style="visibility:hidden"></div>
                 </div>
               </div>
               <div class="control-group">
@@ -189,7 +230,7 @@
 
               <div class="controls">
                 <select name="material" id="material">
-                  <option selected >Seleccionar...</option>
+                  <option selected value="" >Seleccionar...</option>
 
                           <%
     		CtrlMaterial ctrl = new CtrlMaterial();
@@ -212,7 +253,7 @@
                 <div class="controls">
                   	<input type="text" name="precio_producto" id="precio_producto" placeholder="0.00" required autofocus class="form-control" onchange="validaPrecio(this.value)">
                 	<a href="#" title="Ingrese el precio de venta del nuevo producto con dos decimales" class="tip-right"><i class="icon-question-sign"> </a></i>
-                	<div id="precioError"></div>
+                	<div id="precioError" style="visibility:hidden"></div>
                 </div>
               </div>
 
@@ -222,7 +263,7 @@
                 <div class="controls">
                   <input type="number" name="stock_producto" id="stock_producto" required autofocus class="form-control" onchange="validaStock(this.value)">
                   <a href="#" title="Ingrese el stock por el que ingresa el nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                  <div id="stockError"></div>
+                  <div id="stockError" style="visibility:hidden"></div>
                 </div>
               </div>
               <div class="control-group">
@@ -230,7 +271,7 @@
                 <div class="controls">
                   <input type="number" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control" onchange="validaStockMin(this.value)">
                   <a href="#" title="Ingrese el nivel m�nimo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                  <div id="stockMinError"></div>
+                  <div id="stockMinError" style="visibility:hidden"></div>
                 </div>
               </div>
               <div class="control-group">
@@ -238,11 +279,11 @@
                 <div class="controls">
                  	<input type="number" name="stock_max_producto" id="stock_max_producto" required autofocus class="form-control" onchange="validaStockMax(this.value)">
                	 	<a href="#" title="Ingrese el nivel m&aacute;ximo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
-                	<div id="stockMaxError"></div>
+                	<div id="stockMaxError" style="visibility:hidden"></div>
                 </div>
               </div>
               <div class="form-actions" >
-                <input type="submit" value="Registrar" class="btn btn-success btn-large">
+                <input type="button" value="Registrar" onclick="validarFormulario()" class="btn btn-success btn-large">
 
               </div>
             </form>

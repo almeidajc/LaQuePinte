@@ -28,6 +28,57 @@
       String direccion= p.getDireccion();
       int tel= p.getTel();
       %>
+      
+      <script>
+
+
+function validarFormulario(){
+	let nom,sto,stomi,stoma,prec,tipoMat;
+	nom = document.getElementById('razon_soc').value;
+	stomi = document.getElementById('tel').value;
+	stoma = document.getElementById('email').value;
+	pre = document.getElementById('direccion').value;
+	if(nom != "" && stomi != "" && stoma != "" && pre !=""){
+		let stock,stockmin,stockmax,nombre,precio;
+		
+		stock = document.getElementById('razon').style.visibility;
+		stockmax = document.getElementById('telef').style.visibility;
+		nombre = document.getElementById('emailText').style.visibility;
+		precio = document.getElementById('direc').style.visibility;
+		if(stock == "hidden" && stockmax== "hidden" && nombre == "hidden" && precio == "hidden"){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al crear proveedor',
+				text: 'Por favor complete todo los campos correctamente',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+	else{
+		var unique_id = $.gritter.add({
+			title: 'Error al crear proveedor',
+			text: 'Por favor complete todos los campos',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '1500',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+}
+
+</script>
 </head>
 <body>
 
@@ -154,7 +205,7 @@
           <h5>Modificar datos de usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="ModificarProveedor" method="post" class="form-horizontal">
+          <form action="ModificarProveedor" id="formAlta" method="post" class="form-horizontal">
 
             <div class="control-group">
               <label class="control-label">Razon Social :</label>
@@ -162,7 +213,7 @@
 
                 <input type="text" class="span11" name="razon_soc"  value="<%= razon_soc %>" name="razon_soc" id="razon_soc" onchange="validaRazon(this.value)"/>
               	<a href="#" title="Ingrese la raz�n social del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
-              	<div id="razon"></div>
+              	<div id="razon" style="visibility:hidden"></div>
                </div>
 
             </div>
@@ -172,7 +223,7 @@
 
                 <input type="number"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel"  onchange="validarTel(this.value)" />
                  <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
-              	<div id="telText"></div>
+              	<div id="telef" style="visibility:hidden"></div>
 
               </div>
             </div>
@@ -182,7 +233,7 @@
 
                 <input type="text" class="span11" name="email"  value="<%= email %>" name="email" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
                  <a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
-              	<div id="emailText"></div>
+              	<div id="emailText" style="visibility:hidden"></div>
 
               </div>
             </div>
@@ -193,7 +244,7 @@
 
                 <input type="text" class="span11" name="direccion"  value="<%= direccion %>" name="direccion" id="direccion" onchange="validaDirec(this.value)" />
               	<a href="#" title="Ingrese la direcci�n del nuevo proveedor" class="tip-right"><i class="icon-question-sign"> </a></i>
-              	<div id="direc"></div>
+              	<div id="direc" style="visibility:hidden"></div>
 
 
                 </div>
@@ -202,7 +253,7 @@
                 </div>
 
                 <div class="form-actions">
-                  <input type="submit" value="Modificar" class="btn btn-success">
+                  <input type="button" onclick="validarFormulario()" value="Modificar" class="btn btn-success">
                 </div>
               </form>
         </div>

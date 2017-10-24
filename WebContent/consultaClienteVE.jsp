@@ -143,8 +143,8 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 
 
 
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
+     <input placeholder="Buscar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+	 <a href="#" title="Ingrese algun dato para buscar" class="tip-right"><i class="icon-question-sign"> </a></i>
         <div class="widget-box">
 
 

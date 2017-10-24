@@ -176,7 +176,7 @@ input[type=text]:focus {
 
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Ubicación</span> </a>
       <ul>
-        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
+        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicación</a></li>
         <li><a href="#">Modificar Ubicación</a></li>
         <li><a href="#">Eliminar Ubicación</a></li>
         <li><a href="#">Consultar Ubicación</a></li>
@@ -209,8 +209,8 @@ input[type=text]:focus {
       <div class="span12"> <!-- TAMAÑO FORMULARIOS -->
 
 
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
+     <input placeholder="Buscar" type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+	 <a href="#" title="Ingrese algun dato para buscar" class="tip-right"><i class="icon-question-sign"> </a></i>
         <div class="widget-box">
 
 

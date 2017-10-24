@@ -17,6 +17,59 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script>
+function validarFormulario(){
+	let nom,sto,stomi,stoma,prec,tipoMat,rol;
+	nom = document.getElementById('nombre').value;
+	sto = document.getElementById('apellido').value;
+	stomi = document.getElementById('dni').value;
+	stoma = document.getElementById('email').value;
+	pre = document.getElementById('tel').value;
+	rol = document.getElementById('direccion').value;
+	if(nom != "" && sto != "" && stomi != "" && stoma != "" && pre !="" && rol !=""){
+		let stock,stockmin,stockmax,nombre,precio,direc;
+		direc = document.getElementById('direc').style.visibility;
+		stock = document.getElementById('nombreError').style.visibility;
+		stockmin= document.getElementById('apError').style.visibility;
+		stockmax = document.getElementById('dniErro').style.visibility;
+		nombre = document.getElementById('emailText').style.visibility;
+		precio = document.getElementById('telef').style.visibility;
+		if(stock == "hidden" && stockmin == "hidden" && stockmax== "hidden" && nombre == "hidden" && precio == "hidden" && direc == "hidden"){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al crear cliente',
+				text: 'Por favor complete todo los campos correctamente',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+	else{
+		var unique_id = $.gritter.add({
+			title: 'Error al crear cliente',
+			text: 'Por favor complete todos los campos',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '1500',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+}
+
+</script>
+
 </head>
 <body>
 
@@ -156,7 +209,6 @@
     		<strong><%=mensaje2 %></strong> .
   			</div>
 
-
       		<%
         		}
 
@@ -166,7 +218,7 @@
           <h5>Alta Cliente</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="AltaCliente" method="post" class="form-horizontal">
+          <form action="AltaCliente" id="formAlta" method="post" class="form-horizontal">
           <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
             <div class="control-group">
               <label class="control-label">Nombre :</label>
@@ -181,7 +233,7 @@
               <div class="controls">
                 <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido cliente" onchange="validaApellido(this.value)" required />
                 <a href="#" title="Ingrese el apellido del nuevo cliente" class="tip-right"><i class="icon-question-sign"> </a></i></li>
-                	<div id="apError"></div>
+               	<div id="apError"></div>
               </div>
             </div>
             <div class="control-group">
@@ -222,7 +274,7 @@
 
                </div>
                 <div class="form-actions">
-                 <p align="right"> <input type="submit" value="Alta" class="btn btn-success">
+                 <p align="right"> <input type="button" onclick="validarFormulario()" value="Alta" class="btn btn-success">
                 </div>
               </form>
         </div>

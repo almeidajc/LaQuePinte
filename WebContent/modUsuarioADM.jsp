@@ -19,6 +19,51 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<script>
+function validarFormulario(){
+	let nom,sto,stomi,stoma,prec,tipoMat,rol,pwd,pwd2;
+	stoma = document.getElementById('email').value;
+	pre = document.getElementById('tel').value;
+	pwd = document.getElementById('pass_1').value;
+	pwd2 = document.getElementById('pass_2').value;
+	if(stoma != "" && pre !="" && pwd !="" && pwd2 !=""){
+		let stock,stockmin,stockmax,nombre,precio;
+		nombre = document.getElementById('emailText').style.visibility;
+		precio = document.getElementById('telef').style.visibility;
+		if(nombre == "hidden" && precio == "hidden" && pwd.length <= 6 && pwd == pwd){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al modificar usuario',
+				text: 'Por favor complete todo los campos correctamente',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+	else{
+		var unique_id = $.gritter.add({
+			title: 'Error al modificar usuario',
+			text: 'Por favor complete todos los campos',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '1500',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+}
+</script>
+
 </head>
 <body>
 
@@ -115,7 +160,7 @@
           <h5>Modificar datos de usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="ModificarEmpleado" method="post" class="form-horizontal">
+          <form action="ModificarEmpleado" id="formAlta" method="post" class="form-horizontal">
 
 
             <div class="control-group">
@@ -123,7 +168,7 @@
               <div class="controls">
 
                 <input type="number"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
-                <div id="telef"></div>
+                <div id="telef" style="visibility:hidden"></div>
 
               </div>
             </div>
@@ -132,7 +177,7 @@
               <div class="controls">
 
                 <input type="text" class="span11" name="email"  value="<%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
-                <div id="emailText"></div>
+                <div id="emailText" style="visibility:hidden"></div>
 
               </div>
             </div>
@@ -163,7 +208,7 @@
                 </div>
 
                 <div class="form-actions">
-                  <input type="submit" value="Modificar" class="btn btn-success">
+                  <input type="button" onclick="validarFormulario()" value="Modificar" class="btn btn-success">
                 </div>
               </form>
         </div>
