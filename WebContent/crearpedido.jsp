@@ -128,6 +128,34 @@
             <div class="collapse accordion-body" id="Cliente">
               <div class="widget-content">
               
+               <% 
+      			String msj=(String)request.getAttribute("mensaje");
+        		if(msj!=null){
+        			int resultado = msj.indexOf("correctamente");
+        	        
+        	        if(resultado != -1) {//se encontró "correctamente" dentro del string <mensaje>
+        	        
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=msj %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}else{
+        			%>
+              		<div class="alert alert-danger">
+           			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            		<strong><%=msj %></strong> . 
+          			</div>
+              		
+              			
+              		<%
+        		}}
+      			
+      		%>
+              
  	<div class="widget-box" id="Menucliente">
       <div class="span3">
         <div class="widget-box">
@@ -305,7 +333,7 @@
 
             </div>
 		<div class="row" style="float: right;">
-			<form action="pedido/confirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
+			<form action="pedido/ConfirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
 
 		 		<input type="hidden" name="coordenadas" id="coordenadas">
       			<input type="hidden" name="direccion" id="direccion">

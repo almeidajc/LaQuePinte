@@ -114,20 +114,21 @@ public class DataPedido {
 		DataProducto dprod = new DataProducto();
 		ResultSet rs = null;
 		try {
-			FactoryConexion.getInstancia().getConn().setAutoCommit(false);
-			//fecha_pedido id_estado_pedido dni
 			stmtPedido = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"Insert into pedidos(fecha_emision) values (current_date())",
-					PreparedStatement.RETURN_GENERATED_KEYS
-					);
+					"insert into pedidos(fecha_emision, id_estado, dni) values (current_date(),?,?)",PreparedStatement.RETURN_GENERATED_KEYS
+				   );
+			stmtPedido.setInt(2, 1);
+			stmtPedido.setInt(3, pedido.getCliente().getDni());
 			stmtPedido.execute();
-			rs = stmtPedido.getGeneratedKeys();
+
+			rs=stmtPedido.getGeneratedKeys();
+			
 			if(rs!=null && rs.next()){
-				pedido.setId_pedido(rs.getInt(1));
-				}
+				pedido.setId_pedido(rs.getInt(1));				
+			}
 			for (LineaDetallePedido lp : pedido.getLineasDetallePedido()) {
-				//dprod.descontarStock(stmtStock, lp.getCantidad(), lp.getProducto().getId_producto());
-				//this.insertLinea(stmtLineas, pedido.getId_pedido(), lp.getProducto().getId_producto(), lp.getCantidad());
+				dprod.descontarStock(stmtStock, lp.getCantidad(), lp.getProducto().getId_producto());
+				this.insertLinea(stmtLineas, pedido.getId_pedido(), lp.getProducto().getId_producto(), lp.getCantidad());
 			}			
 			FactoryConexion.getInstancia().getConn().commit();
 			
@@ -135,7 +136,7 @@ public class DataPedido {
 			try {
 				FactoryConexion.getInstancia().getConn().rollback();
 			} catch (SQLException e1) {
-				throw new ApplicationException("Error al recuperar estado en la base de datos", e);
+				throw new ApplicationException("Error lectura base de datos", e);
 			}
 			throw new ApplicationException("Error al registrar nuevo pedido en la base de datos", e);
 		}
@@ -150,6 +151,17 @@ public class DataPedido {
 			}
 
 		}
+	}
+	
+	private void insertLinea(PreparedStatement stmtLineas, int nroPedido, int codigo, int cantidad)
+			throws SQLException, ApplicationException {
+		stmtLineas = FactoryConexion.getInstancia().getConn().prepareStatement(
+				"Insert into linea_pedido_cliente (id_pedido,id_producto,id_linea,cantidad) values (?,?,?,?)");
+			stmtLineas.setInt(1, nroPedido);
+			stmtLineas.setInt(2, codigo);
+			stmtLineas.setInt(3, cantidad);
+			stmtLineas.setInt(4, 99);
+			stmtLineas.execute();
 	}
 
 	public void registrarEnvioPedido(int id_pedido) throws ApplicationException {
@@ -292,6 +304,8 @@ public ArrayList<Pedido> listarPedidosOrdenados() {
 
 	return pedidos;
 }
+
+
 
 public ArrayList<Pedido> listarPedidosRealizados() {
 ResultSet rs=null;

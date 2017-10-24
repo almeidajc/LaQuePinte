@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
 
-<title>Materiales::de::Construcci&oacute;n</title>
+<title>Materiales::de::Construccion</title>
 
 
 
