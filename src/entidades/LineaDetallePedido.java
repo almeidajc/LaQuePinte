@@ -41,6 +41,8 @@ public class LineaDetallePedido {
 	public LineaDetallePedido(Producto producto, int cantidad){
 		this.setCantidad(cantidad);
 		this.setProducto(producto);
+		this.subtotal = cantidad*producto.getPrecio();
+				
 	}
 	
 	public LineaDetallePedido(){
