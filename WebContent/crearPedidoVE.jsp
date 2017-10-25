@@ -1,14 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="entidades.Vendedor"%>
-    <%@page import="entidades.Despachante"%>
-    <%@page import="entidades.EncargadoAdministracion"%>
     <%@page import="entidades.Empleado"%>
-    <%@page import="entidades.Camionero"%>
+    <%@page import="entidades.Pedido"%>
+    <%@page import="entidades.Producto"%>
+    <%@page import="entidades.Cliente"%>
+    <%@page import="negocio.CtrlPedido"%>
+    <%@page import="java.util.ArrayList"%>
+    <%@page import="entidades.LineaDetallePedido"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Materiales::de::Construcci&oacute;n</title>
+
+<title>Materiales::de::Construccion</title>
+
+
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="bootstrap/img/logo-fav.png" />
@@ -20,35 +27,37 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/pedido.js"></script>
+<script src="js/cliente.js"></script>
+
 </head>
-<body>
+
+<body onload="altaPedido()">
+
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
             if(userSession == null || !(userSession.getTipo().equals("VE"))){
-            	response.sendRedirect("error405.jsp"); }
-            	 String tipo_em = userSession.getTipo();%>
+            	response.sendRedirect("error405.jsp"); }%>
+
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcciï¿½n</a></h1>
+
+  <h1><a href="dashboard.html">Materiales de Construccion</a></h1>
+
 </div>
 <!--close-Header-part-->
+
 
 
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
-    <!-- <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-        <li class="divider"></li>
-        <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
-      </ul>
-    </li> -->
-    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido Cris</span></a></li>
+   
+    <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido</span></a></li>
 
+    <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
 
-     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
@@ -56,10 +65,10 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
-  <li ><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
-    <li class="submenu active"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
+  <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
-        <li class="active"><a href="crearPedidoVE.jsp">Crear Pedido</a></li>
+        <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
         <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
       </ul>
     </li>
@@ -73,6 +82,7 @@
       </ul>
     </li>
 
+
   </ul>
 </div>
 <!--sidebar-menu-->
@@ -81,93 +91,358 @@
 <div id="content">
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="#" class="current">Crear Pedido</a></div>
+    <div id="breadcrumb"> <a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
 
   </div>
 <!--End-breadcrumbs-->
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo cliente</h1>
+ <h1>Nuevo Pedido: retiro en depósito</h1>
  </div>
-  <div class="container-fluid"><hr>
 
-  <div class="row-fluid">
-    <div class="span6">
-    <%
+<div class="container-fluid">
+<div class="row-fluid">
+
+ <% 
       			String mensaje=(String)request.getAttribute("mensaje");
         		if(mensaje!=null){
+        			int resultado = mensaje.indexOf("correctamente");
+        	        
+        	        if(resultado != -1) {//se encontró "correctamente" dentro del string <mensaje>
+        	        
       		%>
       		<div class="alert alert-success">
    			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    		<strong><%=mensaje %></strong> .
+    		<strong><%=mensaje %></strong> . 
   			</div>
+      		
+      			
+      		<%
+        		}else{
+        			%>
+              		<div class="alert alert-danger">
+           			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            		<strong><%=mensaje %></strong> . 
+          			</div>
+              		
+              			
+              		<%
+        		}}
+      			
+      		%>
+ <div class="accordion" id="collapse-group">
+          <div class="accordion-group widget-box">
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
+                <h5>AYUDA</h5>
+                </a> </div>
+            </div>
+            <div class="collapse accordion-body" id="collapseGThree">
+              <div class="widget-content"> <img src="bootstrap/img/ayuda.gif"> </div>
+            </div>
+          </div>
 
 
+ </div>
+ 
+ <div class="accordion" id="collapse-group">
+          <div class="accordion-group widget-box">
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#Cliente" data-toggle="collapse"> <span class="icon"><i class="icon icon-user"></i></span>
+                <h5>Cliente</h5>
+                </a> </div>
+            </div>
+            <div class="collapse accordion-body" id="Cliente">
+              <div class="widget-content">
+             
+               
+              
+ 	<div class="widget-box" id="Menucliente">
+      <div class="span3">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
+            <h5>BUSQUEDA CLIENTE</h5>
+          </div>
+
+         <div class="widget-content nopadding">
+            <form action="#" method="post" id="formCliente" class="form-horizontal">
+
+
+              <div class="control-group">
+              <div style="margin:10px;">
+              	<label for="txtDniCliente" class="sr-only">Dni </label>
+              	<input type="text" id="txtDniCliente" name="txtDniCliente" class="form-control" placeholder="Dni" />
+
+              </div>
+
+            </div>
+            <div class="control-group">
+            	<div style="margin:10px;">
+
+              		<label for="txtNombreCliente" class="sr-only">Nombre </label>
+                	<input type="text" id="txtNombreCliente" name="txtNombreCliente" class="form-control" placeholder="Nombre" />
+              	</div>
+              </div>
+
+            <div class="control-group">
+            	<div style="margin:10px;">
+              	<label for="txtApellidoCliente" class="sr-only">Apellido </label>
+                <input type="text" id="txtApellidoCliente" name="txtApellidoCliente" class="form-control" placeholder="Apellido" />
+              </div>
+            </div>
+
+ </form>
+		</div>
+         
+          </div>
+        </div>
+
+
+       <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual"); %>
+
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-list"></i> </span>
+            <h5>CLIENTES</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Dni</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Direccion</th>
+
+
+                </tr>
+              </thead>
+             <tbody id="cuerpoCliente" name="cuerpoCliente">
+               <tr>
+						<td colspan="4"><h5>Comience a escribir para obtener los clientes</h5></td>
+			   </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+       <div class="span3">
+       <input type="hidden" id="clienteLoggeado" value="<%=cliente %>">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
+            <h5>CLIENTE ACTUAL</h5>
+          </div>
+
+         <div class="widget-content nopadding">
+            <form action="GuardarClientePedido" method="post" id="formguardarClientePedido" class="form-horizontal">
+            <div class="control-group">
+              <div style="margin:10px;">
+              <label for="guardarDni" class="sr-only">DNI :</label>
+                <input type="text" id="guardarDni" name="guardarDni"  <%if(cliente!=null){%>value="<%=cliente.getDni()%>"<%}%> class="form-control" placeholder="DNI" />
+              </div>
+            </div>
+
+
+            <div class="control-group">
+              <div style="margin:10px;">
+              <label for="guardarNombre" class="sr-only">Nombre :</label>
+                <input type="text" id="guardarNombre" name="guardarNombre"  <%if(cliente!=null){%>value="<%=cliente.getNombre() %>"<%}%> class="form-control" placeholder="Nombre" />
+              </div>
+            </div>
+           <div class="control-group">
+             <div style="margin:10px;">
+              <label for="guardarApellido" class="sr-only">Apellido :</label>
+                <input type="text" id="guardarApellido" name="guardarApellido" <%if(cliente!=null){%>value="<%=cliente.getApellido()%>"<%}%> class="form-control" placeholder="Nombre" />
+              </div>
+            </div>
+
+			<input type="hidden" name="origen" id="origen" value="mostrador">
+	 		<button class="btn btn-lg btn-primary " type="submit">Guardar</button>
+
+             <a class="btn btn-danger" href="BorrarClientePedido?origen=mostrador">Borrar</a>
+
+          </form>
+          </div>
+        </div>
+      </div>
+      </div>
+              </div>
+            </div>
+          </div>
+
+
+ </div>
+
+ 
+  
+
+    <%Pedido pedido= (Pedido)session.getAttribute("pedido");
+	if(pedido!=null){
+	%>
+
+	<a name="clienteFijo" id="clienteFijo"></a>
+    <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+            <h5>NUEVO PEDIDO</h5>
+
+             </div>
+
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>CODIGO DEL PRODUCTO</th>
+                  <th>DESCRIPCION</th>
+                  <th>PRECIO UNITARIO</th>
+                  <th>CANTIDAD</th>
+                  <th>SUBTOTAL</th>
+                  <th>BORRAR</th>
+                </tr>
+              </thead>
+
+
+             <tbody>
+
+            <%int i=1;
+            float total=0;
+            for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
+            	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
+            %>
+              <tr>
+                <td><%=i%></td>
+                <td><%=item.getProducto().getId_producto() %></td>
+                <td><%=item.getProducto().getNombre_producto() %></td>
+                <td style="text-align: right;">$<%=item.getProducto().getPrecio() %></td>
+                <td style="text-align: right;"><%=item.getCantidad() %></td>
+                <td style="text-align: right;">$<%=subtotal %></td>
+                <td><a class="btn btn-danger" href="pedido/borrarLinea?nro=<%=i %>&origen=mostrador">X</a></td>
+              </tr>
+            <%	i++;
+            	total+=subtotal;
+            }%>
+            <tr>
+                <td style="text-align: right;" colspan="5"><h5>IMPORTE TOTAL DEL PEDIDO</h5></td>
+                <td><h5 style="text-align: right;">$<%=total %></h5></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="row" style="float: right;">
+
+            </div>
+		<div class="row" style="float: right;">
+			<form action="ConfirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
+				<input type="hidden" name="total" id="total" value="<%=total %>">
+		 		<input type="hidden" name="coordenadas" id="coordenadas">
+      			<input type="hidden" name="direccion" id="direccion">
+            	<input type="hidden" name="distancia" id="distancia">
+            	<input type="hidden" name="fecha" id="fecha">
+           		<input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa">
+           		<input type="hidden" name="distancia" id="distancia">
+				<input type="hidden" name="origen" id="origen" value="mostrador">
+		 		<button class="btn btn-lg btn-primary " type="submit" onclick="localStorage.clear();">CONFIRMAR PEDIDO</button>
+				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido?origen=mostrador" onclick="localStorage.clear();">BORRAR PEDIDO</a>
+           </form>
+
+		</div>
+
+
+	<%} %>
+
+        </div>
+
+
+<!--End-Action boxes-->
+
+
+
+
+      <div class="row-fluid">
+      <div class="span3">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-search"></i> </span>
+            <h5>BUSQUEDA PRODUCTOS</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form action="PedidoActual" method="post" id="formItem" class="form-horizontal">
+              <div style="margin:10px;">
+                <label for="txtDescripcion" class="sr-only">Producto</label>
+                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion" autofocus="autofocus">
+                <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
+              </div>
+                <div style="margin:10px;">
+                  <label for="txtCod" class="sr-only">Codigo</label>
+                  <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Codigo">
+                    <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
+                </div>
+
+
+                <div style="margin:10px;">
+                  <label for="txtCantidad" class="sr-only">Producto</label>
+                  <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" placeholder="Cantidad">
+                    <label for="txtCantidad" id="errorCantidad" style="color:#FF0004"></label>
+                </div>
+				<input type="hidden" id="origen" name="origen" value="mostrador">
+                <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
+  				 </form>
+
+   <%
+      			String mensajeError=(String)request.getAttribute("mensajeError");
+        		if(mensajeError!=null){
+      		%>
+      			<div class="alert alert-danger" role="alert">
+        			<strong>Error!</strong> <%=mensajeError %>
+      			</div>
       		<%
         		}
 
       		%>
-      <div class="widget-box">
-        <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Crear Pedido</h5>
+          </div>
         </div>
+      </div>
+      <div class="span7">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-shopping-cart"></i> </span>
+            <h5>PRODUCTOS</h5>
+          </div>
         <div class="widget-content nopadding">
-          <form action="AltaCliente" method="post" class="form-horizontal">
-          <input type="hidden" id="tipo_em" name="tipo_em" value="<%=tipo_em%>" >
-            <div class="control-group">
-              <label class="control-label">Nombre :</label>
-              <div class="controls">
-                <input type="text" class="span11" placeholder="Nombre cliente" name="nombre" id="nombre"/>
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">Apellido :</label>
-              <div class="controls">
-                <input type="text" class="span11" name="apellido" id="apellido" placeholder="Apellido cliente" />
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">DNI :</label>
-              <div class="controls">
-               <input type="text" class="span11" placeholder="Numero de documento cliente" name="dni" id="dni"/>
-               </div>
-               </div>
-            <div class="control-group">
-              <label class="control-label">Telefono</label>
-              <div class="controls">
-                <input type="text"  class="span11" placeholder="Numero de telefono" name="tel" id="tel" />
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">Email :</label>
-              <div class="controls">
-                <input type="text" class="span11" name="apellido" id="email" placeholder="Nombre de email" />
-              </div>
-            </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                 		<th>Codigo</th>
+
+						<th>Descripcion</th>
+						<th>Precio</th>
+					</tr>
+				</thead>
+				<tbody id="cuerpo">
+					<tr>
+						<td colspan="3"><h5>Comience a escribir para obtener los productos</h5></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+	</div>
 
 
-            <div class="control-group">
-              <label class="control-label">Direcciï¿½n</label>
-              <div class="controls">
-                <input type="text"  class="span11" placeholder="Direccion cliente" name="direccion" id="direccion" />
-              </div>
-              </div>
-              <div class="widget-content nopadding">
 
-               </div>
-                <div class="form-actions">
-                  <input type="submit" value="Alta" class="btn btn-success">
-                </div>
-              </form>
-        </div>
-      </div>
-      </div>
-      </div>
 <!--End-Action boxes-->
 
+   </div>
+   </div>
+
+  </div>
   </div>
 </div>
+</div>
+</div>
+</div>
+
+
 
 <!--end-main-container-part-->
 
@@ -179,6 +454,8 @@
 </div>
 
 <!--end-Footer-part-->
+
+<script src="scripts/juance.js"></script>
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>
@@ -201,6 +478,7 @@
 <script src="bootstrap/js/matrix.popover.js"></script>
 <script src="bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="bootstrap/js/matrix.tables.js"></script>
+<script src="js/pedido.js"></script>
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
@@ -227,4 +505,5 @@ function resetMenu() {
 }
 </script>
 </body>
+
 </html>

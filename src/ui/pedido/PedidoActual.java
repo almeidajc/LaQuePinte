@@ -80,7 +80,7 @@ public class PedidoActual extends HttpServlet {
 						request.getSession().setAttribute("pedido", pedido);
 						String origen = request.getParameter("origen");
 						if(String.valueOf(origen).equals("mostrador")){
-							response.sendRedirect("crearpedido.jsp");
+							response.sendRedirect("crearPedidoVE.jsp");
 						}else{
 							response.sendRedirect("nuevoPedidoVE.jsp");
 						}

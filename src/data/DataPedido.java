@@ -1,3 +1,4 @@
+
 package data;
 
 import java.sql.PreparedStatement;
@@ -114,21 +115,22 @@ public class DataPedido {
 		DataProducto dprod = new DataProducto();
 		ResultSet rs = null;
 		try {
+			FactoryConexion.getInstancia().getConn().setAutoCommit(false);
 			stmtPedido = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"insert into pedidos(fecha_emision, id_estado, dni) values (current_date(),?,?)",PreparedStatement.RETURN_GENERATED_KEYS
-				   );
-			stmtPedido.setInt(2, 1);
-			stmtPedido.setInt(3, pedido.getCliente().getDni());
+					"Insert into pedidos(fecha_emision,id_estado,total,dni,nombre,apellido) values (current_date(),1,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS
+					);
+			stmtPedido.setDouble(1, pedido.getTotal());
+			stmtPedido.setInt(2, pedido.getCliente().getDni());
+			stmtPedido.setString(3, pedido.getCliente().getNombre());
+			stmtPedido.setString(4, pedido.getCliente().getApellido());
 			stmtPedido.execute();
-
-			rs=stmtPedido.getGeneratedKeys();
-			
+			rs = stmtPedido.getGeneratedKeys();
 			if(rs!=null && rs.next()){
-				pedido.setId_pedido(rs.getInt(1));				
-			}
+				pedido.setId_pedido(rs.getInt(1));
+				}
 			for (LineaDetallePedido lp : pedido.getLineasDetallePedido()) {
 				dprod.descontarStock(stmtStock, lp.getCantidad(), lp.getProducto().getId_producto());
-				this.insertLinea(stmtLineas, pedido.getId_pedido(), lp.getProducto().getId_producto(), lp.getCantidad());
+				this.insertLinea(stmtLineas, pedido.getId_pedido(), lp);
 			}			
 			FactoryConexion.getInstancia().getConn().commit();
 			
@@ -136,7 +138,7 @@ public class DataPedido {
 			try {
 				FactoryConexion.getInstancia().getConn().rollback();
 			} catch (SQLException e1) {
-				throw new ApplicationException("Error lectura base de datos", e);
+				throw new ApplicationException("Error al recuperar estado en la base de datos", e);
 			}
 			throw new ApplicationException("Error al registrar nuevo pedido en la base de datos", e);
 		}
@@ -153,14 +155,16 @@ public class DataPedido {
 		}
 	}
 	
-	private void insertLinea(PreparedStatement stmtLineas, int nroPedido, int codigo, int cantidad)
+	private void insertLinea(PreparedStatement stmtLineas, int nroPedido,LineaDetallePedido lp)
 			throws SQLException, ApplicationException {
 		stmtLineas = FactoryConexion.getInstancia().getConn().prepareStatement(
-				"Insert into linea_pedido_cliente (id_pedido,id_producto,id_linea,cantidad) values (?,?,?,?)");
+				"Insert into linea_pedido_cliente (id_pedido,id_producto,nombre_producto,cantidad,precio_unitario,subtotal) values (?,?,?,?,?,?)");
 			stmtLineas.setInt(1, nroPedido);
-			stmtLineas.setInt(2, codigo);
-			stmtLineas.setInt(3, cantidad);
-			stmtLineas.setInt(4, 99);
+			stmtLineas.setInt(2, lp.getProducto().getId_producto());
+			stmtLineas.setString(3, lp.getProducto().getNombre_producto());
+			stmtLineas.setInt(4, lp.getCantidad());
+			stmtLineas.setFloat(5, lp.getProducto().getPrecio());
+			stmtLineas.setFloat(6, lp.getSubtotal());
 			stmtLineas.execute();
 	}
 
