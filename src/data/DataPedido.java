@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import appExceptions.ApplicationException;
 import entidades.Cliente;
+import entidades.CostosEnvio;
 import entidades.Empleado;
 import entidades.Pedido;
 import entidades.LineaDetallePedido;
@@ -117,12 +118,16 @@ public class DataPedido {
 		try {
 			FactoryConexion.getInstancia().getConn().setAutoCommit(false);
 			stmtPedido = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"Insert into pedidos(fecha_emision,id_estado,total,dni,nombre,apellido) values (current_date(),1,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS
+					"Insert into pedidos(fecha_emision,id_estado,total,dni,nombre,apellido,fecha_entrega,direccion_envio,coordenadas,costo_envio) values (current_date(),1,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS
 					);
 			stmtPedido.setDouble(1, pedido.getTotal());
 			stmtPedido.setInt(2, pedido.getCliente().getDni());
 			stmtPedido.setString(3, pedido.getCliente().getNombre());
 			stmtPedido.setString(4, pedido.getCliente().getApellido());
+			stmtPedido.setDate(5, new java.sql.Date(pedido.getFecha_entrega().getTime()));	
+			stmtPedido.setString(6, pedido.getDireccion_envio());
+			stmtPedido.setString(7, pedido.getCoordenadas());
+			stmtPedido.setDouble(8, pedido.getCosto_envio());
 			stmtPedido.execute();
 			rs = stmtPedido.getGeneratedKeys();
 			if(rs!=null && rs.next()){
@@ -402,6 +407,42 @@ public void asignarPedido(int idped, int idcam) throws ApplicationException {
 			throw new ApplicationException("Error al cerrar conexiones con la base de datos", d);
 		
 }}}
+
+public CostosEnvio calcularCostoEnvio() {
+	ResultSet rs = null;
+	Statement stmt = null;
+	CostosEnvio ce = new CostosEnvio();
+
+	try {
+		stmt = FactoryConexion.getInstancia().getConn().createStatement();
+
+		rs = stmt
+				.executeQuery("select costo_km, recargo_zona "
+						+ " from costos_envio");
+
+		while (rs.next()) {
+			ce.setCosto_km(rs.getFloat("costo_km"));
+			ce.setRecargo_zona(rs.getFloat("recargo_zona"));
+			}
+
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		try {
+			if (rs != null)
+				rs.close();
+			if (stmt != null)
+				stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		FactoryConexion.getInstancia().releaseConn();
+	}
+
+	return ce;
+}
 
 }
 

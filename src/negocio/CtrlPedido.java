@@ -6,6 +6,7 @@ import appExceptions.ApplicationException;
 import data.DataPedido;
 import data.DataProducto;
 import entidades.Cliente;
+import entidades.CostosEnvio;
 import entidades.Empleado;
 import entidades.LineaDetallePedido;
 import entidades.Pedido;
@@ -68,6 +69,17 @@ public class CtrlPedido {
 		cat.asignarPedido(idped,idcam);
 		
 		
+	}
+
+	public double calcularCostoEnvio(int distancia, String EsZonaPeligrosa) {
+		CostosEnvio ce = new CostosEnvio();
+		ce = cat.calcularCostoEnvio();
+		double costo = 0;
+		costo = (distancia/1000)*ce.getCosto_km();
+		if(String.valueOf(EsZonaPeligrosa).equals("true")){
+			costo+=ce.getRecargo_zona();
+		}
+		return costo;
 	}
 
 

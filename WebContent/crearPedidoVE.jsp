@@ -342,7 +342,7 @@
             	<input type="hidden" name="distancia" id="distancia">
             	<input type="hidden" name="fecha" id="fecha">
            		<input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa">
-           		<input type="hidden" name="distancia" id="distancia">
+           		
 				<input type="hidden" name="origen" id="origen" value="mostrador">
 		 		<button class="btn btn-lg btn-primary " type="submit" onclick="localStorage.clear();">CONFIRMAR PEDIDO</button>
 				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido?origen=mostrador" onclick="localStorage.clear();">BORRAR PEDIDO</a>
@@ -427,8 +427,6 @@
 			</table>
 	</div>
 	</div>
-
-
 
 <!--End-Action boxes-->
 
