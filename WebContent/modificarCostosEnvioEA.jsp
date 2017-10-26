@@ -207,10 +207,6 @@ input[type=text]:focus {
   <div class="container-fluid">
      <div class="row-fluid">
       <div class="span12"> <!-- TAMA�O FORMULARIOS -->
-
-
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
         <div class="widget-box">
 
 
@@ -222,7 +218,7 @@ input[type=text]:focus {
 	    <th><h5 style="text-align:center; ">COSTO POR KILOMETRO</h5></th>
 
 
-        <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
+        <th><h5 style="text-align:center; ">MODIFICAR <a href="#" title="Clickee en el icono correspondiente al costo por kilometros para modificarlo" class="tip-bottom"><i class="icon-question-sign"> </a></i></h5></th>
 
       </tr>
     </thead>
@@ -267,7 +263,7 @@ String precio = String.format ("%.2f", a);
 
         <th><h5 style="text-align:center; ">RECARGO ZONA PELIGROSA</h5></th>
 
-        <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
+        <th><h5 style="text-align:center; ">MODIFICAR<a href="#" title="Clickee en el icono correspondiente al costo por zona peligrosa para modificarlo" class="tip-bottom"><i class="icon-question-sign"> </a></i></h5></th>
 
       </tr>
     </thead>
