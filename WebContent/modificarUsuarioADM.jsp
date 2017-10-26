@@ -161,8 +161,8 @@ input[type=text]:focus {
       <div class="span12"> <!-- TAMA�O FORMULARIOS -->
 
 
-     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
+     <input placeholder="Buscar" type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+	 <a href="#" title="Ingrese algun dato para buscar" class="tip-top"><i class="icon-question-sign"> </a></i>
         <div class="widget-box">
 
 
@@ -178,7 +178,7 @@ input[type=text]:focus {
         <th><h5 style="text-align:center; ">ROL</h5></th>
         <th><h5 style="text-align:center; ">USUARIO</h5></th>
         <th><h5 style="text-align:center; ">PATENTE</h5></th>
-        <th><h5 style="text-align:center; ">MODIFICAR</h5></th>
+        <th><h5 style="text-align:center; ">MODIFICAR<a href="#" title="Clickee en el icono correspondiente al usuario para modificarlo" class="tip-bottom"><i class="icon-question-sign"> </a></i></h5></th>
 
       </tr>
     </thead>

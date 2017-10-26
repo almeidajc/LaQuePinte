@@ -14,12 +14,95 @@
   function asignarLocal(){
 	  fecha = document.getElementById("fechaInsert").value;
 	  esZonaPeligrosa = document.getElementById("zonaPeligrosa").value;
-	  localStorage.setItem("direccion", dir);
-	  localStorage.setItem("coordenadas", coordenadas);
-	  localStorage.setItem("fecha", fecha);
-	  localStorage.setItem("distanciaInsert", distanciaLugar);
-	  localStorage.setItem("zonaPeligrosa", esZonaPeligrosa);
-	  location.href ="nuevoPedidoVE.jsp";
+	  if (fecha != "" && dir != "" && coordenadas != "" && distanciaLugar != "" && esZonaPeligrosa != ""){
+		  if(Number(distanciaLugar)< 20000 ){
+			  localStorage.setItem("direccion", dir);
+			  localStorage.setItem("coordenadas", coordenadas);
+			  localStorage.setItem("fecha", fecha);
+			  localStorage.setItem("distanciaInsert", distanciaLugar);
+			  localStorage.setItem("zonaPeligrosa", esZonaPeligrosa);
+			  location.href ="nuevoPedidoVE.jsp";
+		  }
+		  else{
+			  $.gritter.add({
+					// (string | mandatory) the heading of the notification
+					title: 'Direccion no valida',
+					// (string | mandatory) the text inside the notification
+					text: 'La direccion sobrepasa los limites de envio',
+					// (string | optional) the image to display on the left
+					image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+					// (bool | optional) if you want it to fade out on its own or just sit there
+					sticky: false,
+					// (int | optional) the time you want it to be alive for before fading out
+					time: '2500'
+				});
+		  }
+
+	  }
+	  else{
+		  if(dir != "" && coordenadas != "" && distanciaLugar != "" && esZonaPeligrosa != ""){
+			  if(fecha == ""){				  
+				  $.gritter.add({
+						// (string | mandatory) the heading of the notification
+						title: 'Complete todos los campos',
+						// (string | mandatory) the text inside the notification
+						text: 'Por favor asigne una fecha valida para poder continuar',
+						// (string | optional) the image to display on the left
+						image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+						// (bool | optional) if you want it to fade out on its own or just sit there
+						sticky: false,
+						// (int | optional) the time you want it to be alive for before fading out
+						time: '2500'
+					});
+			  }
+			  else{
+				  $.gritter.add({
+						// (string | mandatory) the heading of the notification
+						title: 'Complete todos los campos',
+						// (string | mandatory) the text inside the notification
+						text: 'Por favor asigne una fecha valida y una direccion para poder continuar',
+						// (string | optional) the image to display on the left
+						image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+						// (bool | optional) if you want it to fade out on its own or just sit there
+						sticky: false,
+						// (int | optional) the time you want it to be alive for before fading out
+						time: '2500'
+					});
+			  }
+		  }
+		  else{
+			  if(fecha != ""){
+				  $.gritter.add({
+						// (string | mandatory) the heading of the notification
+						title: 'Complete todos los campos',
+						// (string | mandatory) the text inside the notification
+						text: 'Por favor introduzca una direccion valida y localicela',
+						// (string | optional) the image to display on the left
+						image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+						// (bool | optional) if you want it to fade out on its own or just sit there
+						sticky: false,
+						// (int | optional) the time you want it to be alive for before fading out
+						time: '2500'
+					});
+			  }
+			  else{
+				  $.gritter.add({
+						// (string | mandatory) the heading of the notification
+						title: 'Complete todos los campos',
+						// (string | mandatory) the text inside the notification
+						text: 'Por favor asigne una fecha valida y una direccion para poder continuar',
+						// (string | optional) the image to display on the left
+						image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+						// (bool | optional) if you want it to fade out on its own or just sit there
+						sticky: false,
+						// (int | optional) the time you want it to be alive for before fading out
+						time: '2500'
+					});
+			  }
+		  }
+		  
+		  
+	  }
   }
   
   function initAutocomplete() {

@@ -46,14 +46,10 @@
 	<script type="text/javascript" src="js/jquery.gritter.js"></script>
 
 <script>
-let diaStart,diaEnd,diaAll,calendario2,dia,mes,ano,ini,fin,fech,mesLet;
+let diaStart,diaEnd,diaAll,calendario2,dia,mes,ano,ini,fin,fech,mesLet,fechaDate;
 let agregar=0;
-function creardia(){
-
-	//ver lo de validar el dia con el count de sql para cada pedidos
-
-		if (true) {
-			document.getElementById("fechaInsert").value = ano+"-"+mes+"-"+dia;
+function creardia(){	
+		document.getElementById("fechaInsert").value = fechaDate;
 		var title = "Pedido Actual";
 			calendario2.fullCalendar('renderEvent',
 				{
@@ -67,17 +63,7 @@ function creardia(){
 			);
 		$.gritter.removeAll();
 		agregar =1;
-		}
-	else{
-		$.gritter.add({
-			title: 'Fecha invalida',
-			text: 'La fecha seleccionada para entregar el pedido ya tiene asignada la maxima cantidad de envios posibles, por favor seleccione una fecha nuevamente',
-			image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
-			sticky: false,
-			time: '2500'
-		});
 
-	}
 }
 function cancelarFecha(){
 	$.gritter.removeAll();
@@ -183,6 +169,7 @@ function cancelarFecha(){
 			select: function(start, end, allDay) {
 				calendario2= calendar;
 				diaStart = start;
+				fechaDate = start;
 				diaEnd = end;
 				diaAll =allDay;
 				ini = 1;
@@ -234,8 +221,6 @@ function cancelarFecha(){
 				fin = 11;
 				dia = fech.substring(ini , fin);
         let cantMaximaAlcanzada;
-
-        // console.log(start);
         let cantidadPedidosDia;
         listaPedidos.map(function (ped){
           cantidadPedidosDia = ped.title.substring(17 ,ped.title.length);
@@ -439,6 +424,24 @@ String nombre="";
 
 <!--Action boxes-->
   <div class="container-fluid">
+   <div class="accordion" id="collapse-group">
+    <div class="accordion-group widget-box">
+      <div class="accordion-heading">
+        <div class="widget-title"> <a data-parent="#collapse-group" href="#collapseGThree" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
+          <h5>AYUDA</h5>
+          </a> </div>
+      </div>
+      <div class="collapse accordion-body" id="collapseGThree">
+      	<div class="row-fluid">
+      	
+        	<div class="widget-content">  <video width="420" height="540" controls>
+										  <source src="bootstrap/img/juance.mp4" type="video/mp4">
+										</video> 
+						 </div>
+        </div>
+      </div>
+    </div>
+    </div>
   <%
          	CtrlZona ctrlZ = new CtrlZona();
         	Zona zona = new Zona();
@@ -597,7 +600,17 @@ String nombre="";
 
 
 	<script src='fullcalendar.js'></script>
+	
 
+	<script src="bootstrap/js/jquery.ui.custom.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/jquery.flot.min.js"></script>
+	<script src="bootstrap/js/jquery.flot.resize.min.js"></script>
+	<script src="bootstrap/js/jquery.peity.min.js"></script>
+	<script src="bootstrap/js/matrix.js"></script>
+	<script src="bootstrap/js/matrix.dashboard.js"></script>
+	<script src="bootstrap/js/jquery.gritter.min.js"></script>
+	<script src="bootstrap/js/matrix.interface.js"></script>
 
     <script src="bootstrap/js/jquery.gritter.min.js"></script>
     <script src="bootstrap/js/jquery.wizard.js"></script>

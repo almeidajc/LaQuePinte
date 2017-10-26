@@ -260,8 +260,8 @@ input[type=text]:focus {
 
     <div class="row-fluid">
       <div class="span12">
-       <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-
+       <input placeholder="Buscar" type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+		<a href="#" title="Ingrese algun dato para buscar" class="tip-right"><i class="icon-question-sign"> </a></i>
         <div class="widget-box">
 
 
@@ -276,7 +276,7 @@ input[type=text]:focus {
         <th><h5 style="text-align:center; ">STOCK MIN</h5></th>
         <th><h5 style="text-align:center; ">STOCK MAX</h5></th>
         <th><h5 style="text-align:center; ">MATERIAL</h5></th>
-        <th><h5 style="text-align:center; ">ELIMINAR</h5></th>
+        <th><h5 style="text-align:center; ">ELIMINAR <a href="#" title="Clickee en el icono correspondiente al producto para eliminarlo" class="tip-bottom"><i class="icon-question-sign"> </a></i></h5></th>
 
       </tr>
     </thead>
