@@ -49,7 +49,7 @@
 let diaStart,diaEnd,diaAll,calendario2,dia,mes,ano,ini,fin,fech,mesLet,fechaDate;
 let agregar=0;
 function creardia(){	
-		document.getElementById("fechaInsert").value = fechaDate;
+		document.getElementById("fechaInsert").value = mes+"/"+dia+"/"+ano;
 		var title = "Pedido Actual";
 			calendario2.fullCalendar('renderEvent',
 				{
@@ -434,10 +434,7 @@ String nombre="";
       <div class="collapse accordion-body" id="collapseGThree">
       	<div class="row-fluid">
       	
-        	<div class="widget-content">  <video width="420" height="540" controls>
-										  <source src="bootstrap/img/juance.mp4" type="video/mp4">
-										</video> 
-						 </div>
+        	<div class="widget-content"><img src="bootstrap/img/ayuda2.gif"> </div> </div>
         </div>
       </div>
     </div>

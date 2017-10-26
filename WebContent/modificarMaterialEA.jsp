@@ -244,7 +244,7 @@
 
 
 	   <td><form method="post" action="modMaterialEA.jsp">
-           <input type="hidden" id="id" name="id" value="<%= ctrl.listarMateriales().get(indice).getId()%>" >
+            <input type="hidden" id="id" name="id" value="<%= ctrl.listarMateriales().get(indice).getId()%>" >
             <input type="hidden" id="tipo_empleado" name="tipo_empleado" value="<%=tipo_em%>" >
             <button style="margin:auto;display:block;" type="submit" class="btn2" name="modificarmaterial" id="modificarmaterial" text-align:center;"id="modificarmaterial" >
            <span class="icon-pencil" style="color: blue; font-size:100%; position:relative; align-content:center"></span></a></form></td>
