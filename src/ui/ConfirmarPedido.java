@@ -37,13 +37,15 @@ public class ConfirmarPedido extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String direccion = "";
+		String a = "";
 		String fecha_teorica = "";
 		int distancia = 0;
 		String coordenadas = "";
 		String EsZonaPeligrosa = "";
 		String origen = request.getParameter("origen");
 		double total = 0;
+		Date fecha = null;
+		double costoEnvio = 0;
 		try {
 			if(request.getSession().getAttribute("pedido")==null){
 				throw new ApplicationException("No se encontró un pedido en la sesión", null);
@@ -64,28 +66,33 @@ public class ConfirmarPedido extends HttpServlet {
 					CtrlPedido ctrlPedido = new CtrlPedido();
 					//leo los datos provenientes de ubicacion solo si origen es distinto de "mostrador"
 					if(!String.valueOf(origen).equals("mostrador")){
-						direccion = request.getParameter("direccion");
-						fecha_teorica = ((String)request.getParameter("fecha")).trim();
-						distancia = Integer.parseInt(request.getParameter("distancia"));
-						coordenadas = request.getParameter("coordenadas");
+						a = request.getParameter("a");
 						EsZonaPeligrosa = request.getParameter("zonaPeligrosa");
+						distancia = Integer.parseInt(request.getParameter("distancia"));
+						fecha_teorica = ((String)request.getParameter("fecha")).trim();						
+						try {
+							fecha = new SimpleDateFormat("MM/dd/yyyy").parse(fecha_teorica);
+						} catch (ParseException e) {
+							request.setAttribute("mensaje", "error conversion fecha");
+							if(String.valueOf(origen).equals("mostrador")){
+								request.getRequestDispatcher("crearPedidoVE.jsp").forward(request, response);
+							}else{
+								request.getRequestDispatcher("nuevoPedidoVE.jsp").forward(request, response);
+							}
+						}
+						
+						coordenadas = request.getParameter("coordenadas");
 				}			
 					
 				//seteo pedido con datos de la ubicacion solo si origen es distinto de "mostrador"
 					if(!String.valueOf(origen).equals("mostrador")){
-					pedido.setDireccion_envio(direccion);
-					
-					Date fecha = null;
-					try {
-						fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fecha_teorica);
-					} catch (ParseException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			        pedido.setFecha_entrega(fecha);
-					pedido.setDistancia(distancia);
+					//busco precio distancia+zona peligrosa
+					costoEnvio= ctrlPedido.calcularCostoEnvio(distancia,EsZonaPeligrosa);
+					pedido.setDireccion_envio(a);					
+					pedido.setFecha_entrega(fecha);
 					pedido.setCoordenadas(coordenadas);
-					pedido.setEsZonaPeligrosa(EsZonaPeligrosa);					
+					pedido.setCosto_envio(costoEnvio);
+									
 					}
 					total = Double.parseDouble(request.getParameter("total"));
 					pedido.setTotal(total);		

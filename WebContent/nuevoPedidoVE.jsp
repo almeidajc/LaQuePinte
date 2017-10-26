@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
 
-<title>Materiales::de::Construcci&oacute;n</title>
+<title>Materiales::de::Construccion</title>
 
 
 
@@ -79,15 +79,7 @@ function confirmarPedido(){
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
-    <!-- <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-        <li class="divider"></li>
-        <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
-      </ul>
-    </li> -->
+   
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido</span></a></li>
 
     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
@@ -132,34 +124,39 @@ function confirmarPedido(){
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Pedido</h1>
+ <h1>Nuevo Pedido: envio domicilio</h1>
  </div>
 
-
- <!--
-<div class="accordion" id="collapse-group">
-
-
-         <div class="accordion-group widget-box">
-
-
-            <div class="accordion-heading">
-              <div class="widget-title"> <a data-parent="#collapse-group" href="#1" data-toggle="collapse"> <span class="icon"><i class="icon-question-sign"></i></span>
-                <h4>AYUDA</h4>
-            </div>
-            <div class="collapse accordion-body" id="1">
-
-<img src="bootstrap/img/ayuda.gif">
-<!--<img src="${pageContext.request.contextPath}/bootstrap/img/ayuda.gif"/>
-<img src="${pageContext.request.contextPath}/ayuda.gif"/>
-<img src="ayuda.gif"/> -->
- <!--
-            </div>
-          </div>
-
-</div>-->
 <div class="container-fluid">
+<div class="row-fluid">
 
+ <% 
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+        			int resultado = mensaje.indexOf("correctamente");
+        	        
+        	        if(resultado != -1) {//se encontró "correctamente" dentro del string <mensaje>
+        	        
+      		%>
+      		<div class="alert alert-success">
+   			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    		<strong><%=mensaje %></strong> . 
+  			</div>
+      		
+      			
+      		<%
+        		}else{
+        			%>
+              		<div class="alert alert-danger">
+           			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            		<strong><%=mensaje %></strong> . 
+          			</div>
+              		
+              			
+              		<%
+        		}}
+      			
+      		%>
  <div class="accordion" id="collapse-group">
           <div class="accordion-group widget-box">
             <div class="accordion-heading">
@@ -173,14 +170,20 @@ function confirmarPedido(){
           </div>
 
 
-        </div>
-
- <!--Action boxes-->
-
-
-
-
- <div class="row-fluid">
+ </div>
+ 
+ <div class="accordion" id="collapse-group">
+          <div class="accordion-group widget-box">
+            <div class="accordion-heading">
+              <div class="widget-title"> <a data-parent="#collapse-group" href="#Cliente" data-toggle="collapse"> <span class="icon"><i class="icon icon-user"></i></span>
+                <h5>Cliente</h5>
+                </a> </div>
+            </div>
+            <div class="collapse accordion-body" id="Cliente">
+              <div class="widget-content">
+             
+               
+              
  	<div class="widget-box" id="Menucliente">
       <div class="span3">
         <div class="widget-box">
@@ -215,9 +218,9 @@ function confirmarPedido(){
               </div>
             </div>
 
-
+ </form>
 		</div>
-          </form>
+         
           </div>
         </div>
 
@@ -255,8 +258,6 @@ function confirmarPedido(){
         </div>
       </div>
 
-  <!--    ___-->
-
 
        <div class="span3">
        <input type="hidden" id="clienteLoggeado" value="<%=cliente %>">
@@ -288,16 +289,25 @@ function confirmarPedido(){
               </div>
             </div>
 
-
+			<input type="hidden" name="origen" id="origen" value="domicilio">
 	 		<button class="btn btn-lg btn-primary " type="submit">Guardar</button>
 
-             <a class="btn btn-danger" href="BorrarClientePedido">Borrar</a>
+             <a class="btn btn-danger" href="BorrarClientePedido?origen=domicilio">Borrar</a>
 
           </form>
           </div>
         </div>
       </div>
       </div>
+              </div>
+            </div>
+          </div>
+
+
+ </div>
+
+ 
+  
 
     <%
     String totalStr = "";
@@ -343,8 +353,10 @@ function confirmarPedido(){
                 <td><%=item.getProducto().getNombre_producto() %></td>
                 <td style="text-align: right;">$<%=precioStr %></td>
                 <td style="text-align: right;"><%=item.getCantidad() %></td>
+
                 <td style="text-align: right;">$<%=subtotalString %></td>
-                <td><a class="btn btn-danger" style="margin:auto;display:block;"  href="pedido/borrarLinea?nro=<%=i %>">X</a></td>
+                <td><a class="btn btn-danger" style="margin:auto;display:block;"  href="pedido/borrarLinea?nro=<%=i %>&origen=domicilio">X</a></td>
+
               </tr>
             <%	i++;
             	total+=subtotal;
@@ -361,16 +373,19 @@ function confirmarPedido(){
 
             </div>
 		<div class="row" style="float: right;">
-			<form action="pedido/confirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
 
-		 		<input type="hidden" name="coordenadas" id="coordenadas">
-      			<input type="hidden" name="direccion" id="direccion">
-            	<input type="hidden" name="distancia" id="distancia">
-            	<input type="hidden" name="fecha" id="fecha">
-           		<input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa">
+			<form action="ConfirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
+			
+				<input type="hidden" name="total" id="total" value="<%=total%>">
+				<input type="hidden" name="distancia" id="distancia">
+				<input type="hidden" name="coordenadas" id="coordenadas">
+				<input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa">
+				<input type="hidden" name="origen" id="origen">
+				<input type="hidden" name="fecha" id="fecha">
+		 		<input type="hidden" name="a" id="a">
+            	<button class="btn btn-lg btn-primary " type="button" onclick="confirmarPedido()">CONFIRMAR PEDIDO</button>
+				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido?origen=domicilio" onclick="localStorage.clear();">BORRAR PEDIDO</a>
 
-		 		<button class="btn btn-lg btn-primary " type="button" onclick="confirmarPedido()">CONFIRMAR PEDIDO</button>
-				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
            </form>
 
 
@@ -413,16 +428,16 @@ function confirmarPedido(){
                   <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" placeholder="Cantidad">
                     <label for="txtCantidad" id="errorCantidad" style="color:#FF0004"></label>
                 </div>
-
+				<input type="hidden" id="origen" name="origen" value="domicilio">
                 <button class="btn btn-lg btn-primary " type="submit">Agregar</button>
   				 </form>
 
    <%
-      			String mensaje=(String)request.getAttribute("mensaje");
-        		if(mensaje!=null){
+      			String mensajeError=(String)request.getAttribute("mensajeError");
+        		if(mensajeError!=null){
       		%>
       			<div class="alert alert-danger" role="alert">
-        			<strong>Error!</strong> <%=mensaje %>
+        			<strong>Error!</strong> <%=mensajeError %>
       			</div>
       		<%
         		}
@@ -454,8 +469,6 @@ function confirmarPedido(){
 			</table>
 	</div>
 	</div>
-
-
 
 <!--End-Action boxes-->
 
