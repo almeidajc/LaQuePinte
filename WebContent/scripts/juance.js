@@ -20,7 +20,7 @@ function altaPedido(){
   distancia = localStorage.getItem("distanciaInsert");
   fech = localStorage.getItem("fecha");
   zona = localStorage.getItem("zonaPeligrosa");
-  document.getElementById("direccion").value = direccion;
+  document.getElementById("a").value = direccion;
   document.getElementById("coordenadas").value = coord;
   document.getElementById("distancia").value = distancia;
   document.getElementById("fecha").value = fech;

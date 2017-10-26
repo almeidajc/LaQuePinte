@@ -32,6 +32,32 @@
 <script src="js/pedido.js"></script>
 <script src="js/cliente.js"></script>
 
+<script>
+var resp;
+function confirmarPedido(){
+	var dni = document.getElementById("clienteHidden").value;
+	if (dni == 0){
+		var unique_id = $.gritter.add({
+			title: 'Cliente no seleccionado',
+			text: 'Por favor seleccione un cliente para realizar el pedido',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+	else{
+		document.getElementById("formguardarClientePedido").submit();
+		localStorage.clear();
+	}
+	 
+}
+
+</script>
+
 </head>
 
 <body onload="altaPedido()">
@@ -196,7 +222,11 @@
         </div>
 
 
-       <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual"); %>
+       <%Cliente cliente= (Cliente)session.getAttribute("clientePedidoActual");
+          int dni = 0;
+           if(cliente!=null){
+           dni=cliente.getDni();}
+           %>
 
       <div class="span6">
         <div class="widget-box">
@@ -269,7 +299,9 @@
       </div>
       </div>
 
-    <%Pedido pedido= (Pedido)session.getAttribute("pedido");
+    <%
+    String totalStr = "";
+    Pedido pedido= (Pedido)session.getAttribute("pedido");
 	if(pedido!=null){
 	%>
 
@@ -301,22 +333,26 @@
             float total=0;
             for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
             	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
+            	
+            	String subtotalString = String.format ("%.2f", subtotal);
+            	String precioStr = String.format ("%.2f", item.getProducto().getPrecio());            	
             %>
               <tr>
-                <td><%=i %></td>
+                <td><%=i%></td>
                 <td><%=item.getProducto().getId_producto() %></td>
                 <td><%=item.getProducto().getNombre_producto() %></td>
-                <td style="text-align: right;">$<%=item.getProducto().getPrecio() %></td>
+                <td style="text-align: right;">$<%=precioStr %></td>
                 <td style="text-align: right;"><%=item.getCantidad() %></td>
-                <td style="text-align: right;">$<%=subtotal %></td>
-                <td><a class="btn btn-danger" href="pedido/borrarLinea?nro=<%=i %>">X</a></td>
+                <td style="text-align: right;">$<%=subtotalString %></td>
+                <td><a class="btn btn-danger" style="margin:auto;display:block;"  href="pedido/borrarLinea?nro=<%=i %>">X</a></td>
               </tr>
             <%	i++;
             	total+=subtotal;
+            	totalStr = String.format ("%.2f", total);
             }%>
             <tr>
                 <td style="text-align: right;" colspan="5"><h5>IMPORTE TOTAL DEL PEDIDO</h5></td>
-                <td><h5 style="text-align: right;">$<%=total %></h5></td>
+                <td><h5 style="text-align: right;">$<%=totalStr %></h5></td>
               </tr>
             </tbody>
           </table>
@@ -333,10 +369,12 @@
             	<input type="hidden" name="fecha" id="fecha">
            		<input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa">
 
-		 		<button class="btn btn-lg btn-primary " type="submit" onclick="localStorage.clear();">CONFIRMAR PEDIDO</button>
+		 		<button class="btn btn-lg btn-primary " type="button" onclick="confirmarPedido()">CONFIRMAR PEDIDO</button>
 				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido" onclick="localStorage.clear();">BORRAR PEDIDO</a>
            </form>
 
+
+		<input type="hidden" id="clienteHidden" value="<%=dni%>">
 		</div>
 
 
