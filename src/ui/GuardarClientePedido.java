@@ -52,7 +52,7 @@ public class GuardarClientePedido extends HttpServlet {
 		
 		request.getSession().setAttribute("clientePedidoActual", C);
 		if(String.valueOf(origen).equals("mostrador")){
-			response.sendRedirect("crearpedido.jsp");
+			response.sendRedirect("crearPedidoVE.jsp");
 		}else{
 			response.sendRedirect("nuevoPedidoVE.jsp");
 		}

@@ -40,7 +40,7 @@ public class BorrarLinea extends HttpServlet {
 				pedido.getLineasDetallePedido().remove(nro-1);
 				request.getSession().setAttribute("pedido", pedido);
 				if(String.valueOf(origen).equals("mostrador")){
-					response.sendRedirect("../crearpedido.jsp");
+					response.sendRedirect("../crearPedidoVE.jsp");
 				}else{
 					response.sendRedirect("../nuevoPedidoVE.jsp");
 				}
@@ -50,7 +50,7 @@ public class BorrarLinea extends HttpServlet {
 		} catch (ApplicationException e) {
 			request.setAttribute("mensajeError", e.getMessage());
 			if(String.valueOf(origen).equals("mostrador")){
-				request.getRequestDispatcher("../crearpedido.jsp").forward(request, response);
+				request.getRequestDispatcher("../crearPedidoVE.jsp").forward(request, response);
 			}else{
 				request.getRequestDispatcher("../nuevoPedidoVE.jsp").forward(request, response);
 			}

@@ -1,3 +1,4 @@
+
 package data;
 
 import java.sql.PreparedStatement;
@@ -115,19 +116,21 @@ public class DataPedido {
 		ResultSet rs = null;
 		try {
 			FactoryConexion.getInstancia().getConn().setAutoCommit(false);
-			//fecha_pedido id_estado_pedido dni
 			stmtPedido = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"Insert into pedidos(fecha_emision) values (current_date())",
-					PreparedStatement.RETURN_GENERATED_KEYS
+					"Insert into pedidos(fecha_emision,id_estado,total,dni,nombre,apellido) values (current_date(),1,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS
 					);
+			stmtPedido.setDouble(1, pedido.getTotal());
+			stmtPedido.setInt(2, pedido.getCliente().getDni());
+			stmtPedido.setString(3, pedido.getCliente().getNombre());
+			stmtPedido.setString(4, pedido.getCliente().getApellido());
 			stmtPedido.execute();
 			rs = stmtPedido.getGeneratedKeys();
 			if(rs!=null && rs.next()){
 				pedido.setId_pedido(rs.getInt(1));
 				}
 			for (LineaDetallePedido lp : pedido.getLineasDetallePedido()) {
-				//dprod.descontarStock(stmtStock, lp.getCantidad(), lp.getProducto().getId_producto());
-				//this.insertLinea(stmtLineas, pedido.getId_pedido(), lp.getProducto().getId_producto(), lp.getCantidad());
+				dprod.descontarStock(stmtStock, lp.getCantidad(), lp.getProducto().getId_producto());
+				this.insertLinea(stmtLineas, pedido.getId_pedido(), lp);
 			}			
 			FactoryConexion.getInstancia().getConn().commit();
 			
@@ -150,6 +153,19 @@ public class DataPedido {
 			}
 
 		}
+	}
+	
+	private void insertLinea(PreparedStatement stmtLineas, int nroPedido,LineaDetallePedido lp)
+			throws SQLException, ApplicationException {
+		stmtLineas = FactoryConexion.getInstancia().getConn().prepareStatement(
+				"Insert into linea_pedido_cliente (id_pedido,id_producto,nombre_producto,cantidad,precio_unitario,subtotal) values (?,?,?,?,?,?)");
+			stmtLineas.setInt(1, nroPedido);
+			stmtLineas.setInt(2, lp.getProducto().getId_producto());
+			stmtLineas.setString(3, lp.getProducto().getNombre_producto());
+			stmtLineas.setInt(4, lp.getCantidad());
+			stmtLineas.setFloat(5, lp.getProducto().getPrecio());
+			stmtLineas.setFloat(6, lp.getSubtotal());
+			stmtLineas.execute();
 	}
 
 	public void registrarEnvioPedido(int id_pedido) throws ApplicationException {
@@ -292,6 +308,8 @@ public ArrayList<Pedido> listarPedidosOrdenados() {
 
 	return pedidos;
 }
+
+
 
 public ArrayList<Pedido> listarPedidosRealizados() {
 ResultSet rs=null;

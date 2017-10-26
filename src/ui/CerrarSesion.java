@@ -34,6 +34,7 @@ public class CerrarSesion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().removeAttribute("userSession");
+		request.getSession().removeAttribute("clientePedidoActual");
 		response.sendRedirect("login.jsp");
 	}
 
