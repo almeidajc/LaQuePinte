@@ -50,7 +50,7 @@ function confirmarPedido(){
 		});
 	}
 	else{
-		document.getElementById("formguardarClientePedido").submit();
+		document.getElementById("formguardarClientePedido2").submit();
 		localStorage.clear();
 	}
 	 
@@ -165,7 +165,7 @@ function confirmarPedido(){
                 </a> </div>
             </div>
             <div class="collapse accordion-body" id="collapseGThree">
-              <div class="widget-content"> <img src="bootstrap/img/ayuda.gif"> </div>
+              <div class="widget-content"> <img src="bootstrap/img/enviodomicilio2.gif"> </div>
             </div>
           </div>
 
@@ -374,7 +374,7 @@ function confirmarPedido(){
             </div>
 		<div class="row" style="float: right;">
 
-			<form action="ConfirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
+			<form action="ConfirmarPedido" method="post" id="formguardarClientePedido2" class="form-horizontal">
 			
 				<input type="hidden" name="total" id="total" value="<%=total%>">
 				<input type="hidden" name="distancia" id="distancia">
@@ -384,8 +384,7 @@ function confirmarPedido(){
 				<input type="hidden" name="fecha" id="fecha">
 		 		<input type="hidden" name="a" id="a">
             	<button class="btn btn-lg btn-primary " type="button" onclick="confirmarPedido()">CONFIRMAR PEDIDO</button>
-				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido?origen=domicilio" onclick="localStorage.clear();">BORRAR PEDIDO</a>
-
+				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido?origen=mostrador" onclick="localStorage.clear();">BORRAR PEDIDO</a>
            </form>
 
 

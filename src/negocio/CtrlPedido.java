@@ -54,7 +54,7 @@ public class CtrlPedido {
 		//	}
 		//}
 		//if(mensaje.equals("")){
-			cat.registrarPedido(pedido);
+		cat.registrarPedido(pedido);
 		//} else throw new ApplicationException(mensaje, null);
 	}
 
@@ -80,6 +80,10 @@ public class CtrlPedido {
 			costo+=ce.getRecargo_zona();
 		}
 		return costo;
+	}
+
+	public void confirmarPedidoMostrador(Pedido pedido) throws ApplicationException {
+		cat.registrarPedidoMostrador(pedido);		
 	}
 
 

@@ -396,9 +396,7 @@ String nombre="";
       <li class="submenu active"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
         <ul>
           <li class="active"><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
-          <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-          <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
-
+          <li><a href="crearPedidoVE.jsp">Crear Pedido para retirar</a></li>
         </ul>
       </li>
       <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
@@ -434,7 +432,7 @@ String nombre="";
       <div class="collapse accordion-body" id="collapseGThree">
       	<div class="row-fluid">
       	
-        	<div class="widget-content"><img src="bootstrap/img/ayuda2.gif"> </div> </div>
+        	<div class="widget-content"><img src="bootstrap/img/enviodomicilio1.gif"> </div> </div>
         </div>
       </div>
     </div>
