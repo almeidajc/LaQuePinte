@@ -155,7 +155,7 @@ public class DataEmpleado {
 	            e.setUsuario(rs.getString("usuario"));
 	            e.setNombre(rs.getString("nombre"));
 	            e.setApellido(rs.getString("apellido"));
-	            e.setTel(rs.getInt("tel"));
+	            e.setTel(rs.getLong("tel"));
 	            e.setTipo(rs.getString("tipo"));
 	            if(rs.getString("patente")==null || rs.getString("patente")==""){
 	            	e.setPatente("-");
@@ -245,7 +245,7 @@ public class DataEmpleado {
 			stmt.setString(2, emp.getContraseña());
 			stmt.setString(3, emp.getNombre());
 			stmt.setString(4, emp.getApellido());
-			stmt.setInt(5, emp.getTel());
+			stmt.setLong(5, emp.getTel());
 			stmt.setString(6, emp.getTipo());
 			stmt.setString(7, emp.getPatente());
 			stmt.setString(8, emp.getEmail());
@@ -288,7 +288,7 @@ public class DataEmpleado {
 	         
 	           e.setId_empleado(idEmp);
 	           
-	            e.setTel(rs.getInt("tel"));
+	            e.setTel(rs.getLong("tel"));
 	            e.setEmail(rs.getString("email"));
 	            e.setContraseña(rs.getString("contraseña"));
 	          	        	
@@ -331,7 +331,7 @@ public class DataEmpleado {
 					"update empleados set contraseña=?, tel=?,email=? where id_empleado =?"
 					);
 			stmt.setString(1, e.getContraseña());
-			stmt.setInt(2, e.getTel());
+			stmt.setLong(2, e.getTel());
 			stmt.setString(3, e.getEmail());
 			stmt.setInt(4, e.getId_empleado());
 			

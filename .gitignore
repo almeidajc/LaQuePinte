@@ -9,3 +9,10 @@ build.xml
 .settings/*
 Servers/*
 RemoteSystemsTempFiles/*
+/Informe.jasper
+/Wood.jasper
+/Imprimir Pedido.jasper
+/Informe_stock.jasper
+/Cherry.jasper
+/Cherry_1.jasper
+/Pedido.jasper

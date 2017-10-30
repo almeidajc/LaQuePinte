@@ -156,11 +156,16 @@
                   <td class="center" style="text-align: right">$<%= subt %></td>
 
                 </tr>
-
+				
               </tbody>
+              
               <%}%>
-
-            </table> </div>
+				
+            </table> 
+            <form action="ImprimirPedido" method="post" class="form-horizontal">
+            <input type="hidden" id="id_pedido" name="id_pedido" value="<%=id%>" >
+			       <p align="right"><input type="submit" value="Imprimir" class="btn btn-success btn-medium" >
+			    </form></div>
             </div>
           </div>
 
