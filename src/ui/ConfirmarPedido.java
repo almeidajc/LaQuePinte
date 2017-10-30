@@ -97,15 +97,17 @@ public class ConfirmarPedido extends HttpServlet {
 					total = Double.parseDouble(request.getParameter("total"));
 					pedido.setTotal(total);		
 					pedido.setCliente(cliente);
-					ctrlPedido.confirmarPedido(pedido);
+					if(String.valueOf(origen).equals("mostrador")){
+						ctrlPedido.confirmarPedidoMostrador(pedido);
+					}else{
+						ctrlPedido.confirmarPedido(pedido);
+					}
+					
 					request.getSession().removeAttribute("pedido");
 					request.getSession().removeAttribute("clientePedidoActual");
-					request.setAttribute("mensaje", "El pedido ha sido registrado correctamente. ");
-					if(String.valueOf(origen).equals("mostrador")){
-						request.getRequestDispatcher("crearPedidoVE.jsp").forward(request, response);
-					}else{
-						request.getRequestDispatcher("nuevoPedidoVE.jsp").forward(request, response);
-					}
+					request.setAttribute("mensaje", "El pedido ha sido registrado correctamente. ");					
+					request.getRequestDispatcher("indexVE.jsp").forward(request, response);
+					
 					
 				}	
 			}

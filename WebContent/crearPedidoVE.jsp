@@ -49,7 +49,7 @@ function confirmarPedido(){
 		});
 	}
 	else{
-		document.getElementById("formguardarClientePedido").submit();
+		document.getElementById("formguardarClientePedido2").submit();
 		localStorage.clear();
 	}
 	 
@@ -95,7 +95,7 @@ function confirmarPedido(){
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
-        <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
+       
       </ul>
     </li>
     <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
@@ -165,7 +165,7 @@ function confirmarPedido(){
                 </a> </div>
             </div>
             <div class="collapse accordion-body" id="collapseGThree">
-              <div class="widget-content"> <img src="bootstrap/img/ayuda.gif"> </div>
+              <div class="widget-content"> <img src="bootstrap/img/retiromostrador.gif"> </div>
             </div>
           </div>
 
@@ -371,16 +371,12 @@ function confirmarPedido(){
 
             </div>
 		<div class="row" style="float: right;">
-			<form action="ConfirmarPedido" method="post" id="formguardarClientePedido" class="form-horizontal">
+			<form action="ConfirmarPedido" method="post" id="formguardarClientePedido2" class="form-horizontal">
 				<input type="hidden" name="total" id="total" value="<%=total %>">
-		 		<input type="hidden" name="coordenadas" id="coordenadas">
-      			<input type="hidden" name="direccion" id="direccion">
-            	<input type="hidden" name="distancia" id="distancia">
-            	<input type="hidden" name="fecha" id="fecha">
-           		<input type="hidden" name="zonaPeligrosa" id="zonaPeligrosa">
+		 		
            		
 				<input type="hidden" name="origen" id="origen" value="mostrador">
-		 		<button class="btn btn-lg btn-primary " type="submit" onclick="localStorage.clear();">CONFIRMAR PEDIDO</button>
+		 		<button class="btn btn-lg btn-primary " type="button" onclick="confirmarPedido()">CONFIRMAR PEDIDO</button>
 				<a class="btn btn-lg btn-danger" href="pedido/borrarPedido?origen=mostrador" onclick="localStorage.clear();">BORRAR PEDIDO</a>
            </form>
 			<input type="hidden" id="clienteHidden" value="<%=dni%>">
