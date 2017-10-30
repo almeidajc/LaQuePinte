@@ -20,11 +20,11 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class Pdf {
-	public Pdf(){
-		
+	public Pdf(){	
 	}
+	
 	public void imprimir() throws DocumentException {
-		/*// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
 		Document documento = new Document(PageSize.LETTER, 80, 80, 75, 75);
 		
 		
@@ -95,7 +95,7 @@ public class Pdf {
 		        tabla.addCell(minstock); 
 		        
 	 			} 
-/*
+
     int a = ctrl.listarProductos().get(indice).getId_producto();
     String id=Integer.toString(a);
      String nombre = ctrl.listarProductos().get(indice).getNombre_producto();
@@ -118,19 +118,20 @@ public class Pdf {
 				
 				
 				    
-				*/
-		}
+				
 		
-					//documento.add(titulo);
-					//documento.add(saltolinea1);
-				    //documento.add(tabla); 
-				    //documento.close();
+		
+					documento.add(titulo);
+					documento.add(saltolinea1);
+				    documento.add(tabla); 
+				    documento.close();
 				    
-	}
+			}catch(DocumentException ex){}
+			}
 			
 		
-	*/
-}
+	
+}}
 	
 	
 

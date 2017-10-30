@@ -7,6 +7,9 @@
     <%@page import="entidades.Camionero"%>
      <%@page import="ui.Pdf"%>
      <%@page import="ui.Pdf"%>
+     <%@page import="Reportes.Reportes"%>
+    
+    
 
 
 
@@ -225,7 +228,7 @@ input[type=text]:focus {
     <thead>
       <tr >
 
-        <th><h5 style="text-align:center; ">ID PRODUCTO</h5></th>
+        <th><h5 style="text-align:center; ">CODIGO PRODUCTO</h5></th>
         <th><h5 style="text-align:center; ">NOMBRE</h5></th>
         <th><h5 style="text-align:center; ">PRECIO</h5></th>
         <th><h5 style="text-align:center; ">STOCK DISPONIBLE</h5></th>
@@ -246,13 +249,15 @@ input[type=text]:focus {
 			// habitacios = ctrl.Listar();
 
 	for (int indice = 0; indice < ctrl.listarProductos().size(); indice++){
+		float a=ctrl.listarProductos().get(indice).getPrecio();
+		String precio = String.format ("%.2f", a);
 		 int disp = ctrl.listarProductos().get(indice).getCantidad_stock();
 		 int min = ctrl.listarProductos().get(indice).getCantidad_min_stock();
 		 if(disp<min){
 	%>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getId_producto() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getNombre_producto() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getPrecio() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= precio %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_stock() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_min_stock() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarProductos().get(indice).getCantidad_max_stock() %></h5></td>
@@ -273,13 +278,9 @@ input[type=text]:focus {
 
           </div>
         </div>
-
+	<form action="InformeStock" method="post" class="form-horizontal">
        <p align="right"><input type="submit" value="Imprimir" class="btn btn-success btn-large" >
-       <form action="Imprimir" method="post" class="form-horizontal">
-
-
-
-              </form>
+    </form>
       </div>
     </div>
 

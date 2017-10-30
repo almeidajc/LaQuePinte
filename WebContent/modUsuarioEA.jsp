@@ -18,57 +18,13 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-<script>
-function validarFormulario(){
-	let nom,sto,stomi,stoma,prec,tipoMat,rol,pwd,pwd2;
-	stoma = document.getElementById('email').value;
-	pre = document.getElementById('tel').value;
-	pwd = document.getElementById('pass_1').value;
-	pwd2 = document.getElementById('pass_2').value;
-	if(stoma != "" && pre !="" && pwd !="" && pwd2 !=""){
-		let stock,stockmin,stockmax,nombre,precio;
-		nombre = document.getElementById('emailText').style.visibility;
-		precio = document.getElementById('telef').style.visibility;
-		if(nombre == "hidden" && precio == "hidden" && pwd.length <= 6 && pwd == pwd){
-			document.getElementById("formAlta").submit();
-		}
-		else{
-			var unique_id = $.gritter.add({
-				title: 'Error al modificar usuario',
-				text: 'Por favor complete todo los campos correctamente',
-				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
-				// (bool | optional) if you want it to fade out on its own or just sit there
-				sticky: true,
-				// (int | optional) the time you want it to be alive for before fading out
-				time: '1500',
-				// (string | optional) the class name you want to apply to that specific message
-				class_name: 'my-sticky-class'
-			});
-		 
-		}
-	}
-	else{
-		var unique_id = $.gritter.add({
-			title: 'Error al modificar usuario',
-			text: 'Por favor complete todos los campos',
-			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
-			// (bool | optional) if you want it to fade out on its own or just sit there
-			sticky: true,
-			// (int | optional) the time you want it to be alive for before fading out
-			time: '1500',
-			// (string | optional) the class name you want to apply to that specific message
-			class_name: 'my-sticky-class'
-		});
-	}
-}
-</script>
 </head>
 <body>
  <% int idEmp = Integer.parseInt(request.getParameter("id_empleado"));
       CtrlEmpleado ctrl = new CtrlEmpleado();
       Empleado e= ctrl.getEmpleadoById(idEmp);
       String email= e.getEmail();
-      int tel= e.getTel();
+      long tel= e.getTel();
       String pass= e.getContrase�a();
       //String numeroStr = String.valueOf(h.getNumero());
 
@@ -151,7 +107,7 @@ function validarFormulario(){
 
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
       <ul>
-        <li><a href="altaZonaPeligrosaEA.jsp">Agregar Ubicación</a></li>
+        <li><a href="agregarubicacion.jsp">Agregar Ubicación</a></li>
 
         <li><a href="bajaZonaPeligrosaEA.jsp">Eliminar Zona Peligrosa</a></li>
         <li><a href="consultaUbicacionEA.jsp">Consultar Zona Peligrosa</a></li>
@@ -192,15 +148,16 @@ function validarFormulario(){
           <h5>Modificar datos de usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="ModificarEmpleado" id="formAlta" method="post" class="form-horizontal">
+          <form action="ModificarEmpleado" method="post" class="form-horizontal">
 
 
             <div class="control-group">
               <label class="control-label">Telefono</label>
               <div class="controls">
+
                 <input type="number"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required>
                <a href="#" title="Ingrese el n�mero de telefono del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
-              <div id="telef" style="visibility:hidden"></div>
+              <div id="telef"></div>
 
               </div>
             </div>
@@ -208,9 +165,9 @@ function validarFormulario(){
               <label class="control-label">Email :</label>
               <div class="controls">
 
-                <input type="text" class="span11" name="email" id="email" value="<%= email %>" onchange="validarEmail(this.value)" />
+                <input type="text" class="span11" name="email"  value="<%= email %>" onchange="validarEmail(this.value)" />
              	<a href="#" title="Ingrese la direccion de email del nuevo empleado" class="tip-right"><i class="icon-question-sign"> </a></i></li>
-             	<div id="emailText" style="visibility:hidden"></div>
+             	<div id="emailText"></div>
 
               </div>
             </div>
@@ -239,7 +196,7 @@ function validarFormulario(){
                 </div>
 
                 <div class="form-actions">
-                  <input type="button" onclick="validarFormulario()" value="Modificar" class="btn btn-success">
+                  <input type="submit" value="Modificar" class="btn btn-success">
                 </div>
               </form>
         </div>
