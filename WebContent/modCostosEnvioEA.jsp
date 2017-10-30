@@ -35,6 +35,36 @@
 	String tipo_em = userSession.getTipo();
 	%>
 
+<script>
+function validarFormulario(){
+	let nom;
+	nom = document.getElementById('precio_producto').value;
+
+	if(nom != ""){
+		let stock,stockmin,stockmax,nombre,precio,direc;
+		direc = document.getElementById('precioError').style.visibility;
+		if(direc == "hidden"){
+			document.getElementById("formAlta").submit();
+		}
+		else{
+			var unique_id = $.gritter.add({
+				title: 'Error al modificar el precio de envio',
+				text: 'Por favor ingrese un valor valido',
+				// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: true,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '1500',
+				// (string | optional) the class name you want to apply to that specific message
+				class_name: 'my-sticky-class'
+			});
+		 
+		}
+	}
+}
+
+</script>
+
 <script type="text/javascript"> // inicio tabla js1//
 (function(document) {
   'use strict';
@@ -214,9 +244,10 @@
               <label class="control-label">Precio por kil&oacute;metro: </label>
               <div class="controls">
 
-                <input type="text" style="text-align:right" class="span11" name="costokm"  value="<%= costo %>" id="costokm" placeholder="" onchange="" />
+                <input type="text" style="text-align:right" class="span11" name="costokm"  value="<%= costo %>" id="precio_producto" placeholder="" onchange="validaPrecio(this.value)" />
+                <a href="#" title="Ingrese el precio del envio con dos decimales" class="tip-right"><i class="icon-question-sign"> </a></i>
                 <input type="hidden" id="id_costos" name="id_costos" value="<%= 1 %>" >
-
+				<div id="precioError" style="visibility:hidden"></div>
             </div>
 
             <% }
@@ -226,9 +257,10 @@
               <label class="control-label">Recargo por zona peligrosa:</label>
               <div class="controls">
 
-                <input type="text" style="text-align:right" class="span11" name="recargo"  value="<%= costo2 %>" id="recargo" placeholder="" onchange="" />
+                <input type="text" style="text-align:right" class="span11" name="recargo"  value="<%= costo2 %>" id="precio_producto" onchange="validaPrecio(this.value)" />
+                 <a href="#" title="Ingrese el precio del envio con dos decimales" class="tip-right"><i class="icon-question-sign"> </a></i>
                  <input type="hidden" id="id_costos" name="id_costos" value="<%= 2 %>" >
-
+				 <div id="precioError" style="visibility:hidden"></div>
             </div>
             <%
 			}
@@ -260,6 +292,7 @@
 </div>
 
 <!--end-Footer-part-->
+<script src="scripts/juance.js"></script>
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>
