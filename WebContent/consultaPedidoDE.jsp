@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
 
-<title>Materiales::de::Construcci&oacute;n</title>
+<title>Materiales::de::Construccion</title>
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -137,7 +137,7 @@
                   <th>PRODUCTO</th>
                   <th>CANTIDAD</th>
                   <th>PRECIO UNITARIO(s)</th>
-                  <th>SUB T</th>
+                  <th>SUB TOTAL</th>
                 </tr>
               </thead>
               <%
@@ -162,10 +162,7 @@
               <%}%>
 				
             </table> 
-            <form action="ImprimirPedido" method="post" class="form-horizontal">
-            <input type="hidden" id="id_pedido" name="id_pedido" value="<%=id%>" >
-			       <p align="right"><input type="submit" value="Imprimir" class="btn btn-success btn-medium" >
-			    </form></div>
+           </div>
             </div>
           </div>
 

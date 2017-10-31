@@ -264,7 +264,7 @@ try {
 		try{
 				 
 			stmt= FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select productos.id_producto,productos.nombre_producto,productos.cantidad_stock,precio_producto_venta.precio"
+					"select productos.id_producto, productos.nombre_producto, precio_producto_venta.precio, productos.cantidad_stock"
 					+ " from productos"
 					+ " inner join precio_producto_venta "
 					+ " on precio_producto_venta.id_producto=productos.id_producto"
@@ -286,6 +286,7 @@ try {
 				prod.setId_producto(rs.getInt("id_producto"));
 				prod.setNombre_producto(rs.getString("nombre_producto"));
 				prod.setPrecio(rs.getFloat("precio"));
+				prod.setCantidad_stock(rs.getInt("cantidad_stock"));
 				productos.add(prod);
 				
 			}
