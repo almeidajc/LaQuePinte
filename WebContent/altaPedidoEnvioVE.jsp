@@ -436,7 +436,7 @@ String nombre="";
       	<div class="row-fluid">
 
       	
-        	<div class="widget-content"><img src="bootstrap/img/enviodomicilio1.gif"> </div> </div>
+        	<div class="widget-content"><img src="bootstrap/img/ayuda2.gif"> </div> </div>
 
         </div>
       </div>

@@ -3,6 +3,12 @@
     <%@page import="entidades.Despachante"%>
     <%@page import="entidades.Empleado"%>
     <%@page import="negocio.CtrlPedido"%>
+        <%@page import="java.text.DateFormat"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.time.format.DateTimeFormatter"%>
+    <%@page import="java.time.LocalDateTime"%>
+    <%@page import="java.util.Calendar"%>
+    <%@page import="java.util.Date"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +73,7 @@
     <div id="breadcrumb"><a href="indexCA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Registrar Env&iacute;o</a></div>
     <!--End-breadcrumbs-->
 <div id="titulo">
- <h1>Consulta Pedidos</h1>
+ <h1>Registrar Pedidos</h1>
  </div>
   <div class="container-fluid"><hr>
 
@@ -87,7 +93,7 @@
     <thead>
       <tr >
 
-        <th><h5 style="text-align:center; ">ID</h5></th>
+        <th><h5 style="text-align:center; ">N&deg; de Factura</h5></th>
         <th><h5 style="text-align:center; ">FECHA ENTREGA</h5></th>
         <th><h5 style="text-align:center; ">DIRECCION ENVIO</h5></th>
         <th><h5 style="text-align:center; ">DESCRIPCION</h5></th>
@@ -111,10 +117,14 @@
 
 	for (int indice = 0; indice < ctrl.listarPedidosConfirmados().size(); indice++){
 		if(ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() != null ){
+			
+			
+
+			
 
 	%>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= new SimpleDateFormat("dd-MM-yyyy").format(ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega()) %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getEstado() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getApellido() %></h5></td>

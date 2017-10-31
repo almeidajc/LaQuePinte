@@ -3,6 +3,13 @@
     <%@page import="entidades.Despachante"%>
     <%@page import="entidades.Empleado"%>
     <%@page import="negocio.CtrlPedido"%>
+    
+            <%@page import="java.text.DateFormat"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.time.format.DateTimeFormatter"%>
+    <%@page import="java.time.LocalDateTime"%>
+    <%@page import="java.util.Calendar"%>
+    <%@page import="java.util.Date"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,7 +120,7 @@
 		
 	%>  
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido() %></h5></td>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega() %></h5></td>
+	   <td><h5 style="text-align:center; "><%=  new SimpleDateFormat("dd-MM-yyyy").format(ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega()) %></h5></td>
 	   
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getEstado() %></h5></td>
 	   <td><h5 style="text-align:center; ">Consumidor Final</h5></td>	
