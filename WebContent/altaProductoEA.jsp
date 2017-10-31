@@ -219,7 +219,7 @@ function validarFormulario(){
                 <label class="control-label">Nombre Producto</label>
                 <div class="controls">
              		<input type="text" class="form-control" placeholder="Nombre del producto" autofocus name="nombre_producto" id="nombre_producto" onchange="validarNombrePr(this.value)" required/>
-                	<a href="#" title="Ingrese los datos en el siguiente orden: Tipo de producto + [Material del producto] + [medida del producto] + [especificaci�n extra] + [marca]. (Los items entre [] s�lo ingresarlos cuando corresponda )" class="tip-top"><i class="icon-question-sign"> </a></i>
+                	<a href="#" title="Ingrese los datos en el siguiente orden: Tipo de producto + [Material del producto] + [medida del producto] + [especificacion extra] + [marca]. (Los items entre [] solo ingresarlos cuando corresponda )" class="tip-top"><i class="icon-question-sign"> </a></i>
                 	<div id="producError" style="visibility:hidden"></div>
                 </div>
               </div>

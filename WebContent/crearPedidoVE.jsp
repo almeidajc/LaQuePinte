@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
 
-<title>Materiales::de::Construcci&oacute;n</title>
+<title>Materiales::de::Construccion</title>
 
 
 
@@ -404,20 +404,20 @@ function confirmarPedido(){
           <div class="widget-content nopadding">
             <form action="PedidoActual" method="post" id="formItem" class="form-horizontal">
               <div style="margin:10px;">
-                <label for="txtDescripcion" class="sr-only">Producto</label>
-                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion" autofocus="autofocus">
+                <label for="txtDescripcion" class="sr-only">Nombre Producto</label>
+                <input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" autofocus="autofocus">
                 <label for="txtDescripcion" id="errorDescripcion" style="color:#FF0004"></label>
               </div>
                 <div style="margin:10px;">
-                  <label for="txtCod" class="sr-only">Codigo</label>
-                  <input type="text" id="txtCod" name="txtCod" class="form-control" placeholder="Codigo">
+                  <label for="txtCod" class="sr-only">Codigo Producto</label>
+                  <input type="text" id="txtCod" name="txtCod" class="form-control" >
                     <label for="txtCod" id="errorCod" style="color:#FF0004"></label>
                 </div>
 
 
                 <div style="margin:10px;">
-                  <label for="txtCantidad" class="sr-only">Producto</label>
-                  <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" placeholder="Cantidad">
+                  <label for="txtCantidad" class="sr-only">Cantidad</label>
+                  <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" >
                     <label for="txtCantidad" id="errorCantidad" style="color:#FF0004"></label>
                 </div>
 				<input type="hidden" id="origen" name="origen" value="mostrador">
@@ -448,14 +448,14 @@ function confirmarPedido(){
               <thead>
                 <tr>
                  		<th>Codigo</th>
-
 						<th>Descripcion</th>
 						<th>Precio</th>
+						<th>Stock</th>
 					</tr>
 				</thead>
 				<tbody id="cuerpo">
 					<tr>
-						<td colspan="3"><h5>Comience a escribir para obtener los productos</h5></td>
+						<td colspan="4"><h5>Comience a escribir para obtener los productos</h5></td>
 					</tr>
 				</tbody>
 			</table>

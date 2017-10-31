@@ -226,7 +226,8 @@ public ArrayList<Pedido> listarPedidosConfirmados() {
 	try {
 
 		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("select pedidos.id_pedido, pedidos.fecha_entrega, pedidos.id_estado ,pedidos.total, pedidos.direccion_envio, pedidos.nombre, pedidos.apellido, pedidos.id_empleado,pedidos.coordenadas "
-						+ " from pedidos where id_estado = ? and fecha_entrega <= current_date()");
+						+ " from pedidos where id_estado = ? and fecha_entrega <= current_date() "
+						+ " order by fecha_entrega desc");
 
 		stmt.setInt(1, 1);
 		rs = stmt.executeQuery();
