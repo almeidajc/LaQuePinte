@@ -4,6 +4,13 @@
     <%@page import="entidades.Empleado"%>
 
     <%@page import="negocio.CtrlPedido"%>
+    
+            <%@page import="java.text.DateFormat"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.time.format.DateTimeFormatter"%>
+    <%@page import="java.time.LocalDateTime"%>
+    <%@page import="java.util.Calendar"%>
+    <%@page import="java.util.Date"%>
 
 
 <!DOCTYPE html>
@@ -126,7 +133,7 @@
 
             <div class="accordion-heading">
               <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
-                <h5>FECHA: <%= ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega() %>| N&deg; FACTURA: <%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>| TOTAL: $<%= total %></h5>
+                <h5>FECHA: <%= new SimpleDateFormat("dd-MM-yyyy").format(ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega()) %>| N&deg; FACTURA: <%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>| TOTAL: $<%= total %></h5>
 
                 </a> </div>
             </div>
