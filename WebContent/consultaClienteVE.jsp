@@ -103,8 +103,8 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
-        <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-        <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
+        <li><a href="crearPedidoVE.jsp">Crear Pedido para retirar</a></li>
+
 
       </ul>
     </li>
@@ -159,7 +159,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
         <th><h5 style="text-align:center; ">TELEFONO</h5></th>
         <th><h5 style="text-align:center; ">DIRECCION</h5></th>
         <th><h5 style="text-align:center; ">EMAIL</h5></th>
-        
+
 
       </tr>
     </thead>
@@ -181,7 +181,7 @@ if(userSession == null || !(userSession.getTipo().equals("VE"))){
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getTel() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getDireccion() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarClientes().get(indice).getEmail() %></h5></td>
-	   
+
 
 
 	</tr>

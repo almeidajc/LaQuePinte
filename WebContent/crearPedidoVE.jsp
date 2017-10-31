@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
 
-<title>Materiales::de::Construccion</title>
+<title>Materiales::de::Construcci&oacute;n</title>
 
 
 
@@ -91,13 +91,15 @@ function confirmarPedido(){
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
-  <li class="active"><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
-    <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
+  <li c><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
+      <li class="submenu active"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
-       
+
+        <li class="active"><a href="crearPedidoVE.jsp">Crear Pedido para retirar</a></li>
+
       </ul>
-    </li>
+      </li>
     <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
       <ul>
@@ -124,7 +126,7 @@ function confirmarPedido(){
 
 <!--Action boxes-->
  <div id="titulo">
- <h1>Nuevo Pedido: retiro en depósito</h1>
+ <h1>Nuevo Pedido: retiro en dep&oacute;sito</h1>
  </div>
 
 <div class="container-fluid">
@@ -135,7 +137,7 @@ function confirmarPedido(){
         		if(mensaje!=null){
         			int resultado = mensaje.indexOf("correctamente");
         	        
-        	        if(resultado != -1) {//se encontró "correctamente" dentro del string <mensaje>
+        	        if(resultado != -1) {//se encontrï¿½ "correctamente" dentro del string <mensaje>
         	        
       		%>
       		<div class="alert alert-success">

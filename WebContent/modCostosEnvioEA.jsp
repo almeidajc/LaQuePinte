@@ -58,7 +58,7 @@ function validarFormulario(){
 				// (string | optional) the class name you want to apply to that specific message
 				class_name: 'my-sticky-class'
 			});
-		 
+
 		}
 	}
 }
@@ -170,7 +170,14 @@ function validarFormulario(){
       </ul>
     </li>
 
-
+    <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+        <ul>
+          <li><a href="altaProveedorEA.jsp">Crear Proveedor</a></li>
+          <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+          <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+          <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
+        </ul>
+      </li>
 
      <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
 

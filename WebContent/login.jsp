@@ -85,9 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-actions">
-                    <a href="#" class="flip-link btn btn-info btn-block" id="to-recover">¿ Olvidaste tu contraseña ?</a>
-                    
+                <div class="form-actions">                  
                     <button class="btn btn-success btn-block" type="submit" >Iniciar Sesión</button>
                 </div>
             </form>
