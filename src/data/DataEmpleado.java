@@ -20,17 +20,17 @@ import entidades.Vendedor;
 public class DataEmpleado {
 
 
-	public Empleado getEmpleadoByUsuarioycontrase�a(String usuario,	String contrase�a) throws ApplicationException {
+	public Empleado getEmpleadoByUsuarioycontraseï¿½a(String usuario,	String contraseï¿½a) throws ApplicationException {
 
 		ResultSet rs=null;
 		PreparedStatement stmt=null;
 		Empleado e = null;
 		try {
 			stmt = 	FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select id_empleado, usuario, contrase�a, nombre, apellido, tel, tipo, patente from empleados where usuario=? and contrase�a=?"
+					"select id_empleado, usuario, contraseï¿½a, nombre, apellido, tel, tipo, patente from empleados where usuario=? and contraseï¿½a=?"
 					);
 			stmt.setString(1, usuario);
-			stmt.setString(2, contrase�a);
+			stmt.setString(2, contraseï¿½a);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
 
@@ -44,7 +44,7 @@ public class DataEmpleado {
 					C.setNombre(rs.getString("nombre"));
 				 	C.setApellido(rs.getString("apellido"));
 					C.setUsuario(rs.getString("usuario"));
-					C.setContrase�a(rs.getString("contrase�a"));
+					C.setContraseï¿½a(rs.getString("contraseï¿½a"));
 					C.setTipo(rs.getString("tipo"));
 					C.setPatente(rs.getString("patente"));
 
@@ -59,7 +59,7 @@ public class DataEmpleado {
 					V.setNombre(rs.getString("nombre"));
 				 	V.setApellido(rs.getString("apellido"));
 					V.setUsuario(rs.getString("usuario"));
-					V.setContrase�a(rs.getString("contrase�a"));
+					V.setContraseï¿½a(rs.getString("contraseï¿½a"));
 					V.setTipo(rs.getString("tipo"));
 
 					e=V;
@@ -72,7 +72,7 @@ public class DataEmpleado {
 					Adm.setNombre(rs.getString("nombre"));
 				 	Adm.setApellido(rs.getString("apellido"));
 					Adm.setUsuario(rs.getString("usuario"));
-					Adm.setContrase�a(rs.getString("contrase�a"));
+					Adm.setContraseï¿½a(rs.getString("contraseï¿½a"));
 					Adm.setTipo(rs.getString("tipo"));
 
 					e=Adm;
@@ -84,7 +84,7 @@ public class DataEmpleado {
 				    EA.setNombre(rs.getString("nombre"));
 				 	EA.setApellido(rs.getString("apellido"));
 					EA.setUsuario(rs.getString("usuario"));
-					EA.setContrase�a(rs.getString("contrase�a"));
+					EA.setContraseï¿½a(rs.getString("contraseï¿½a"));
 					EA.setTipo(rs.getString("tipo"));
 
 					e=EA;
@@ -97,7 +97,7 @@ public class DataEmpleado {
 				    DE.setNombre(rs.getString("nombre"));
 				 	DE.setApellido(rs.getString("apellido"));
 					DE.setUsuario(rs.getString("usuario"));
-					DE.setContrase�a(rs.getString("contrase�a"));
+					DE.setContraseï¿½a(rs.getString("contraseï¿½a"));
 					DE.setTipo(rs.getString("tipo"));
 
 					e=DE;
@@ -155,7 +155,7 @@ public class DataEmpleado {
 	            e.setUsuario(rs.getString("usuario"));
 	            e.setNombre(rs.getString("nombre"));
 	            e.setApellido(rs.getString("apellido"));
-	            e.setTel(rs.getInt("tel"));
+	            e.setTel(rs.getLong("tel"));
 	            e.setTipo(rs.getString("tipo"));
 	            if(rs.getString("patente")==null || rs.getString("patente")==""){
 	            	e.setPatente("-");
@@ -240,12 +240,12 @@ public class DataEmpleado {
 		try {
 
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"insert into empleados (usuario, contrase�a, nombre, apellido,  tel, tipo, patente,email, id_turno) values (?,?,?,?,?,?,?,?,?)" );
+					"insert into empleados (usuario, contraseï¿½a, nombre, apellido,  tel, tipo, patente,email, id_turno) values (?,?,?,?,?,?,?,?,?)" );
 			stmt.setString(1, emp.getUsuario());
-			stmt.setString(2, emp.getContraseña());
+			stmt.setString(2, emp.getContraseÃ±a());
 			stmt.setString(3, emp.getNombre());
 			stmt.setString(4, emp.getApellido());
-			stmt.setInt(5, emp.getTel());
+			stmt.setLong(5, emp.getTel());
 			stmt.setString(6, emp.getTipo());
 			stmt.setString(7, emp.getPatente());
 			stmt.setString(8, emp.getEmail());
@@ -280,7 +280,7 @@ public class DataEmpleado {
 
 		try {
 			stmt = 	FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select tel, email, contrase�a from empleados where id_empleado = ?"
+					"select tel, email, contraseï¿½a from empleados where id_empleado = ?"
 					);
 			stmt.setInt(1, idEmp);
 			rs = stmt.executeQuery();
@@ -288,9 +288,11 @@ public class DataEmpleado {
 
 	           e.setId_empleado(idEmp);
 
-	            e.setTel(rs.getInt("tel"));
+	           
+	            e.setTel(rs.getLong("tel"));
+
 	            e.setEmail(rs.getString("email"));
-	            e.setContrase�a(rs.getString("contrase�a"));
+	            e.setContraseï¿½a(rs.getString("contraseï¿½a"));
 
 
 	         }
@@ -328,10 +330,12 @@ public class DataEmpleado {
 
 
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"update empleados set contrase�a=?, tel=?,email=? where id_empleado =?"
+					"update empleados set contraseï¿½a=?, tel=?,email=? where id_empleado =?"
 					);
+
 			stmt.setString(1, e.getContraseña());
-			stmt.setInt(2, e.getTel());
+			stmt.setLong(2, e.getTel());
+
 			stmt.setString(3, e.getEmail());
 			stmt.setInt(4, e.getId_empleado());
 

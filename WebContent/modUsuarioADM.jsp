@@ -19,6 +19,7 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
 <script>
 function validarFormulario(){
 	let nom,sto,stomi,stoma,prec,tipoMat,rol,pwd,pwd2;
@@ -72,8 +73,8 @@ function validarFormulario(){
       CtrlEmpleado ctrl = new CtrlEmpleado();
       Empleado e= ctrl.getEmpleadoById(idEmp);
       String email= e.getEmail();
-      int tel= e.getTel();
-      String pass= e.getContrase�a();
+      long tel= e.getTel();
+      String pass= e.getContraseña();
       //String numeroStr = String.valueOf(h.getNumero());
 
 
@@ -85,7 +86,7 @@ function validarFormulario(){
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcción</a></h1>
+  <h1><a href="dashboard.html">Materiales de ConstrucciÃ³n</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -160,7 +161,7 @@ function validarFormulario(){
           <h5>Modificar datos de usuario</h5>
         </div>
         <div class="widget-content nopadding">
-          <form action="ModificarEmpleado" id="formAlta" method="post" class="form-horizontal">
+          <form action="ModificarEmpleado" method="post" class="form-horizontal">
 
 
             <div class="control-group">
@@ -168,7 +169,7 @@ function validarFormulario(){
               <div class="controls">
 
                 <input type="number"  class="span11"  value="<%= tel %>" placeholder="Numero de telefono" name="tel" id="tel" onchange="validaTel(this.value)" required />
-                <div id="telef" style="visibility:hidden"></div>
+                <div id="telef"></div>
 
               </div>
             </div>
@@ -177,7 +178,7 @@ function validarFormulario(){
               <div class="controls">
 
                 <input type="text" class="span11" name="email"  value="<%= email %>" id="email" placeholder="Nombre de email" onchange="validarEmail(this.value)" />
-                <div id="emailText" style="visibility:hidden"></div>
+                <div id="emailText"></div>
 
               </div>
             </div>
@@ -188,7 +189,7 @@ function validarFormulario(){
                   <label class="control-label">Password</label>
                   <div class="controls">
 
-	                  <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contrase�a"  onchange="validaPass(this.value)" required >
+	                  <input type="password" id="pass_1" name="contrasena" class="form-control" value="<%= pass %>" placeholder="Contraseï¿½a"  onchange="validaPass(this.value)" required >
 	                  <label for="contrasena" style="color:red" id="msjPass_1"></label><br/>
 
                   </div>
@@ -196,7 +197,7 @@ function validarFormulario(){
                 <div class="control-group">
                   <label class="control-label">Confirm password</label>
                   <div class="controls">
-                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseña" onchange="validaPass2(this.value)" required>
+                   <input type="password" id="pass_2" name="contrasena2" class="form-control" placeholder="Repita la contraseÃ±a" onchange="validaPass2(this.value)" required>
            		   <label for="contrasena2" style="color:red" id="msjPass_2"></label><br/>
                   </div>
                   <% int idem=Integer.parseInt(request.getParameter("id_empleado")); %>
@@ -208,7 +209,7 @@ function validarFormulario(){
                 </div>
 
                 <div class="form-actions">
-                  <input type="button" onclick="validarFormulario()" value="Modificar" class="btn btn-success">
+                  <input type="submit" value="Modificar" class="btn btn-success">
                 </div>
               </form>
         </div>

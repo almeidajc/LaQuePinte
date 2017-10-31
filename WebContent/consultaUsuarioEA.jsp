@@ -159,13 +159,6 @@ input[type=text]:focus {
       </ul>
     </li>
 
- <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Material</span> </a>
-      <ul>
-        <li><a href="altaMaterialEA.jsp">Crear Material</a></li>
-        <li><a href="modificarMaterialEA.jsp">Modificar Material</a></li>
-        <li><a href="consultaMaterialEA.jsp">Consultar Material</a></li>
-      </ul>
-    </li>
 
 
     <li class="submenu"> <a href="#"><i class="icon icon-map-marker"></i> <span>Zona Peligrosa</span> </a>
@@ -214,8 +207,8 @@ input[type=text]:focus {
 
 
 
-     <input placeholder="Buscar" type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
-	 <a href="#" title="Ingrese algun dato para buscar" class="tip-right"><i class="icon-question-sign"> </a></i>
+     <input placeholder="Ingresar..." type="text" name="search" class="light-table-filter" data-table="order-table" class="form-control" style="margin-top: 2px; " />
+
         <div class="widget-box">
 
 

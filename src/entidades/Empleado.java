@@ -8,7 +8,7 @@ public class Empleado {
 	private String usuario;
 	private String contraseña;
 	private String tipo;
-	private int tel;
+	private long tel;
 	private String patente;
 	private int id_turno;
 	public int getId_turno() {
@@ -61,10 +61,10 @@ public class Empleado {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public int getTel() {
+	public long getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(long tel) {
 		this.tel = tel;
 	}
 	public void setPatente(String paten) {

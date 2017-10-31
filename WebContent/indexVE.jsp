@@ -20,8 +20,31 @@
 <link href="bootstrap/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+<script>
+var resp;
+function mensajeConfirmacion(){
+	
+	var valor = document.getElementById("mensaje1").value;
+	if (valor == 1){
+		var unique_id = $.gritter.add({
+			title: 'Pedido Creado',
+			text: 'El pedido se ha creado Correctamente',
+			// image: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Icon_Simple_Error.png',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: true,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+	 
+}
+
+</script>
 </head>
-<body>
+<body onload="mensajeConfirmacion()">
 
 <%  Empleado userSession = (Empleado)session.getAttribute("userSession");
 		String nombre="";
@@ -30,24 +53,24 @@
 
 <!--Header-part-->
 <div id="header">
-  <h1><a href="dashboard.html">Materiales de Construcci�n</a></h1>
+  <h1><a href="dashboard.html">Materiales de Construccionn</a></h1>
 </div>
 <!--close-Header-part-->
 
+<% 				int set = 0;
+      			String mensaje=(String)request.getAttribute("mensaje");
+        		if(mensaje!=null){
+        			set = 1;}
+        	        
+      		%>
 
+
+				<input type="hidden" name="mensaje" id="mensaje1" value="<%=set%>">
+		
 
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
-    <!-- <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-        <li class="divider"></li>
-        <li><a href="login.jsp"><i class="icon-key"></i> Log Out</a></li>
-      </ul>
-    </li> -->
     <li class=""><a title=""><i class="icon icon-user"></i> <span class="text">Bienvenido <%=userSession.getNombre() %></span></a></li>
     <li class=""><a title="" href="CerrarSesion"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
