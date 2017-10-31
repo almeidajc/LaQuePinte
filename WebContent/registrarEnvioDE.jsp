@@ -73,7 +73,7 @@
     <div id="breadcrumb"><a href="indexCA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Registrar Env&iacute;o</a></div>
     <!--End-breadcrumbs-->
 <div id="titulo">
- <h1>Registrar Pedidos</h1>
+ <h1>Registrar Envio de Pedidos</h1>
  </div>
   <div class="container-fluid"><hr>
 
