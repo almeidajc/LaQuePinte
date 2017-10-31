@@ -122,7 +122,7 @@
               <form method="post" action="AsignarPedido">
                 <td><input type="hidden" name="idpedido" id="idpedido<%=indice %>" value="<%=pedido.getId_pedido() %>"> <input type="hidden" id="empleadoPed<%=indice %>" name="empleado" id="empleado" value="<%=pedido.getEmpleado().getId_empleado() %>"></td>
                 <td><input type="hidden" id="coord<%=indice %>" value="<%=pedido.getCoordenadas() %>"></td>
-                <td><h5 onclick="animarPedido(<%= pedido.getId_pedido() %>)">Pedido numero <%= pedido.getId_pedido() %></h5></td>
+                <td><h5 onclick="animarPedido(<%= pedido.getId_pedido() %>)">N&deg; de Factura <%= pedido.getId_pedido() %></h5></td>
                 <td>
 
                   <select name="idcamionero"  id="idcamionero">

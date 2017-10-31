@@ -92,7 +92,7 @@ function cancelarFecha(){
 
      cantidadMaximaDiasDistintos =document.getElementById('CantidadDiasDistintos').value;
      console.log(cantidadMaximaDiasDistintos);
-        for (let  indiceee = 1; indiceee <= 2 ; indiceee++) {
+        for (let  indiceee = 1; indiceee <= cantidadMaximaDiasDistintos ; indiceee++) {
           diaPed= document.getElementById('fecha'+indiceee).value;
           cantPedid= document.getElementById('arregloDias'+indiceee).value;
           if (cantPedid< 20){
@@ -223,11 +223,10 @@ function cancelarFecha(){
         let cantMaximaAlcanzada;
         let cantidadPedidosDia;
         listaPedidos.map(function (ped){
-          cantidadPedidosDia = ped.title.substring(17 ,ped.title.length);
+          cantidadPedidosDia = ped.title.substring(21 ,ped.title.length);
           if (start.getFullYear() === ped.start.getFullYear()){
             if (start.getMonth() === ped.start.getMonth()) {
               if (start.getDate() === ped.start.getDate() && cantidadPedidosDia == 20) {
-                console.log("entro");
                 cantMaximaAlcanzada = true;
 
               }
@@ -398,7 +397,7 @@ String nombre="";
       <ul>
         <li class="active"><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
         <li><a href="crearPedidoVE.jsp">Crear Pedido para retirar</a></li>
-        
+
       </ul>
 
       </li>
@@ -435,7 +434,7 @@ String nombre="";
       <div class="collapse accordion-body" id="collapseGThree">
       	<div class="row-fluid">
 
-      	
+
         	<div class="widget-content"><img src="bootstrap/img/ayuda2.gif"> </div> </div>
 
         </div>

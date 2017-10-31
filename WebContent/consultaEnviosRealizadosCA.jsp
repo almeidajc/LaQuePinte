@@ -119,7 +119,7 @@
 <!--End-breadcrumbs-->
 <!--Action boxes-->
 <div id="titulo">
- <h1>Consulta de Pedidos Realizados</h1>
+ <h1>Consulta de Envios Realizados</h1>
   </div>
   <div class="container-fluid"><hr>
    
@@ -139,7 +139,7 @@
     <thead>
       <tr >
       	
-        <th><h5 style="text-align:center; ">ID</h5></th>
+        <th><h5 style="text-align:center; ">N&deg; de Factura</h5></th>
         <th><h5 style="text-align:center; ">FECHA ENTREGA</h5></th>
         <th><h5 style="text-align:center; ">FECHA EFECTIVA</h5></th>
         <th><h5 style="text-align:center; ">DIRECCION ENVIO</h5></th>
