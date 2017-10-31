@@ -1,10 +1,10 @@
 package entidades;
 
 public class Empleado {
-	
-	private int id_empleado;	
-	private String nombre;	
-	private String apellido;	
+
+	private int id_empleado;
+	private String nombre;
+	private String apellido;
 	private String usuario;
 	private String contraseña;
 	private String tipo;
@@ -20,7 +20,7 @@ public class Empleado {
 	}
 
 	private String email;
-	
+
 	public String getEmail() {
 		return email;
 	}

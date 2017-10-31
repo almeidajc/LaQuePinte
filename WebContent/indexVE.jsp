@@ -61,8 +61,8 @@
     <li class="submenu"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
       <ul>
         <li><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
-        <li><a href="crearPedidoRetiroVE.jsp">Crear Pedido para retirar</a></li>
-        <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
+        <li><a href="crearPedidoVE.jsp">Crear Pedido para retirar</a></li>
+        
       </ul>
     </li>
      <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>

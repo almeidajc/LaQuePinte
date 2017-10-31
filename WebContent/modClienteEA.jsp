@@ -189,7 +189,7 @@ function validarFormulario(){
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
-    <li class="active"><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
+    <li><a href="indexEA.jsp"><i class="icon icon-th-list"></i> <span>Menu Encargado Adm</span></a> </li>
     <li class="submenu "> <a href="#"><i class="icon icon-barcode"></i> <span>Producto</span> </a>
       <ul>
         <li><a href="altaProductoEA.jsp">Crear Producto</a></li>
@@ -208,13 +208,20 @@ function validarFormulario(){
       </ul>
     </li>
 
+		<li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Proveedores</span> </a>
+      <ul>
+        <li><a href="altaProveedorEA.jsp">Crear Proveedor</a></li>
+        <li><a href="modificarProveedorEA.jsp">Modificar Proveedor</a></li>
+        <li><a href="bajaProveedorEA.jsp">Eliminar Proveedor</a></li>
+        <li><a href="consultaProveedorEA.jsp">Consultar Proveedor</a></li>
+      </ul>
+    </li>
 
-
-     <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
+     <li class="submenu active"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
 
       <ul>
         <li><a href="altaClienteEA.jsp">Crear Cliente</a></li>
-        <li><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
+        <li class="active"><a href="modificarClienteEA.jsp">Modificar Cliente</a></li>
         <li><a href="bajaClienteEA.jsp">Eliminar Cliente</a></li>
         <li><a href="consultaClienteEA.jsp">Consultar Cliente</a></li>
       </ul>

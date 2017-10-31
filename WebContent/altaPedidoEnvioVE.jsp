@@ -48,7 +48,7 @@
 <script>
 let diaStart,diaEnd,diaAll,calendario2,dia,mes,ano,ini,fin,fech,mesLet,fechaDate;
 let agregar=0;
-function creardia(){	
+function creardia(){
 		document.getElementById("fechaInsert").value = mes+"/"+dia+"/"+ano;
 		var title = "Pedido Actual";
 			calendario2.fullCalendar('renderEvent',
@@ -394,19 +394,18 @@ String nombre="";
     <ul>
       <li><a href="indexVE.jsp"><i class="icon icon-th-list"></i> <span>Menu Vendedor</span></a> </li>
       <li class="submenu active"> <a href="#"><i class="icon icon-shopping-cart"></i> <span>Pedido</span> </a>
-        <ul>
-          <li class="active"><a href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
-          <li><a href="crearPedidoRetiroEA.jsp">Crear Pedido para retirar</a></li>
-          <li><a href="modificarPedidoVE.jsp">Modificar Pedido</a></li>
-
-        </ul>
+      <ul>
+        <li class="active"><a id="altaPedidoIdHREF" href="altaPedidoEnvioVE.jsp">Crear Pedido a enviar</a></li>
+        <li><a href="crearPedidoVE.jsp">Crear Pedido para retirar</a></li>
+        
+      </ul>
       </li>
       <li><a href="consultaProductoVE.jsp"><i class="icon icon-barcode"></i> <span>Consultar Productos</span></a></li>
          <li class="submenu"> <a href="#"><i class="icon icon-user"></i> <span>Cliente</span> </a>
            <ul>
              <li><a href="altaClienteVE.jsp">Crear Cliente</a></li>
              <li><a href="modificarClienteVE.jsp">Modificar Cliente</a></li>
-             
+
              <li><a href="consultaClienteVE.jsp">Consultar Cliente</a></li>
            </ul>
          </li>
@@ -433,7 +432,7 @@ String nombre="";
       </div>
       <div class="collapse accordion-body" id="collapseGThree">
       	<div class="row-fluid">
-      	
+
         	<div class="widget-content"><img src="bootstrap/img/ayuda2.gif"> </div> </div>
         </div>
       </div>
@@ -597,7 +596,7 @@ String nombre="";
 
 
 	<script src='fullcalendar.js'></script>
-	
+
 
 	<script src="bootstrap/js/jquery.ui.custom.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>

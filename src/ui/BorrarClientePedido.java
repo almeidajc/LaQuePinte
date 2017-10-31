@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/BorrarClientePedido")
 public class BorrarClientePedido extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,7 +30,7 @@ public class BorrarClientePedido extends HttpServlet {
 		request.getSession().removeAttribute("clientePedidoActual");
 		String origen = request.getParameter("origen");
 		if(String.valueOf(origen).equals("mostrador")){
-			response.sendRedirect("crearpedido.jsp");
+			response.sendRedirect("crearPedidoVE.jsp");
 		}else{
 			response.sendRedirect("nuevoPedidoVE.jsp");
 		}
@@ -40,7 +40,7 @@ public class BorrarClientePedido extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		doGet(request, response);
 	}
 
