@@ -226,7 +226,9 @@ function cancelarFecha(){
           cantidadPedidosDia = ped.title.substring(21 ,ped.title.length);
           if (start.getFullYear() === ped.start.getFullYear()){
             if (start.getMonth() === ped.start.getMonth()) {
+
               if (start.getDate() === ped.start.getDate() && cantidadPedidosDia == 20) {
+
                 cantMaximaAlcanzada = true;
 
               }
