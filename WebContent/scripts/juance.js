@@ -80,7 +80,7 @@ function validaPass22(x){
 
 function validaTel(x){
 
-	if(x>999999 && x<999999999){
+	if(x>999999 && x<999999999999999){
 		document.getElementById('telef').style.visibility = "hidden";
 	}
 	else{
@@ -239,6 +239,7 @@ function validarNombrePr(valor){
 		  document.getElementById('producError').style.color = "red";
 	  }
 }
+
 
 function validaPrecio(valor){
 	let patronNombre = /([?1234567890][.][1234567890][1234567890])+$/;

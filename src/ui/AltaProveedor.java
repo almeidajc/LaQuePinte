@@ -46,7 +46,7 @@ public class AltaProveedor extends HttpServlet {
 		String razon_soc = request.getParameter("razon_soc");
 		int telefono = Integer.parseInt(request.getParameter("tel"));
 		String email = request.getParameter("email");
-		int cuit = Integer.parseInt(request.getParameter("cuit"));
+		String cuit =request.getParameter("cuit");
 		String direccion = request.getParameter("direccion");
 		
 		
@@ -64,16 +64,16 @@ public class AltaProveedor extends HttpServlet {
 		CtrlProveedor ctrl = new CtrlProveedor();
 		boolean existeProv = false;
 
-		int razon;
+		String razon;
 		String mjs="";
 
 		for (int indice = 0; indice < ctrl.listarProveedores().size(); indice++){
 
 
-			razon= ctrl.listarProveedores().get(indice).getCuit();
+			razon= ctrl.listarProveedores().get(indice).getRazon_social();
 
 
-			if(cuit == razon){
+			if(razon_soc == razon){
 				existeProv = true;
 			}
 

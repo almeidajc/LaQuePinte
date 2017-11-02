@@ -1,6 +1,7 @@
 package ui;
 
 import entidades.Cliente;
+import negocio.CtrlCliente;
 import negocio.CtrlPedido;
 import negocio.CtrlProducto;
 import entidades.Pedido;

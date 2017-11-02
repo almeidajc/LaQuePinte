@@ -61,6 +61,17 @@ function validarFormulario(){
 	}
 }
 
+function validaNombreMat(valor){
+	
+	var patronNombre = /.{2,}/;	
+	  if (patronNombre.test(valor)){
+		  document.getElementById('nombreError').style.visibility = "hidden";
+	  } else {
+		  document.getElementById('nombreError').style.visibility = "visible";
+		  document.getElementById('nombreError').innerHTML = 'Nombre del material no valido';
+		  document.getElementById('nombreError').style.color = "red";
+	  }
+}
 </script>
 </head>
 <body>
@@ -216,9 +227,9 @@ function validarFormulario(){
             <div class="control-group">
               <label class="control-label">Nombre :</label>
               <div class="controls">
-                <input type="text" class="span11" placeholder="Nombre material" name="nombre" id="nombre" onchange="validaNombre(this.value)" required/>
+                <input type="text" class="span11" placeholder="Nombre material" name="nombre" id="nombre" onchange="validaNombreMat(this.value)" required/>
              	<a href="#" title="Ingrese el nombre del material" class="tip-right"><i class="icon-question-sign"> </a></i>
-				<div id="nombreError"></div>
+				<div id="nombreError" ></div>
               </div>
             </div>
             <div class="control-group">
@@ -256,6 +267,7 @@ function validarFormulario(){
 </div>
 
 <!--end-Footer-part-->
+
 
 <script src="bootstrap/js/excanvas.min.js"></script>
 <script src="bootstrap/js/jquery.min.js"></script>

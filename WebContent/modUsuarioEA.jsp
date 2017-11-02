@@ -71,7 +71,7 @@ function validarFormulario(){
       Empleado e= ctrl.getEmpleadoById(idEmp);
       String email= e.getEmail();
       long tel= e.getTel();
-      String pass= e.getContraseÃ±a();
+      String pass= e.getContraseña();
       //String numeroStr = String.valueOf(h.getNumero());
 
 

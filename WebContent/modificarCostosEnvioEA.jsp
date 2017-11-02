@@ -215,7 +215,7 @@ input[type=text]:focus {
     <thead>
       <tr >
 
-	    <th><h5 style="text-align:center; ">COSTO POR KILOMETRO</h5></th>
+	    <th><h5 style="text-align:center; "> RECARGO POR KILOMETRO</h5></th>
 
 
         <th><h5 style="text-align:center; ">MODIFICAR <a href="#" title="Clickee en el icono correspondiente al costo por kilometros para modificarlo" class="tip-bottom"><i class="icon-question-sign"> </a></i></h5></th>
@@ -225,14 +225,14 @@ input[type=text]:focus {
 
     <tbody>
       <tr>
-<%
-CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
-float a = ctrl.listarCostosEnvio().getCosto_km();
-String precio = String.format ("%.2f", a);
+		<%
+		CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
+		float a = ctrl.listarCostosEnvio().getCosto_km();
+		String precio = String.format ("%.2f", a);
+		
+		%>
 
-%>
-
-   	   <td><h5 style="text-align:center; ">$<%= precio  %></h5></td>
+   		   <td><h5 style="text-align:center; ">$<%= precio  %></h5></td>
 
 
 	    <td><form method="post" action="modCostosEnvioEA.jsp">
@@ -263,7 +263,7 @@ String precio = String.format ("%.2f", a);
 
         <th><h5 style="text-align:center; ">RECARGO ZONA PELIGROSA</h5></th>
 
-        <th><h5 style="text-align:center; ">MODIFICAR<a href="#" title="Clickee en el icono correspondiente al costo por zona peligrosa para modificarlo" class="tip-bottom"><i class="icon-question-sign"> </a></i></h5></th>
+        <th><h5 style="text-align:center; ">MODIFICAR <a href="#" title="Clickee en el icono correspondiente al costo por zona peligrosa para modificarlo" class="tip-bottom"><i class="icon-question-sign"> </a></i></h5></th>
 
       </tr>
     </thead>

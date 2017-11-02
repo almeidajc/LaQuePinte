@@ -37,7 +37,7 @@ public class BajaProveedor extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int cuit = Integer.parseInt(request.getParameter("cuit"));
+		String cuit = request.getParameter("cuit");
 		CtrlProveedor ctrl = new CtrlProveedor();
 		
 		String tipo = (String) request.getParameter("tipo_empleado");
