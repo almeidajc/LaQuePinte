@@ -29,13 +29,13 @@ public class Reportes {
 		connect= FactoryConexion.getInstancia().getConn();
 		JasperReport report=null;
 		try{
-		report = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\valen12\\Desktop\\Facultad\\proyecto\\Git java\\LaQuePinte\\Informe.jasper");
+		report = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\Fede-Inspiron\\Desktop\\facultad\\PROYECTO-FINAL\\LaQuePinte\\Informe.jasper");
 		JasperPrint jasperPrint = JasperFillManager.fillReport(report, null, connect);
 		/*JasperViewer ver = new JasperViewer(jasperPrint);
 		ver.setTitle("Informe stock "+ fecha );
 		ver.setVisible(true);*/
 		jasperPrint.setName("Informe stock "+ fecha );
-		JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\valen12\\Desktop\\Facultad\\proyecto\\Git java\\LaQuePinte\\reportes\\Informe stock "+ fecha + ".pdf");
+		JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\Fede-Inspiron\\Desktop\\facultad\\PROYECTO-FINAL\\LaQuePinte\\reportes\\Informe stock "+ fecha + ".pdf");
 		}
 		catch(JRException ex){
 			ex.printStackTrace();
