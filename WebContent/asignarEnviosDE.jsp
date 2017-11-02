@@ -115,7 +115,7 @@
             		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
                   // if dia=igual hoy
                 if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null ){
-                	if(pedido.getEmpleado().getId_empleado()<=0){
+                	if(pedido.getEmpleado().getId_empleado()==0){
                 	//&& pedido.getFecha_efectiva() != null
             	%>
               <tr id="formularioPed<%=indice %>">
@@ -130,7 +130,7 @@
                     CtrlEmpleado ctrl = new CtrlEmpleado();
                     for ( int indiceEmpleados = 0; indiceEmpleados < ctrl.listarEmpleados().size(); indiceEmpleados++){
                       String tipo = ctrl.listarEmpleados().get(indiceEmpleados).getTipo();
-                      if(tipo.equalsIgnoreCase("CA")){
+                      if(tipo.equalsIgnoreCase("CA") && !ctrl.listarEmpleados().get(indiceEmpleados).getNombre().equalsIgnoreCase("XXX")){
                         %>
                         <option value="<%= ctrl.listarEmpleados().get(indiceEmpleados).getId_empleado() %>"><%= ctrl.listarEmpleados().get(indiceEmpleados).getNombre() %> <%= ctrl.listarEmpleados().get(indiceEmpleados).getApellido() %></option>
 

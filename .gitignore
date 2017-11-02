@@ -9,3 +9,4 @@ build.xml
 .settings/*
 Servers/*
 RemoteSystemsTempFiles/*
+/Informe.jasper
