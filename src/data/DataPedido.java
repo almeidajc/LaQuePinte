@@ -120,7 +120,7 @@ public class DataPedido {
 		try {
 			FactoryConexion.getInstancia().getConn().setAutoCommit(false);
 			stmtPedido = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"Insert into pedidos(fecha_emision,id_estado,total,dni,nombre,apellido,fecha_entrega,direccion_envio,coordenadas,costo_envio) values (current_date(),1,?,?,?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS
+					"Insert into pedidos(fecha_emision,id_estado,total,dni,nombre,apellido,fecha_entrega,direccion_envio,coordenadas,costo_envio, id_empleado) values (current_date(),1,?,?,?,?,?,?,?,?,0)",PreparedStatement.RETURN_GENERATED_KEYS
 					);
 			stmtPedido.setDouble(1, pedido.getTotal());
 			stmtPedido.setInt(2, pedido.getCliente().getDni());

@@ -28,7 +28,7 @@ public class CtrlProveedor {
 	}
 
 	
-	public Proveedor getProveedorByCuit(int cuit) {
+	public Proveedor getProveedorByCuit(String cuit) {
 		// TODO Auto-generated method stub
 		return catalogo.getProveedorByCuit(cuit);
 	}
@@ -36,7 +36,7 @@ public class CtrlProveedor {
 	
 
 
-	public void borrarProveedor(int cuit) {
+	public void borrarProveedor(String cuit) {
 		// TODO Auto-generated method stub
 		catalogo.borrarProveedor(cuit);
 	}

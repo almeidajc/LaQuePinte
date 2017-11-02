@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="bootstrap/css/jquery.gritter.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
-<% int cuit = Integer.parseInt(request.getParameter("cuit"));
+<% String cuit =request.getParameter("cuit");
       CtrlProveedor ctrl = new CtrlProveedor();
       Proveedor p = ctrl.getProveedorByCuit(cuit);
       String razon_soc= p.getRazon_social();

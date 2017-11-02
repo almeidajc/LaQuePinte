@@ -209,7 +209,7 @@ public class DataCliente {
 			try {
 				FactoryConexion.getInstancia().getConn().rollback();
 			} catch (SQLException d1) {
-				throw new ApplicationException("Error al recuperar habitacion en la base de datos", d1);
+				throw new ApplicationException("Error al recuperar cliente en la base de datos", d1);
 			}
 			throw new ApplicationException("Error al modificar el cliente en la base de datos", d);
 		} finally {

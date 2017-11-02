@@ -22,7 +22,7 @@ public class DataProveedor {
 
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
 							"insert into proveedores (cuit,razon_social,mail,direccion,telefono) values (?,?,?,?,?)");
-			stmt.setInt(1, pro.getCuit());
+			stmt.setString(1, pro.getCuit());
 			stmt.setString(2, pro.getRazon_social());
 			stmt.setString(3, pro.getEmail());
 			stmt.setString(4, pro.getDireccion());
@@ -64,7 +64,7 @@ public class DataProveedor {
 
 			while (rs.next()) {
 				Proveedor p = new Proveedor();
-				p.setCuit(rs.getInt("cuit"));
+				p.setCuit(rs.getString("cuit"));
 				p.setRazon_social(rs.getString("razon_social"));
 				p.setEmail(rs.getString("mail"));
 				p.setDireccion(rs.getString("direccion"));
@@ -94,7 +94,7 @@ public class DataProveedor {
 		return proveedores;
 	}
 
-	public void borrarProveedor(int cuit) {
+	public void borrarProveedor(String cuit) {
 		PreparedStatement stmtP=null;
 		
 		
@@ -103,7 +103,7 @@ public class DataProveedor {
 			stmtP=FactoryConexion.getInstancia().getConn().prepareStatement(
 					  "delete from proveedores where cuit=?"
 					);
-			stmtP.setInt(1, cuit);
+			stmtP.setString(1, cuit);
 			stmtP.execute();
 			
 			
@@ -140,7 +140,7 @@ public class DataProveedor {
 			stmt.setString(2, p.getEmail());
 			stmt.setString(3, p.getDireccion());
 			stmt.setInt(4, p.getTel());
-			stmt.setInt(5, p.getCuit());
+			stmt.setString(5, p.getCuit());
 			
 		
 			stmt.execute();
@@ -168,7 +168,7 @@ public class DataProveedor {
 	}	
 	}
 
-	public Proveedor getProveedorByCuit(int cuit) {
+	public Proveedor getProveedorByCuit(String cuit) {
 		ResultSet rs=null;
 		
 		PreparedStatement stmt=null;
@@ -180,7 +180,7 @@ public class DataProveedor {
 			stmt = 	FactoryConexion.getInstancia().getConn().prepareStatement(
 					"select razon_social, mail, direccion, telefono from proveedores where cuit = ?"
 					);
-			stmt.setInt(1, cuit);
+			stmt.setString(1, cuit);
 			rs = stmt.executeQuery();
 			if(rs !=null && rs.next()){
 	         

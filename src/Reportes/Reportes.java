@@ -31,10 +31,11 @@ public class Reportes {
 		try{
 		report = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\valen12\\Desktop\\Facultad\\proyecto\\Git java\\LaQuePinte\\Informe.jasper");
 		JasperPrint jasperPrint = JasperFillManager.fillReport(report, null, connect);
-		JasperViewer ver = new JasperViewer(jasperPrint);
+		/*JasperViewer ver = new JasperViewer(jasperPrint);
 		ver.setTitle("Informe stock "+ fecha );
-		ver.setVisible(true);
-		JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\valen12\\Desktop\\Facultad\\proyecto\\Git java\\reportes\\Informe stock"+ fecha + ".pdf");
+		ver.setVisible(true);*/
+		jasperPrint.setName("Informe stock "+ fecha );
+		JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\valen12\\Desktop\\Facultad\\proyecto\\Git java\\LaQuePinte\\reportes\\Informe stock "+ fecha + ".pdf");
 		}
 		catch(JRException ex){
 			ex.printStackTrace();

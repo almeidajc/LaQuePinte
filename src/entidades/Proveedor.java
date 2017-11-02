@@ -26,10 +26,10 @@ public class Proveedor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getCuit() {
+	public String getCuit() {
 		return cuit;
 	}
-	public void setCuit(int cuit) {
+	public void setCuit(String cuit) {
 		this.cuit = cuit;
 	}
 	public int getTel() {
@@ -41,7 +41,7 @@ public class Proveedor {
 	private String razon_social;	
 	private String direccion;	
 	private String email;
-	private int cuit;
+	private String cuit;
 	private int tel;
 	
 }

@@ -45,7 +45,7 @@ public class ModificarProveedor extends HttpServlet {
 		
 		String tipo_em = request.getParameter("tipo_em");
 		
-		int cuit = Integer.parseInt(request.getParameter("cuit"));
+		String cuit = request.getParameter("cuit");
 		p.setCuit(cuit);
 		p.setRazon_social((request.getParameter("razon_soc")));
 		p.setDireccion((request.getParameter("direccion")));
