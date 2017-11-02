@@ -92,7 +92,7 @@ function cancelarFecha(){
 
      cantidadMaximaDiasDistintos =document.getElementById('CantidadDiasDistintos').value;
      console.log(cantidadMaximaDiasDistintos);
-        for (let  indiceee = 1; indiceee <= 2 ; indiceee++) {
+        for (let  indiceee = 1; indiceee <= cantidadMaximaDiasDistintos ; indiceee++) {
           diaPed= document.getElementById('fecha'+indiceee).value;
           cantPedid= document.getElementById('arregloDias'+indiceee).value;
           if (cantPedid< 20){
@@ -226,7 +226,7 @@ function cancelarFecha(){
           cantidadPedidosDia = ped.title.substring(17 ,ped.title.length);
           if (start.getFullYear() === ped.start.getFullYear()){
             if (start.getMonth() === ped.start.getMonth()) {
-              if (start.getDate() === ped.start.getDate() && cantidadPedidosDia == 20) {
+              if (start.getDate() === ped.start.getDate() && cantidadPedidosDia == "20") {
                 console.log("entro");
                 cantMaximaAlcanzada = true;
 
