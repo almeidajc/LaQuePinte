@@ -73,7 +73,7 @@
     <div id="breadcrumb"><a href="indexCA.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Registrar Entrega</a></div>
     <!--End-breadcrumbs-->
 <div id="titulo">
- <h1>Registrar Entrega de pedidos</h1>
+ <h1>Registrar Entrega Por Mostrador</h1>
  </div>
   <div class="container-fluid"><hr>
    
@@ -116,11 +116,11 @@
 
 	for (int indice = 0; indice < ctrl.listarPedidosConfirmados().size(); indice++){
 		if(ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() == null ){
+			String nroFact=  String.format("%08d", ctrl.listarPedidosConfirmados().get(indice).getId_pedido());
 			
-		
-	%>  
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido() %></h5></td>
-	   <td><h5 style="text-align:center; "><%=  new SimpleDateFormat("dd-MM-yyyy").format(ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega()) %></h5></td>
+			%>  
+			   <td><h5 style="text-align:center; "><%= nroFact %></h5></td>
+	 	<td><h5 style="text-align:center; "><%=  new SimpleDateFormat("dd-MM-yyyy").format(ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega()) %></h5></td>
 	   
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getEstado() %></h5></td>
 	   <td><h5 style="text-align:center; ">Consumidor Final</h5></td>	

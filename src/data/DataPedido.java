@@ -458,7 +458,7 @@ public void registrarPedidoMostrador(Pedido pedido) throws ApplicationException 
 	try {
 		FactoryConexion.getInstancia().getConn().setAutoCommit(false);
 		stmtPedido = FactoryConexion.getInstancia().getConn().prepareStatement(
-				"Insert into pedidos(fecha_emision,id_estado,total,dni,nombre,apellido) values (current_date(),1,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS
+				"Insert into pedidos(fecha_emision,id_estado,total,dni,nombre,apellido,fecha_entrega) values (current_date(),1,?,?,?,?,current_date())",PreparedStatement.RETURN_GENERATED_KEYS
 				);
 		stmtPedido.setDouble(1, pedido.getTotal());
 		stmtPedido.setInt(2, pedido.getCliente().getDni());
