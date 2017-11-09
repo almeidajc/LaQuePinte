@@ -8,6 +8,8 @@
     <%@page import="negocio.CtrlPedido"%>
     <%@page import="java.util.ArrayList"%>
     <%@page import="entidades.LineaDetallePedido"%>
+    <%@page import="entidades.CostosEnvio"%>
+    <%@page import="negocio.CtrlCostosEnvio"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -157,7 +159,14 @@ function confirmarPedido(){
               		<%
         		}}
       			
+        		
+        		CtrlCostosEnvio ctrl = new CtrlCostosEnvio();
+        	      CostosEnvio c =ctrl.listarCostosEnvio();
+        	      float costokm= c.getCosto_km();
+        	      float recargo= c.getRecargo_zona();
       		%>
+      		<input type="hidden" id="costoKM" value="<%=costokm %>">
+      		<input type="hidden" id="recargoZona" value="<%=recargo %>">
  <div class="accordion" id="collapse-group">
           <div class="accordion-group widget-box">
             <div class="accordion-heading">
@@ -338,10 +347,27 @@ function confirmarPedido(){
               </thead>
 
 
+<%
+            	String costosK = String.format ("%.2f", costokm);
+            	String recarg = String.format ("%.2f", recargo);  
+            	%>
              <tbody>
+              <tr>
+                <td>1</td>
+                <td>0</td>
+                <td >Costo Envio</td>
 
-            <%int i=1;
+				<td> </td>
+				<td> </td>
+                <td style="text-align: right;" id="acaVaelPrecio"></td>
+                <td><a class="btn btn-danger" style="margin:auto;display:block;visibility:hidden">X</a></td>
+
+              </tr>
+
+            <%int i=2;
             float total=0;
+            float jeje;
+            String fname = request.getParameter("precioEnvioJeJe");
             for(LineaDetallePedido item:pedido.getLineasDetallePedido()){
             	float subtotal=item.getCantidad()*item.getProducto().getPrecio();
             	
@@ -365,7 +391,7 @@ function confirmarPedido(){
             }%>
             <tr>
                 <td style="text-align: right;" colspan="5"><h5>IMPORTE TOTAL DEL PEDIDO</h5></td>
-                <td><h5 style="text-align: right;">$<%=totalStr %></h5></td>
+                <td><h5 style="text-align: right;" id="Preciototal">$<%=totalStr %></h5></td>
               </tr>
             </tbody>
           </table>
@@ -459,11 +485,13 @@ function confirmarPedido(){
 
 						<th>Descripcion</th>
 						<th>Precio</th>
+						<th>Stock</th>
 					</tr>
 				</thead>
 				<tbody id="cuerpo">
 					<tr>
-						<td colspan="3"><h5>Comience a escribir para obtener los productos</h5></td>
+						<td colspan="4"><h5>Comience a escribir para obtener los productos</h5></td>
+						
 					</tr>
 				</tbody>
 			</table>

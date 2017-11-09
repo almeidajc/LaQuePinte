@@ -270,7 +270,7 @@ function validarFormulario(){
                 <label class="control-label">Stock M&iacute;nimo</label>
                 <div class="controls">
                   <input type="number" name="stock_min_producto" id="stock_min_producto" required autofocus class="form-control" onchange="validaStockMin(this.value)">
-                  <a href="#" title="Ingrese el nivel m�nimo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
+                  <a href="#" title="Ingrese el nivel m&iacute;nimo de stock del nuevo producto" class="tip-right"><i class="icon-question-sign"> </a></i>
                   <div id="stockMinError" style="visibility:hidden"></div>
                 </div>
               </div>

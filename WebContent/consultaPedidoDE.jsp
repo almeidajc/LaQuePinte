@@ -126,6 +126,8 @@
 	  for (int indice = 0; indice < ctrlP.listarPedidosConfirmados().size(); indice++){
 		  double a=ctrlP.listarPedidosConfirmados().get(indice).getTotal();
     		String total = String.format ("%.2f", a);
+	
+	String nroFact=  String.format("%08d", ctrlP.listarPedidosConfirmados().get(indice).getId_pedido());
 	%>
 
      <!-- ac3 inicio-->
@@ -133,7 +135,7 @@
 
             <div class="accordion-heading">
               <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
-                <h5>FECHA: <%= new SimpleDateFormat("dd-MM-yyyy").format(ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega()) %>| N&deg; FACTURA: <%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>| TOTAL: $<%= total %></h5>
+                <h5>FECHA: <%= new SimpleDateFormat("dd-MM-yyyy").format(ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega()) %>| N&deg; FACTURA: <%= nroFact %>| TOTAL: $<%= total %></h5>
 
                 </a> </div>
             </div>

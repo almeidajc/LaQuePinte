@@ -102,7 +102,7 @@ function validarCod(){
 	}else {
 		if(!cod.match(/^([0-9])*$/)){
 			$("#txtCod").attr("style","background:#f2dede");
-			$("#errorCod").html("El codigo de producto debe ser un número entero");
+			$("#errorCod").html("El codigo de producto debe ser un numero entero");
 			valido=false
 		}
 	}
@@ -120,7 +120,7 @@ function validarCant(){
 	}else{ 
 		if(!cant.match(/^([0-9])*$/)){
 			$("#txtCantidad").attr("style","background:#f2dede");
-			$("#errorCantidad").html("El la cantidad debe ser un número entero");
+			$("#errorCantidad").html("El la cantidad debe ser un numero entero");
 			valido=false;
 		}
 	}

@@ -12,9 +12,8 @@ function altaPedido(){
 	}
 	else{
 		location.href = "#clienteFijo";
-	}
-	
-  let direccion,coord,fech,distancia,zona;
+	}	
+  let direccion,coord,fech,distancia,zona,costoKM,recargo,total,precioTot,precioFinal;
   direccion = localStorage.getItem("direccion");
   coord = localStorage.getItem("coordenadas");
   distancia = localStorage.getItem("distanciaInsert");
@@ -25,7 +24,25 @@ function altaPedido(){
   document.getElementById("distancia").value = distancia;
   document.getElementById("fecha").value = fech;
   document.getElementById("zonaPeligrosa").value = zona;
-
+  
+  costoKM = document.getElementById("costoKM").value;
+  recargo = document.getElementById("recargoZona").value;
+  total=0;
+  if(zona == "true"){
+	  total = costoKM*distancia;
+	  total /=1000;
+	  total = total + Number(recargo);
+  }
+  else{
+	  total = costoKM*distancia;
+	  total /=1000;
+  }  
+  document.getElementById("acaVaelPrecio").innerHTML ="$"+total.toFixed(2);
+  precioTot = document.getElementById("Preciototal").innerHTML;
+  precioTot =precioTot.replace("$","");
+  precioTot =precioTot.replace(",",".");
+  precioFinal = Number(precioTot)+total;
+  document.getElementById("Preciototal").innerHTML = "$ "+precioFinal.toFixed(2);
 }
 
 function empleado_rol(){

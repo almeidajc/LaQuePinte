@@ -76,7 +76,7 @@
 <!--End-breadcrumbs-->
 <!--Action boxes-->
  <div id="titulo">
- <h1>Consulta Pedidos Pendientes</h1>
+ <h1>Consulta Pedidos Pendientes del dia</h1>
 </div>
   <div class="container-fluid"><hr>
    
@@ -101,7 +101,7 @@
       		 
 
 
-<div class="accordion" id="collapse-group">
+<div class="accordion" id="collapse-group" >
   
    
    <% CtrlPedido ctrlP = new CtrlPedido(); 
@@ -113,6 +113,8 @@
 				 
 				 double a=ctrlP.listarPedidosConfirmados().get(indice).getTotal();
 	          		String total = String.format ("%.2f", a);
+	          		String nroFact=  String.format("%08d", ctrlP.listarPedidosConfirmados().get(indice).getId_pedido());
+
 				  
 	%> 
 	    <!-- ac3 inicio-->        
@@ -120,13 +122,18 @@
            
             <div class="accordion-heading">
               <div class="widget-title"> <a data-parent="#collapse-group" href="#<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>" data-toggle="collapse"> <span class="icon"><i class="icon-list-ul"></i></span>
-                <h5>FECHA: <%= ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega() %>| N&deg; FACTURA: <%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>| TOTAL: $<%= total %> | DIRECCION: <%= ctrlP.listarPedidosConfirmados().get(indice).getDireccion_envio() %></h5>
+                <h5>FECHA: <%= ctrlP.listarPedidosConfirmados().get(indice).getFecha_entrega() %>| N&deg; FACTURA: <%= nroFact%>| TOTAL: $<%= total %> </h5>
 
                 </a> </div>
             </div>
             <div class="collapse accordion-body" id="<%= ctrlP.listarPedidosConfirmados().get(indice).getId_pedido() %>">
               <div class="widget-content"> <table class="table table-bordered table-striped">
               <thead>
+              <tr>
+              <b>DIRECCION: <%= ctrlP.listarPedidosConfirmados().get(indice).getDireccion_envio() %></b>
+              </tr>
+              
+             
                 <tr>
                   <th>PRODUCTO</th>
                   <th>CANTIDAD</th>
@@ -153,7 +160,7 @@
                 
               </tbody>
               <%}%>
-
+	
             </table> </div>
             </div>
           </div>

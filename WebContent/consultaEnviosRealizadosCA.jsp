@@ -119,7 +119,7 @@
 <!--End-breadcrumbs-->
 <!--Action boxes-->
 <div id="titulo">
- <h1>Consulta de Envios Realizados</h1>
+ <h1>Consulta de Envios Realizados en el dia</h1>
   </div>
   <div class="container-fluid"><hr>
    
@@ -167,10 +167,11 @@
 		   id = ctrlP.listarPedidosRealizados().get(indice).getEmpleado().getId_empleado();
 	if(userSession.getId_empleado() == id ){
 		if(ctrlP.listarPedidosRealizados().get(indice).getDireccion_envio() != null ){
+			String nroFact=  String.format("%08d", ctrlP.listarPedidosRealizados().get(indice).getId_pedido());
 		
 	%>  
 	   
-	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getId_pedido() %></h5></td>
+	   <td><h5 style="text-align:center; "><%= nroFact %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getFecha_entrega() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getFecha_efectiva() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrlP.listarPedidosRealizados().get(indice).getDireccion_envio() %></h5></td>

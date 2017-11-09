@@ -118,12 +118,10 @@
 	for (int indice = 0; indice < ctrl.listarPedidosConfirmados().size(); indice++){
 		if(ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() != null ){
 			
-			
-
-			
-
-	%>
-	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getId_pedido() %></h5></td>
+			String nroFact=  String.format("%08d", ctrl.listarPedidosConfirmados().get(indice).getId_pedido());
+			%>
+			   <td><h5 style="text-align:center; "><%= nroFact %></h5></td>
+	
 	   <td><h5 style="text-align:center; "><%= new SimpleDateFormat("dd-MM-yyyy").format(ctrl.listarPedidosConfirmados().get(indice).getFecha_entrega()) %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getDireccion_envio() %></h5></td>
 	   <td><h5 style="text-align:center; "><%= ctrl.listarPedidosConfirmados().get(indice).getEstado() %></h5></td>

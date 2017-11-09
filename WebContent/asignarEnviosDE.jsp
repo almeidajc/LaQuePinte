@@ -115,22 +115,23 @@
             		  pedido = ctrlP.listarPedidosConfirmados().get(indice);
                   // if dia=igual hoy
                 if(today.after(pedido.getFecha_entrega()) && pedido.getCoordenadas() != null ){
-                	if(pedido.getEmpleado().getId_empleado()<=0){
+                	if(pedido.getEmpleado().getId_empleado()==0){
                 	//&& pedido.getFecha_efectiva() != null
+            	String nroFact=  String.format("%08d", pedido.getId_pedido());
             	%>
               <tr id="formularioPed<%=indice %>">
               <form method="post" action="AsignarPedido">
                 <td><input type="hidden" name="idpedido" id="idpedido<%=indice %>" value="<%=pedido.getId_pedido() %>"> <input type="hidden" id="empleadoPed<%=indice %>" name="empleado" id="empleado" value="<%=pedido.getEmpleado().getId_empleado() %>"></td>
                 <td><input type="hidden" id="coord<%=indice %>" value="<%=pedido.getCoordenadas() %>"></td>
-                <td><h5 onclick="animarPedido(<%= pedido.getId_pedido() %>)">N&deg; de Factura <%= pedido.getId_pedido() %></h5></td>
-                <td>
+                      <td><h5 onclick="animarPedido(<%= pedido.getId_pedido() %>)">N&deg; de Factura <%= nroFact %></h5></td>
+						<td>
 
                   <select name="idcamionero"  id="idcamionero">
                     <%
                     CtrlEmpleado ctrl = new CtrlEmpleado();
                     for ( int indiceEmpleados = 0; indiceEmpleados < ctrl.listarEmpleados().size(); indiceEmpleados++){
                       String tipo = ctrl.listarEmpleados().get(indiceEmpleados).getTipo();
-                      if(tipo.equalsIgnoreCase("CA")){
+                      if(tipo.equalsIgnoreCase("CA") && !ctrl.listarEmpleados().get(indiceEmpleados).getNombre().equalsIgnoreCase("XXX")){
                         %>
                         <option value="<%= ctrl.listarEmpleados().get(indiceEmpleados).getId_empleado() %>"><%= ctrl.listarEmpleados().get(indiceEmpleados).getNombre() %> <%= ctrl.listarEmpleados().get(indiceEmpleados).getApellido() %></option>
 
